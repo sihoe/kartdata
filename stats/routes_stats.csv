@@ -1,0 +1,20 @@
+id;name;distanceKm;climbM;descentM;minElevationM;maxElevationM;elevationUrl
+smadoldalen-rundt;Smådøldalen rundt;72.29;1363.0;1363.0;466.0;1107.0;https://cdn.jsdelivr.net/gh/sihoe/smaadoldalenrundt@latest/smaadoldalenrundt_elevation.json
+fjellruta-over-vegglifjell;Fjellruta over Vegglifjell;124.13;2096.0;2096.0;217.0;1171.0;https://cdn.jsdelivr.net/gh/sihoe/svingom-fjellruta@latest/fjellruta_elevation_latlon_converted.json
+blefjell-juvefossen;Blefjell – Juvefossen;46.64;1408.0;1408.0;480.0;681.0;https://cdn.jsdelivr.net/gh/sihoe/blefjell-juvefossen@latest/blefjell_juvefossen_elevation.json
+trillemarka-rundt;Trillemarka rundt;76.44;2343.0;2344.0;142.0;896.0;https://cdn.jsdelivr.net/gh/sihoe/trillemarkarundt@latest/trillemarkarundt_elevation.json
+kunst-og-koboltrunden;Kunst- og koboltrunden;120.43;2925.0;2925.0;42.0;548.0;https://cdn.jsdelivr.net/gh/sihoe/kunst-koboltrunden@latest/kunst-koboltrunden_elevation.json
+rollag-rundt;Rollag rundt;19.42;491.0;491.0;196.0;380.0;https://cdn.jsdelivr.net/gh/sihoe/Rollag-Rundt@latest/rollagrundt_elevation.json
+baklivegen-rundt;Baklivegen rundt;29.34;769.0;769.0;466.0;827.0;https://cdn.jsdelivr.net/gh/sihoe/baklierundt@latest/baklivegenrundt_elevation.json
+numedalsruta-nasjonal-rute-5;Numedalsruta (Nasjonal rute 5);165.21;3255.0;3883.0;155.0;1060.0;https://cdn.jsdelivr.net/gh/sihoe/Numedalsruta@latest/NS_5_Numedalsruta_elevation.json
+blaafarverunden;Blaafarverunden;90.18;2234.0;2234.0;71.0;548.0;https://cdn.jsdelivr.net/gh/sihoe/blaafarverunden@latest/blaafarverunden_elevation.json
+ovrebygderunden;Øvrebygderunden;23.27;572.0;572.0;192.0;615.0;https://cdn.jsdelivr.net/gh/sihoe/overbygdarundene@latest/overbygderunden_lang_elevation.json
+imingfjell-rundt;Imingfjell rundt;47.69;1205.0;1205.0;593.0;1308.0;https://cdn.jsdelivr.net/gh/sihoe/imingfjellrundt@latest/imingfjellrundt_elevation.json
+kirkebygda-rundt;Kirkebygda rundt;13.14;329.0;329.0;466.0;641.0;https://cdn.jsdelivr.net/gh/sihoe/kirkebygdarundt@latest/kirkebygdarundt_elevation.json
+norerunden;Norerunden;36.19;1299.0;1299.0;237.0;899.0;https://cdn.jsdelivr.net/gh/sihoe/norerunden@latest/norerunden_elevation.json
+skagsaasen-og-kravikfjorden-rundt;Skagsåsen og Kravikfjorden rundt;34.76;1128.0;1128.0;260.0;557.0;https://cdn.jsdelivr.net/gh/sihoe/skagsaasenrundt@latest/skagsaasenrundt_elevation.json
+ostskauen-rundt;Østskauen rundt;45.14;1008.0;1008.0;187.0;500.0;https://cdn.jsdelivr.net/gh/sihoe/ostskauenrundt@latest/ostskauenrundt_elevation.json
+bingenrunden;Bingenrunden;47.63;1154.0;1154.0;147.0;548.0;https://raw.githubusercontent.com/sihoe/gyger/main/bingenrunden_elevation.json
+bolkesjorunden;Bolkesjørunden;12.47;311.0;311.0;225.0;480.0;https://cdn.jsdelivr.net/gh/sihoe/bolkesjorunden@latest/bolkesjorunden_elevation_latlon_converted.json
+follsjorunden;Follsjørunden;33.14;465.0;465.0;126.0;403.0;https://cdn.jsdelivr.net/gh/sihoe/bolkesjorunden@latest/follsjorundt_elevation_latlon_converted.json
+dusanfossrunden;Dusanfossrunden;12.66;247.0;247.0;413.0;554.0;https://cdn.jsdelivr.net/gh/sihoe/bolkesjorunden@latest/dusanfossrunden_elevation_latlon_converted.json
