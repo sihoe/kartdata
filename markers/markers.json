@@ -1,4 +1,4 @@
-const textMapMarkers = {
+{
   "rollag-handel": {
     "id": "rollag-handel",
     "latlng": [
@@ -3445,6 +3445,6 @@ const textMapMarkers = {
     },
     "originalTitle": "Stikryss"
   }
-};
+}
 
 export default textMapMarkers;
