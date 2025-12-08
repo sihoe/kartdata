@@ -165,13 +165,15 @@
     "maxElevationM": 500.0
   },
   {
-    "id": "bingenrunden",
-    "name": "Bingenrunden",
-    "elevationUrl": "https://raw.githubusercontent.com/sihoe/gyger/main/elevation_data.json",
-    "gpxUrl": "https://raw.githubusercontent.com/sihoe/gyger/main/Bingenrunde-forenkletdata.gpx",
-    "distanceKm": 47.63,
-    "climbM": 1154.0,
-    "descentM": 1154.0,
-    "minElevationM": 147.0
-    }
+  "id": "bingenrunden",
+  "name": "Bingenrunden",
+  "elevationUrl": "https://raw.githubusercontent.com/sihoe/gyger/main/bingenrunden_elevation.json",
+  "gpxUrl": "https://raw.githubusercontent.com/sihoe/gyger/main/bingenrunden.gpx",
+  "distanceKm": 47.63,
+  "climbM": 1154.0,
+  "descentM": 1154.0,
+  "minElevationM": 147.0
+}
+]
+  
 
