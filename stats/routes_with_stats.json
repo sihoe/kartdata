@@ -174,7 +174,18 @@
   "descentM": 1154.0,
   "minElevationM": 147.0
 },
-  {
+ {
+  "id": "bolkesjorunden",
+  "name": "Bolkesjørunden",
+  "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/bolkesjorunden_elevation_converted.json",
+  "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/bolkesjorunden.gpx",
+  "distanceKm": 12.47,
+  "climbM": 311.0,
+  "descentM": 311.0,
+  "minElevationM": 225.0,
+  "maxElevationM": 480.0
+},
+{
     "id": "follsj-rundt",
     "name": "Follsjø rundt",
     "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/follsjorundt_elevation_converted.json",
@@ -188,7 +199,7 @@
   {
     "id": "dusanfossrunden",
     "name": "Dusanfossrunden",
-    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/dusanfossrunden_elevation_converted.json",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/dusanfossrunden_elevation_latlon_converted.json",
     "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/dusanfossrunden.gpx",
     "distanceKm": 12.66,
     "climbM": 247.0,
@@ -197,6 +208,7 @@
     "maxElevationM": 554.0
   }
 ]
+
 
 
 
