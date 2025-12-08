@@ -79,7 +79,7 @@
   {
     "id": "numedalsruta-nasjonal-rute-5",
     "name": "Numedalsruta (Nasjonal rute 5)",
-    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoekartdata@main/elevation/NS_5_Numedalsruta_elevation_converted.json",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/NS_5_Numedalsruta_elevation_converted.json",
     "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/NS_5_Numedalsruta.gpx",
     "distanceKm": 165.21,
     "climbM": 3255.0,
@@ -167,15 +167,38 @@
   {
   "id": "bingenrunden",
   "name": "Bingenrunden",
-  "elevationUrl": "https://raw.githubusercontent.com/sihoe/kartdata@main/elevation/bingenrunden_elevation.json",
-  "gpxUrl": "https://raw.githubusercontent.com/sihoe/kartdata@main/elevation/bingenrunden.gpx",
+  "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/bingenrunden_elevation.json",
+  "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/bingenrunden.gpx",
   "distanceKm": 47.63,
   "climbM": 1154.0,
   "descentM": 1154.0,
   "minElevationM": 147.0
-}
+},
+  {
+    "id": "follsj-rundt",
+    "name": "Follsjø rundt",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/follsjorundt_elevation_converted.json",
+    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/follsjorundt.gpx",
+    "distanceKm": 33.14,
+    "climbM": 465.0,
+    "descentM": 465.0,
+    "minElevationM": 126.0,
+    "maxElevationM": 403.0
+  },
+  {
+    "id": "dusanfossrunden",
+    "name": "Dusanfossrunden",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/dusanfossrunden_elevation_converted.json",
+    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/dusanfossrunden.gpx",
+    "distanceKm": 12.66,
+    "climbM": 247.0,
+    "descentM": 247.0,
+    "minElevationM": 413.0,
+    "maxElevationM": 554.0
+  }
 ]
-  
+
+
 
 
 
