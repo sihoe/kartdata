@@ -16,5 +16,6 @@ skagsaasen-og-kravikfjorden-rundt;Skagsåsen og Kravikfjorden rundt;34.76;1128.0
 ostskauen-rundt;Østskauen rundt;45.14;1008.0;1008.0;187.0;500.0;https://cdn.jsdelivr.net/gh/sihoe/ostskauenrundt@latest/ostskauenrundt_elevation.json
 bingenrunden;Bingenrunden;47.63;1154.0;1154.0;147.0;548.0;https://raw.githubusercontent.com/sihoe/gyger/main/bingenrunden_elevation.json
 bolkesjorunden;Bolkesjørunden;12.47;311.0;311.0;225.0;480.0;https://cdn.jsdelivr.net/gh/sihoe/bolkesjorunden@latest/bolkesjorunden_elevation_latlon_converted.json
-follsjorunden;Follsjørunden;33.14;465.0;465.0;126.0;403.0;https://cdn.jsdelivr.net/gh/sihoe/bolkesjorunden@latest/follsjorundt_elevation_latlon_converted.json
+follsj-rundt;Follsjø rundt;33.14;465.0;465.0;126.0;403.0;https://cdn.jsdelivr.net/gh/sihoe/bolkesjorunden@latest/follsjorundt_elevation_latlon_converted.json
 dusanfossrunden;Dusanfossrunden;12.66;247.0;247.0;413.0;554.0;https://cdn.jsdelivr.net/gh/sihoe/bolkesjorunden@latest/dusanfossrunden_elevation_latlon_converted.json
+
