@@ -145,7 +145,7 @@
   {
     "id": "skagsaasen-og-kravikfjorden-rundt",
     "name": "Skagsåsen og Kravikfjorden rundt",
-    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/skagsaasenrundt@latest/sskagsaasenrundt_elevation_converted.json",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/skagsaasenrundt@latest/skagsaasenrundt_elevation_converted.json",
     "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/skagsaasenrundt@latest/skagsaasenrundt.gpx",
     "distanceKm": 34.76,
     "climbM": 1128.0,
@@ -176,4 +176,5 @@
 }
 ]
   
+
 
