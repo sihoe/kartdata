@@ -170,8 +170,8 @@
     "maxElevationM": 480.0
   },
   {
-    "id": "follsjorunden",
-    "name": "Follsjørunden",
+    "id": "follsj-rundt",
+    "name": "Follsjø rundt",
     "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/bolkesjorunden@latest/follsjorundt_elevation_latlon_converted.json",
     "distanceKm": 33.14,
     "climbM": 465.0,
@@ -189,4 +189,5 @@
     "minElevationM": 413.0,
     "maxElevationM": 554.0
   }
+
 ]
