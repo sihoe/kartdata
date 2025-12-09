@@ -189,7 +189,7 @@
 {
     "id": "follsj-rundt",
     "name": "Follsjø rundt",
-    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/follsjorundt_elevation_converted.json",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/follsjorundt_elevation_latlon_converted.json",
     "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/follsjorundt.gpx",
     "distanceKm": 33.14,
     "climbM": 465.0,
@@ -209,6 +209,7 @@
     "maxElevationM": 554.0
   }
 ]
+
 
 
 
