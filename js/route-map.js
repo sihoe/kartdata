@@ -334,26 +334,32 @@
         console.warn("Stats-URL svarte ikke OK:", statsResp.status);
       }
 
-      // 2) markører
-      const markersResp = await fetch(markersUrl);
-      if (markersResp.ok) {
-        const markersJson = await markersResp.json();
+     // 2) markører med mapping-fil
+const markersResp = await fetch(markersUrl);
+const mappingResp = await fetch("/path/to/route_markers.json");
 
-        // tåler både array og objekt
-        const allMarkers = Array.isArray(markersJson)
-          ? markersJson
-          : Object.values(markersJson);
+if (markersResp.ok && mappingResp.ok) {
+  const markersJson = await markersResp.json();
+  const mappingJson = await mappingResp.json();
 
-        const thisRoute = allMarkers.filter(
-          m => Array.isArray(m.routes) && m.routes.includes(routeId)
-        );
+  const allMarkers = Array.isArray(markersJson)
+    ? markersJson
+    : Object.values(markersJson);
 
-        thisRoute.forEach(m =>
-          addMarkerFromDb(map, m, popupContainer, resetPopup)
-        );
-      } else {
-        console.warn("Markers-URL svarte ikke OK:", markersResp.status);
-      }
+  const markersByName = new Map(allMarkers.map(m => [m.name, m]));
+
+  const markerNamesForRoute = mappingJson[routeId] || [];
+
+  const thisRoute = markerNamesForRoute
+    .map(n => markersByName.get(n))
+    .filter(Boolean);
+
+  thisRoute.forEach(m =>
+    addMarkerFromDb(map, m, popupContainer, resetPopup)
+  );
+} else {
+  console.warn("Feil ved henting av markører eller mapping-fil");
+}
 
       // 3) GPX-rute
       new L.GPX(gpxUrl, {
