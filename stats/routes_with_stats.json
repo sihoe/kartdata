@@ -2,7 +2,7 @@
   {
     "id": "smadoldalen-rundt",
     "name": "Smådøldalen rundt",
-    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/smaadoldalenrundt_elevation_converted.json",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/smaadoldalenrundt_elevation_latlon_converted.json",
     "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/smaadoldalenrundt.gpx",
     "distanceKm": 72.29,
     "climbM": 1363.0,
@@ -24,7 +24,7 @@
   {
     "id": "blefjell-juvefossen",
     "name": "Blefjell – Juvefossen",
-    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/blefjell_juvefossen_elevation_converted.json",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/blefjell_juvefossen_elevation_latlon_converted.json",
     "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/blefjell_juvefossen.gpx",
     "distanceKm": 46.64,
     "climbM": 1408.0,
@@ -35,7 +35,7 @@
   {
     "id": "trillemarka-rundt",
     "name": "Trillemarka rundt",
-    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/trillemarkarundt_elevation_converted.json",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/trillemarkarundt_elevation_latlon_converted.json",
     "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/Trillemarkarundt.gpx",
     "distanceKm": 76.44,
     "climbM": 2343.0,
@@ -46,7 +46,7 @@
   {
     "id": "kunst-og-koboltrunden",
     "name": "Kunst- og koboltrunden",
-    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/kunstkobolt_elevation_converted.json",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/kunstkobolt_elevation_latlon_converted.json",
     "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/Kunst-koboltrunden.gpx",
     "distanceKm": 120.43,
     "climbM": 2925.0,
@@ -57,7 +57,7 @@
   {
     "id": "rollag-rundt",
     "name": "Rollag rundt",
-    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/rollagrundt_elevation_converted.json",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/rollagrundt_elevation_latlon_converted.json",
     "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/rollagrundt.gpx",
     "distanceKm": 19.42,
     "climbM": 491.0,
@@ -68,7 +68,7 @@
   {
     "id": "baklivegen-rundt",
     "name": "Baklivegen rundt",
-    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/baklivegenrundt_elevation_converted.json",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/baklivegenrundt_elevation_latlon_converted.json",
     "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/Baklivegenrundt.gpx",
     "distanceKm": 29.34,
     "climbM": 769.0,
@@ -79,7 +79,7 @@
   {
     "id": "numedalsruta-nasjonal-rute-5",
     "name": "Numedalsruta (Nasjonal rute 5)",
-    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/NS_5_Numedalsruta_elevation_converted.json",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/NS_5_Numedalsruta_elevation_latlon_converted.json",
     "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/NS_5_Numedalsruta.gpx",
     "distanceKm": 165.21,
     "climbM": 3255.0,
@@ -90,7 +90,7 @@
   {
     "id": "blaafarverunden",
     "name": "Blaafarverunden",
-    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/blaafarverunden_elevation_converted.json",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/blaafarverunden_elevation_latlon_converted.json",
     "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/Blaafarverunden.gpx",
     "distanceKm": 90.18,
     "climbM": 2234.0,
@@ -101,7 +101,7 @@
   {
     "id": "ovrebygderunden",
     "name": "Øvrebygderunden",
-    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/overbygderunden_lang_elevatio_converted.json",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/overbygderunden_lang_elevation_latlon_converted.json",
     "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/overbygderunden_lang.gpx",
     "distanceKm": 23.27,
     "climbM": 572.0,
@@ -112,7 +112,7 @@
   {
     "id": "imingfjell-rundt",
     "name": "Imingfjell rundt",
-    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/imingfjellrundt_elevation_converted.json",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/imingfjellrundt_elevation_latlon_converted.json",
     "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/Imingfjellrundt.gpx",
     "distanceKm": 47.69,
     "climbM": 1205.0,
@@ -123,7 +123,7 @@
   {
     "id": "kirkebygda-rundt",
     "name": "Kirkebygda rundt",
-    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/kirkebygdarundt_elevation_converted.json",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/kirkebygdarundt_elevation_latlon_converted.json",
     "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/kirkebydgarundt.gpx",
     "distanceKm": 13.14,
     "climbM": 329.0,
@@ -134,7 +134,7 @@
   {
     "id": "norerunden",
     "name": "Norerunden",
-    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/norerunden_elevation_converted.json",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/norerunden_elevation_latlon_converted.json",
     "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/norerunden.gpx",
     "distanceKm": 36.19,
     "climbM": 1299.0,
@@ -145,7 +145,7 @@
   {
     "id": "skagsaasen-og-kravikfjorden-rundt",
     "name": "Skagsåsen og Kravikfjorden rundt",
-    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/skagsaasenrundt_elevation_converted.json",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/skagsaasenrundt_elevation_latlon_converted.json",
     "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/skagsaasenrundt.gpx",
     "distanceKm": 34.76,
     "climbM": 1128.0,
@@ -156,7 +156,7 @@
   {
     "id": "ostskauen-rundt",
     "name": "Østskauen rundt",
-    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/ostskauenrundt_elevation_converted.json",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/ostskauenrundt_elevation_latlon_converted.json",
     "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/ostskauenrundt.gpx",
     "distanceKm": 45.14,
     "climbM": 1008.0,
@@ -167,7 +167,7 @@
   {
   "id": "bingenrunden",
   "name": "Bingenrunden",
-  "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/bingenrunden_elevation.json",
+  "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/bingenrunden_latlon_elevation.json",
   "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/bingenrunden.gpx",
   "distanceKm": 47.63,
   "climbM": 1154.0,
@@ -178,7 +178,7 @@
 {
   "id": "bolkesjorunden",
   "name": "Bolkesjørunden",
-  "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/bolkesjorunden_elevation_converted.json",
+  "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/bolkesjorunden_elevation_latlon_converted.json",
   "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/bolkesjorunden.gpx",
   "distanceKm": 12.47,
   "climbM": 311.0,
@@ -209,6 +209,7 @@
     "maxElevationM": 554.0
   }
 ]
+
 
 
 
