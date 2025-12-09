@@ -172,10 +172,10 @@
   "distanceKm": 47.63,
   "climbM": 1154.0,
   "descentM": 1154.0,
-  "minElevationM": 147.0
+  "minElevationM": 147.0,
   "maxElevationM": 548.0
 },
- {
+{
   "id": "bolkesjorunden",
   "name": "Bolkesjørunden",
   "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/bolkesjorunden_elevation_converted.json",
@@ -209,6 +209,7 @@
     "maxElevationM": 554.0
   }
 ]
+
 
 
 
