@@ -173,6 +173,7 @@
   "climbM": 1154.0,
   "descentM": 1154.0,
   "minElevationM": 147.0
+  "maxElevationM": 548.0
 },
  {
   "id": "bolkesjorunden",
@@ -208,6 +209,7 @@
     "maxElevationM": 554.0
   }
 ]
+
 
 
 
