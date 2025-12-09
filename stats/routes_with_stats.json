@@ -167,7 +167,7 @@
   {
   "id": "bingenrunden",
   "name": "Bingenrunden",
-  "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/bingenrunden_latlon_elevation.json",
+  "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/bingenrunden_elevation_latlon_converted.json",
   "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/bingenrunden.gpx",
   "distanceKm": 47.63,
   "climbM": 1154.0,
@@ -209,6 +209,7 @@
     "maxElevationM": 554.0
   }
 ]
+
 
 
 
