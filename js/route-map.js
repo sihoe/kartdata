@@ -88,19 +88,26 @@
     const m = L.marker(marker.latlng, { icon: customIcon }).addTo(map);
 
     m.on("mouseover", () => {
-      const container = popupContainer;
-      if (!container) return;
+      if (!popupContainer) return;
 
-      container.classList.remove("hidden");
+      popupContainer.classList.remove("hidden");
 
       const lang = getLang();
-      const title = marker.title?.[lang] || marker.title?.no || "";
-      const desc = marker.description?.[lang] || marker.description?.no || "";
+      const texts = marker.texts || {};
+      const langBlock = texts[lang] || texts.no || {};
+
+      const title =
+        langBlock.title ||
+        marker.title || // fallback til generell tittel om du har det
+        "";
+
+      const desc = langBlock.description || "";
+
       const img = marker.imageUrl
         ? `<img src="${marker.imageUrl}" style="margin-bottom:8px;border-radius:6px;max-width:100%;">`
         : "";
 
-      container.innerHTML = `
+      popupContainer.innerHTML = `
         <div style="background:white;padding:15px;border-radius:6px;">
           <div style="text-align:right;">
             <button class="popup-close" style="background:none;border:none;font-size:22px;font-weight:bold;color:#422426;cursor:pointer;line-height:1;margin-bottom:5px;">&times;</button>
@@ -111,7 +118,7 @@
         </div>
       `;
 
-      const close = container.querySelector(".popup-close");
+      const close = popupContainer.querySelector(".popup-close");
       if (close) {
         close.addEventListener("click", () => resetFn());
       }
@@ -328,17 +335,18 @@
       }
 
       // 2) markører
-      const markersResp = await fetch(markersUrl);
-      if (markersResp.ok) {
-        const markersJson = await markersResp.json();
-        const allMarkers = Object.values(markersJson);
-        const thisRoute = allMarkers.filter(
-          m => Array.isArray(m.routes) && m.routes.includes(routeId)
-        );
-        thisRoute.forEach(m => addMarkerFromDb(map, m, popupContainer, resetPopup));
-      } else {
-        console.warn("Markers-URL svarte ikke OK:", markersResp.status);
-      }
+const markersResp = await fetch(markersUrl);
+if (markersResp.ok) {
+  const markersJson = await markersResp.json();
+  const allMarkers = Object.values(markersJson);
+  const thisRoute = allMarkers.filter(
+    m => Array.isArray(m.routes) && m.routes.includes(routeId)
+  );
+  thisRoute.forEach(m => addMarkerFromDb(map, m, popupContainer, resetPopup));
+} else {
+  console.warn("Markers-URL svarte ikke OK:", markersResp.status);
+}
+
 
       // 3) GPX-rute
       new L.GPX(gpxUrl, {
