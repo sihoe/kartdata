@@ -335,18 +335,25 @@
       }
 
       // 2) markører
-const markersResp = await fetch(markersUrl);
-if (markersResp.ok) {
-  const markersJson = await markersResp.json();
-  const allMarkers = Object.values(markersJson);
-  const thisRoute = allMarkers.filter(
-    m => Array.isArray(m.routes) && m.routes.includes(routeId)
-  );
-  thisRoute.forEach(m => addMarkerFromDb(map, m, popupContainer, resetPopup));
-} else {
-  console.warn("Markers-URL svarte ikke OK:", markersResp.status);
-}
+      const markersResp = await fetch(markersUrl);
+      if (markersResp.ok) {
+        const markersJson = await markersResp.json();
 
+        // tåler både array og objekt
+        const allMarkers = Array.isArray(markersJson)
+          ? markersJson
+          : Object.values(markersJson);
+
+        const thisRoute = allMarkers.filter(
+          m => Array.isArray(m.routes) && m.routes.includes(routeId)
+        );
+
+        thisRoute.forEach(m =>
+          addMarkerFromDb(map, m, popupContainer, resetPopup)
+        );
+      } else {
+        console.warn("Markers-URL svarte ikke OK:", markersResp.status);
+      }
 
       // 3) GPX-rute
       new L.GPX(gpxUrl, {
