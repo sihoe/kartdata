@@ -62,7 +62,7 @@
         <p><span class="icon">▼</span> ${t.lowest}: <strong>${stats.minElevationM.toFixed(0)}</strong> ${t.unit}</p>
         <p style="margin-top:16px;font-style:italic;">${t.instruction}</p>
       </div>
-    `;
+    ”
 
     const closeBtn = container.querySelector(".route-close");
     if (window.innerWidth <= 768 && closeBtn) {
@@ -71,7 +71,6 @@
   }
 
   function addMarkerFromDb(map, marker, popupContainer, resetFn) {
-    // prøv flere varianter av posisjonsfelt
     const pos =
       marker.latlng ||
       (marker.lat && marker.lon ? [marker.lat, marker.lon] : null) ||
@@ -150,51 +149,76 @@
   function buildChart(canvas, elevData, movingMarker) {
     if (!elevData || elevData.length === 0) return;
 
-    const distances = elevData.map(p => Number(p.distance));
-    const elevations = elevData.map(p => Number(p.elevation));
+    // Rens og standardiser data
+    const points = elevData
+      .filter(p => p.elevation != null && p.distance != null)
+      .map(p => ({
+        x: Number(p.distance),      // km
+        y: Number(p.elevation),     // moh
+        lat: p.lat,
+        lon: p.lon
+      }))
+      .filter(p => !isNaN(p.x) && !isNaN(p.y));
 
+    if (points.length === 0) return;
+
+    const distances = points.map(p => p.x);
+    const elevations = points.map(p => p.y);
+
+    // stigning i % mellom punktene
     const slopes = [0];
     for (let i = 1; i < elevations.length; i++) {
       const delta = elevations[i] - elevations[i - 1];
-      const dist = distances[i] - distances[i - 1];
-      const slope = dist > 0 ? (delta / (dist * 1000)) * 100 : 0;
+      const distKm = distances[i] - distances[i - 1];
+      const slope = distKm > 0 ? (delta / (distKm * 1000)) * 100 : 0;
       slopes.push(slope);
     }
 
-    const steep = elevations.map((e, i) => (slopes[i] > 5 ? e : null));
-    const moderate = elevations.map((e, i) =>
-      slopes[i] > 2.5 && slopes[i] <= 5 ? e : null
-    );
-
     const highest = Math.max(...elevations);
 
-    const chart = new Chart(canvas.getContext("2d"), {
+    // bakgrunnsbånd for bratt/middels
+    const steepPoints = points.map((p, i) =>
+      slopes[i] > 5 ? { ...p } : { ...p, y: null }
+    );
+    const moderatePoints = points.map((p, i) =>
+      slopes[i] > 2.5 && slopes[i] <= 5 ? { ...p } : { ...p, y: null }
+    );
+
+    if (canvas._elevationChart) {
+      canvas._elevationChart.destroy();
+    }
+
+    const ctx = canvas.getContext("2d");
+
+    const chart = new Chart(ctx, {
       type: "line",
       data: {
-        labels: distances,
         datasets: [
           {
-            data: steep,
-            backgroundColor: "rgba(202,107,42,0.6)",
+            data: steepPoints,
+            parsing: false,
+            backgroundColor: "rgba(202,107,42,0.6)", // bratte partier
             borderColor: "transparent",
             fill: true,
             pointRadius: 0,
             tension: 0.4
           },
           {
-            data: moderate,
-            backgroundColor: "rgba(241,185,97,0.6)",
+            data: moderatePoints,
+            parsing: false,
+            backgroundColor: "rgba(241,185,97,0.6)", // moderat bratt
             borderColor: "transparent",
             fill: true,
             pointRadius: 0,
             tension: 0.4
           },
           {
-            data: elevations,
-            borderColor: "#37394E",
-            borderWidth: 4,
+            data: points,
+            parsing: false,
+            borderColor: "#422426", // SvingOm mørk brun
+            borderWidth: 3,
             pointRadius: 0,
-            tension: 0.4,
+            tension: 0.25,
             fill: false
           }
         ]
@@ -206,16 +230,21 @@
         plugins: {
           legend: { display: false },
           tooltip: {
-            backgroundColor: "#37394E",
+            backgroundColor: "#422426",
             displayColors: false,
+            filter: item => item.datasetIndex === 2, // bare hovedlinjen
             callbacks: {
-              title: ctx => `${Number(ctx[0].label).toFixed(1)} km`,
-              label: ctx =>
-                `${ctx.raw != null ? Number(ctx.raw).toFixed(0) : ""} moh / ${slopes[
-                  ctx.dataIndex
-                ].toFixed(1)}%`
-            },
-            filter: item => item.datasetIndex === 2
+              title: items => {
+                const d = items[0].raw.x;
+                return `${d.toFixed(1)} km`; // ← ingen NaN km når x alltid er tall
+              },
+              label: item => {
+                const elev = item.raw.y;
+                const idx = item.dataIndex;
+                const slope = slopes[idx] ?? 0;
+                return `${Math.round(elev)} moh / ${slope.toFixed(1)}%`;
+              }
+            }
           }
         },
         scales: {
@@ -223,6 +252,7 @@
             type: "linear",
             min: 0,
             max: distances[distances.length - 1],
+            title: { display: true, text: "km" },
             ticks: {
               color: "#37394E",
               callback: v => `${Number(v).toFixed(0)} km`
@@ -232,25 +262,32 @@
           y: {
             min: 0,
             max: Math.ceil(highest / 50) * 50,
-            ticks: { stepSize: 50, color: "#37394E" },
+            title: { display: true, text: "moh" },
+            ticks: {
+              stepSize: 50,
+              color: "#37394E"
+            },
             grid: { display: false }
           }
         }
       }
     });
 
+    canvas._elevationChart = chart;
+
+    // synk markør i kartet med musepeker på profilen
     canvas.addEventListener("mousemove", evt => {
-      const points = chart.getElementsAtEventForMode(
+      const pointsAtEvent = chart.getElementsAtEventForMode(
         evt,
         "index",
         { intersect: false },
         true
       );
-      if (points.length > 0) {
-        const idx = points[0].index;
-        const point = elevData[idx];
-        if (point && point.lat && point.lon) {
-          movingMarker.setLatLng([point.lat, point.lon]);
+      if (pointsAtEvent.length > 0) {
+        const idx = pointsAtEvent[0].index;
+        const p = points[idx];
+        if (p && p.lat != null && p.lon != null) {
+          movingMarker.setLatLng([p.lat, p.lon]);
         }
       }
     });
@@ -371,7 +408,6 @@
           ? markersJson
           : Object.values(markersJson);
 
-        // bygg oppslagsverk: navn -> marker
         const markersByName = new Map();
         allMarkers.forEach(m => {
           const key =
