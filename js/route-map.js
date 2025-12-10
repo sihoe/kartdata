@@ -71,7 +71,18 @@
   }
 
   function addMarkerFromDb(map, marker, popupContainer, resetFn) {
-    const symbol = marker.symbolType || null;
+    // prøv flere varianter av posisjonsfelt
+    const pos =
+      marker.latlng ||
+      (marker.lat && marker.lon ? [marker.lat, marker.lon] : null) ||
+      (marker.lat && marker.lng ? [marker.lat, marker.lng] : null);
+
+    if (!pos) {
+      console.warn("Markør mangler koordinater", marker);
+      return;
+    }
+
+    const symbol = marker.symbolType || marker.symbol || null;
     const iconUrl = symbol
       ? `https://cdn.jsdelivr.net/gh/sihoe/symbols@main/symbols-${symbol}.svg`
       : null;
@@ -85,9 +96,9 @@
       iconAnchor: [15, 30]
     });
 
-    const m = L.marker(marker.latlng, { icon: customIcon }).addTo(map);
+    const leafletMarker = L.marker(pos, { icon: customIcon }).addTo(map);
 
-    m.on("mouseover", () => {
+    leafletMarker.on("mouseover", () => {
       if (!popupContainer) return;
 
       popupContainer.classList.remove("hidden");
@@ -98,13 +109,24 @@
 
       const title =
         langBlock.title ||
-        marker.title || // fallback til generell tittel om du har det
+        marker.name ||
+        marker.title ||
         "";
 
-      const desc = langBlock.description || "";
+      const desc =
+        langBlock.description ||
+        langBlock.desc ||
+        marker.description ||
+        "";
 
-      const img = marker.imageUrl
-        ? `<img src="${marker.imageUrl}" style="margin-bottom:8px;border-radius:6px;max-width:100%;">`
+      const imgUrl =
+        marker.imageUrl ||
+        marker.symbolUrl ||
+        marker.image ||
+        null;
+
+      const img = imgUrl
+        ? `<img src="${imgUrl}" style="margin-bottom:8px;border-radius:6px;max-width:100%;">`
         : "";
 
       popupContainer.innerHTML = `
@@ -256,10 +278,11 @@
     const routeId = section.dataset.routeId;
     const statsUrl = section.dataset.statsUrl;
     const markersUrl = section.dataset.markersUrl;
+    const routeMarkersUrl = section.dataset.routeMarkersUrl;
     const gpxUrl = section.dataset.gpxUrl;
 
-    if (!routeId || !statsUrl || !markersUrl || !gpxUrl) {
-      console.warn("Mangler data-atributter på map-section", section);
+    if (!routeId || !statsUrl || !markersUrl || !routeMarkersUrl || !gpxUrl) {
+      console.warn("Mangler data-attributter på map-section", section);
       return;
     }
 
@@ -334,32 +357,56 @@
         console.warn("Stats-URL svarte ikke OK:", statsResp.status);
       }
 
-     // 2) markører med mapping-fil
-const markersResp = await fetch(markersUrl);
-const mappingResp = await fetch("/path/to/route_markers.json");
+      // 2) markører: markers_full + route_markers
+      const [markersResp, routeMarkersResp] = await Promise.all([
+        fetch(markersUrl),
+        fetch(routeMarkersUrl)
+      ]);
 
-if (markersResp.ok && mappingResp.ok) {
-  const markersJson = await markersResp.json();
-  const mappingJson = await mappingResp.json();
+      if (markersResp.ok && routeMarkersResp.ok) {
+        const markersJson = await markersResp.json();
+        const routeMarkersJson = await routeMarkersResp.json();
 
-  const allMarkers = Array.isArray(markersJson)
-    ? markersJson
-    : Object.values(markersJson);
+        const allMarkers = Array.isArray(markersJson)
+          ? markersJson
+          : Object.values(markersJson);
 
-  const markersByName = new Map(allMarkers.map(m => [m.name, m]));
+        // bygg oppslagsverk: navn -> marker
+        const markersByName = new Map();
+        allMarkers.forEach(m => {
+          const key =
+            m.name ||
+            m.title ||
+            (m.texts &&
+              m.texts.no &&
+              (m.texts.no.title || m.texts.no.name)) ||
+            null;
+          if (key) {
+            markersByName.set(key, m);
+          }
+        });
 
-  const markerNamesForRoute = mappingJson[routeId] || [];
+        const markerNamesForRoute = routeMarkersJson[routeId] || [];
+        const thisRouteMarkers = markerNamesForRoute
+          .map(n => {
+            const m = markersByName.get(n);
+            if (!m) {
+              console.warn("Fant ikke markør for navn", n, "på rute", routeId);
+            }
+            return m;
+          })
+          .filter(Boolean);
 
-  const thisRoute = markerNamesForRoute
-    .map(n => markersByName.get(n))
-    .filter(Boolean);
-
-  thisRoute.forEach(m =>
-    addMarkerFromDb(map, m, popupContainer, resetPopup)
-  );
-} else {
-  console.warn("Feil ved henting av markører eller mapping-fil");
-}
+        thisRouteMarkers.forEach(m =>
+          addMarkerFromDb(map, m, popupContainer, resetPopup)
+        );
+      } else {
+        console.warn(
+          "Feil ved henting av markører eller route_markers:",
+          markersResp.status,
+          routeMarkersResp.status
+        );
+      }
 
       // 3) GPX-rute
       new L.GPX(gpxUrl, {
