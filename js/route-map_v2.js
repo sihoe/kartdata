@@ -150,21 +150,8 @@
   function buildChart(canvas, elevData, movingMarker) {
     if (!elevData || elevData.length === 0) return;
 
-    // Sikre at distance og elevation alltid er tall (aldri NaN)
-    const distances = [];
-    const elevations = [];
-
-    for (let i = 0; i < elevData.length; i++) {
-      const p = elevData[i];
-      const rawD = Number(p.distance);
-      const rawE = Number(p.elevation);
-
-      const lastD = i > 0 ? distances[i - 1] : 0;
-      const lastE = i > 0 ? elevations[i - 1] : 0;
-
-      distances.push(Number.isFinite(rawD) ? rawD : lastD);
-      elevations.push(Number.isFinite(rawE) ? rawE : lastE);
-    }
+    const distances = elevData.map(p => Number(p.distance));
+    const elevations = elevData.map(p => Number(p.elevation));
 
     const slopes = [0];
     for (let i = 1; i < elevations.length; i++) {
@@ -222,23 +209,11 @@
             backgroundColor: "#37394E",
             displayColors: false,
             callbacks: {
-              // Bruker distances-array direkte i stedet for ctx[0].label
-              title: ctx => {
-                const idx = ctx[0].dataIndex;
-                const d = distances[idx];
-                const safe = Number.isFinite(d) ? d : 0;
-                return `${safe.toFixed(1)} km`;
-              },
-              label: ctx => {
-                const elev = ctx.raw != null ? Number(ctx.raw) : null;
-                const idx = ctx.dataIndex;
-                const slope = slopes[idx] ?? 0;
-                const elevText =
-                  elev != null && Number.isFinite(elev)
-                    ? `${elev.toFixed(0)}`
-                    : "";
-                return `${elevText} moh / ${slope.toFixed(1)}%`;
-              }
+              title: ctx => `${Number(ctx[0].label).toFixed(1)} km`,
+              label: ctx =>
+                `${ctx.raw != null ? Number(ctx.raw).toFixed(0) : ""} moh / ${slopes[
+                  ctx.dataIndex
+                ].toFixed(1)}%`
             },
             filter: item => item.datasetIndex === 2
           }
@@ -459,3 +434,12 @@
 
   function initAll() {
     const sections = document.querySelectorAll(".map-section[data-route-id]");
+    sections.forEach(initRouteSection);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initAll);
+  } else {
+    initAll();
+  }
+})();
