@@ -106,7 +106,7 @@
       ': <strong> + stats.maxElevationM.toFixed(0) + "</strong> ' +
       t.unit + "</p>" +
       '<p><span class="icon">▼</span> ' + t.lowest +
-      ': <strong>' + stats.minElevationM.toFixed(0) + "</strong> ' +
+      ': <strong> + stats.minElevationM.toFixed(0) + "</strong> ' +
       t.unit + "</p>" +
       '<p style="margin-top:16px;font-style:italic;">' +
       t.instruction +
