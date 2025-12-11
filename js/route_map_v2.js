@@ -83,43 +83,49 @@
     return "trail";
   }
 
-  // ---------- Stats-boks ----------
+ // ---------- Stats-boks ----------
+function renderStats(container, stats) {
+  if (!container || !stats) return;
 
-  function renderStats(container, stats) {
-    if (!container || !stats) return;
+  const lang = getLang();
+  const t = infoTexts[lang] || infoTexts.no;
 
-    const lang = getLang();
-    const t = infoTexts[lang] || infoTexts.no;
+  container.classList.remove("hidden");
+  container.innerHTML =
+    '<button class="route-close">&times;</button>' +
+    '<div class="stats-box">' +
+      '<p class="stats-title">' + t.title + '</p>' +
 
-    container.classList.remove("hidden");
-    container.innerHTML =
-      '<button class="route-close">&times;</button>' +
-      '<div class="stats-box">' +
-      '<p class="stats-title">' + t.title + "</p>" +
       '<p><span class="icon">↔</span> ' + t.length +
-      ': <strong>' + stats.distanceKm.toFixed(1) + "</strong> km</p>" +
-      '<p><span class="icon">↗</span> ' + t.ascent +
-      ': <strong>' + stats.climbM.toFixed(0) + "</strong> m</p>" +
-      '<p><span class="icon">↘</span> ' + t.descent +
-      ': <strong>' + stats.descentM.toFixed(0) + "</strong> m</p>" +
-      '<p><span class="icon">▲</span> ' + t.highest +
-': <strong>' + stats.maxElevationM.toFixed(0) + '</strong> ' +
-t.unit + '</p>' +
-'<p><span class="icon">▼</span> ' + t.lowest +
-': <strong>' + stats.minElevationM.toFixed(0) + '</strong> ' +
-t.unit + '</p>' +
-      '<p style="margin-top:16px;font-style:italic;">' +
-      t.instruction +
-      "</p>" +
-      "</div>";
+        ': <strong>' + stats.distanceKm.toFixed(1) + '</strong> km</p>' +
 
-    const closeBtn = container.querySelector(".route-close");
-    if (closeBtn && window.innerWidth <= 768) {
-      closeBtn.addEventListener("click", function () {
-        container.classList.add("hidden");
-      });
-    }
+      '<p><span class="icon">↗</span> ' + t.ascent +
+        ': <strong>' + stats.climbM.toFixed(0) + '</strong> m</p>' +
+
+      '<p><span class="icon">↘</span> ' + t.descent +
+        ': <strong>' + stats.descentM.toFixed(0) + '</strong> m</p>' +
+
+      '<p><span class="icon">▲</span> ' + t.highest +
+        ': <strong>' + stats.maxElevationM.toFixed(0) + '</strong> ' +
+        t.unit + '</p>' +
+
+      '<p><span class="icon">▼</span> ' + t.lowest +
+        ': <strong>' + stats.minElevationM.toFixed(0) + '</strong> ' +
+        t.unit + '</p>' +
+
+      '<p style="margin-top:16px;font-style:italic;">' +
+        t.instruction +
+      '</p>' +
+    '</div>';
+
+  const closeBtn = container.querySelector(".route-close");
+  if (closeBtn && window.innerWidth <= 768) {
+    closeBtn.addEventListener("click", function () {
+      container.classList.add("hidden");
+    });
   }
+}
+
 
   // ---------- Markører fra markers_full + route_markers ----------
 
