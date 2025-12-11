@@ -2,7 +2,7 @@
 // Forutsetter at Leaflet, Leaflet-GPX og (helst) Chart.js er lastet inn.
 
 (function () {
-  // ---------- Tekster for stats-boks ----------
+  // ---------- Tekster ----------
 
   const infoTexts = {
     no: {
@@ -51,83 +51,51 @@
     }
   }
 
-  // ---------- Underlag / surface ----------
+  // ---------- Stats-boks ----------
 
-  // Farger pr. underlag (det du ba om)
-  const SURFACE_COLORS = {
-    asphalt: "#37394E",
-    gravel: "#A3886C",
-    trail: "#5C7936"
-  };
+  function renderStats(container, stats) {
+    if (!container || !stats) return;
 
-  // Alt som ikke er asfalt eller grus = sti
-  function normalizeSurface(surfaceRaw) {
-    if (!surfaceRaw) return "trail";
-    const s = String(surfaceRaw).toLowerCase();
+    const lang = getLang();
+    const t = infoTexts[lang] || infoTexts.no;
 
-    if (
-      s === "asphalt" ||
-      s === "paved" ||
-      s.includes("asfalt")
-    ) {
-      return "asphalt";
-    }
-
-    if (
-      s === "gravel" ||
-      s.includes("grus")
-    ) {
-      return "gravel";
-    }
-
-    return "trail";
-  }
-
- // ---------- Stats-boks ----------
-function renderStats(container, stats) {
-  if (!container || !stats) return;
-
-  const lang = getLang();
-  const t = infoTexts[lang] || infoTexts.no;
-
-  container.classList.remove("hidden");
-  container.innerHTML =
-    '<button class="route-close">&times;</button>' +
-    '<div class="stats-box">' +
-      '<p class="stats-title">' + t.title + '</p>' +
+    container.classList.remove("hidden");
+    container.innerHTML =
+      '<button class="route-close">&times;</button>' +
+      '<div class="stats-box">' +
+      '<p class="stats-title">' + t.title + "</p>" +
 
       '<p><span class="icon">↔</span> ' + t.length +
-        ': <strong>' + stats.distanceKm.toFixed(1) + '</strong> km</p>' +
+      ': <strong>' + stats.distanceKm.toFixed(1) + "</strong> km</p>" +
 
       '<p><span class="icon">↗</span> ' + t.ascent +
-        ': <strong>' + stats.climbM.toFixed(0) + '</strong> m</p>' +
+      ': <strong>' + stats.climbM.toFixed(0) + "</strong> m</p>" +
 
       '<p><span class="icon">↘</span> ' + t.descent +
-        ': <strong>' + stats.descentM.toFixed(0) + '</strong> m</p>' +
+      ': <strong>' + stats.descentM.toFixed(0) + "</strong> m</p>" +
 
       '<p><span class="icon">▲</span> ' + t.highest +
-        ': <strong>' + stats.maxElevationM.toFixed(0) + '</strong> ' +
-        t.unit + '</p>' +
+      ': <strong>' + stats.maxElevationM.toFixed(0) + "</strong> ' +
+      t.unit + "</p>" +
 
       '<p><span class="icon">▼</span> ' + t.lowest +
-        ': <strong>' + stats.minElevationM.toFixed(0) + '</strong> ' +
-        t.unit + '</p>' +
+      ': <strong>' + stats.minElevationM.toFixed(0) + "</strong> ' +
+      t.unit + "</p>" +
 
       '<p style="margin-top:16px;font-style:italic;">' +
-        t.instruction +
-      '</p>' +
-    '</div>';
+      t.instruction +
+      "</p>" +
+      "</div>";
 
-  const closeBtn = container.querySelector(".route-close");
-  if (closeBtn && window.innerWidth <= 768) {
-    closeBtn.addEventListener("click", function () {
-      container.classList.add("hidden");
-    });
+    const closeBtn = container.querySelector(".route-close");
+    if (closeBtn && window.innerWidth <= 768) {
+      closeBtn.addEventListener("click", function () {
+        container.classList.add("hidden");
+      });
+    }
   }
-}
 
-
-  // ---------- Markører fra markers_full + route_markers ----------
+  // ---------- Markører fra database ----------
 
   function addMarkerFromDb(map, marker, popupContainer, resetFn) {
     if (!map || !marker) return;
@@ -142,7 +110,8 @@ function renderStats(container, stats) {
       return;
     }
 
-    const symbol = marker.symbolType || marker.symbol || null;
+    const rawSymbol = marker.symbolType || marker.symbol || "";
+    const symbol = rawSymbol.toString().toLowerCase().trim();
     const iconUrl = symbol
       ? "https://cdn.jsdelivr.net/gh/sihoe/symbols@main/symbols-" +
         symbol +
@@ -187,7 +156,7 @@ function renderStats(container, stats) {
         marker.image ||
         null;
 
-      var img = "";
+      let img = "";
       if (imgUrl) {
         img =
           '<img src="' + imgUrl + '" style="margin-bottom:8px;border-radius:6px;max-width:100%;">';
@@ -218,343 +187,121 @@ function renderStats(container, stats) {
     });
   }
 
-  // ---------- Høydeprofil / Chart.js ----------
+  // ---------- Høydeprofil uten underlag (fallback) ----------
 
-  /**
-   * Bygger høydeprofil.
-   * - Hvis elevData har surfaceRaw / surfaceCategory → underlagsfarger + oppsummering.
-   * - Hvis ikke → gammel løsning med bratthets-farger (steep/moderate).
-   *
-   * @param {HTMLCanvasElement} canvas
-   * @param {Array} elevData  {distance, elevation, lat, lon, [surfaceRaw/surfaceCategory]}
-   * @param {L.CircleMarker} movingMarker
-   * @param {HTMLElement|null} surfaceSummaryEl  (kan være null)
-   */
-  function buildChart(canvas, elevData, movingMarker, surfaceSummaryEl) {
+  function buildBasicChart(canvas, elevData, movingMarker) {
     if (!canvas || !elevData || elevData.length === 0) return;
     if (typeof Chart === "undefined") {
       console.warn("Chart.js ikke lastet – hopper over høydeprofil");
       return;
     }
 
-    var distances = [];
-    var elevations = [];
+    const distances = [];
+    const elevations = [];
 
-    for (var i = 0; i < elevData.length; i++) {
-      var p = elevData[i];
-      var rawD = Number(p.distance);
-      var rawE = Number(p.elevation);
+    for (let i = 0; i < elevData.length; i++) {
+      const p = elevData[i];
+      const rawD = Number(p.distance);
+      const rawE = Number(p.elevation);
 
-      var lastD = i > 0 ? distances[i - 1] : 0;
-      var lastE = i > 0 ? elevations[i - 1] : 0;
+      const lastD = i > 0 ? distances[i - 1] : 0;
+      const lastE = i > 0 ? elevations[i - 1] : 0;
 
       distances.push(isFinite(rawD) ? rawD : lastD);
       elevations.push(isFinite(rawE) ? rawE : lastE);
     }
 
-    var highest = Math.max.apply(null, elevations);
-    var totalDist = distances[distances.length - 1];
-
-    // Sjekk om vi faktisk har underlagsinfo
-    var first = elevData[0] || {};
-    var hasSurface =
-      typeof first.surfaceCategory !== "undefined" ||
-      typeof first.surfaceRaw !== "undefined";
-
-    var chartConfig;
-
-    if (hasSurface) {
-      // ---- NY: underlagsbasert profil ----
-
-      // 1) Normaliser underlag pr. punkt
-      var surfaces = elevData.map(function (p) {
-        return normalizeSurface(p.surfaceCategory || p.surfaceRaw);
-      });
-
-      // 2) Bygg datasett per surface (tre arrays med null / høyde)
-      var dataAsphalt = [];
-      var dataGravel = [];
-      var dataTrail = [];
-
-      for (var si = 0; si < elevations.length; si++) {
-        var elev = elevations[si];
-        var s = surfaces[si];
-
-        dataAsphalt.push(s === "asphalt" ? elev : null);
-        dataGravel.push(s === "gravel" ? elev : null);
-        dataTrail.push(s === "trail" ? elev : null);
-      }
-
-      // 3) Akkumuler lengde per surface (basert på segmentene)
-      var surfaceTotals = {
-        asphalt: 0,
-        gravel: 0,
-        trail: 0
-      };
-
-      for (var li = 1; li < distances.length; li++) {
-        var segDist = distances[li] - distances[li - 1];
-        var s2 = surfaces[li] || surfaces[li - 1] || "trail";
-        if (!isFinite(segDist) || segDist <= 0) continue;
-        surfaceTotals[s2] += segDist;
-      }
-
-      var surfacePercentages = {
-        asphalt:
-          totalDist > 0
-            ? (surfaceTotals.asphalt / totalDist) * 100
-            : 0,
-        gravel:
-          totalDist > 0
-            ? (surfaceTotals.gravel / totalDist) * 100
-            : 0,
-        trail:
-          totalDist > 0 ? (surfaceTotals.trail / totalDist) * 100 : 0
-      };
-
-      // 4) Oppsummeringstekst over graf (Excel-aktig legend)
-      if (surfaceSummaryEl) {
-        var items = [
-          { key: "asphalt", label: "Asfalt", color: SURFACE_COLORS.asphalt },
-          { key: "gravel", label: "Grus", color: SURFACE_COLORS.gravel },
-          { key: "trail", label: "Sti", color: SURFACE_COLORS.trail }
-        ];
-
-        var parts = items.map(function (item) {
-          var km = surfaceTotals[item.key].toFixed(1);
-          var pct = surfacePercentages[item.key].toFixed(0);
-          return (
-            '<span style="display:inline-flex;align-items:center;margin-right:12px;">' +
-            '<span style="display:inline-block;width:20px;height:4px;background:' +
-            item.color +
-            ';margin-right:6px;"></span>' +
-            item.label +
-            " " +
-            km +
-            " km (" +
-            pct +
-            " %)" +
-            "</span>"
-          );
-        });
-
-        surfaceSummaryEl.innerHTML =
-          "Underlag: " + parts.join(" ");
-      }
-
-      var ctx = canvas.getContext("2d");
-
-      chartConfig = new Chart(ctx, {
-        type: "line",
-        data: {
-          labels: distances,
-          datasets: [
-            {
-              label: "Asfalt",
-              data: dataAsphalt,
-              backgroundColor: SURFACE_COLORS.asphalt,
-              borderColor: SURFACE_COLORS.asphalt,
-              borderWidth: 0,
-              fill: true,
-              pointRadius: 0,
-              tension: 0.4
-            },
-            {
-              label: "Grus",
-              data: dataGravel,
-              backgroundColor: SURFACE_COLORS.gravel,
-              borderColor: SURFACE_COLORS.gravel,
-              borderWidth: 0,
-              fill: true,
-              pointRadius: 0,
-              tension: 0.4
-            },
-            {
-              label: "Sti",
-              data: dataTrail,
-              backgroundColor: SURFACE_COLORS.trail,
-              borderColor: SURFACE_COLORS.trail,
-              borderWidth: 0,
-              fill: true,
-              pointRadius: 0,
-              tension: 0.4
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          interaction: { intersect: false, mode: "index" },
-          plugins: {
-            legend: { display: false },
-            tooltip: {
-              backgroundColor: "#37394E",
-              displayColors: false,
-              callbacks: {
-                title: function (items) {
-                  var idx = items[0].dataIndex;
-                  var d = distances[idx];
-                  var safe = isFinite(d) ? d : 0;
-                  return safe.toFixed(1) + " km";
-                },
-                label: function (ctx) {
-                  var elev = ctx.raw != null ? Number(ctx.raw) : null;
-                  var elevText =
-                    elev != null && isFinite(elev)
-                      ? elev.toFixed(0)
-                      : "";
-                  return elevText + " moh";
-                }
-              }
-            }
-          },
-          scales: {
-            x: {
-              type: "linear",
-              min: 0,
-              max: totalDist,
-              ticks: {
-                color: "#37394E",
-                callback: function (v) {
-                  return Number(v).toFixed(0) + " km";
-                }
-              },
-              grid: { display: false }
-            },
-            y: {
-              min: 0,
-              max: Math.ceil(highest / 50) * 50,
-              ticks: {
-                stepSize: 50,
-                color: "#37394E"
-              },
-              grid: { display: false }
-            }
-          }
-        }
-      });
-    } else {
-      // ---- GAMMEL LØSNING: bratthet (brukes på ruter uten underlag) ----
-
-      var slopes = [0];
-      for (var j = 1; j < elevations.length; j++) {
-        var delta = elevations[j] - elevations[j - 1];
-        var distKm = distances[j] - distances[j - 1];
-        var slope = distKm > 0 ? (delta / (distKm * 1000)) * 100 : 0;
-        slopes.push(slope);
-      }
-
-      var steep = elevations.map(function (e, idx) {
-        return slopes[idx] > 5 ? e : null;
-      });
-
-      var moderate = elevations.map(function (e, idx) {
-        return slopes[idx] > 2.5 && slopes[idx] <= 5 ? e : null;
-      });
-
-      var ctx2 = canvas.getContext("2d");
-
-      chartConfig = new Chart(ctx2, {
-        type: "line",
-        data: {
-          labels: distances,
-          datasets: [
-            {
-              data: steep,
-              backgroundColor: "rgba(202,107,42,0.6)",
-              borderColor: "transparent",
-              fill: true,
-              pointRadius: 0,
-              tension: 0.4
-            },
-            {
-              data: moderate,
-              backgroundColor: "rgba(241,185,97,0.6)",
-              borderColor: "transparent",
-              fill: true,
-              pointRadius: 0,
-              tension: 0.4
-            },
-            {
-              data: elevations,
-              borderColor: "#37394E",
-              borderWidth: 4,
-              pointRadius: 0,
-              tension: 0.4,
-              fill: false
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          interaction: { intersect: false, mode: "index" },
-          plugins: {
-            legend: { display: false },
-            tooltip: {
-              backgroundColor: "#37394E",
-              displayColors: false,
-              filter: function (item) {
-                return item.datasetIndex === 2;
-              },
-              callbacks: {
-                title: function (items) {
-                  var idx = items[0].dataIndex;
-                  var d = distances[idx];
-                  var safe = isFinite(d) ? d : 0;
-                  return safe.toFixed(1) + " km";
-                },
-                label: function (ctx) {
-                  var elev = ctx.raw != null ? Number(ctx.raw) : null;
-                  var idx = ctx.dataIndex;
-                  var slope = slopes[idx] || 0;
-                  var elevText =
-                    elev != null && isFinite(elev)
-                      ? elev.toFixed(0)
-                      : "";
-                  return elevText + " moh / " + slope.toFixed(1) + "%";
-                }
-              }
-            }
-          },
-          scales: {
-            x: {
-              type: "linear",
-              min: 0,
-              max: distances[distances.length - 1],
-              ticks: {
-                color: "#37394E",
-                callback: function (v) {
-                  return Number(v).toFixed(0) + " km";
-                }
-              },
-              grid: { display: false }
-            },
-            y: {
-              min: 0,
-              max: Math.ceil(highest / 50) * 50,
-              ticks: {
-                stepSize: 50,
-                color: "#37394E"
-              },
-              grid: { display: false }
-            }
-          }
-        }
-      });
+    const slopes = [0];
+    for (let j = 1; j < elevations.length; j++) {
+      const delta = elevations[j] - elevations[j - 1];
+      const distKm = distances[j] - distances[j - 1];
+      const slope = distKm > 0 ? (delta / (distKm * 1000)) * 100 : 0;
+      slopes.push(slope);
     }
 
-    // Felles: sync graf → kart
+    const highest = Math.max.apply(null, elevations);
+    const ctx = canvas.getContext("2d");
+
+    const chart = new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: distances,
+        datasets: [
+          {
+            data: elevations,
+            borderColor: "#37394E",
+            borderWidth: 4,
+            pointRadius: 0,
+            tension: 0.4,
+            fill: false
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { intersect: false, mode: "index" },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: "#37394E",
+            displayColors: false,
+            callbacks: {
+              title: function (items) {
+                const idx = items[0].dataIndex;
+                const d = distances[idx];
+                const safe = isFinite(d) ? d : 0;
+                return safe.toFixed(1) + " km";
+              },
+              label: function (ctx) {
+                const elev = ctx.raw != null ? Number(ctx.raw) : null;
+                const idx = ctx.dataIndex;
+                const slope = slopes[idx] || 0;
+                const elevText =
+                  elev != null && isFinite(elev)
+                    ? elev.toFixed(0)
+                    : "";
+                return elevText + " moh / " + slope.toFixed(1) + "%";
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            type: "linear",
+            min: 0,
+            max: distances[distances.length - 1],
+            ticks: {
+              color: "#37394E",
+              callback: function (v) {
+                return Number(v).toFixed(0) + " km";
+              }
+            },
+            grid: { display: false }
+          },
+          y: {
+            min: 0,
+            max: Math.ceil(highest / 50) * 50,
+            ticks: {
+              stepSize: 50,
+              color: "#37394E"
+            },
+            grid: { display: false }
+          }
+        }
+      }
+    });
+
     canvas.addEventListener("mousemove", function (evt) {
-      var points = chartConfig.getElementsAtEventForMode(
+      const points = chart.getElementsAtEventForMode(
         evt,
         "index",
         { intersect: false },
         true
       );
       if (points.length > 0 && movingMarker) {
-        var idx = points[0].index;
-        var point = elevData[idx];
+        const idx = points[0].index;
+        const point = elevData[idx];
         if (point && point.lat && point.lon) {
           movingMarker.setLatLng([point.lat, point.lon]);
         }
@@ -563,12 +310,12 @@ function renderStats(container, stats) {
 
     canvas.addEventListener("touchmove", function (e) {
       if (e.touches.length > 0) {
-        var touch = e.touches[0];
-        var rect = canvas.getBoundingClientRect();
-        var x = touch.clientX - rect.left;
-        var y = touch.clientY - rect.top;
+        const touch = e.touches[0];
+        const rect = canvas.getBoundingClientRect();
+        const x = touch.clientX - rect.left;
+        const y = touch.clientY - rect.top;
 
-        var simulatedEvent = new MouseEvent("mousemove", {
+        const simulatedEvent = new MouseEvent("mousemove", {
           bubbles: true,
           cancelable: true,
           view: window,
@@ -580,35 +327,232 @@ function renderStats(container, stats) {
     });
   }
 
-  // ---------- Init av én .map-section ----------
+  // ---------- Høydeprofil MED underlag ----------
+
+  function buildChartWithSurface(canvas, elevData, movingMarker, surfaceMeta, surfaceSummaryEl) {
+    if (!canvas || !elevData || elevData.length === 0) return;
+    if (typeof Chart === "undefined") {
+      console.warn("Chart.js ikke lastet – hopper over høydeprofil");
+      return;
+    }
+
+    const distances = [];
+    const elevations = [];
+
+    for (let i = 0; i < elevData.length; i++) {
+      const p = elevData[i];
+      const rawD = Number(p.distance);
+      const rawE = Number(p.elevation);
+
+      const lastD = i > 0 ? distances[i - 1] : 0;
+      const lastE = i > 0 ? elevations[i - 1] : 0;
+
+      distances.push(isFinite(rawD) ? rawD : lastD);
+      elevations.push(isFinite(rawE) ? rawE : lastE);
+    }
+
+    const highest = Math.max.apply(null, elevations);
+
+    // Bygg datasets per underlag
+    const colors = {
+      asphalt: "#37394E",
+      gravel:  "#A3886C",
+      trail:   "#5C7936"
+    };
+
+    function buildSurfaceDataset(category) {
+      const data = elevData.map(function (p, idx) {
+        const cat = p.surfaceCategory || p.surface_category || null;
+        if (!cat) return null;
+        return cat === category ? elevations[idx] : null;
+      });
+      return {
+        data: data,
+        backgroundColor: colors[category],
+        borderColor: "transparent",
+        fill: true,
+        pointRadius: 0,
+        tension: 0.4
+      };
+    }
+
+    const datasets = [
+      buildSurfaceDataset("asphalt"),
+      buildSurfaceDataset("gravel"),
+      buildSurfaceDataset("trail"),
+      {
+        data: elevations,
+        borderColor: "#37394E",
+        borderWidth: 3,
+        pointRadius: 0,
+        tension: 0.4,
+        fill: false
+      }
+    ];
+
+    const ctx = canvas.getContext("2d");
+    const chart = new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: distances,
+        datasets: datasets
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { intersect: false, mode: "index" },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: "#37394E",
+            displayColors: false,
+            callbacks: {
+              title: function (items) {
+                const idx = items[0].dataIndex;
+                const d = distances[idx];
+                const safe = isFinite(d) ? d : 0;
+                return safe.toFixed(1) + " km";
+              },
+              label: function (ctx) {
+                const elev = ctx.raw != null ? Number(ctx.raw) : null;
+                const elevText =
+                  elev != null && isFinite(elev)
+                    ? elev.toFixed(0)
+                    : "";
+                return elevText + " moh";
+              }
+            },
+            filter: function (item) {
+              // Tooltip kun på hovedprofilen
+              return item.datasetIndex === datasets.length - 1;
+            }
+          }
+        },
+        scales: {
+          x: {
+            type: "linear",
+            min: 0,
+            max: distances[distances.length - 1],
+            ticks: {
+              color: "#37394E",
+              callback: function (v) {
+                return Number(v).toFixed(0) + " km";
+              }
+            },
+            grid: { display: false }
+          },
+          y: {
+            min: 0,
+            max: Math.ceil(highest / 50) * 50,
+            ticks: {
+              stepSize: 50,
+              color: "#37394E"
+            },
+            grid: { display: false }
+          }
+        }
+      }
+    });
+
+    // Synk mot kart
+    canvas.addEventListener("mousemove", function (evt) {
+      const points = chart.getElementsAtEventForMode(
+        evt,
+        "index",
+        { intersect: false },
+        true
+      );
+      if (points.length > 0 && movingMarker) {
+        const idx = points[0].index;
+        const point = elevData[idx];
+        if (point && point.lat && point.lon) {
+          movingMarker.setLatLng([point.lat, point.lon]);
+        }
+      }
+    });
+
+    canvas.addEventListener("touchmove", function (e) {
+      if (e.touches.length > 0) {
+        const touch = e.touches[0];
+        const rect = canvas.getBoundingClientRect();
+        const x = touch.clientX - rect.left;
+        const y = touch.clientY - rect.top;
+
+        const simulatedEvent = new MouseEvent("mousemove", {
+          bubbles: true,
+          cancelable: true,
+          view: window,
+          clientX: x + rect.left,
+          clientY: y + rect.top
+        });
+        canvas.dispatchEvent(simulatedEvent);
+      }
+    });
+
+    // Oppsummering av underlag
+    if (surfaceSummaryEl && surfaceMeta && surfaceMeta.categoryKm) {
+      const cat = surfaceMeta.categoryKm;
+      const total = surfaceMeta.totalKm || (
+        (cat.asphalt || 0) +
+        (cat.gravel || 0) +
+        (cat.trail || 0)
+      );
+
+      function fmt(km) {
+        return km != null ? km.toFixed(1) : "0.0";
+      }
+
+      function pct(km) {
+        if (!total || !km) return "0";
+        return ((km / total) * 100).toFixed(0);
+      }
+
+      surfaceSummaryEl.innerHTML =
+        'Underlag: ' +
+        '<span>' +
+        '<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:' + colors.asphalt + ';margin-right:4px;"></span>' +
+        'Asfalt ' + fmt(cat.asphalt || 0) + ' km (' + pct(cat.asphalt) + ' %)' +
+        '</span> · ' +
+        '<span>' +
+        '<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:' + colors.gravel + ';margin-right:4px;"></span>' +
+        'Grus ' + fmt(cat.gravel || 0) + ' km (' + pct(cat.gravel) + ' %)' +
+        '</span> · ' +
+        '<span>' +
+        '<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:' + colors.trail + ';margin-right:4px;"></span>' +
+        'Sti ' + fmt(cat.trail || 0) + ' km (' + pct(cat.trail) + ' %)' +
+        '</span>';
+    }
+  }
+
+  // ---------- Init av én seksjon ----------
 
   async function initRouteSection(section) {
-    var routeId = section.dataset.routeId;
-    var statsUrl = section.dataset.statsUrl;
-    var markersUrl = section.dataset.markersUrl;
-    var routeMarkersUrl = section.dataset.routeMarkersUrl;
-    var gpxUrl = section.dataset.gpxUrl;
+    const routeId = section.dataset.routeId;
+    const statsUrl = section.dataset.statsUrl;
+    const markersUrl = section.dataset.markersUrl;
+    const routeMarkersUrl = section.dataset.routeMarkersUrl;
+    const gpxUrl = section.dataset.gpxUrl;
 
     if (!routeId || !statsUrl || !markersUrl || !routeMarkersUrl || !gpxUrl) {
       console.warn("Mangler data-attributter på map-section", section);
       return;
     }
 
-    var mapDiv = section.querySelector(".route-map");
-    var popupContainer = section.querySelector(".route-popup");
-    var chartCanvas = section.querySelector(".chart-wrapper canvas");
-    var surfaceSummaryEl = section.querySelector(".route-surface-summary"); // NYTT, optional
+    const mapDiv = section.querySelector(".route-map");
+    const popupContainer = section.querySelector(".route-popup");
+    const chartCanvas = section.querySelector(".chart-wrapper canvas");
+    const surfaceSummaryEl = section.querySelector(".surface-summary");
 
     if (!mapDiv || !popupContainer || !chartCanvas) {
       console.warn("Mangler interne elementer i map-section", section);
       return;
     }
 
-    var centerLat = parseFloat(section.dataset.centerLat || "59.83467");
-    var centerLng = parseFloat(section.dataset.centerLng || "9.57846");
-    var zoom = parseInt(section.dataset.zoom || "11", 10);
+    const centerLat = parseFloat(section.dataset.centerLat || "59.83467");
+    const centerLng = parseFloat(section.dataset.centerLng || "9.57846");
+    const zoom = parseInt(section.dataset.zoom || "11", 10);
 
-    var map = L.map(mapDiv, {
+    const map = L.map(mapDiv, {
       center: [centerLat, centerLng],
       zoom: zoom,
       scrollWheelZoom: true
@@ -619,7 +563,7 @@ function renderStats(container, stats) {
       maxZoom: 19
     }).addTo(map);
 
-    var movingMarker = L.circleMarker([centerLat, centerLng], {
+    const movingMarker = L.circleMarker([centerLat, centerLng], {
       radius: 6,
       color: "#CA6B2A",
       fillColor: "#CA6B2A",
@@ -627,7 +571,7 @@ function renderStats(container, stats) {
       weight: 2
     }).addTo(map);
 
-    var routeStats = null;
+    let routeStats = null;
 
     function resetPopup() {
       if (routeStats) {
@@ -637,10 +581,10 @@ function renderStats(container, stats) {
 
     try {
       // 1) stats + høydeprofil
-      var statsResp = await fetch(statsUrl);
+      const statsResp = await fetch(statsUrl);
       if (statsResp.ok) {
-        var statsJson = await statsResp.json();
-        var meta = Array.isArray(statsJson)
+        const statsJson = await statsResp.json();
+        const meta = Array.isArray(statsJson)
           ? statsJson.find(function (r) { return r.id === routeId; })
           : statsJson[routeId];
 
@@ -649,17 +593,34 @@ function renderStats(container, stats) {
           renderStats(popupContainer, routeStats);
 
           if (meta.elevationUrl) {
-            var elevResp = await fetch(meta.elevationUrl);
+            const elevResp = await fetch(meta.elevationUrl);
             if (elevResp.ok) {
-              var elevJson = await elevResp.json();
-              var pts = Array.isArray(elevJson.points)
+              const elevJson = await elevResp.json();
+              const pts = Array.isArray(elevJson.points)
                 ? elevJson.points
                 : elevJson;
-              var cleaned = pts.filter(function (p) {
+              const cleaned = pts.filter(function (p) {
                 return p.elevation != null;
               });
-              // NB: vi sender med surfaceSummaryEl (kan være null)
-              buildChart(chartCanvas, cleaned, movingMarker, surfaceSummaryEl);
+
+              // Bruk underlagsversjon hvis vi har surface-data
+              const hasSurface =
+                (meta.surface && meta.surface.categoryKm) ||
+                cleaned.some(function (p) {
+                  return p.surfaceCategory || p.surface_category;
+                });
+
+              if (hasSurface) {
+                buildChartWithSurface(
+                  chartCanvas,
+                  cleaned,
+                  movingMarker,
+                  meta.surface || null,
+                  surfaceSummaryEl
+                );
+              } else {
+                buildBasicChart(chartCanvas, cleaned, movingMarker);
+              }
             }
           }
         } else {
@@ -670,20 +631,20 @@ function renderStats(container, stats) {
       }
 
       // 2) markører
-      var markersResp = await fetch(markersUrl);
-      var routeMarkersResp = await fetch(routeMarkersUrl);
+      const markersResp = await fetch(markersUrl);
+      const routeMarkersResp = await fetch(routeMarkersUrl);
 
       if (markersResp.ok && routeMarkersResp.ok) {
-        var markersJson = await markersResp.json();
-        var routeMarkersJson = await routeMarkersResp.json();
+        const markersJson = await markersResp.json();
+        const routeMarkersJson = await routeMarkersResp.json();
 
-        var allMarkers = Array.isArray(markersJson)
+        const allMarkers = Array.isArray(markersJson)
           ? markersJson
           : Object.values(markersJson);
 
-        var markersByName = new Map();
+        const markersByName = new Map();
         allMarkers.forEach(function (m) {
-          var key =
+          const key =
             m.name ||
             m.title ||
             (m.texts &&
@@ -695,10 +656,10 @@ function renderStats(container, stats) {
           }
         });
 
-        var markerNamesForRoute = routeMarkersJson[routeId] || [];
-        var thisRouteMarkers = markerNamesForRoute
+        const markerNamesForRoute = routeMarkersJson[routeId] || [];
+        const thisRouteMarkers = markerNamesForRoute
           .map(function (n) {
-            var m = markersByName.get(n);
+            const m = markersByName.get(n);
             if (!m) {
               console.warn(
                 "Fant ikke markør for navn",
@@ -746,10 +707,8 @@ function renderStats(container, stats) {
     }
   }
 
-  // ---------- Init alle kart på siden ----------
-
   function initAll() {
-    var sections = document.querySelectorAll(".map-section[data-route-id]");
+    const sections = document.querySelectorAll(".map-section[data-route-id]");
     sections.forEach(function (section) {
       initRouteSection(section);
     });
