@@ -103,7 +103,7 @@
       '<p><span class="icon">↘</span> ' + t.descent +
       ': <strong>' + stats.descentM.toFixed(0) + "</strong> m</p>" +
       '<p><span class="icon">▲</span> ' + t.highest +
-      ': <strong>' + stats.maxElevationM.toFixed(0) + "</strong> ' +
+      ': <strong> + stats.maxElevationM.toFixed(0) + "</strong> ' +
       t.unit + "</p>" +
       '<p><span class="icon">▼</span> ' + t.lowest +
       ': <strong>' + stats.minElevationM.toFixed(0) + "</strong> ' +
