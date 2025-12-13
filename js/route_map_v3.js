@@ -465,30 +465,26 @@
 
         const allMarkers = Array.isArray(markersJson) ? markersJson : Object.values(markersJson);
 
-        const markersByName = new Map();
-        allMarkers.forEach((m) => {
-          const key =
-            m.name ||
-            m.title ||
-            (m.texts && m.texts.no && (m.texts.no.title || m.texts.no.name)) ||
-            null;
-          if (key) markersByName.set(key, m);
-        });
+// Bygg oppslag på marker.id (ny robust kobling)
+const markersById = new Map();
+allMarkers.forEach((m) => {
+  if (m && m.id) markersById.set(m.id, m);
+});
 
-        const markerNamesForRoute = routeMarkersJson[routeId] || [];
-        if (!markerNamesForRoute.length) {
-          console.warn("Ingen marker-navn for routeId:", routeId, "Sjekk route_markers.json key.");
-        }
+const markerIdsForRoute = routeMarkersJson[routeId] || [];
+if (!markerIdsForRoute.length) {
+  console.warn("Ingen marker-id'er for routeId:", routeId, "Sjekk route_markers_v2.json key.");
+}
 
-        markerNamesForRoute
-          .map((n) => {
-            const m = markersByName.get(n);
-            if (!m) console.warn("Fant ikke markør for navn:", n, "på rute:", routeId);
-            return m;
-          })
-          .filter(Boolean)
-          .forEach((m) => addMarkerFromDb(map, m, popupContainer, resetPopup));
-      }
+markerIdsForRoute
+  .map((id) => {
+    const m = markersById.get(id);
+    if (!m) console.warn("Fant ikke markør for id:", id, "på rute:", routeId);
+    return m;
+  })
+  .filter(Boolean)
+  .forEach((m) => addMarkerFromDb(map, m, popupContainer, resetPopup));
+
 
       // 3) GPX-rute (ignorer waypoints i praksis – vi vil ikke bruke dem)
       new L.GPX(gpxUrl, {
