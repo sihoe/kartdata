@@ -170,9 +170,7 @@ function renderSurfaceSummary(container, route, computedFromFile, unknownAsTrail
   const showUnknown = !unknownAsTrail && u > 0.01;
 
   // Forklaring av farger (match dataset-fargene dine)
-  const showUnknown = !unknownAsTrail && u > 0.01;
-
-  container.innerHTML = `
+   container.innerHTML = `
     <span class="surface-label">${t.surfaceLabel}</span>
 
     <span class="surface-legend-item">
