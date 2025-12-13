@@ -194,7 +194,7 @@
       "no": "Øvrebygderunden"
     },
     "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/overbygderunden_lang.gpx",
-    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/overbygderunden_lang_elevation_with_surface.jsonn",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/overbygderunden_lang_elevation_with_surface.json",
     "elevationSurfaceUrl": null,
     "stats": {
       "distanceKm": 23.27,
@@ -370,7 +370,7 @@
     "surface": {
       "asphaltKm": 12.577,
       "gravelKm": 11.152,
-      "trailKm": null
+      "trailKm": 9.415
     }
   },
   "dusanfossrunden": {
@@ -394,4 +394,5 @@
       "trailKm": 0.691
     }
   }
+
 }
