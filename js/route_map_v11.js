@@ -510,9 +510,15 @@ async function initRouteSection(section) {
   }
 }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initAll);
-  } else {
-    initAll();
-  }
+function initAll() {
+  const sections = document.querySelectorAll(".map-section[data-route-id]");
+  sections.forEach((section) => initRouteSection(section));
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initAll);
+} else {
+  initAll();
+}
 })();
+
