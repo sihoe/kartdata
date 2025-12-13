@@ -170,17 +170,33 @@ function renderSurfaceSummary(container, route, computedFromFile, unknownAsTrail
   const showUnknown = !unknownAsTrail && u > 0.01;
 
   // Forklaring av farger (match dataset-fargene dine)
-  const swatch = (color) =>
-    `<span style="display:inline-block;width:10px;height:10px;margin:0 6px 0 10px;background:${color};border-radius:2px;vertical-align:middle;"></span>`;
+  const showUnknown = !unknownAsTrail && u > 0.01;
 
   container.innerHTML = `
-    <span style="font-weight:600;margin-right:8px;">${t.surfaceLabel}</span>
-    ${swatch("#37394E")}${t.asphalt} ${a.toFixed(1)} km (${pct(a)} %)
-    ${swatch("#A3886C")}${t.gravel} ${g.toFixed(1)} km (${pct(g)} %)
-    ${swatch("#5C7936")}${t.trail} ${tr.toFixed(1)} km (${pct(tr)} %)
-    ${showUnknown ? `${swatch("#999999")}${t.unknown} ${u.toFixed(1)} km (${pct(u)} %)` : ""}
+    <span class="surface-label">${t.surfaceLabel}</span>
+
+    <span class="surface-legend-item">
+      <span class="surface-swatch asphalt"></span>
+      ${t.asphalt} ${a.toFixed(1)} km (${pct(a)} %)
+    </span>
+
+    <span class="surface-legend-item">
+      <span class="surface-swatch gravel"></span>
+      ${t.gravel} ${g.toFixed(1)} km (${pct(g)} %)
+    </span>
+
+    <span class="surface-legend-item">
+      <span class="surface-swatch trail"></span>
+      ${t.trail} ${tr.toFixed(1)} km (${pct(tr)} %)
+    </span>
+
+    ${showUnknown ? `
+      <span class="surface-legend-item">
+        <span class="surface-swatch unknown"></span>
+        ${t.unknown} ${u.toFixed(1)} km (${pct(u)} %)
+      </span>
+    ` : ""}
   `;
-}
 
   function addMarkerFromDb(map, poi, popupContainer, resetFn) {
     if (!map || !poi) return;
