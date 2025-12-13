@@ -436,8 +436,8 @@
       "categoryKm": {
         "asphalt": 12.577,
         "gravel": 11.152,
-        "trail": 0.0,
-        "unknown": 9.415
+        "trail": 9.415,
+        "unknown": 0.0
       }
     }
   },
@@ -467,3 +467,4 @@
     }
   }
 }
+
