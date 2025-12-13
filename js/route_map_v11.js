@@ -378,25 +378,92 @@
     });
   }
 
+// ============================
+// INIT (ny grunnmur: routes.json + pois.json + route_markers_v2.json)
+// Erstatt ALT fra "async function initRouteSection" og ned til "})();"
+// ============================
+
 async function initRouteSection(section) {
-  const routeId = section.dataset.routeId;
-  const statsUrl = section.dataset.statsUrl;
-  const markersUrl = section.dataset.markersUrl;
-  const routeMarkersUrl = section.dataset.routeMarkersUrl;
-  const gpxUrl = section.dataset.gpxUrl;
+  // --- 0) Les input fra HTML (kun disse to + routeId)
+  const routeId   = (section.dataset.routeId || "").trim();
+  const routesUrl = (section.dataset.routesUrl || "").trim();
+  const poisUrl   = (section.dataset.poisUrl || "").trim();
 
-  if (!routeId || !statsUrl || !markersUrl || !routeMarkersUrl || !gpxUrl) return;
+  if (!routeId) {
+    console.error("[route_map] Mangler data-route-id på .map-section");
+    return;
+  }
+  if (!routesUrl) {
+    console.error("[route_map] Mangler data-routes-url for routeId:", routeId);
+    return;
+  }
+  if (!poisUrl) {
+    console.error("[route_map] Mangler data-pois-url for routeId:", routeId);
+    return;
+  }
 
+  // --- 1) Finn elementene vi skal tegne i
   const mapDiv = section.querySelector(".route-map");
   const popupContainer = section.querySelector(".route-popup");
   const chartCanvas = section.querySelector(".chart-wrapper canvas");
   const surfaceSummaryEl = section.querySelector(".surface-summary");
 
-  if (!mapDiv || !popupContainer || !chartCanvas) return;
+  if (!mapDiv) {
+    console.error("[route_map] Mangler .route-map inni seksjonen for", routeId);
+    return;
+  }
+  if (!popupContainer) {
+    console.error("[route_map] Mangler .route-popup inni seksjonen for", routeId);
+    return;
+  }
+  if (!chartCanvas) {
+    console.error("[route_map] Mangler .chart-wrapper canvas inni seksjonen for", routeId);
+    return;
+  }
 
-  const centerLat = parseFloat(section.dataset.centerLat || "59.83467");
-  const centerLng = parseFloat(section.dataset.centerLng || "9.57846");
-  const zoom = parseInt(section.dataset.zoom || "11", 10);
+  // --- 2) Last routes.json og hent riktig rute
+  let routesJson;
+  try {
+    const r = await fetch(routesUrl, { cache: "no-store" });
+    if (!r.ok) throw new Error("routes.json fetch failed: " + r.status);
+    routesJson = await r.json();
+  } catch (e) {
+    console.error("[route_map] Klarte ikke å laste routes.json:", routesUrl, e);
+    return;
+  }
+
+  const route =
+    Array.isArray(routesJson)
+      ? routesJson.find(x => x && x.id === routeId)
+      : (routesJson && routesJson[routeId]) || null;
+
+  if (!route) {
+    console.error("[route_map] Fant ikke routeId i routes.json:", routeId);
+    return;
+  }
+
+  // --- 3) Streng kontrakt: disse må finnes i route-objektet
+  const gpxUrl = (route.gpxUrl || "").trim();
+  const elevUrl = (route.elevationSurfaceUrl || route.elevationUrl || "").trim();
+  const routeMarkersUrl = (route.routeMarkersUrl || "").trim(); // peker til route_markers_v2.json
+
+  if (!gpxUrl) {
+    console.error("[route_map] Rute mangler gpxUrl:", routeId, route);
+    return;
+  }
+  if (!elevUrl) {
+    console.error("[route_map] Rute mangler elevationUrl/elevationSurfaceUrl:", routeId, route);
+    return;
+  }
+  if (!routeMarkersUrl) {
+    console.error("[route_map] Rute mangler routeMarkersUrl (route_markers_v2.json):", routeId, route);
+    return;
+  }
+
+  // --- 4) Kart init (HTML kan overstyre center/zoom, ellers brukes route eller default)
+  const centerLat = parseFloat(section.dataset.centerLat || route.centerLat || "59.83467");
+  const centerLng = parseFloat(section.dataset.centerLng || route.centerLng || "9.57846");
+  const zoom = parseInt(section.dataset.zoom || route.zoom || "11", 10);
 
   const map = L.map(mapDiv, {
     center: [centerLat, centerLng],
@@ -417,78 +484,64 @@ async function initRouteSection(section) {
     weight: 2
   }).addTo(map);
 
-  let routeStats = null;
+  // routes.json er nå "stats-kilden"
+  const routeStats = route;
+  renderStats(popupContainer, routeStats);
 
   function resetPopup() {
-    if (routeStats) renderStats(popupContainer, routeStats);
+    renderStats(popupContainer, routeStats);
   }
 
+  // --- 5) Elevation + surface
   try {
-    // 1) Stats + elevation (+ surface)
-    const statsResp = await fetch(statsUrl, { cache: "no-store" });
-    if (!statsResp.ok) throw new Error("Stats fetch failed: " + statsResp.status);
-    const statsJson = await statsResp.json();
+    const elevResp = await fetch(elevUrl, { cache: "no-store" });
+    if (!elevResp.ok) throw new Error("elevation fetch failed: " + elevResp.status);
+    const elevJson = await elevResp.json();
+    const pts = Array.isArray(elevJson.points) ? elevJson.points : elevJson;
+    const cleaned = (pts || []).filter(p => p && p.elevation != null);
+    if (!cleaned.length) throw new Error("elevation has no points");
+    buildChart(chartCanvas, cleaned, movingMarker, surfaceSummaryEl, routeStats);
+  } catch (e) {
+    console.error("[route_map] Elevation-feil for", routeId, elevUrl, e);
+  }
 
-    // Stats kan være array eller map
-    const meta = Array.isArray(statsJson)
-      ? statsJson.find((r) => r && r.id === routeId)
-      : statsJson[routeId];
-
-    if (!meta) {
-      console.warn("Fant ikke routeStats for", routeId, "i", statsUrl);
-    } else {
-      routeStats = meta;
-      renderStats(popupContainer, routeStats);
-
-      // Foretrekk elevationSurfaceUrl hvis du legger det inn i statsfila
-      const elevUrl = meta.elevationSurfaceUrl || meta.elevationUrl || null;
-      if (elevUrl) {
-        const elevResp = await fetch(elevUrl, { cache: "no-store" });
-        if (elevResp.ok) {
-          const elevJson = await elevResp.json();
-          const pts = Array.isArray(elevJson.points) ? elevJson.points : elevJson;
-          const cleaned = (pts || []).filter((p) => p && p.elevation != null);
-          buildChart(chartCanvas, cleaned, movingMarker, surfaceSummaryEl, routeStats);
-        } else {
-          console.warn("Elevation fetch failed:", elevResp.status, elevUrl);
-        }
-      }
-    }
-
-    // 2) Markører fra DB + route_markers (ID-basert)
-    const [markersResp, routeMarkersResp] = await Promise.all([
-      fetch(markersUrl, { cache: "no-store" }),
+  // --- 6) POI + route_markers_v2 (ID-basert)
+  try {
+    const [poisResp, routeMarkersResp] = await Promise.all([
+      fetch(poisUrl, { cache: "no-store" }),
       fetch(routeMarkersUrl, { cache: "no-store" })
     ]);
 
-    if (!markersResp.ok || !routeMarkersResp.ok) {
-      console.warn("Marker fetch failed", markersResp.status, routeMarkersResp.status);
-    } else {
-      const markersJson = await markersResp.json();
-      const routeMarkersJson = await routeMarkersResp.json();
+    if (!poisResp.ok) throw new Error("pois.json fetch failed: " + poisResp.status);
+    if (!routeMarkersResp.ok) throw new Error("route_markers_v2 fetch failed: " + routeMarkersResp.status);
 
-      const allMarkers = Array.isArray(markersJson) ? markersJson : Object.values(markersJson || {});
-      const markersById = new Map();
-      allMarkers.forEach((m) => {
-        if (m && m.id) markersById.set(m.id, m);
-      });
+    const poisJson = await poisResp.json();
+    const routeMarkersJson = await routeMarkersResp.json();
 
-      const markerIdsForRoute = routeMarkersJson[routeId] || [];
-      if (!markerIdsForRoute.length) {
-        console.warn("Ingen marker-id'er for routeId:", routeId, "Sjekk route_markers_v2.json key.");
-      }
+    const allPois = Array.isArray(poisJson) ? poisJson : Object.values(poisJson || {});
+    const poisById = new Map();
+    allPois.forEach(p => { if (p && p.id) poisById.set(p.id, p); });
 
-      markerIdsForRoute
-        .map((id) => {
-          const m = markersById.get(id);
-          if (!m) console.warn("Fant ikke markør for id:", id, "på rute:", routeId);
-          return m;
-        })
-        .filter(Boolean)
-        .forEach((m) => addMarkerFromDb(map, m, popupContainer, resetPopup));
+    const poiIdsForRoute = routeMarkersJson[routeId] || [];
+    if (!poiIdsForRoute.length) {
+      console.warn("[route_map] Ingen POI-id'er for route:", routeId);
     }
 
-    // 3) GPX-rute (ignorer waypoints i praksis – vi vil ikke bruke dem)
+    poiIdsForRoute
+      .map(id => {
+        const p = poisById.get(id);
+        if (!p) console.warn("[route_map] Mangler POI for id:", id, "route:", routeId);
+        return p;
+      })
+      .filter(Boolean)
+      .forEach(p => addMarkerFromDb(map, p, popupContainer, resetPopup));
+
+  } catch (e) {
+    console.error("[route_map] POI-feil for", routeId, e);
+  }
+
+  // --- 7) GPX-rute
+  try {
     new L.GPX(gpxUrl, {
       async: true,
       polyline_options: { color: "#37394E", weight: 5, opacity: 0.9 },
@@ -496,7 +549,6 @@ async function initRouteSection(section) {
         startIconUrl: null,
         endIconUrl: null,
         shadowUrl: null,
-        // Dette “deaktiverer” ikke parsing av wpt 100%, men hindrer at du prøver å vise dem som relevante markører
         wptIconUrls: { "": null }
       }
     })
@@ -505,8 +557,8 @@ async function initRouteSection(section) {
       })
       .addTo(map);
 
-  } catch (err) {
-    console.error("Feil under init av rutekart:", err);
+  } catch (e) {
+    console.error("[route_map] GPX-feil for", routeId, gpxUrl, e);
   }
 }
 
@@ -521,4 +573,3 @@ if (document.readyState === "loading") {
   initAll();
 }
 })();
-
