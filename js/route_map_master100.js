@@ -274,175 +274,175 @@
       }
     } catch (_) {}
   }
+function buildChart(canvas, elevPoints, movingMarker, surfaceSummaryEl, route, unknownAsTrail) {
+  if (!canvas || !Array.isArray(elevPoints) || elevPoints.length === 0) return;
+  if (typeof Chart === "undefined") return;
 
-  function buildChart(canvas, elevPoints, movingMarker, surfaceSummaryEl, route, unknownAsTrail) {
-    if (!canvas || !Array.isArray(elevPoints) || elevPoints.length === 0) return;
-    if (typeof Chart === "undefined") return;
+  initChartDefaultsOnce();
+  destroyExistingChart(canvas);
 
-    initChartDefaultsOnce();
-    destroyExistingChart(canvas);
+  const distances = [];
+  const elevations = [];
+  const lats = [];
+  const lons = [];
+  const cats = [];
 
-    const distances = [];
-    const elevations = [];
-    const lats = [];
-    const lons = [];
-    const cats = [];
+  for (let i = 0; i < elevPoints.length; i++) {
+    const p = elevPoints[i] || {};
+    const d = safeNum(p.distance, i > 0 ? distances[i - 1] : 0);
+    const e = safeNum(p.elevation, i > 0 ? elevations[i - 1] : 0);
 
-    for (let i = 0; i < elevPoints.length; i++) {
-      const p = elevPoints[i] || {};
-      const d = safeNum(p.distance, i > 0 ? distances[i - 1] : 0);
-      const e = safeNum(p.elevation, i > 0 ? elevations[i - 1] : 0);
+    distances.push(d);
+    elevations.push(e);
+    lats.push(p.lat);
+    lons.push(p.lon);
 
-      distances.push(d);
-      elevations.push(e);
-      lats.push(p.lat);
-      lons.push(p.lon);
-
-      const raw = p.surfaceCategory ?? p.surface ?? p.category ?? "unknown";
-      cats.push(normalizeSurfaceCategory(raw, unknownAsTrail));
-    }
-
-    const slopes = [0];
-    for (let i = 1; i < elevations.length; i++) {
-      const delta = elevations[i] - elevations[i - 1];
-      const distKm = distances[i] - distances[i - 1];
-      const slope = distKm > 0 ? (delta / (distKm * 1000)) * 100 : 0;
-      slopes.push(slope);
-    }
-
-    const asphaltPts = new Array(elevations.length).fill(null);
-    const gravelPts  = new Array(elevations.length).fill(null);
-    const trailPts   = new Array(elevations.length).fill(null);
-    const unknownPts = new Array(elevations.length).fill(null);
-    const linePts    = new Array(elevations.length).fill(null);
-
-    let asphaltKm = 0, gravelKm = 0, trailKm = 0, unknownKm = 0;
-
-    for (let i = 0; i < elevations.length; i++) {
-      const x = distances[i];
-      const y = elevations[i];
-      const cat = cats[i];
-
-      linePts[i] = { x, y };
-
-      if (cat === "asphalt") asphaltPts[i] = { x, y };
-      else if (cat === "gravel") gravelPts[i] = { x, y };
-      else if (cat === "trail") trailPts[i] = { x, y };
-      else unknownPts[i] = { x, y };
-
-      if (i > 0) {
-        const segKm = distances[i] - distances[i - 1];
-        if (cat === "asphalt") asphaltKm += segKm;
-        else if (cat === "gravel") gravelKm += segKm;
-        else if (cat === "trail") trailKm += segKm;
-        else unknownKm += segKm;
-      }
-    }
-
-    const totalKm = distances[distances.length - 1];
-    renderSurfaceSummary(surfaceSummaryEl, route, { asphaltKm, gravelKm, trailKm, unknownKm, totalKm }, unknownAsTrail);
-
-    const highest = Math.max.apply(null, elevations);
-    const ctx = canvas.getContext("2d");
-
-    const datasets = [
-      { data: asphaltPts, backgroundColor: "#37394E", borderColor: "#37394E", fill: true,  pointRadius: 0, tension: 0.4, spanGaps: false },
-      { data: gravelPts,  backgroundColor: "#A3886C", borderColor: "#A3886C", fill: true,  pointRadius: 0, tension: 0.4, spanGaps: false },
-      { data: trailPts,   backgroundColor: "#5C7936", borderColor: "#5C7936", fill: true,  pointRadius: 0, tension: 0.4, spanGaps: false },
-    ];
-
-    if (!unknownAsTrail) {
-      datasets.push({ data: unknownPts, backgroundColor: "#9AA0A6", borderColor: "#9AA0A6", fill: true, pointRadius: 0, tension: 0.4, spanGaps: false });
-    }
-
-    datasets.push({
-      data: linePts,
-      borderColor: "#37394E",
-      borderWidth: 4,
-      pointRadius: 0,
-      tension: 0.4,
-      fill: false,
-      spanGaps: false,
-    });
-
-    const lineDatasetIndex = datasets.length - 1;
-
-    const chart = new Chart(ctx, {
-      type: "line",
-      data: { datasets },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        animation: false,
-        parsing: false,
-        interaction: { intersect: false, mode: "index" },
-        plugins: {
-          legend: { display: false },
-          tooltip: {
-            backgroundColor: "#37394E",
-            displayColors: false,
-            filter: (item) => item.datasetIndex === lineDatasetIndex,
-            callbacks: {
-              title: (items) => {
-                const x = items?.[0]?.parsed?.x ?? 0;
-                return `${Number(x).toFixed(1)} km`;
-              },
-              label: (c) => {
-                const idx = c.dataIndex;
-                const elev = elevations[idx];
-                const slope = slopes[idx] || 0;
-                return `${elev.toFixed(0)} moh / ${slope.toFixed(1)}%`;
-              },
-            },
-          },
-        },
-        scales: {
-          x: {
-            type: "linear",
-            min: 0,
-            max: totalKm,
-            ticks: { color: "#37394E", callback: (v) => `${Number(v).toFixed(0)} km` },
-            grid: { display: false },
-          },
-          y: {
-            min: 0,
-            max: Math.ceil(highest / 50) * 50,
-            ticks: { stepSize: 50, color: "#37394E" },
-            grid: { display: false },
-          },
-        },
-      },
-    });
-
-    canvas.__chart = chart;
-
-    function moveMarkerToIndex(idx) {
-      if (!movingMarker) return;
-      const lat = lats[idx];
-      const lon = lons[idx];
-      if (Number.isFinite(Number(lat)) && Number.isFinite(Number(lon))) {
-        movingMarker.setLatLng([Number(lat), Number(lon)]);
-      }
-    }
-
-    canvas.addEventListener("mousemove", function (evt) {
-      const points = chart.getElementsAtEventForMode(evt, "index", { intersect: false }, true);
-      if (points.length) moveMarkerToIndex(points[0].index);
-    });
-
-    canvas.addEventListener("touchmove", function (e) {
-      if (!e.touches || !e.touches.length) return;
-      const touch = e.touches[0];
-      const simulatedEvent = new MouseEvent("mousemove", {
-        bubbles: true,
-        cancelable: true,
-        view: window,
-        clientX: touch.clientX,
-        clientY: touch.clientY,
-      });
-      canvas.dispatchEvent(simulatedEvent);
-    }, { passive: true });
+    const raw = p.surfaceCategory ?? p.surface ?? p.category ?? "unknown";
+    cats.push(normalizeSurfaceCategory(raw, unknownAsTrail));
   }
+
+  const slopes = [0];
+  for (let i = 1; i < elevations.length; i++) {
+    const delta = elevations[i] - elevations[i - 1];
+    const distKm = distances[i] - distances[i - 1];
+    const slope = distKm > 0 ? (delta / (distKm * 1000)) * 100 : 0;
+    slopes.push(slope);
+  }
+
+  // Viktig: ALLE punkter må ha x. Bruk y:null for “av”
+  const asphaltPts = [];
+  const gravelPts  = [];
+  const trailPts   = [];
+  const unknownPts = [];
+  const linePts    = [];
+
+  let asphaltKm = 0, gravelKm = 0, trailKm = 0, unknownKm = 0;
+
+  for (let i = 0; i < elevations.length; i++) {
+    const x = distances[i];
+    const y = elevations[i];
+    const cat = cats[i];
+
+    linePts.push({ x, y });
+
+    asphaltPts.push({ x, y: cat === "asphalt" ? y : null });
+    gravelPts.push({ x, y: cat === "gravel"  ? y : null });
+    trailPts.push({ x, y: cat === "trail"   ? y : null });
+    unknownPts.push({ x, y: cat === "unknown" ? y : null });
+
+    if (i > 0) {
+      const segKm = distances[i] - distances[i - 1];
+      if (cat === "asphalt") asphaltKm += segKm;
+      else if (cat === "gravel") gravelKm += segKm;
+      else if (cat === "trail") trailKm += segKm;
+      else unknownKm += segKm;
+    }
+  }
+
+  const totalKm = distances[distances.length - 1];
+  renderSurfaceSummary(surfaceSummaryEl, route, { asphaltKm, gravelKm, trailKm, unknownKm, totalKm }, unknownAsTrail);
+
+  const highest = Math.max.apply(null, elevations);
+  const ctx = canvas.getContext("2d");
+
+  const datasets = [
+    { data: asphaltPts, backgroundColor: "#37394E", borderColor: "#37394E", fill: true, pointRadius: 0, tension: 0.4, spanGaps: false },
+    { data: gravelPts,  backgroundColor: "#A3886C", borderColor: "#A3886C", fill: true, pointRadius: 0, tension: 0.4, spanGaps: false },
+    { data: trailPts,   backgroundColor: "#5C7936", borderColor: "#5C7936", fill: true, pointRadius: 0, tension: 0.4, spanGaps: false },
+  ];
+
+  if (!unknownAsTrail) {
+    datasets.push({ data: unknownPts, backgroundColor: "#9AA0A6", borderColor: "#9AA0A6", fill: true, pointRadius: 0, tension: 0.4, spanGaps: false });
+  }
+
+  datasets.push({
+    data: linePts,
+    borderColor: "#37394E",
+    borderWidth: 4,
+    pointRadius: 0,
+    tension: 0.4,
+    fill: false,
+    spanGaps: false
+  });
+
+  const lineDatasetIndex = datasets.length - 1;
+
+  const chart = new Chart(ctx, {
+    type: "line",
+    data: { datasets },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      animation: false,
+      parsing: true, // vi lar Chart.js parse {x,y} normalt
+      interaction: { intersect: false, mode: "index" },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: "#37394E",
+          displayColors: false,
+          filter: (item) => item.datasetIndex === lineDatasetIndex,
+          callbacks: {
+            title: (items) => {
+              const x = items?.[0]?.parsed?.x ?? 0;
+              return `${Number(x).toFixed(1)} km`;
+            },
+            label: (c) => {
+              const idx = c.dataIndex;
+              const elev = elevations[idx];
+              const slope = slopes[idx] || 0;
+              return `${elev.toFixed(0)} moh / ${slope.toFixed(1)}%`;
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          type: "linear",
+          min: 0,
+          max: totalKm,
+          ticks: { color: "#37394E", callback: (v) => `${Number(v).toFixed(0)} km` },
+          grid: { display: false }
+        },
+        y: {
+          min: 0,
+          max: Math.ceil(highest / 50) * 50,
+          ticks: { stepSize: 50, color: "#37394E" },
+          grid: { display: false }
+        }
+      }
+    }
+  });
+
+  canvas.__chart = chart;
+
+  function moveMarkerToIndex(idx) {
+    if (!movingMarker) return;
+    const lat = lats[idx];
+    const lon = lons[idx];
+    if (Number.isFinite(Number(lat)) && Number.isFinite(Number(lon))) {
+      movingMarker.setLatLng([Number(lat), Number(lon)]);
+    }
+  }
+
+  canvas.addEventListener("mousemove", function (evt) {
+    const points = chart.getElementsAtEventForMode(evt, "index", { intersect: false }, true);
+    if (points.length) moveMarkerToIndex(points[0].index);
+  });
+
+  canvas.addEventListener("touchmove", function (e) {
+    if (!e.touches || !e.touches.length) return;
+    const touch = e.touches[0];
+    const simulatedEvent = new MouseEvent("mousemove", {
+      bubbles: true,
+      cancelable: true,
+      view: window,
+      clientX: touch.clientX,
+      clientY: touch.clientY
+    });
+    canvas.dispatchEvent(simulatedEvent);
+  }, { passive: true });
+}
 
   async function initRouteSection(section) {
     const routeId = (section.dataset.routeId || "").trim();
