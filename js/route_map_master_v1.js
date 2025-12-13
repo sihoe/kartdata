@@ -1,6 +1,6 @@
 // route_map_master_v1.js
-// Masterdata: routes.json + pois.json + route_markers_v2.json + GPX + elevation(with surface)
-// Krever: Leaflet, Leaflet-GPX, Chart.js lastet inn før denne.
+// Masterdata-versjon: routes.json + pois.json + route_markers_v2.json + elevation (+ surface per punkt)
+// Forutsetter: Leaflet, Leaflet-GPX og Chart.js er lastet inn før denne.
 
 (function () {
   const infoTexts = {
@@ -59,50 +59,23 @@
   function symbolUrl(sym) {
     const s = normalizeSymbol(sym);
     if (!s) return null;
+
+    // Spesialregel: bathingspot skal bruke blå versjon
     if (s === "bathingspot") {
       return "https://cdn.jsdelivr.net/gh/sihoe/symbols@main/symbols-bathingspot-blue.svg";
     }
     return "https://cdn.jsdelivr.net/gh/sihoe/symbols@main/symbols-" + s + ".svg";
   }
 
-  // ---- Surface mapping: THIS is what makes it behave like your v11 result ----
-  function normalizeSurfaceCategory(raw, rules) {
-    const r = (raw ?? "").toString().trim().toLowerCase();
-    if (!r) return "unknown";
-
-    // Asphalt bucket
-    if (["asphalt","paved","concrete","concrete:lanes","concrete:plates"].includes(r)) return "asphalt";
-
-    // Gravel bucket (treat compacted as gravel – this matches your v11 behavior in practice)
-    if ([
-      "gravel","fine_gravel","compacted","pebblestone","sett",
-      "unpaved","unhewn_cobblestone","cobblestone"
-    ].includes(r)) return "gravel";
-
-    // Trail bucket (soft / path-like surfaces)
-    if ([
-      "dirt","ground","earth","grass","sand","mud",
-      "wood","boardwalk","woodchips"
-    ].includes(r)) return "trail";
-
-    // Explicit unknown
-    if (r === "unknown") return (rules?.unknownTo === "trail" ? "trail" : "unknown");
-
-    // Everything else
-    return (rules?.unknownTo === "trail" ? "trail" : "unknown");
-  }
-
   function getRouteStats(route) {
-    // Støtter både:
-    // A) route.stats.{distanceKm...}
-    // B) route.{distanceKm...} (eldre/flat struktur)
-    const s = route && route.stats ? route.stats : route || {};
+    // routes.json har stats pakket i route.stats
+    const s = (route && route.stats) ? route.stats : route || {};
     return {
       distanceKm: safeNum(s.distanceKm, 0),
       climbM: safeNum(s.climbM, 0),
       descentM: safeNum(s.descentM, 0),
       maxElevationM: safeNum(s.maxElevationM, 0),
-      minElevationM: safeNum(s.minElevationM, 0),
+      minElevationM: safeNum(s.minElevationM, 0)
     };
   }
 
@@ -112,18 +85,18 @@
     const lang = getLang();
     const t = infoTexts[lang] || infoTexts.no;
 
-    const s = getRouteStats(route);
+    const stats = getRouteStats(route);
 
     container.classList.remove("hidden");
     container.innerHTML = `
       <button class="route-close" aria-label="Close">&times;</button>
       <div class="stats-box">
         <p class="stats-title">${t.title}</p>
-        <p><span class="icon">↔</span> ${t.length}: <strong>${s.distanceKm.toFixed(1)}</strong> km</p>
-        <p><span class="icon">↗</span> ${t.ascent}: <strong>${s.climbM.toFixed(0)}</strong> m</p>
-        <p><span class="icon">↘</span> ${t.descent}: <strong>${s.descentM.toFixed(0)}</strong> m</p>
-        <p><span class="icon">▲</span> ${t.highest}: <strong>${s.maxElevationM.toFixed(0)}</strong> ${t.unit}</p>
-        <p><span class="icon">▼</span> ${t.lowest}: <strong>${s.minElevationM.toFixed(0)}</strong> ${t.unit}</p>
+        <p><span class="icon">↔</span> ${t.length}: <strong>${stats.distanceKm.toFixed(1)}</strong> km</p>
+        <p><span class="icon">↗</span> ${t.ascent}: <strong>${stats.climbM.toFixed(0)}</strong> m</p>
+        <p><span class="icon">↘</span> ${t.descent}: <strong>${stats.descentM.toFixed(0)}</strong> m</p>
+        <p><span class="icon">▲</span> ${t.highest}: <strong>${stats.maxElevationM.toFixed(0)}</strong> ${t.unit}</p>
+        <p><span class="icon">▼</span> ${t.lowest}: <strong>${stats.minElevationM.toFixed(0)}</strong> ${t.unit}</p>
         <p style="margin-top:16px;font-style:italic;">${t.instruction}</p>
       </div>
     `;
@@ -136,49 +109,59 @@
     }
   }
 
-  function renderSurfaceSummary(container, route, summary, rules) {
+  function renderSurfaceSummary(container, route, computed) {
     if (!container) return;
 
     const lang = getLang();
     const t = infoTexts[lang] || infoTexts.no;
 
-    // Prefer computed (from elevation points), fallback to route.surface.categoryKm if present
-    const surf = route && route.surface ? route.surface : null;
-    const cat = surf && surf.categoryKm ? surf.categoryKm : null;
+    // Foretrekk routes.json sitt aggregat hvis det finnes, ellers bruk computed fra punktdata
+    const cat = route?.surface?.categoryKm || null;
 
-    let asphaltKm = safeNum(summary?.asphaltKm ?? cat?.asphalt, NaN);
-    let gravelKm  = safeNum(summary?.gravelKm  ?? cat?.gravel, NaN);
-    let trailKm   = safeNum(summary?.trailKm   ?? cat?.trail, NaN);
-    let unknownKm = safeNum(summary?.unknownKm ?? cat?.unknown, NaN);
-    let totalKm   = safeNum(summary?.totalKm   ?? surf?.totalKm, NaN);
+    const asphaltKm = (cat && Number.isFinite(Number(cat.asphalt))) ? Number(cat.asphalt) : (computed?.asphaltKm ?? null);
+    const gravelKm  = (cat && Number.isFinite(Number(cat.gravel)))  ? Number(cat.gravel)  : (computed?.gravelKm ?? null);
+    const trailKm   = (cat && Number.isFinite(Number(cat.trail)))   ? Number(cat.trail)   : (computed?.trailKm ?? null);
+    const unknownKm = (cat && Number.isFinite(Number(cat.unknown))) ? Number(cat.unknown) : (computed?.unknownKm ?? null);
 
-    // If we can't compute a consistent legend, hide it.
-    if (![asphaltKm, gravelKm, trailKm, unknownKm, totalKm].every(v => Number.isFinite(v))) {
+    const totalKmFromRoute = safeNum(route?.surface?.totalKm, null);
+    const totalKm = Number.isFinite(totalKmFromRoute) ? totalKmFromRoute : (computed?.totalKm ?? null);
+
+    // Hvis vi mangler nok til å vise meningsfullt: ikke vis noe
+    const have = [asphaltKm, gravelKm, trailKm, unknownKm, totalKm].every(v => Number.isFinite(Number(v)));
+    if (!have || !Number.isFinite(Number(totalKm)) || Number(totalKm) <= 0) {
       container.innerHTML = "";
       return;
     }
 
-    // Route rule: unknownTo=trail means we show it as trail (and don't show "Ukjent")
-    if (rules?.unknownTo === "trail") {
-      trailKm += unknownKm;
-      unknownKm = 0;
-    }
+    const a = Number(asphaltKm), g = Number(gravelKm), tr = Number(trailKm), u = Number(unknownKm), tot = Number(totalKm);
+    const aPct = (a / tot) * 100;
+    const gPct = (g / tot) * 100;
+    const tPct = (tr / tot) * 100;
+    const uPct = (u / tot) * 100;
 
-    const pct = (x) => totalKm > 0 ? (x / totalKm) * 100 : 0;
+    // Vis ukjent kun hvis > 0.05 km (så du slipper “0.0 km (0%)”)
+    const showUnknown = u > 0.05;
 
-    const parts = [];
-    parts.push(`Asfalt ${asphaltKm.toFixed(1)} km (${pct(asphaltKm).toFixed(0)} %)`);
-    parts.push(`Grus ${gravelKm.toFixed(1)} km (${pct(gravelKm).toFixed(0)} %)`);
-
-    // Always show trail
-    parts.push(`Sti ${trailKm.toFixed(1)} km (${pct(trailKm).toFixed(0)} %)`);
-
-    // Show unknown only if it exists and rule does NOT fold it into trail
-    if (unknownKm > 0.0001) {
-      parts.push(`Ukjent ${unknownKm.toFixed(1)} km (${pct(unknownKm).toFixed(0)} %)`);
-    }
-
-    container.innerHTML = `${t.surfaceLabel} ${parts.join(" ")}`;
+    container.innerHTML = `
+      <span style="margin-right:10px;">${t.surfaceLabel}</span>
+      <span class="surface-legend-item">
+        <span class="surface-legend-color asphalt"></span>
+        Asfalt ${a.toFixed(1)} km (${aPct.toFixed(0)} %)
+      </span>
+      <span class="surface-legend-item">
+        <span class="surface-legend-color gravel"></span>
+        Grus ${g.toFixed(1)} km (${gPct.toFixed(0)} %)
+      </span>
+      <span class="surface-legend-item">
+        <span class="surface-legend-color trail"></span>
+        Sti ${tr.toFixed(1)} km (${tPct.toFixed(0)} %)
+      </span>
+      ${showUnknown ? `
+      <span class="surface-legend-item">
+        <span class="surface-legend-color unknown"></span>
+        Ukjent ${u.toFixed(1)} km (${uPct.toFixed(0)} %)
+      </span>` : ``}
+    `;
   }
 
   function addMarkerFromDb(map, poi, popupContainer, resetFn) {
@@ -241,50 +224,63 @@
     });
   }
 
-  function destroyChartIfAny(canvas) {
-    if (!canvas) return;
-    if (canvas.__chartInstance && typeof canvas.__chartInstance.destroy === "function") {
-      try { canvas.__chartInstance.destroy(); } catch (e) {}
+  function decideUnknownPolicy(route) {
+    // Hvis routes.json allerede har gjort unknown -> trail (unknown=0, trail>0),
+    // så skal punkt-unknown også tolkes som trail for konsistens.
+    const cat = route?.surface?.categoryKm || null;
+    const u = cat ? Number(cat.unknown) : NaN;
+    const tr = cat ? Number(cat.trail) : NaN;
+
+    if (Number.isFinite(u) && Number.isFinite(tr)) {
+      if (u === 0 && tr > 0) return "trail";
     }
-    canvas.__chartInstance = null;
+    return "unknown";
   }
 
-  function buildChart(canvas, elevPoints, movingMarker, surfaceSummaryEl, route, rules) {
+  function buildChart(canvas, elevPoints, movingMarker, surfaceSummaryEl, route) {
     if (!canvas || !Array.isArray(elevPoints) || elevPoints.length === 0) return;
     if (typeof Chart === "undefined") return;
 
-    destroyChartIfAny(canvas);
+    const unknownPolicy = decideUnknownPolicy(route);
 
     const distances = [];
     const elevations = [];
     const lats = [];
     const lons = [];
-    const cats = [];
+    const surfaceCats = [];
 
     for (let i = 0; i < elevPoints.length; i++) {
       const p = elevPoints[i] || {};
       const d = safeNum(p.distance, i > 0 ? distances[i - 1] : 0);
       const e = safeNum(p.elevation, i > 0 ? elevations[i - 1] : 0);
-
       distances.push(d);
       elevations.push(e);
       lats.push(p.lat);
       lons.push(p.lon);
 
-      // IMPORTANT: use mapping that matches your old working result
-      const raw = p.surfaceCategory ?? p.surface ?? p.category ?? p.osmSurface ?? p.osm_surface ?? "";
-      cats.push(normalizeSurfaceCategory(raw, rules));
+      let cat = (p.surfaceCategory || p.surface || p.category || "").toString().toLowerCase().trim();
+
+      if (!cat) cat = "unknown";
+      if (cat === "unknown" && unknownPolicy === "trail") cat = "trail";
+
+      // Normaliser alt til de 4 kategoriene dere har bestemt
+      if (cat !== "asphalt" && cat !== "gravel" && cat !== "trail" && cat !== "unknown") {
+        cat = "unknown";
+        if (unknownPolicy === "trail") cat = "trail";
+      }
+      surfaceCats.push(cat);
     }
 
-    // slope for tooltip
+    // Slopes for tooltip
     const slopes = [0];
     for (let i = 1; i < elevations.length; i++) {
       const delta = elevations[i] - elevations[i - 1];
       const distKm = distances[i] - distances[i - 1];
-      slopes.push(distKm > 0 ? (delta / (distKm * 1000)) * 100 : 0);
+      const slope = distKm > 0 ? (delta / (distKm * 1000)) * 100 : 0;
+      slopes.push(slope);
     }
 
-    // surface bands
+    // Surface datasets (bånd) - 4 kategorier
     const asphaltVals = new Array(elevations.length).fill(null);
     const gravelVals  = new Array(elevations.length).fill(null);
     const trailVals   = new Array(elevations.length).fill(null);
@@ -294,12 +290,12 @@
 
     for (let i = 0; i < elevations.length; i++) {
       const e = elevations[i];
-      const cat = cats[i];
+      const cat = surfaceCats[i];
 
       if (cat === "asphalt") asphaltVals[i] = e;
-      else if (cat === "gravel") gravelVals[i] = e;
-      else if (cat === "trail") trailVals[i] = e;
-      else unknownVals[i] = e;
+      if (cat === "gravel")  gravelVals[i]  = e;
+      if (cat === "trail")   trailVals[i]   = e;
+      if (cat === "unknown") unknownVals[i] = e;
 
       if (i > 0) {
         const segKm = distances[i] - distances[i - 1];
@@ -312,29 +308,70 @@
 
     const totalKm = distances[distances.length - 1];
 
+    // Vis underlag basert på routes.json hvis tilgjengelig, ellers computed fra punktene
     renderSurfaceSummary(surfaceSummaryEl, route, {
       asphaltKm, gravelKm, trailKm, unknownKm, totalKm
-    }, rules);
+    });
 
     const highest = Math.max.apply(null, elevations);
     const ctx = canvas.getContext("2d");
 
+    // Vis unknown-bånd bare hvis det faktisk finnes >0.05 km
+    const showUnknownBand = unknownKm > 0.05;
+
+    const datasets = [
+      {
+        data: asphaltVals,
+        backgroundColor: "#37394E",
+        borderColor: "#37394E",
+        fill: true,
+        pointRadius: 0,
+        tension: 0.4
+      },
+      {
+        data: gravelVals,
+        backgroundColor: "#A3886C",
+        borderColor: "#A3886C",
+        fill: true,
+        pointRadius: 0,
+        tension: 0.4
+      },
+      {
+        data: trailVals,
+        backgroundColor: "#5C7936",
+        borderColor: "#5C7936",
+        fill: true,
+        pointRadius: 0,
+        tension: 0.4
+      }
+    ];
+
+    if (showUnknownBand) {
+      datasets.push({
+        data: unknownVals,
+        backgroundColor: "#9AA0A6",
+        borderColor: "#9AA0A6",
+        fill: true,
+        pointRadius: 0,
+        tension: 0.4
+      });
+    }
+
+    // Linje over båndene
+    datasets.push({
+      data: elevations,
+      borderColor: "#37394E",
+      borderWidth: 4,
+      pointRadius: 0,
+      tension: 0.4,
+      fill: false
+    });
+
+    const lineDatasetIndex = datasets.length - 1;
+
     const chart = new Chart(ctx, {
       type: "line",
-      data: {
-        labels: distances,
-        datasets: [
-          { data: asphaltVals, backgroundColor: "#37394E", borderColor: "#37394E", fill: true, pointRadius: 0, tension: 0.4 },
-          { data: gravelVals,  backgroundColor: "#A3886C", borderColor: "#A3886C", fill: true, pointRadius: 0, tension: 0.4 },
-          { data: trailVals,   backgroundColor: "#5C7936", borderColor: "#5C7936", fill: true, pointRadius: 0, tension: 0.4 },
-          // unknown band only if we are NOT folding unknown->trail
-          ...(rules?.unknownTo === "trail"
-            ? []
-            : [{ data: unknownVals, backgroundColor: "#8A8A8A", borderColor: "#8A8A8A", fill: true, pointRadius: 0, tension: 0.4 }]
-          ),
-          { data: elevations, borderColor: "#37394E", borderWidth: 4, pointRadius: 0, tension: 0.4, fill: false }
-        ]
-      },
+      data: { labels: distances, datasets },
       options: {
         responsive: true,
         maintainAspectRatio: false,
@@ -344,8 +381,7 @@
           tooltip: {
             backgroundColor: "#37394E",
             displayColors: false,
-            // tooltip should track the elevation line dataset (last dataset)
-            filter: (item) => item.datasetIndex === (chart?.data?.datasets?.length - 1),
+            filter: (item) => item.datasetIndex === lineDatasetIndex,
             callbacks: {
               title: (items) => `${safeNum(items[0].label, 0).toFixed(1)} km`,
               label: (c) => {
@@ -362,7 +398,10 @@
             type: "linear",
             min: 0,
             max: totalKm,
-            ticks: { color: "#37394E", callback: (v) => `${Number(v).toFixed(0)} km` },
+            ticks: {
+              color: "#37394E",
+              callback: (v) => `${Number(v).toFixed(0)} km`
+            },
             grid: { display: false }
           },
           y: {
@@ -374,8 +413,6 @@
         }
       }
     });
-
-    canvas.__chartInstance = chart;
 
     function moveMarkerToIndex(idx) {
       if (!movingMarker) return;
@@ -409,10 +446,20 @@
     const routeId = (section.dataset.routeId || "").trim();
     const routesUrl = (section.dataset.routesUrl || "").trim();
     const poisUrl = (section.dataset.poisUrl || "").trim();
-    const routeMarkersUrl = (section.dataset.routeMarkersUrl || "").trim();
 
-    if (!routeId || !routesUrl || !poisUrl || !routeMarkersUrl) {
-      console.error("[route_map] Mangler data-attr. Trenger route-id, routes-url, pois-url, route-markers-url.");
+    // route_markers er en egen fil uansett – du kan gi den via HTML eller la default ta over
+    const routeMarkersUrlFromHtml = (section.dataset.routeMarkersUrl || "").trim();
+
+    if (!routeId) {
+      console.error("[route_map] Mangler data-route-id på .map-section");
+      return;
+    }
+    if (!routesUrl) {
+      console.error("[route_map] Mangler data-routes-url for routeId:", routeId);
+      return;
+    }
+    if (!poisUrl) {
+      console.error("[route_map] Mangler data-pois-url for routeId:", routeId);
       return;
     }
 
@@ -422,11 +469,10 @@
     const surfaceSummaryEl = section.querySelector(".surface-summary");
 
     if (!mapDiv || !popupContainer || !chartCanvas) {
-      console.error("[route_map] Mangler .route-map / .route-popup / canvas i seksjonen for", routeId);
+      console.error("[route_map] Mangler map/popup/canvas inni seksjonen for", routeId);
       return;
     }
 
-    // --- Load routes.json
     let routesJson;
     try {
       const r = await fetch(routesUrl, { cache: "no-store" });
@@ -437,7 +483,11 @@
       return;
     }
 
-    const route = (Array.isArray(routesJson) ? routesJson.find(x => x && x.id === routeId) : (routesJson[routeId] || null));
+    const route =
+      Array.isArray(routesJson)
+        ? routesJson.find(x => x && x.id === routeId)
+        : (routesJson && routesJson[routeId]) || null;
+
     if (!route) {
       console.error("[route_map] Fant ikke routeId i routes.json:", routeId);
       return;
@@ -446,21 +496,30 @@
     const gpxUrl = (route.gpxUrl || "").trim();
     const elevUrl = (route.elevationSurfaceUrl || route.elevationUrl || "").trim();
 
-    if (!gpxUrl || !elevUrl) {
-      console.error("[route_map] Rute mangler gpxUrl/elevationUrl:", routeId, route);
+    // route_markers kan ligge i route, i HTML, eller falle tilbake til default
+    const routeMarkersUrl =
+      (route.routeMarkersUrl || "").trim() ||
+      routeMarkersUrlFromHtml ||
+      "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/routes/route_markers_v2.json";
+
+    if (!gpxUrl) {
+      console.error("[route_map] Rute mangler gpxUrl:", routeId, route);
+      return;
+    }
+    if (!elevUrl) {
+      console.error("[route_map] Rute mangler elevationUrl/elevationSurfaceUrl:", routeId, route);
       return;
     }
 
-    // Surface rules: you WANT unknown->trail for Follsjø rundt even if you forgot to add it.
-    const rules = Object.assign({}, route.surfaceRules || {});
-    if (routeId === "follsj-rundt" && !rules.unknownTo) rules.unknownTo = "trail";
-
-    // --- Map init
     const centerLat = parseFloat(section.dataset.centerLat || route.centerLat || "59.83467");
     const centerLng = parseFloat(section.dataset.centerLng || route.centerLng || "9.57846");
     const zoom = parseInt(section.dataset.zoom || route.zoom || "11", 10);
 
-    const map = L.map(mapDiv, { center: [centerLat, centerLng], zoom, scrollWheelZoom: true });
+    const map = L.map(mapDiv, {
+      center: [centerLat, centerLng],
+      zoom,
+      scrollWheelZoom: true
+    });
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution: "Kartdata © OpenStreetMap",
@@ -475,26 +534,26 @@
       weight: 2
     }).addTo(map);
 
-    // First render stats
     renderStats(popupContainer, route);
 
     function resetPopup() {
       renderStats(popupContainer, route);
     }
 
-    // --- Elevation + chart (with correct surface mapping)
+    // Elevation + chart
     try {
       const elevResp = await fetch(elevUrl, { cache: "no-store" });
       if (!elevResp.ok) throw new Error("elevation fetch failed: " + elevResp.status);
       const elevJson = await elevResp.json();
       const pts = Array.isArray(elevJson.points) ? elevJson.points : elevJson;
       const cleaned = (pts || []).filter(p => p && p.elevation != null);
-      if (cleaned.length) buildChart(chartCanvas, cleaned, movingMarker, surfaceSummaryEl, route, rules);
+      if (!cleaned.length) throw new Error("elevation has no points");
+      buildChart(chartCanvas, cleaned, movingMarker, surfaceSummaryEl, route);
     } catch (e) {
-      console.error("[route_map] Elevation-feil:", routeId, elevUrl, e);
+      console.error("[route_map] Elevation-feil for", routeId, elevUrl, e);
     }
 
-    // --- POIs + route_markers_v2.json
+    // POIs + route_markers
     try {
       const [poisResp, routeMarkersResp] = await Promise.all([
         fetch(poisUrl, { cache: "no-store" }),
@@ -512,16 +571,24 @@
       allPois.forEach(p => { if (p && p.id) poisById.set(p.id, p); });
 
       const poiIdsForRoute = routeMarkersJson[routeId] || [];
+      if (!poiIdsForRoute.length) {
+        console.warn("[route_map] Ingen POI-id'er for route:", routeId);
+      }
+
       poiIdsForRoute
-        .map(id => poisById.get(id))
+        .map(id => {
+          const p = poisById.get(id);
+          if (!p) console.warn("[route_map] Mangler POI for id:", id, "route:", routeId);
+          return p;
+        })
         .filter(Boolean)
         .forEach(p => addMarkerFromDb(map, p, popupContainer, resetPopup));
 
     } catch (e) {
-      console.error("[route_map] POI-feil:", routeId, e);
+      console.error("[route_map] POI-feil for", routeId, e);
     }
 
-    // --- GPX route line (and suppress waypoint icon spam as much as possible)
+    // GPX-rute (vi vil ikke vise waypoints – og vi vil slippe icon-maset)
     try {
       new L.GPX(gpxUrl, {
         async: true,
@@ -530,11 +597,9 @@
           startIconUrl: null,
           endIconUrl: null,
           shadowUrl: null,
-          // Common GPX waypoint types → null (reduces console noise)
+          // Null ut vanlige waypoint-typer så pluginen slutter å mase i konsollen
           wptIconUrls: {
             "": null,
-            "default": null,
-            "waypoint": null,
             "beach": null,
             "danger": null,
             "trailhead": null,
@@ -547,13 +612,12 @@
           }
         }
       })
-      .on("loaded", function (e) {
-        map.fitBounds(e.target.getBounds(), { padding: [50, 50] });
-      })
-      .addTo(map);
-
+        .on("loaded", function (e) {
+          map.fitBounds(e.target.getBounds(), { padding: [50, 50] });
+        })
+        .addTo(map);
     } catch (e) {
-      console.error("[route_map] GPX-feil:", routeId, gpxUrl, e);
+      console.error("[route_map] GPX-feil for", routeId, gpxUrl, e);
     }
   }
 
