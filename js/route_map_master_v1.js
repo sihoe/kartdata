@@ -121,80 +121,66 @@
     }
   }
 
-  function renderSurfaceSummary(container, route, computedFromFile, unknownAsTrail) {
-    if (!container || !route) return;
+function renderSurfaceSummary(container, route, computedFromFile, unknownAsTrail) {
+  if (!container || !route) return;
 
-    const lang = getLang();
-    const t = infoTexts[lang] || infoTexts.no;
+  const lang = getLang();
+  const t = infoTexts[lang] || infoTexts.no;
 
-    // routes.json: route.surface.categoryKm.{asphalt,gravel,trail,unknown} + totalKm
-    const surface = route.surface || null;
-    const categoryKm = surface && surface.categoryKm ? surface.categoryKm : null;
+  // routes.json: route.surface.categoryKm.{asphalt,gravel,trail,unknown} + totalKm
+  const surface = route.surface || null;
+  const categoryKm = surface && surface.categoryKm ? surface.categoryKm : null;
 
-    // Prefer: computedFromFile (fra elev.points)
-    let asphaltKm = computedFromFile?.asphaltKm;
-    let gravelKm  = computedFromFile?.gravelKm;
-    let trailKm   = computedFromFile?.trailKm;
-    let unknownKm = computedFromFile?.unknownKm;
-    let totalKm   = computedFromFile?.totalKm;
+  // Prefer: computedFromFile (fra elev.points)
+  let asphaltKm = computedFromFile?.asphaltKm;
+  let gravelKm  = computedFromFile?.gravelKm;
+  let trailKm   = computedFromFile?.trailKm;
+  let unknownKm = computedFromFile?.unknownKm;
+  let totalKm   = computedFromFile?.totalKm;
 
-    // Fallback: route.surface
-    if (!Number.isFinite(Number(asphaltKm)) && categoryKm) asphaltKm = categoryKm.asphalt;
-    if (!Number.isFinite(Number(gravelKm))  && categoryKm) gravelKm  = categoryKm.gravel;
-    if (!Number.isFinite(Number(trailKm))   && categoryKm) trailKm   = categoryKm.trail;
-    if (!Number.isFinite(Number(unknownKm)) && categoryKm) unknownKm = categoryKm.unknown;
-    if (!Number.isFinite(Number(totalKm))   && surface)    totalKm   = surface.totalKm;
+  // Fallback: route.surface
+  if (!Number.isFinite(Number(asphaltKm)) && categoryKm) asphaltKm = categoryKm.asphalt;
+  if (!Number.isFinite(Number(gravelKm))  && categoryKm) gravelKm  = categoryKm.gravel;
+  if (!Number.isFinite(Number(trailKm))   && categoryKm) trailKm   = categoryKm.trail;
+  if (!Number.isFinite(Number(unknownKm)) && categoryKm) unknownKm = categoryKm.unknown;
+  if (!Number.isFinite(Number(totalKm))   && surface)    totalKm   = surface.totalKm;
 
-    // Hvis total mangler, prøv å summere
-    const a0 = safeNum(asphaltKm, 0);
-    const g0 = safeNum(gravelKm, 0);
-    const tr0 = safeNum(trailKm, 0);
-    const u0 = safeNum(unknownKm, 0);
-    const tot0 = Number.isFinite(Number(totalKm)) ? Number(totalKm) : (a0 + g0 + tr0 + u0);
+  // Hvis total mangler, prøv å summere
+  const a0 = safeNum(asphaltKm, 0);
+  const g0 = safeNum(gravelKm, 0);
+  const tr0 = safeNum(trailKm, 0);
+  const u0 = safeNum(unknownKm, 0);
+  const tot0 = Number.isFinite(Number(totalKm)) ? Number(totalKm) : (a0 + g0 + tr0 + u0);
 
-    // Hvis du vil: unknown -> trail (for eksempel Follsjø rundt)
-    let a = a0, g = g0, tr = tr0, u = u0, tot = tot0;
-    if (unknownAsTrail) {
-      tr = tr + u;
-      u = 0;
-    }
-
-    // Hvis alt er 0, ikke vis noe
-    if (tot <= 0.0001) {
-      container.innerHTML = "";
-      return;
-    }
-
-    const aPct = tot > 0 ? (a / tot) * 100 : 0;
-    const gPct = tot > 0 ? (g / tot) * 100 : 0;
-    const tPct = tot > 0 ? (tr / tot) * 100 : 0;
-    const uPct = tot > 0 ? (u / tot) * 100 : 0;
-
-    // Vis unknown bare hvis det faktisk finnes OG du ikke har foldet det inn i trail
-    const showUnknown = !unknownAsTrail && u > 0.01;
-
-    container.innerHTML = `
-      <span style="margin-right:10px;">${t.surfaceLabel}</span>
-      <span class="surface-legend-item">
-        <span class="surface-legend-color asphalt"></span>
-        ${t.asphalt} ${a.toFixed(1)} km (${aPct.toFixed(0)} %)
-      </span>
-      <span class="surface-legend-item">
-        <span class="surface-legend-color gravel"></span>
-        ${t.gravel} ${g.toFixed(1)} km (${gPct.toFixed(0)} %)
-      </span>
-      <span class="surface-legend-item">
-        <span class="surface-legend-color trail"></span>
-        ${t.trail} ${tr.toFixed(1)} km (${tPct.toFixed(0)} %)
-      </span>
-      ${showUnknown ? `
-        <span class="surface-legend-item">
-          <span class="surface-legend-color unknown"></span>
-          ${t.unknown} ${u.toFixed(1)} km (${uPct.toFixed(0)} %)
-        </span>
-      ` : ""}
-    `;
+  // Unknown -> trail (hvis ønsket for ruten)
+  let a = a0, g = g0, tr = tr0, u = u0, tot = tot0;
+  if (unknownAsTrail) {
+    tr += u;
+    u = 0;
   }
+
+  // Hvis alt er 0, ikke vis noe
+  if (tot <= 0.0001) {
+    container.innerHTML = "";
+    return;
+  }
+
+  const pct = (v) => (tot > 0 ? Math.round((v / tot) * 100) : 0);
+
+  const showUnknown = !unknownAsTrail && u > 0.01;
+
+  // Forklaring av farger (match dataset-fargene dine)
+  const swatch = (color) =>
+    `<span style="display:inline-block;width:10px;height:10px;margin:0 6px 0 10px;background:${color};border-radius:2px;vertical-align:middle;"></span>`;
+
+  container.innerHTML = `
+    <span style="font-weight:600;margin-right:8px;">${t.surfaceLabel}</span>
+    ${swatch("#37394E")}${t.asphalt} ${a.toFixed(1)} km (${pct(a)} %)
+    ${swatch("#A3886C")}${t.gravel} ${g.toFixed(1)} km (${pct(g)} %)
+    ${swatch("#5C7936")}${t.trail} ${tr.toFixed(1)} km (${pct(tr)} %)
+    ${showUnknown ? `${swatch("#999999")}${t.unknown} ${u.toFixed(1)} km (${pct(u)} %)` : ""}
+  `;
+}
 
   function addMarkerFromDb(map, poi, popupContainer, resetFn) {
     if (!map || !poi) return;
