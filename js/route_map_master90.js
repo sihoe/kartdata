@@ -64,6 +64,17 @@
     return Number.isFinite(n) ? n : fallback;
   }
 
+  function initChartDefaultsOnce() {
+    if (typeof Chart === "undefined") return;
+    if (Chart.__svingom_defaults_set) return;
+    Chart.__svingom_defaults_set = true;
+
+    try {
+      Chart.defaults.font.family = getComputedStyle(document.body).fontFamily;
+    } catch (_) {}
+    Chart.defaults.color = "#422426";
+  }
+
   function normalizeSymbol(sym) {
     if (!sym) return null;
     return String(sym).trim().toLowerCase();
@@ -255,9 +266,21 @@
     return cat;
   }
 
+  function destroyExistingChart(canvas) {
+    try {
+      if (canvas && canvas.__chart) {
+        canvas.__chart.destroy();
+        canvas.__chart = null;
+      }
+    } catch (_) {}
+  }
+
   function buildChart(canvas, elevPoints, movingMarker, surfaceSummaryEl, route, unknownAsTrail) {
     if (!canvas || !Array.isArray(elevPoints) || elevPoints.length === 0) return;
     if (typeof Chart === "undefined") return;
+
+    initChartDefaultsOnce();
+    destroyExistingChart(canvas);
 
     const distances = [];
     const elevations = [];
@@ -269,6 +292,7 @@
       const p = elevPoints[i] || {};
       const d = safeNum(p.distance, i > 0 ? distances[i - 1] : 0);
       const e = safeNum(p.elevation, i > 0 ? elevations[i - 1] : 0);
+
       distances.push(d);
       elevations.push(e);
       lats.push(p.lat);
@@ -286,21 +310,25 @@
       slopes.push(slope);
     }
 
-    const asphaltVals = new Array(elevations.length).fill(null);
-    const gravelVals = new Array(elevations.length).fill(null);
-    const trailVals = new Array(elevations.length).fill(null);
-    const unknownVals = new Array(elevations.length).fill(null);
+    const asphaltPts = new Array(elevations.length).fill(null);
+    const gravelPts  = new Array(elevations.length).fill(null);
+    const trailPts   = new Array(elevations.length).fill(null);
+    const unknownPts = new Array(elevations.length).fill(null);
+    const linePts    = new Array(elevations.length).fill(null);
 
     let asphaltKm = 0, gravelKm = 0, trailKm = 0, unknownKm = 0;
 
     for (let i = 0; i < elevations.length; i++) {
-      const e = elevations[i];
+      const x = distances[i];
+      const y = elevations[i];
       const cat = cats[i];
 
-      if (cat === "asphalt") asphaltVals[i] = e;
-      else if (cat === "gravel") gravelVals[i] = e;
-      else if (cat === "trail") trailVals[i] = e;
-      else unknownVals[i] = e;
+      linePts[i] = { x, y };
+
+      if (cat === "asphalt") asphaltPts[i] = { x, y };
+      else if (cat === "gravel") gravelPts[i] = { x, y };
+      else if (cat === "trail") trailPts[i] = { x, y };
+      else unknownPts[i] = { x, y };
 
       if (i > 0) {
         const segKm = distances[i] - distances[i - 1];
@@ -312,39 +340,41 @@
     }
 
     const totalKm = distances[distances.length - 1];
-
     renderSurfaceSummary(surfaceSummaryEl, route, { asphaltKm, gravelKm, trailKm, unknownKm, totalKm }, unknownAsTrail);
 
     const highest = Math.max.apply(null, elevations);
     const ctx = canvas.getContext("2d");
 
     const datasets = [
-      { data: asphaltVals, backgroundColor: "#37394E", borderColor: "#37394E", fill: true, pointRadius: 0, tension: 0.4 },
-      { data: gravelVals,  backgroundColor: "#A3886C", borderColor: "#A3886C", fill: true, pointRadius: 0, tension: 0.4 },
-      { data: trailVals,   backgroundColor: "#5C7936", borderColor: "#5C7936", fill: true, pointRadius: 0, tension: 0.4 },
+      { data: asphaltPts, backgroundColor: "#37394E", borderColor: "#37394E", fill: true,  pointRadius: 0, tension: 0.4, spanGaps: false },
+      { data: gravelPts,  backgroundColor: "#A3886C", borderColor: "#A3886C", fill: true,  pointRadius: 0, tension: 0.4, spanGaps: false },
+      { data: trailPts,   backgroundColor: "#5C7936", borderColor: "#5C7936", fill: true,  pointRadius: 0, tension: 0.4, spanGaps: false },
     ];
 
     if (!unknownAsTrail) {
-      datasets.push({ data: unknownVals, backgroundColor: "#9AA0A6", borderColor: "#9AA0A6", fill: true, pointRadius: 0, tension: 0.4 });
+      datasets.push({ data: unknownPts, backgroundColor: "#9AA0A6", borderColor: "#9AA0A6", fill: true, pointRadius: 0, tension: 0.4, spanGaps: false });
     }
 
     datasets.push({
-      data: elevations,
+      data: linePts,
       borderColor: "#37394E",
       borderWidth: 4,
       pointRadius: 0,
       tension: 0.4,
       fill: false,
+      spanGaps: false,
     });
 
     const lineDatasetIndex = datasets.length - 1;
 
     const chart = new Chart(ctx, {
       type: "line",
-      data: { labels: distances, datasets },
+      data: { datasets },
       options: {
         responsive: true,
         maintainAspectRatio: false,
+        animation: false,
+        parsing: false,
         interaction: { intersect: false, mode: "index" },
         plugins: {
           legend: { display: false },
@@ -353,7 +383,10 @@
             displayColors: false,
             filter: (item) => item.datasetIndex === lineDatasetIndex,
             callbacks: {
-              title: (items) => `${safeNum(items[0].label, 0).toFixed(1)} km`,
+              title: (items) => {
+                const x = items?.[0]?.parsed?.x ?? 0;
+                return `${Number(x).toFixed(1)} km`;
+              },
               label: (c) => {
                 const idx = c.dataIndex;
                 const elev = elevations[idx];
@@ -381,6 +414,8 @@
       },
     });
 
+    canvas.__chart = chart;
+
     function moveMarkerToIndex(idx) {
       if (!movingMarker) return;
       const lat = lats[idx];
@@ -406,7 +441,7 @@
         clientY: touch.clientY,
       });
       canvas.dispatchEvent(simulatedEvent);
-    });
+    }, { passive: true });
   }
 
   async function initRouteSection(section) {
@@ -489,6 +524,7 @@
       const elevJson = await elevResp.json();
       const pts = Array.isArray(elevJson.points) ? elevJson.points : elevJson;
       const cleaned = (pts || []).filter((p) => p && p.elevation != null);
+
       if (cleaned.length) buildChart(chartCanvas, cleaned, movingMarker, surfaceSummaryEl, route, unknownAsTrail);
       else console.warn("[route_map] Elevation: ingen punkter i", elevUrl);
     } catch (e) {
@@ -547,6 +583,7 @@
   }
 
   function initAll() {
+    initChartDefaultsOnce();
     const sections = document.querySelectorAll(".map-section[data-route-id]");
     sections.forEach((section) => initRouteSection(section));
   }
