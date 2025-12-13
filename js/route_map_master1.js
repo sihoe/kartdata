@@ -195,7 +195,7 @@ function renderSurfaceSummary(container, route, computedFromFile, unknownAsTrail
       </span>
     ` : ""}
   `;
-
+}
   function addMarkerFromDb(map, poi, popupContainer, resetFn) {
     if (!map || !poi) return;
 
