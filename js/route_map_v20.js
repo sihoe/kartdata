@@ -3,7 +3,7 @@
 
 (function () {
   const DEFAULT_ROUTE_MARKERS_URL =
-    "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/poi/route_markers_v2.json";
+    "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/routes/route_markers_v2.json";
 
   const infoTexts = {
     no: {
