@@ -1,30 +1,31 @@
 // route_map_master_v3.js
 // Krever: Leaflet + Leaflet-GPX + Chart.js lastet inn før denne.
-// Valgfritt: Leaflet.markercluster (hvis lastet inn vil clustering brukes automatisk når POI > terskel)
+// Valgfritt: Leaflet.markercluster (clustering brukes automatisk når POI > terskel)
 
 (function () {
   "use strict";
-const __jsonCache = new Map();
 
-async function fetchJsonCached(url) {
-  if (!url) throw new Error("Missing URL");
-  if (__jsonCache.has(url)) return __jsonCache.get(url);
+  // ====== JSON fetch cache (page-lifetime) ======
+  const __jsonCache = new Map();
+  async function fetchJsonCached(url) {
+    if (!url) throw new Error("Missing URL");
+    if (__jsonCache.has(url)) return __jsonCache.get(url);
 
-  const p = fetch(url, { cache: "force-cache" }).then(async (r) => {
-    if (!r.ok) throw new Error(`fetch failed ${r.status} for ${url}`);
-    return r.json();
-  });
+    const p = fetch(url, { cache: "force-cache" }).then(async (r) => {
+      if (!r.ok) throw new Error(`fetch failed ${r.status} for ${url}`);
+      return r.json();
+    });
 
-  __jsonCache.set(url, p);
-  return p;
-}
+    __jsonCache.set(url, p);
+    return p;
+  }
 
   // ====== POI-rendering policy ======
-  const POI_THRESHOLD = 30;         // clustering/lazy-add aktiveres kun hvis flere enn dette
-  const CLUSTER_ONLY_WHEN_PLUGIN = true; // hvis true: clustering krever plugin, ellers fallback til lazy-add
-  const ANCHOR_ZOOM = 11;           // ved lav zoom viser vi kun “anker-POI” (kun ved lazy-add)
+  const POI_THRESHOLD = 30; // smart behavior aktiveres kun hvis flere enn dette
+  const ANCHOR_ZOOM = 11;   // ved lav zoom viser vi kun “anker-POI” (kun ved lazy-add)
   const ANCHOR_TYPES = new Set(["attractions", "hotel", "cabin", "eat", "handlevogn", "kaffekop", "sleepover", "tent"]);
 
+  // ====== Texts ======
   const infoTexts = {
     no: {
       title: "Nøkkelinformasjon:",
@@ -72,8 +73,8 @@ async function fetchJsonCached(url) {
       unknown: "Unbekannt",
     },
   };
-  
- function getLang() {
+
+  function getLang() {
     try {
       if (typeof Weglot !== "undefined" && Weglot.getCurrentLang) return Weglot.getCurrentLang();
     } catch (_) {}
@@ -246,8 +247,6 @@ async function fetchJsonCached(url) {
     });
 
     const leafletMarker = L.marker(pos, { icon: customIcon });
-
-    // Add to map OR cluster layer
     leafletMarker.addTo(mapOrLayer);
 
     leafletMarker.on("mouseover", function () {
@@ -377,8 +376,8 @@ async function fetchJsonCached(url) {
 
     const datasets = [
       { data: asphaltPts, backgroundColor: "#37394E", borderColor: "#37394E", fill: true, pointRadius: 0, tension: 0.4, spanGaps: false },
-      { data: gravelPts, backgroundColor: "#A3886C", borderColor: "#A3886C", fill: true, pointRadius: 0, tension: 0.4, spanGaps: false },
-      { data: trailPts, backgroundColor: "#5C7936", borderColor: "#5C7936", fill: true, pointRadius: 0, tension: 0.4, spanGaps: false },
+      { data: gravelPts,  backgroundColor: "#A3886C", borderColor: "#A3886C", fill: true, pointRadius: 0, tension: 0.4, spanGaps: false },
+      { data: trailPts,   backgroundColor: "#5C7936", borderColor: "#5C7936", fill: true, pointRadius: 0, tension: 0.4, spanGaps: false },
     ];
 
     if (!unknownAsTrail) {
@@ -460,33 +459,29 @@ async function fetchJsonCached(url) {
       if (points.length) moveMarkerToIndex(points[0].index);
     });
 
-    canvas.addEventListener(
-      "touchmove",
-      function (e) {
-        if (!e.touches || !e.touches.length) return;
-        const touch = e.touches[0];
-        const simulatedEvent = new MouseEvent("mousemove", {
-          bubbles: true,
-          cancelable: true,
-          view: window,
-          clientX: touch.clientX,
-          clientY: touch.clientY,
-        });
-        canvas.dispatchEvent(simulatedEvent);
-      },
-      { passive: true }
-    );
+    canvas.addEventListener("touchmove", function (e) {
+      if (!e.touches || !e.touches.length) return;
+      const touch = e.touches[0];
+      const simulatedEvent = new MouseEvent("mousemove", {
+        bubbles: true,
+        cancelable: true,
+        view: window,
+        clientX: touch.clientX,
+        clientY: touch.clientY,
+      });
+      canvas.dispatchEvent(simulatedEvent);
+    }, { passive: true });
   }
 
+  // ====== MarkerCluster integration ======
   function hasMarkerCluster() {
-    return typeof L !== "undefined" && (typeof L.markerClusterGroup === "function" || typeof L.MarkerClusterGroup === "function");
+    return typeof L !== "undefined" && typeof L.markerClusterGroup === "function";
   }
 
   function createClusterLayer(map) {
     if (!map) return null;
     if (!hasMarkerCluster()) return null;
     try {
-      // default options are fine; keep it boring and stable
       const layer = L.markerClusterGroup();
       map.addLayer(layer);
       return layer;
@@ -508,7 +503,6 @@ async function fetchJsonCached(url) {
       const zoom = map.getZoom();
       if (zoom >= ANCHOR_ZOOM) return true;
 
-      // low zoom: show only anchors
       const t = normalizeSymbol(poi.symbolType || poi.symbol || "");
       return ANCHOR_TYPES.has(t);
     }
@@ -530,81 +524,125 @@ async function fetchJsonCached(url) {
     map.on("moveend zoomend", render);
     render();
   }
-function addPositionControl(map) {
-  let userMarker = null;
-  let userCircle = null;
-  let chosenMarker = null;
 
-  const ctrl = L.control({ position: "topleft" });
-  ctrl.onAdd = function () {
-    const wrap = L.DomUtil.create("div", "leaflet-bar svingom-pos-wrap");
+  // ====== Position control (my location + pick location) ======
+  function addPositionControl(map) {
+    if (!map) return;
 
-    const btnMe = L.DomUtil.create("button", "svingom-pos-btn", wrap);
-    btnMe.type = "button";
-    btnMe.title = "Vis min posisjon";
-    btnMe.innerHTML = "◎";
+    let userMarker = null;
+    let userCircle = null;
+    let chosenMarker = null;
 
-    const btnPick = L.DomUtil.create("button", "svingom-pos-btn", wrap);
-    btnPick.type = "button";
-    btnPick.title = "Velg posisjon (klikk i kartet)";
-    btnPick.innerHTML = "✚";
+    const ctrl = L.control({ position: "topleft" });
+    ctrl.onAdd = function () {
+      const wrap = L.DomUtil.create("div", "leaflet-bar svingom-pos-wrap");
 
-    L.DomEvent.disableClickPropagation(wrap);
+      const btnMe = L.DomUtil.create("button", "svingom-pos-btn", wrap);
+      btnMe.type = "button";
+      btnMe.title = "Vis min posisjon";
+      btnMe.innerHTML = "◎";
 
-    L.DomEvent.on(btnMe, "click", (e) => {
-      L.DomEvent.stop(e);
-      if (!navigator.geolocation) return alert("Geolocation støttes ikke i denne nettleseren.");
+      const btnPick = L.DomUtil.create("button", "svingom-pos-btn", wrap);
+      btnPick.type = "button";
+      btnPick.title = "Velg posisjon (klikk i kartet)";
+      btnPick.innerHTML = "✚";
 
-      navigator.geolocation.getCurrentPosition(
-        (pos) => {
-          const lat = pos.coords.latitude;
-          const lon = pos.coords.longitude;
-          const acc = pos.coords.accuracy || 0;
+      L.DomEvent.disableClickPropagation(wrap);
 
-          if (!userMarker) userMarker = L.marker([lat, lon]).addTo(map);
-          else userMarker.setLatLng([lat, lon]);
+      L.DomEvent.on(btnMe, "click", (e) => {
+        L.DomEvent.stop(e);
+        if (!navigator.geolocation) return alert("Geolocation støttes ikke i denne nettleseren.");
 
-          if (!userCircle) userCircle = L.circle([lat, lon], { radius: acc, weight: 1 }).addTo(map);
-          else userCircle.setLatLng([lat, lon]).setRadius(acc);
+        navigator.geolocation.getCurrentPosition(
+          (pos) => {
+            const lat = pos.coords.latitude;
+            const lon = pos.coords.longitude;
+            const acc = pos.coords.accuracy || 0;
 
-          map.setView([lat, lon], Math.max(map.getZoom(), 12));
-        },
-        (err) => alert("Klarte ikke hente posisjon: " + (err.message || err.code)),
-        { enableHighAccuracy: true, timeout: 8000, maximumAge: 30000 }
-      );
-    });
+            if (!userMarker) userMarker = L.marker([lat, lon]).addTo(map);
+            else userMarker.setLatLng([lat, lon]);
 
-    let pickMode = false;
+            if (!userCircle) userCircle = L.circle([lat, lon], { radius: acc, weight: 1 }).addTo(map);
+            else userCircle.setLatLng([lat, lon]).setRadius(acc);
 
-    L.DomEvent.on(btnPick, "click", (e) => {
-      L.DomEvent.stop(e);
-      pickMode = !pickMode;
-      btnPick.classList.toggle("active", pickMode);
-      map.getContainer().style.cursor = pickMode ? "crosshair" : "";
-    });
+            map.setView([lat, lon], Math.max(map.getZoom(), 12));
+          },
+          (err) => alert("Klarte ikke hente posisjon: " + (err.message || err.code)),
+          { enableHighAccuracy: true, timeout: 8000, maximumAge: 30000 }
+        );
+      });
 
-    map.on("click", (evt) => {
-      if (!pickMode) return;
-      const ll = evt.latlng;
-      if (!chosenMarker) chosenMarker = L.marker(ll, { draggable: true }).addTo(map);
-      else chosenMarker.setLatLng(ll);
+      let pickMode = false;
 
-      // hvis du vil: lagre valgt posisjon i popup-containeren eller i et datafelt
-      // console.log("Chosen:", ll.lat, ll.lng);
+      L.DomEvent.on(btnPick, "click", (e) => {
+        L.DomEvent.stop(e);
+        pickMode = !pickMode;
+        btnPick.classList.toggle("active", pickMode);
+        map.getContainer().style.cursor = pickMode ? "crosshair" : "";
+      });
 
-      pickMode = false;
-      btnPick.classList.remove("active");
-      map.getContainer().style.cursor = "";
-    });
+      map.on("click", (evt) => {
+        if (!pickMode) return;
+        const ll = evt.latlng;
 
-    return wrap;
-  };
+        if (!chosenMarker) chosenMarker = L.marker(ll, { draggable: true }).addTo(map);
+        else chosenMarker.setLatLng(ll);
 
-  ctrl.addTo(map);
-}
+        pickMode = false;
+        btnPick.classList.remove("active");
+        map.getContainer().style.cursor = "";
+      });
 
-addPositionControl(map);
+      return wrap;
+    };
 
+    ctrl.addTo(map);
+  }
+
+  // ====== Fullscreen control (optional) ======
+  function enterFullscreen(el) {
+    if (!el) return;
+    const fn = el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen;
+    if (fn) fn.call(el);
+  }
+  function exitFullscreen() {
+    const fn = document.exitFullscreen || document.webkitExitFullscreen || document.msExitFullscreen;
+    if (fn) fn.call(document);
+  }
+  function isFullscreen() {
+    return !!(document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement);
+  }
+
+  function addFullscreenControl(map, sectionEl) {
+    if (!map || !sectionEl) return;
+
+    const ctrl = L.control({ position: "topleft" });
+    ctrl.onAdd = function () {
+      const wrap = L.DomUtil.create("div", "leaflet-bar svingom-fs-wrap");
+
+      const btn = L.DomUtil.create("button", "svingom-fs-btn", wrap);
+      btn.type = "button";
+      btn.title = "Fullskjerm";
+      btn.innerHTML = "⤢";
+
+      L.DomEvent.disableClickPropagation(wrap);
+
+      L.DomEvent.on(btn, "click", (e) => {
+        L.DomEvent.stop(e);
+        if (isFullscreen()) exitFullscreen();
+        else enterFullscreen(sectionEl);
+
+        // gi Leaflet en tick til å resize
+        setTimeout(() => map.invalidateSize(), 250);
+      });
+
+      return wrap;
+    };
+
+    ctrl.addTo(map);
+  }
+
+  // ====== Main ======
   async function initRouteSection(section) {
     const routeId = (section.dataset.routeId || "").trim();
     const routesUrl = (section.dataset.routesUrl || "").trim();
@@ -627,12 +665,10 @@ addPositionControl(map);
       return;
     }
 
-    // routes.json
+    // routes.json (cached)
     let routesJson;
     try {
-      const r = await fetch(routesUrl, { cache: "no-store" });
-      if (!r.ok) throw new Error("routes fetch failed: " + r.status);
-      routesJson = await r.json();
+      routesJson = await fetchJsonCached(routesUrl);
     } catch (e) {
       console.error("[route_map] Klarte ikke å laste routes.json:", routesUrl, e);
       return;
@@ -649,7 +685,6 @@ addPositionControl(map);
 
     const gpxUrl = (route.gpxUrl || "").trim();
     const elevUrl = (route.elevationSurfaceUrl || route.elevationUrl || "").trim();
-
     if (!gpxUrl || !elevUrl) {
       console.error("[route_map] Route mangler gpxUrl/elevationUrl:", routeId, route);
       return;
@@ -666,8 +701,10 @@ addPositionControl(map);
       attribution: "Kartdata © OpenStreetMap",
       maxZoom: 19,
     }).addTo(map);
-    addFullscreenControl(map, section);
+
+    // Controls
     addPositionControl(map);
+    addFullscreenControl(map, section); // hvis du ikke vil ha fullscreen nå: kommentér ut denne linjen
 
     const movingMarker = L.circleMarker([centerLat, centerLng], {
       radius: 6,
@@ -678,42 +715,29 @@ addPositionControl(map);
     }).addTo(map);
 
     renderStats(popupContainer, route);
-    function resetPopup() {
-      renderStats(popupContainer, route);
-    }
+    function resetPopup() { renderStats(popupContainer, route); }
 
-    // Elevation
+    // Elevation (cached)
     try {
-      const elevResp = await fetch(elevUrl, { cache: "no-store" });
-      if (!elevResp.ok) throw new Error("elevation fetch failed: " + elevResp.status);
-      const elevJson = await elevResp.json();
+      const elevJson = await fetchJsonCached(elevUrl);
       const pts = Array.isArray(elevJson.points) ? elevJson.points : elevJson;
       const cleaned = (pts || []).filter((p) => p && p.elevation != null);
-
       if (cleaned.length) buildChart(chartCanvas, cleaned, movingMarker, surfaceSummaryEl, route, unknownAsTrail);
       else console.warn("[route_map] Elevation: ingen punkter i", elevUrl);
     } catch (e) {
       console.error("[route_map] Elevation-feil:", routeId, elevUrl, e);
     }
 
-    // POI + route_markers
+    // POI + route_markers (cached)
     try {
-      const [poisResp, routeMarkersResp] = await Promise.all([
-        fetch(poisUrl, { cache: "no-store" }),
-        fetch(routeMarkersUrl, { cache: "no-store" }),
+      const [poisJson, routeMarkersJson] = await Promise.all([
+        fetchJsonCached(poisUrl),
+        fetchJsonCached(routeMarkersUrl),
       ]);
-
-      if (!poisResp.ok) throw new Error("pois fetch failed: " + poisResp.status);
-      if (!routeMarkersResp.ok) throw new Error("route_markers fetch failed: " + routeMarkersResp.status);
-
-      const poisJson = await poisResp.json();
-      const routeMarkersJson = await routeMarkersResp.json();
 
       const allPois = Array.isArray(poisJson) ? poisJson : Object.values(poisJson || {});
       const poisById = new Map();
-      allPois.forEach((p) => {
-        if (p && p.id) poisById.set(p.id, p);
-      });
+      allPois.forEach((p) => { if (p && p.id) poisById.set(p.id, p); });
 
       const ids = routeMarkersJson[routeId] || [];
       const poisForRoute = ids
@@ -724,22 +748,15 @@ addPositionControl(map);
         })
         .filter(Boolean);
 
-      // === POLICY: only activate “smart” behavior above threshold ===
       if (poisForRoute.length <= POI_THRESHOLD) {
         // Old behavior: add everything
         poisForRoute.forEach((p) => addMarkerFromDb(map, p, popupContainer, resetPopup));
       } else {
         // Above threshold: prefer clustering if plugin exists, else fallback to lazy bounds+zoom
         const clusterLayer = createClusterLayer(map);
-
         if (clusterLayer) {
-          // Clustering: add all markers into cluster layer (clean UX on low zoom)
           poisForRoute.forEach((p) => addMarkerFromDb(clusterLayer, p, popupContainer, resetPopup));
         } else {
-          if (!CLUSTER_ONLY_WHEN_PLUGIN) {
-            // if you ever want non-plugin clustering (you don’t), you’d implement it here
-          }
-          // Fallback: lazy add based on bounds + zoom + anchors
           enableLazyPoiRendering(map, poisForRoute, popupContainer, resetPopup);
         }
       }
