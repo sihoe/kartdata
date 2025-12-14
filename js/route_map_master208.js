@@ -618,93 +618,141 @@
   }
 
   // ====== Position control (my location + pick location) ======
-  function addPositionControl(map, popupContainer, getRouteIndex) {
-    if (!map) return;
+  // ====== Position control (my location + pick location + nearest-to-route) ======
+function addPositionControl(map, popupContainer, routeElevPoints) {
+  if (!map) return;
 
-    let userMarker = null;
-    let userCircle = null;
-    let chosenMarker = null;
-    let pickMode = false;
+  const routePts = Array.isArray(routeElevPoints) ? routeElevPoints : [];
+  const hasRoute = routePts.length > 5;
 
-    const ctrl = L.control({ position: "topleft" });
-    ctrl.onAdd = function () {
-      const wrap = L.DomUtil.create("div", "leaflet-bar svingom-pos-wrap");
+  let userMarker = null;
+  let userCircle = null;
+  let chosenMarker = null;
+  let pickMode = false;
 
-      const btnMe = L.DomUtil.create("button", "svingom-pos-btn", wrap);
-      btnMe.type = "button";
-      btnMe.title = "Vis min posisjon";
-      btnMe.innerHTML = "◎";
-
-      const btnPick = L.DomUtil.create("button", "svingom-pos-btn", wrap);
-      btnPick.type = "button";
-      btnPick.title = "Velg posisjon (klikk i kartet)";
-      btnPick.innerHTML = "✚";
-
-      L.DomEvent.disableClickPropagation(wrap);
-
-      function updateForLatLng(lat, lon) {
-        const routeIndex = typeof getRouteIndex === "function" ? getRouteIndex() : null;
-        if (!routeIndex) return;
-        renderPositionResult(popupContainer, routeIndex, lat, lon);
-      }
-
-      L.DomEvent.on(btnMe, "click", (e) => {
-        L.DomEvent.stop(e);
-        if (!navigator.geolocation) return alert("Geolocation støttes ikke i denne nettleseren.");
-
-        navigator.geolocation.getCurrentPosition(
-          (pos) => {
-            const lat = pos.coords.latitude;
-            const lon = pos.coords.longitude;
-            const acc = pos.coords.accuracy || 0;
-
-            if (!userMarker) userMarker = L.marker([lat, lon]).addTo(map);
-            else userMarker.setLatLng([lat, lon]);
-
-            if (!userCircle) userCircle = L.circle([lat, lon], { radius: acc, weight: 1 }).addTo(map);
-            else userCircle.setLatLng([lat, lon]).setRadius(acc);
-
-            map.setView([lat, lon], Math.max(map.getZoom(), 12));
-            updateForLatLng(lat, lon);
-          },
-          (err) => alert("Klarte ikke hente posisjon: " + (err.message || err.code)),
-          { enableHighAccuracy: true, timeout: 8000, maximumAge: 30000 }
-        );
-      });
-
-      L.DomEvent.on(btnPick, "click", (e) => {
-        L.DomEvent.stop(e);
-        pickMode = !pickMode;
-        btnPick.classList.toggle("active", pickMode);
-        map.getContainer().style.cursor = pickMode ? "crosshair" : "";
-      });
-
-      map.on("click", (evt) => {
-        if (!pickMode) return;
-        const ll = evt.latlng;
-
-        if (!chosenMarker) {
-          chosenMarker = L.marker(ll, { draggable: true }).addTo(map);
-          chosenMarker.on("dragend", () => {
-            const p = chosenMarker.getLatLng();
-            updateForLatLng(p.lat, p.lng);
-          });
-        } else {
-          chosenMarker.setLatLng(ll);
-        }
-
-        updateForLatLng(ll.lat, ll.lng);
-
-        pickMode = false;
-        btnPick.classList.remove("active");
-        map.getContainer().style.cursor = "";
-      });
-
-      return wrap;
-    };
-
-    ctrl.addTo(map);
+  function km(n) {
+    if (!Number.isFinite(n)) return "–";
+    return (Math.round(n * 10) / 10).toFixed(1);
   }
+
+  function findNearestIdx(latlng) {
+    let best = { idx: -1, dM: Infinity };
+    for (let i = 0; i < routePts.length; i++) {
+      const p = routePts[i];
+      if (!p || !Number.isFinite(Number(p.lat)) || !Number.isFinite(Number(p.lon))) continue;
+      const dM = map.distance(latlng, L.latLng(Number(p.lat), Number(p.lon)));
+      if (dM < best.dM) best = { idx: i, dM };
+    }
+    return best;
+  }
+
+  function updateNearestText(latlng) {
+    if (!popupContainer || !hasRoute) return;
+
+    const totalKm = Number(routePts[routePts.length - 1]?.distance) || 0;
+    const nearest = findNearestIdx(latlng);
+    if (nearest.idx < 0) return;
+
+    const p = routePts[nearest.idx];
+    const fromStart = Number(p.distance) || 0;
+    const toEnd = Math.max(0, totalKm - fromStart);
+    const offRouteKm = (nearest.dM || 0) / 1000;
+
+    const line = `Du er ca. <strong>${km(offRouteKm)}</strong> km fra nærmeste punkt på ruta og <strong>${km(fromStart)}</strong> km fra start og <strong>${km(toEnd)}</strong> km fra mål.`;
+
+    let el = popupContainer.querySelector(".nearest-route-line");
+    if (!el) {
+      const statsBox = popupContainer.querySelector(".stats-box");
+      if (!statsBox) return;
+
+      el = document.createElement("p");
+      el.className = "nearest-route-line";
+      el.style.marginTop = "14px";
+      el.style.fontStyle = "italic";
+      statsBox.appendChild(el);
+    }
+    el.innerHTML = line;
+  }
+
+  function setPickMode(on) {
+    pickMode = !!on;
+    map.getContainer().style.cursor = pickMode ? "crosshair" : "";
+  }
+
+  const ctrl = L.control({ position: "topleft" });
+  ctrl.onAdd = function () {
+    const wrap = L.DomUtil.create("div", "leaflet-bar svingom-pos-wrap");
+
+    const btnMe = L.DomUtil.create("button", "svingom-pos-btn", wrap);
+    btnMe.type = "button";
+    btnMe.title = "Vis min posisjon";
+    btnMe.innerHTML = "◎";
+
+    const btnPick = L.DomUtil.create("button", "svingom-pos-btn", wrap);
+    btnPick.type = "button";
+    btnPick.title = "Velg posisjon (klikk i kartet)";
+    btnPick.innerHTML = "✚";
+
+    L.DomEvent.disableClickPropagation(wrap);
+
+    L.DomEvent.on(btnMe, "click", (e) => {
+      L.DomEvent.stop(e);
+      if (!navigator.geolocation) return alert("Geolocation støttes ikke i denne nettleseren.");
+
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          const lat = pos.coords.latitude;
+          const lon = pos.coords.longitude;
+          const acc = pos.coords.accuracy || 0;
+          const ll = L.latLng(lat, lon);
+
+          if (!userMarker) userMarker = L.marker(ll).addTo(map);
+          else userMarker.setLatLng(ll);
+
+          if (!userCircle) userCircle = L.circle(ll, { radius: acc, weight: 1 }).addTo(map);
+          else userCircle.setLatLng(ll).setRadius(acc);
+
+          map.setView(ll, Math.max(map.getZoom(), 12));
+          updateNearestText(ll);
+        },
+        (err) => alert("Klarte ikke hente posisjon: " + (err.message || err.code)),
+        { enableHighAccuracy: true, timeout: 8000, maximumAge: 30000 }
+      );
+    });
+
+    L.DomEvent.on(btnPick, "click", (e) => {
+      L.DomEvent.stop(e);
+      const next = !pickMode;
+      setPickMode(next);
+      btnPick.classList.toggle("active", next);
+    });
+
+    return wrap;
+  };
+
+  ctrl.addTo(map);
+
+  map.on("click", (evt) => {
+    if (!pickMode) return;
+
+    const ll = evt.latlng;
+
+    if (!chosenMarker) {
+      chosenMarker = L.marker(ll, { draggable: true }).addTo(map);
+
+      chosenMarker.on("drag", () => updateNearestText(chosenMarker.getLatLng()));
+      chosenMarker.on("dragend", () => updateNearestText(chosenMarker.getLatLng()));
+    } else {
+      chosenMarker.setLatLng(ll);
+    }
+
+    updateNearestText(ll);
+
+    setPickMode(false);
+    const active = map.getContainer().querySelector(".svingom-pos-btn.active");
+    if (active) active.classList.remove("active");
+  });
+}
 
   // ====== Fullscreen control ======
   function enterFullscreen(el) {
