@@ -1,11 +1,13 @@
-// route_map_master_v3.js
+// route_map_master205.js
 // Krever: Leaflet + Leaflet-GPX + Chart.js lastet inn før denne.
 // Valgfritt: Leaflet.markercluster (clustering brukes automatisk når POI > terskel)
 
-console.log("[route_map] script loaded");
-
 (function () {
   "use strict";
+
+  // ====== HARD GUARD: Squarespace kan laste samme JS flere ganger ======
+  if (window.__SVINGOM_ROUTE_MAP_MASTER_205__) return;
+  window.__SVINGOM_ROUTE_MAP_MASTER_205__ = true;
 
   // ====== JSON fetch cache (page-lifetime) ======
   const __jsonCache = new Map();
@@ -22,10 +24,19 @@ console.log("[route_map] script loaded");
     return p;
   }
 
-  // ====== POI-rendering policy ======
+  // ====== POI policy ======
   const POI_THRESHOLD = 30; // smart behavior aktiveres kun hvis flere enn dette
-  const ANCHOR_ZOOM = 11;   // ved lav zoom viser vi kun “anker-POI” (kun ved lazy-add)
-  const ANCHOR_TYPES = new Set(["attractions", "hotel", "cabin", "eat", "handlevogn", "kaffekop", "sleepover", "tent"]);
+  const ANCHOR_ZOOM = 11;
+  const ANCHOR_TYPES = new Set([
+    "attractions",
+    "hotel",
+    "cabin",
+    "eat",
+    "handlevogn",
+    "kaffekop",
+    "sleepover",
+    "tent",
+  ]);
 
   // ====== Texts ======
   const infoTexts = {
@@ -43,6 +54,11 @@ console.log("[route_map] script loaded");
       gravel: "Grus",
       trail: "Sti",
       unknown: "Ukjent",
+      geoUnsupported: "Geolocation støttes ikke i denne nettleseren.",
+      geoFail: "Klarte ikke hente posisjon:",
+      fs: "Fullskjerm",
+      me: "Vis min posisjon",
+      pick: "Velg posisjon (klikk i kartet)",
     },
     en: {
       title: "Key info:",
@@ -58,6 +74,11 @@ console.log("[route_map] script loaded");
       gravel: "Gravel",
       trail: "Trail",
       unknown: "Unknown",
+      geoUnsupported: "Geolocation is not supported in this browser.",
+      geoFail: "Could not get position:",
+      fs: "Fullscreen",
+      me: "Show my location",
+      pick: "Pick a location (click map)",
     },
     de: {
       title: "Schlüsselinfo:",
@@ -73,6 +94,11 @@ console.log("[route_map] script loaded");
       gravel: "Schotter",
       trail: "Pfad",
       unknown: "Unbekannt",
+      geoUnsupported: "Geolokalisierung wird in diesem Browser nicht unterstützt.",
+      geoFail: "Position konnte nicht abgerufen werden:",
+      fs: "Vollbild",
+      me: "Meine Position",
+      pick: "Position wählen (Klick auf Karte)",
     },
   };
 
@@ -197,28 +223,14 @@ console.log("[route_map] script loaded");
 
     container.innerHTML = `
       <span class="surface-label">${t.surfaceLabel}</span>
-
-      <span class="surface-legend-item">
-        <span class="surface-swatch asphalt"></span>
-        ${t.asphalt} ${a.toFixed(1)} km (${pct(a)} %)
-      </span>
-
-      <span class="surface-legend-item">
-        <span class="surface-swatch gravel"></span>
-        ${t.gravel} ${g.toFixed(1)} km (${pct(g)} %)
-      </span>
-
-      <span class="surface-legend-item">
-        <span class="surface-swatch trail"></span>
-        ${t.trail} ${tr.toFixed(1)} km (${pct(tr)} %)
-      </span>
-
-      ${showUnknown ? `
-        <span class="surface-legend-item">
-          <span class="surface-swatch unknown"></span>
-          ${t.unknown} ${u.toFixed(1)} km (${pct(u)} %)
-        </span>
-      ` : ""}
+      <span class="surface-legend-item"><span class="surface-swatch asphalt"></span>${t.asphalt} ${a.toFixed(1)} km (${pct(a)} %)</span>
+      <span class="surface-legend-item"><span class="surface-swatch gravel"></span>${t.gravel} ${g.toFixed(1)} km (${pct(g)} %)</span>
+      <span class="surface-legend-item"><span class="surface-swatch trail"></span>${t.trail} ${tr.toFixed(1)} km (${pct(tr)} %)</span>
+      ${
+        showUnknown
+          ? `<span class="surface-legend-item"><span class="surface-swatch unknown"></span>${t.unknown} ${u.toFixed(1)} km (${pct(u)} %)</span>`
+          : ""
+      }
     `;
   }
 
@@ -232,7 +244,6 @@ console.log("[route_map] script loaded");
 
   function addMarkerFromDb(mapOrLayer, poi, popupContainer, resetFn) {
     if (!mapOrLayer || !poi) return null;
-
     const pos = getPoiPos(poi);
     if (!pos) return null;
 
@@ -337,8 +348,7 @@ console.log("[route_map] script loaded");
     for (let i = 1; i < elevations.length; i++) {
       const delta = elevations[i] - elevations[i - 1];
       const distKm = distances[i] - distances[i - 1];
-      const slope = distKm > 0 ? (delta / (distKm * 1000)) * 100 : 0;
-      slopes.push(slope);
+      slopes.push(distKm > 0 ? (delta / (distKm * 1000)) * 100 : 0);
     }
 
     const asphaltPts = [];
@@ -414,33 +424,14 @@ console.log("[route_map] script loaded");
             displayColors: false,
             filter: (item) => item.datasetIndex === lineDatasetIndex,
             callbacks: {
-              title: (items) => {
-                const x = items?.[0]?.parsed?.x ?? 0;
-                return `${Number(x).toFixed(1)} km`;
-              },
-              label: (c) => {
-                const idx = c.dataIndex;
-                const elev = elevations[idx];
-                const slope = slopes[idx] || 0;
-                return `${elev.toFixed(0)} moh / ${slope.toFixed(1)}%`;
-              },
+              title: (items) => `${Number(items?.[0]?.parsed?.x ?? 0).toFixed(1)} km`,
+              label: (c) => `${elevations[c.dataIndex].toFixed(0)} moh / ${(slopes[c.dataIndex] || 0).toFixed(1)}%`,
             },
           },
         },
         scales: {
-          x: {
-            type: "linear",
-            min: 0,
-            max: totalKm,
-            ticks: { color: "#37394E", callback: (v) => `${Number(v).toFixed(0)} km` },
-            grid: { display: false },
-          },
-          y: {
-            min: 0,
-            max: Math.ceil(highest / 50) * 50,
-            ticks: { stepSize: 50, color: "#37394E" },
-            grid: { display: false },
-          },
+          x: { type: "linear", min: 0, max: totalKm, ticks: { color: "#37394E", callback: (v) => `${Number(v).toFixed(0)} km` }, grid: { display: false } },
+          y: { min: 0, max: Math.ceil(highest / 50) * 50, ticks: { stepSize: 50, color: "#37394E" }, grid: { display: false } },
         },
       },
     });
@@ -464,14 +455,9 @@ console.log("[route_map] script loaded");
     canvas.addEventListener("touchmove", function (e) {
       if (!e.touches || !e.touches.length) return;
       const touch = e.touches[0];
-      const simulatedEvent = new MouseEvent("mousemove", {
-        bubbles: true,
-        cancelable: true,
-        view: window,
-        clientX: touch.clientX,
-        clientY: touch.clientY,
-      });
-      canvas.dispatchEvent(simulatedEvent);
+      canvas.dispatchEvent(new MouseEvent("mousemove", {
+        bubbles: true, cancelable: true, view: window, clientX: touch.clientX, clientY: touch.clientY
+      }));
     }, { passive: true });
   }
 
@@ -481,8 +467,7 @@ console.log("[route_map] script loaded");
   }
 
   function createClusterLayer(map) {
-    if (!map) return null;
-    if (!hasMarkerCluster()) return null;
+    if (!map || !hasMarkerCluster()) return null;
     try {
       const layer = L.markerClusterGroup();
       map.addLayer(layer);
@@ -510,7 +495,7 @@ console.log("[route_map] script loaded");
     }
 
     function key(poi) {
-      return (poi && poi.id) ? String(poi.id) : JSON.stringify(getPoiPos(poi) || []);
+      return poi && poi.id ? String(poi.id) : JSON.stringify(getPoiPos(poi) || []);
     }
 
     function render() {
@@ -527,13 +512,17 @@ console.log("[route_map] script loaded");
     render();
   }
 
-  // ====== Position control (my location + pick location) ======
-  function addPositionControl(map) {
-    if (!map) return;
+  // ====== Position control ======
+  function addPositionControl(map, sectionEl) {
+    if (!map || !sectionEl) return;
+
+    const lang = getLang();
+    const t = infoTexts[lang] || infoTexts.no;
 
     let userMarker = null;
     let userCircle = null;
     let chosenMarker = null;
+    let pickMode = false;
 
     const ctrl = L.control({ position: "topleft" });
     ctrl.onAdd = function () {
@@ -541,19 +530,19 @@ console.log("[route_map] script loaded");
 
       const btnMe = L.DomUtil.create("button", "svingom-pos-btn", wrap);
       btnMe.type = "button";
-      btnMe.title = "Vis min posisjon";
+      btnMe.title = t.me;
       btnMe.innerHTML = "◎";
 
       const btnPick = L.DomUtil.create("button", "svingom-pos-btn", wrap);
       btnPick.type = "button";
-      btnPick.title = "Velg posisjon (klikk i kartet)";
+      btnPick.title = t.pick;
       btnPick.innerHTML = "✚";
 
       L.DomEvent.disableClickPropagation(wrap);
 
       L.DomEvent.on(btnMe, "click", (e) => {
         L.DomEvent.stop(e);
-        if (!navigator.geolocation) return alert("Geolocation støttes ikke i denne nettleseren.");
+        if (!navigator.geolocation) return alert(t.geoUnsupported);
 
         navigator.geolocation.getCurrentPosition(
           (pos) => {
@@ -569,12 +558,10 @@ console.log("[route_map] script loaded");
 
             map.setView([lat, lon], Math.max(map.getZoom(), 12));
           },
-          (err) => alert("Klarte ikke hente posisjon: " + (err.message || err.code)),
+          (err) => alert(`${t.geoFail} ${err.message || err.code}`),
           { enableHighAccuracy: true, timeout: 8000, maximumAge: 30000 }
         );
       });
-
-      let pickMode = false;
 
       L.DomEvent.on(btnPick, "click", (e) => {
         L.DomEvent.stop(e);
@@ -593,6 +580,10 @@ console.log("[route_map] script loaded");
         pickMode = false;
         btnPick.classList.remove("active");
         map.getContainer().style.cursor = "";
+
+        // Hvis du vil bruke valgt posisjon videre: legg den på sectionEl.dataset
+        sectionEl.dataset.userPickLat = String(ll.lat);
+        sectionEl.dataset.userPickLng = String(ll.lng);
       });
 
       return wrap;
@@ -601,10 +592,9 @@ console.log("[route_map] script loaded");
     ctrl.addTo(map);
   }
 
-  // ====== Fullscreen control (optional) ======
+  // ====== Fullscreen control ======
   function enterFullscreen(el) {
-    if (!el) return;
-    const fn = el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen;
+    const fn = el && (el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen);
     if (fn) fn.call(el);
   }
   function exitFullscreen() {
@@ -618,13 +608,16 @@ console.log("[route_map] script loaded");
   function addFullscreenControl(map, sectionEl) {
     if (!map || !sectionEl) return;
 
+    const lang = getLang();
+    const t = infoTexts[lang] || infoTexts.no;
+
     const ctrl = L.control({ position: "topleft" });
     ctrl.onAdd = function () {
       const wrap = L.DomUtil.create("div", "leaflet-bar svingom-fs-wrap");
 
       const btn = L.DomUtil.create("button", "svingom-fs-btn", wrap);
       btn.type = "button";
-      btn.title = "Fullskjerm";
+      btn.title = t.fs;
       btn.innerHTML = "⤢";
 
       L.DomEvent.disableClickPropagation(wrap);
@@ -634,7 +627,6 @@ console.log("[route_map] script loaded");
         if (isFullscreen()) exitFullscreen();
         else enterFullscreen(sectionEl);
 
-        // gi Leaflet en tick til å resize
         setTimeout(() => map.invalidateSize(), 250);
       });
 
@@ -653,7 +645,7 @@ console.log("[route_map] script loaded");
     const unknownAsTrail = String(section.dataset.unknownAsTrail || "").trim() === "1";
 
     if (!routeId || !routesUrl || !poisUrl || !routeMarkersUrl) {
-      console.error("[route_map] Mangler data-attributter:", { routeId, routesUrl, poisUrl, routeMarkersUrl });
+      console.error("[route_map] Missing data attributes:", { routeId, routesUrl, poisUrl, routeMarkersUrl });
       return;
     }
 
@@ -663,7 +655,7 @@ console.log("[route_map] script loaded");
     const surfaceSummaryEl = section.querySelector(".surface-summary");
 
     if (!mapDiv || !popupContainer || !chartCanvas) {
-      console.error("[route_map] Mangler nødvendige DOM-elementer for", routeId);
+      console.error("[route_map] Missing DOM for", routeId);
       return;
     }
 
@@ -672,7 +664,7 @@ console.log("[route_map] script loaded");
     try {
       routesJson = await fetchJsonCached(routesUrl);
     } catch (e) {
-      console.error("[route_map] Klarte ikke å laste routes.json:", routesUrl, e);
+      console.error("[route_map] routes.json failed:", routesUrl, e);
       return;
     }
 
@@ -681,18 +673,18 @@ console.log("[route_map] script loaded");
       : (routesJson && routesJson[routeId]) || null;
 
     if (!route) {
-      console.error("[route_map] Fant ikke routeId i routes.json:", routeId);
+      console.error("[route_map] routeId not found in routes.json:", routeId);
       return;
     }
 
     const gpxUrl = (route.gpxUrl || "").trim();
     const elevUrl = (route.elevationSurfaceUrl || route.elevationUrl || "").trim();
     if (!gpxUrl || !elevUrl) {
-      console.error("[route_map] Route mangler gpxUrl/elevationUrl:", routeId, route);
+      console.error("[route_map] Missing gpxUrl/elevationUrl for:", routeId, route);
       return;
     }
 
-    // Kart init
+    // Map init
     const centerLat = parseFloat(section.dataset.centerLat || route.centerLat || "59.83467");
     const centerLng = parseFloat(section.dataset.centerLng || route.centerLng || "9.57846");
     const zoom = parseInt(section.dataset.zoom || route.zoom || "11", 10);
@@ -704,9 +696,12 @@ console.log("[route_map] script loaded");
       maxZoom: 19,
     }).addTo(map);
 
-    // Controls
-    addPositionControl(map);
-    addFullscreenControl(map, section); // hvis du ikke vil ha fullscreen nå: kommentér ut denne linjen
+    // Controls (toggle via data attributes)
+    const enablePos = String(section.dataset.enablePosition || "1") === "1";
+    const enableFs = String(section.dataset.enableFullscreen || "0") === "1";
+
+    if (enablePos) addPositionControl(map, section);
+    if (enableFs) addFullscreenControl(map, section);
 
     const movingMarker = L.circleMarker([centerLat, centerLng], {
       radius: 6,
@@ -725,12 +720,12 @@ console.log("[route_map] script loaded");
       const pts = Array.isArray(elevJson.points) ? elevJson.points : elevJson;
       const cleaned = (pts || []).filter((p) => p && p.elevation != null);
       if (cleaned.length) buildChart(chartCanvas, cleaned, movingMarker, surfaceSummaryEl, route, unknownAsTrail);
-      else console.warn("[route_map] Elevation: ingen punkter i", elevUrl);
+      else console.warn("[route_map] Elevation: no points in", elevUrl);
     } catch (e) {
-      console.error("[route_map] Elevation-feil:", routeId, elevUrl, e);
+      console.error("[route_map] Elevation failed:", routeId, elevUrl, e);
     }
 
-    // POI + route_markers (cached)
+    // POIs (cached)
     try {
       const [poisJson, routeMarkersJson] = await Promise.all([
         fetchJsonCached(poisUrl),
@@ -742,19 +737,11 @@ console.log("[route_map] script loaded");
       allPois.forEach((p) => { if (p && p.id) poisById.set(p.id, p); });
 
       const ids = routeMarkersJson[routeId] || [];
-      const poisForRoute = ids
-        .map((id) => {
-          const p = poisById.get(id);
-          if (!p) console.warn("[route_map] Fant ikke POI id:", id, "for route:", routeId);
-          return p;
-        })
-        .filter(Boolean);
+      const poisForRoute = ids.map((id) => poisById.get(id)).filter(Boolean);
 
       if (poisForRoute.length <= POI_THRESHOLD) {
-        // Old behavior: add everything
         poisForRoute.forEach((p) => addMarkerFromDb(map, p, popupContainer, resetPopup));
       } else {
-        // Above threshold: prefer clustering if plugin exists, else fallback to lazy bounds+zoom
         const clusterLayer = createClusterLayer(map);
         if (clusterLayer) {
           poisForRoute.forEach((p) => addMarkerFromDb(clusterLayer, p, popupContainer, resetPopup));
@@ -763,34 +750,30 @@ console.log("[route_map] script loaded");
         }
       }
     } catch (e) {
-      console.error("[route_map] POI-feil:", routeId, e);
+      console.error("[route_map] POIs failed:", routeId, e);
     }
 
-    // GPX (kun track-linje; vi setter bort start/end + wpt-ikoner)
+    // GPX
     try {
       new L.GPX(gpxUrl, {
         async: true,
         polyline_options: { color: "#37394E", weight: 5, opacity: 0.9 },
-        marker_options: {
-          startIconUrl: null,
-          endIconUrl: null,
-          shadowUrl: null,
-          wptIconUrls: {}, // ikke tegn waypoints
-        },
+        marker_options: { startIconUrl: null, endIconUrl: null, shadowUrl: null, wptIconUrls: {} },
       })
         .on("loaded", function (e) {
           map.fitBounds(e.target.getBounds(), { padding: [50, 50] });
         })
         .addTo(map);
     } catch (e) {
-      console.error("[route_map] GPX-feil:", routeId, gpxUrl, e);
+      console.error("[route_map] GPX failed:", routeId, gpxUrl, e);
     }
   }
 
   function initAll() {
-console.log("[route_map] initAll sections:", document.querySelectorAll(".map-section[data-route-id]").length); 
-initChartDefaultsOnce();
+    initChartDefaultsOnce();
     const sections = document.querySelectorAll(".map-section[data-route-id]");
+    // hvis dette er 0 => HTML/DOM feil, ikke JS
+    console.log("[route_map] sections found:", sections.length);
     sections.forEach((section) => initRouteSection(section));
   }
 
