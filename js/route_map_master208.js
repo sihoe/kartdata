@@ -877,8 +877,8 @@ function addPositionControl(map, popupContainer, routeElevPoints) {
       console.error("[route_map] Elevation-feil:", routeId, elevUrl, e);
     }
 
-    addPositionControl(map, popupContainer, routeIndex);
-    addFullscreenControl(map, section);
+   addPositionControl(map, popupContainer, () => routeIndex, revealPoisNear);
+   addFullscreenControl(map, section);
 
     try {
       const [poisJson, routeMarkersJson] = await Promise.all([
@@ -892,6 +892,25 @@ function addPositionControl(map, popupContainer, routeElevPoints) {
 
       const ids = routeMarkersJson[routeId] || [];
       const poisForRoute = ids.map((id) => poisById.get(id)).filter(Boolean);
+// --- "Boost": vis alle POI nær valgt posisjon (uansett zoom/ankertyper) ---
+const boosted = new Set(); // husker hvilke vi allerede har lagt til
+
+function revealPoisNear(latlng, radiusMeters = 3000) {
+  if (!latlng) return;
+  const center = L.latLng(latlng.lat, latlng.lng);
+
+  for (const p of poisForRoute) {
+    const pos = getPoiPos(p);
+    if (!pos) continue;
+    const ll = L.latLng(pos[0], pos[1]);
+    if (center.distanceTo(ll) <= radiusMeters) {
+      const k = (p && p.id) ? String(p.id) : JSON.stringify(pos);
+      if (boosted.has(k)) continue;
+      boosted.add(k);
+      addMarkerFromDb(map, p, popupContainer, resetPopup);
+    }
+  }
+}
 
       if (poisForRoute.length <= POI_THRESHOLD) {
         poisForRoute.forEach((p) => addMarkerFromDb(map, p, popupContainer, resetPopup));
