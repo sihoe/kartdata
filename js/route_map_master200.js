@@ -1,8 +1,15 @@
-// route_map_master_v2.js
+// route_map_master_v3.js
 // Krever: Leaflet + Leaflet-GPX + Chart.js lastet inn før denne.
+// Valgfritt: Leaflet.markercluster (hvis lastet inn vil clustering brukes automatisk når POI > terskel)
 
 (function () {
   "use strict";
+
+  // ====== POI-rendering policy ======
+  const POI_THRESHOLD = 30;         // clustering/lazy-add aktiveres kun hvis flere enn dette
+  const CLUSTER_ONLY_WHEN_PLUGIN = true; // hvis true: clustering krever plugin, ellers fallback til lazy-add
+  const ANCHOR_ZOOM = 11;           // ved lav zoom viser vi kun “anker-POI” (kun ved lazy-add)
+  const ANCHOR_TYPES = new Set(["attractions", "hotel", "cabin", "eat", "handlevogn", "kaffekop", "sleepover", "tent"]);
 
   const infoTexts = {
     no: {
@@ -198,15 +205,19 @@
     `;
   }
 
-  function addMarkerFromDb(map, poi, popupContainer, resetFn) {
-    if (!map || !poi) return;
-
-    const pos =
+  function getPoiPos(poi) {
+    return (
       poi.latlng ||
       (poi.lat && poi.lon ? [poi.lat, poi.lon] : null) ||
-      (poi.lat && poi.lng ? [poi.lat, poi.lng] : null);
+      (poi.lat && poi.lng ? [poi.lat, poi.lng] : null)
+    );
+  }
 
-    if (!pos) return;
+  function addMarkerFromDb(mapOrLayer, poi, popupContainer, resetFn) {
+    if (!mapOrLayer || !poi) return null;
+
+    const pos = getPoiPos(poi);
+    if (!pos) return null;
 
     const sym = poi.symbolType || poi.symbol || null;
     const iconUrl = symbolUrl(sym);
@@ -220,7 +231,10 @@
       iconAnchor: [15, 30],
     });
 
-    const leafletMarker = L.marker(pos, { icon: customIcon }).addTo(map);
+    const leafletMarker = L.marker(pos, { icon: customIcon });
+
+    // Add to map OR cluster layer
+    leafletMarker.addTo(mapOrLayer);
 
     leafletMarker.on("mouseover", function () {
       if (!popupContainer) return;
@@ -256,6 +270,8 @@
         });
       }
     });
+
+    return leafletMarker;
   }
 
   function normalizeSurfaceCategory(raw, unknownAsTrail) {
@@ -274,175 +290,232 @@
       }
     } catch (_) {}
   }
-function buildChart(canvas, elevPoints, movingMarker, surfaceSummaryEl, route, unknownAsTrail) {
-  if (!canvas || !Array.isArray(elevPoints) || elevPoints.length === 0) return;
-  if (typeof Chart === "undefined") return;
 
-  initChartDefaultsOnce();
-  destroyExistingChart(canvas);
+  function buildChart(canvas, elevPoints, movingMarker, surfaceSummaryEl, route, unknownAsTrail) {
+    if (!canvas || !Array.isArray(elevPoints) || elevPoints.length === 0) return;
+    if (typeof Chart === "undefined") return;
 
-  const distances = [];
-  const elevations = [];
-  const lats = [];
-  const lons = [];
-  const cats = [];
+    initChartDefaultsOnce();
+    destroyExistingChart(canvas);
 
-  for (let i = 0; i < elevPoints.length; i++) {
-    const p = elevPoints[i] || {};
-    const d = safeNum(p.distance, i > 0 ? distances[i - 1] : 0);
-    const e = safeNum(p.elevation, i > 0 ? elevations[i - 1] : 0);
+    const distances = [];
+    const elevations = [];
+    const lats = [];
+    const lons = [];
+    const cats = [];
 
-    distances.push(d);
-    elevations.push(e);
-    lats.push(p.lat);
-    lons.push(p.lon);
+    for (let i = 0; i < elevPoints.length; i++) {
+      const p = elevPoints[i] || {};
+      const d = safeNum(p.distance, i > 0 ? distances[i - 1] : 0);
+      const e = safeNum(p.elevation, i > 0 ? elevations[i - 1] : 0);
 
-    const raw = p.surfaceCategory ?? p.surface ?? p.category ?? "unknown";
-    cats.push(normalizeSurfaceCategory(raw, unknownAsTrail));
-  }
+      distances.push(d);
+      elevations.push(e);
+      lats.push(p.lat);
+      lons.push(p.lon);
 
-  const slopes = [0];
-  for (let i = 1; i < elevations.length; i++) {
-    const delta = elevations[i] - elevations[i - 1];
-    const distKm = distances[i] - distances[i - 1];
-    const slope = distKm > 0 ? (delta / (distKm * 1000)) * 100 : 0;
-    slopes.push(slope);
-  }
-
-  // Viktig: ALLE punkter må ha x. Bruk y:null for “av”
-  const asphaltPts = [];
-  const gravelPts  = [];
-  const trailPts   = [];
-  const unknownPts = [];
-  const linePts    = [];
-
-  let asphaltKm = 0, gravelKm = 0, trailKm = 0, unknownKm = 0;
-
-  for (let i = 0; i < elevations.length; i++) {
-    const x = distances[i];
-    const y = elevations[i];
-    const cat = cats[i];
-
-    linePts.push({ x, y });
-
-    asphaltPts.push({ x, y: cat === "asphalt" ? y : null });
-    gravelPts.push({ x, y: cat === "gravel"  ? y : null });
-    trailPts.push({ x, y: cat === "trail"   ? y : null });
-    unknownPts.push({ x, y: cat === "unknown" ? y : null });
-
-    if (i > 0) {
-      const segKm = distances[i] - distances[i - 1];
-      if (cat === "asphalt") asphaltKm += segKm;
-      else if (cat === "gravel") gravelKm += segKm;
-      else if (cat === "trail") trailKm += segKm;
-      else unknownKm += segKm;
+      const raw = p.surfaceCategory ?? p.surface ?? p.category ?? "unknown";
+      cats.push(normalizeSurfaceCategory(raw, unknownAsTrail));
     }
-  }
 
-  const totalKm = distances[distances.length - 1];
-  renderSurfaceSummary(surfaceSummaryEl, route, { asphaltKm, gravelKm, trailKm, unknownKm, totalKm }, unknownAsTrail);
+    const slopes = [0];
+    for (let i = 1; i < elevations.length; i++) {
+      const delta = elevations[i] - elevations[i - 1];
+      const distKm = distances[i] - distances[i - 1];
+      const slope = distKm > 0 ? (delta / (distKm * 1000)) * 100 : 0;
+      slopes.push(slope);
+    }
 
-  const highest = Math.max.apply(null, elevations);
-  const ctx = canvas.getContext("2d");
+    const asphaltPts = [];
+    const gravelPts = [];
+    const trailPts = [];
+    const unknownPts = [];
+    const linePts = [];
 
-  const datasets = [
-    { data: asphaltPts, backgroundColor: "#37394E", borderColor: "#37394E", fill: true, pointRadius: 0, tension: 0.4, spanGaps: false },
-    { data: gravelPts,  backgroundColor: "#A3886C", borderColor: "#A3886C", fill: true, pointRadius: 0, tension: 0.4, spanGaps: false },
-    { data: trailPts,   backgroundColor: "#5C7936", borderColor: "#5C7936", fill: true, pointRadius: 0, tension: 0.4, spanGaps: false },
-  ];
+    let asphaltKm = 0, gravelKm = 0, trailKm = 0, unknownKm = 0;
 
-  if (!unknownAsTrail) {
-    datasets.push({ data: unknownPts, backgroundColor: "#9AA0A6", borderColor: "#9AA0A6", fill: true, pointRadius: 0, tension: 0.4, spanGaps: false });
-  }
+    for (let i = 0; i < elevations.length; i++) {
+      const x = distances[i];
+      const y = elevations[i];
+      const cat = cats[i];
 
-  datasets.push({
-    data: linePts,
-    borderColor: "#37394E",
-    borderWidth: 4,
-    pointRadius: 0,
-    tension: 0.4,
-    fill: false,
-    spanGaps: false
-  });
+      linePts.push({ x, y });
 
-  const lineDatasetIndex = datasets.length - 1;
+      asphaltPts.push({ x, y: cat === "asphalt" ? y : null });
+      gravelPts.push({ x, y: cat === "gravel" ? y : null });
+      trailPts.push({ x, y: cat === "trail" ? y : null });
+      unknownPts.push({ x, y: cat === "unknown" ? y : null });
 
-  const chart = new Chart(ctx, {
-    type: "line",
-    data: { datasets },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      animation: false,
-      parsing: true, // vi lar Chart.js parse {x,y} normalt
-      interaction: { intersect: false, mode: "index" },
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          backgroundColor: "#37394E",
-          displayColors: false,
-          filter: (item) => item.datasetIndex === lineDatasetIndex,
-          callbacks: {
-            title: (items) => {
-              const x = items?.[0]?.parsed?.x ?? 0;
-              return `${Number(x).toFixed(1)} km`;
-            },
-            label: (c) => {
-              const idx = c.dataIndex;
-              const elev = elevations[idx];
-              const slope = slopes[idx] || 0;
-              return `${elev.toFixed(0)} moh / ${slope.toFixed(1)}%`;
-            }
-          }
-        }
-      },
-      scales: {
-        x: {
-          type: "linear",
-          min: 0,
-          max: totalKm,
-          ticks: { color: "#37394E", callback: (v) => `${Number(v).toFixed(0)} km` },
-          grid: { display: false }
-        },
-        y: {
-          min: 0,
-          max: Math.ceil(highest / 50) * 50,
-          ticks: { stepSize: 50, color: "#37394E" },
-          grid: { display: false }
-        }
+      if (i > 0) {
+        const segKm = distances[i] - distances[i - 1];
+        if (cat === "asphalt") asphaltKm += segKm;
+        else if (cat === "gravel") gravelKm += segKm;
+        else if (cat === "trail") trailKm += segKm;
+        else unknownKm += segKm;
       }
     }
-  });
 
-  canvas.__chart = chart;
+    const totalKm = distances[distances.length - 1];
+    renderSurfaceSummary(surfaceSummaryEl, route, { asphaltKm, gravelKm, trailKm, unknownKm, totalKm }, unknownAsTrail);
 
-  function moveMarkerToIndex(idx) {
-    if (!movingMarker) return;
-    const lat = lats[idx];
-    const lon = lons[idx];
-    if (Number.isFinite(Number(lat)) && Number.isFinite(Number(lon))) {
-      movingMarker.setLatLng([Number(lat), Number(lon)]);
+    const highest = Math.max.apply(null, elevations);
+    const ctx = canvas.getContext("2d");
+
+    const datasets = [
+      { data: asphaltPts, backgroundColor: "#37394E", borderColor: "#37394E", fill: true, pointRadius: 0, tension: 0.4, spanGaps: false },
+      { data: gravelPts, backgroundColor: "#A3886C", borderColor: "#A3886C", fill: true, pointRadius: 0, tension: 0.4, spanGaps: false },
+      { data: trailPts, backgroundColor: "#5C7936", borderColor: "#5C7936", fill: true, pointRadius: 0, tension: 0.4, spanGaps: false },
+    ];
+
+    if (!unknownAsTrail) {
+      datasets.push({ data: unknownPts, backgroundColor: "#9AA0A6", borderColor: "#9AA0A6", fill: true, pointRadius: 0, tension: 0.4, spanGaps: false });
+    }
+
+    datasets.push({
+      data: linePts,
+      borderColor: "#37394E",
+      borderWidth: 4,
+      pointRadius: 0,
+      tension: 0.4,
+      fill: false,
+      spanGaps: false,
+    });
+
+    const lineDatasetIndex = datasets.length - 1;
+
+    const chart = new Chart(ctx, {
+      type: "line",
+      data: { datasets },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: false,
+        parsing: true,
+        interaction: { intersect: false, mode: "index" },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: "#37394E",
+            displayColors: false,
+            filter: (item) => item.datasetIndex === lineDatasetIndex,
+            callbacks: {
+              title: (items) => {
+                const x = items?.[0]?.parsed?.x ?? 0;
+                return `${Number(x).toFixed(1)} km`;
+              },
+              label: (c) => {
+                const idx = c.dataIndex;
+                const elev = elevations[idx];
+                const slope = slopes[idx] || 0;
+                return `${elev.toFixed(0)} moh / ${slope.toFixed(1)}%`;
+              },
+            },
+          },
+        },
+        scales: {
+          x: {
+            type: "linear",
+            min: 0,
+            max: totalKm,
+            ticks: { color: "#37394E", callback: (v) => `${Number(v).toFixed(0)} km` },
+            grid: { display: false },
+          },
+          y: {
+            min: 0,
+            max: Math.ceil(highest / 50) * 50,
+            ticks: { stepSize: 50, color: "#37394E" },
+            grid: { display: false },
+          },
+        },
+      },
+    });
+
+    canvas.__chart = chart;
+
+    function moveMarkerToIndex(idx) {
+      if (!movingMarker) return;
+      const lat = lats[idx];
+      const lon = lons[idx];
+      if (Number.isFinite(Number(lat)) && Number.isFinite(Number(lon))) {
+        movingMarker.setLatLng([Number(lat), Number(lon)]);
+      }
+    }
+
+    canvas.addEventListener("mousemove", function (evt) {
+      const points = chart.getElementsAtEventForMode(evt, "index", { intersect: false }, true);
+      if (points.length) moveMarkerToIndex(points[0].index);
+    });
+
+    canvas.addEventListener(
+      "touchmove",
+      function (e) {
+        if (!e.touches || !e.touches.length) return;
+        const touch = e.touches[0];
+        const simulatedEvent = new MouseEvent("mousemove", {
+          bubbles: true,
+          cancelable: true,
+          view: window,
+          clientX: touch.clientX,
+          clientY: touch.clientY,
+        });
+        canvas.dispatchEvent(simulatedEvent);
+      },
+      { passive: true }
+    );
+  }
+
+  function hasMarkerCluster() {
+    return typeof L !== "undefined" && (typeof L.markerClusterGroup === "function" || typeof L.MarkerClusterGroup === "function");
+  }
+
+  function createClusterLayer(map) {
+    if (!map) return null;
+    if (!hasMarkerCluster()) return null;
+    try {
+      // default options are fine; keep it boring and stable
+      const layer = L.markerClusterGroup();
+      map.addLayer(layer);
+      return layer;
+    } catch (_) {
+      return null;
     }
   }
 
-  canvas.addEventListener("mousemove", function (evt) {
-    const points = chart.getElementsAtEventForMode(evt, "index", { intersect: false }, true);
-    if (points.length) moveMarkerToIndex(points[0].index);
-  });
+  function enableLazyPoiRendering(map, poisForRoute, popupContainer, resetPopup) {
+    const added = new Set();
 
-  canvas.addEventListener("touchmove", function (e) {
-    if (!e.touches || !e.touches.length) return;
-    const touch = e.touches[0];
-    const simulatedEvent = new MouseEvent("mousemove", {
-      bubbles: true,
-      cancelable: true,
-      view: window,
-      clientX: touch.clientX,
-      clientY: touch.clientY
-    });
-    canvas.dispatchEvent(simulatedEvent);
-  }, { passive: true });
-}
+    function shouldShowPoi(poi) {
+      const pos = getPoiPos(poi);
+      if (!pos) return false;
+
+      const bounds = map.getBounds();
+      if (!bounds || !bounds.contains(L.latLng(pos[0], pos[1]))) return false;
+
+      const zoom = map.getZoom();
+      if (zoom >= ANCHOR_ZOOM) return true;
+
+      // low zoom: show only anchors
+      const t = normalizeSymbol(poi.symbolType || poi.symbol || "");
+      return ANCHOR_TYPES.has(t);
+    }
+
+    function key(poi) {
+      return (poi && poi.id) ? String(poi.id) : JSON.stringify(getPoiPos(poi) || []);
+    }
+
+    function render() {
+      for (const poi of poisForRoute) {
+        if (!shouldShowPoi(poi)) continue;
+        const k = key(poi);
+        if (added.has(k)) continue;
+        added.add(k);
+        addMarkerFromDb(map, poi, popupContainer, resetPopup);
+      }
+    }
+
+    map.on("moveend zoomend", render);
+    render();
+  }
 
   async function initRouteSection(section) {
     const routeId = (section.dataset.routeId || "").trim();
@@ -515,7 +588,9 @@ function buildChart(canvas, elevPoints, movingMarker, surfaceSummaryEl, route, u
     }).addTo(map);
 
     renderStats(popupContainer, route);
-    function resetPopup() { renderStats(popupContainer, route); }
+    function resetPopup() {
+      renderStats(popupContainer, route);
+    }
 
     // Elevation
     try {
@@ -546,17 +621,38 @@ function buildChart(canvas, elevPoints, movingMarker, surfaceSummaryEl, route, u
 
       const allPois = Array.isArray(poisJson) ? poisJson : Object.values(poisJson || {});
       const poisById = new Map();
-      allPois.forEach((p) => { if (p && p.id) poisById.set(p.id, p); });
+      allPois.forEach((p) => {
+        if (p && p.id) poisById.set(p.id, p);
+      });
 
       const ids = routeMarkersJson[routeId] || [];
-      ids
+      const poisForRoute = ids
         .map((id) => {
           const p = poisById.get(id);
           if (!p) console.warn("[route_map] Fant ikke POI id:", id, "for route:", routeId);
           return p;
         })
-        .filter(Boolean)
-        .forEach((p) => addMarkerFromDb(map, p, popupContainer, resetPopup));
+        .filter(Boolean);
+
+      // === POLICY: only activate “smart” behavior above threshold ===
+      if (poisForRoute.length <= POI_THRESHOLD) {
+        // Old behavior: add everything
+        poisForRoute.forEach((p) => addMarkerFromDb(map, p, popupContainer, resetPopup));
+      } else {
+        // Above threshold: prefer clustering if plugin exists, else fallback to lazy bounds+zoom
+        const clusterLayer = createClusterLayer(map);
+
+        if (clusterLayer) {
+          // Clustering: add all markers into cluster layer (clean UX on low zoom)
+          poisForRoute.forEach((p) => addMarkerFromDb(clusterLayer, p, popupContainer, resetPopup));
+        } else {
+          if (!CLUSTER_ONLY_WHEN_PLUGIN) {
+            // if you ever want non-plugin clustering (you don’t), you’d implement it here
+          }
+          // Fallback: lazy add based on bounds + zoom + anchors
+          enableLazyPoiRendering(map, poisForRoute, popupContainer, resetPopup);
+        }
+      }
     } catch (e) {
       console.error("[route_map] POI-feil:", routeId, e);
     }
