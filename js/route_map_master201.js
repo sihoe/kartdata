@@ -73,23 +73,7 @@ async function fetchJsonCached(url) {
     },
   };
   
-  // ====== JSON fetch cache (page-lifetime) ======
-  const __jsonCache = new Map();
-
-  async function fetchJsonCached(url) {
-    if (!url) throw new Error("Missing URL");
-    if (__jsonCache.has(url)) return __jsonCache.get(url);
-
-    const p = fetch(url, { cache: "force-cache" }).then(async (r) => {
-      if (!r.ok) throw new Error(`fetch failed ${r.status} for ${url}`);
-      return r.json();
-    });
-
-    __jsonCache.set(url, p);
-    return p;
-  }
-
-  function getLang() {
+ function getLang() {
     try {
       if (typeof Weglot !== "undefined" && Weglot.getCurrentLang) return Weglot.getCurrentLang();
     } catch (_) {}
