@@ -52,12 +52,17 @@
       gravel: "Grus",
       trail: "Sti",
       unknown: "Ukjent",
+
       posTitle: "Din posisjon i forhold til ruta:",
       posNearest: "Nærmeste punkt",
       posStart: "Til start",
       posEnd: "Til mål",
       posOnRoute: "Du er på eller svært nær ruta.",
       posFar: "Du er et stykke unna ruta.",
+
+      pickHint: "Plasser en nål ved å trykke i kartet, og dra den dit du vil.",
+      pickBtnMe: "Vis min posisjon",
+      pickBtnPick: "Plasser nål",
     },
     en: {
       title: "Key info:",
@@ -73,12 +78,17 @@
       gravel: "Gravel",
       trail: "Trail",
       unknown: "Unknown",
+
       posTitle: "Your position relative to the route:",
       posNearest: "Nearest point",
       posStart: "To start",
       posEnd: "To finish",
       posOnRoute: "You are on or very near the route.",
       posFar: "You are quite far from the route.",
+
+      pickHint: "Place a pin by tapping the map, then drag it where you want.",
+      pickBtnMe: "Show my location",
+      pickBtnPick: "Place a pin",
     },
     de: {
       title: "Schlüsselinfo:",
@@ -94,12 +104,17 @@
       gravel: "Schotter",
       trail: "Pfad",
       unknown: "Unbekannt",
+
       posTitle: "Ihre Position relativ zur Route:",
       posNearest: "Nächstgelegener Punkt",
       posStart: "Zum Start",
       posEnd: "Zum Ziel",
       posOnRoute: "Sie sind auf oder sehr nahe an der Route.",
       posFar: "Sie sind ziemlich weit von der Route entfernt.",
+
+      pickHint: "Setzen Sie eine Markierung per Klick auf die Karte und ziehen Sie sie an die gewünschte Stelle.",
+      pickBtnMe: "Meine Position",
+      pickBtnPick: "Markierung setzen",
     },
   };
 
@@ -255,6 +270,39 @@
     );
   }
 
+  // ====== POI popup renderer (brukes både av hover og av nål) ======
+  function renderPoiPopup(poi, popupContainer, resetFn) {
+    if (!popupContainer || !poi) return;
+
+    popupContainer.classList.remove("hidden");
+
+    const lang = getLang();
+    const texts = poi.texts || {};
+    const langBlock = texts[lang] || texts.no || {};
+
+    const title = langBlock.title || poi.name || poi.title || "";
+    const desc = langBlock.description || langBlock.desc || poi.description || "";
+    const imgUrl = poi.imageUrl || poi.image || null;
+
+    popupContainer.innerHTML = `
+      <div class="poi-card">
+        <div class="poi-card__top">
+          <button class="popup-close" aria-label="Close">&times;</button>
+        </div>
+        <h3 class="poi-card__title">${title}</h3>
+        ${imgUrl ? `<img class="poi-card__img" src="${imgUrl}" alt="">` : ""}
+        <p class="poi-card__desc">${desc}</p>
+      </div>
+    `;
+
+    const close = popupContainer.querySelector(".popup-close");
+    if (close) {
+      close.addEventListener("click", function () {
+        if (typeof resetFn === "function") resetFn();
+      });
+    }
+  }
+
   function addMarkerFromDb(mapOrLayer, poi, popupContainer, resetFn) {
     if (!mapOrLayer || !poi) return null;
 
@@ -277,35 +325,7 @@
     leafletMarker.addTo(mapOrLayer);
 
     leafletMarker.on("mouseover", function () {
-      if (!popupContainer) return;
-
-      popupContainer.classList.remove("hidden");
-
-      const lang = getLang();
-      const texts = poi.texts || {};
-      const langBlock = texts[lang] || texts.no || {};
-
-      const title = langBlock.title || poi.name || poi.title || "";
-      const desc = langBlock.description || langBlock.desc || poi.description || "";
-      const imgUrl = poi.imageUrl || poi.image || null;
-
-      popupContainer.innerHTML = `
-        <div class="poi-card">
-          <div class="poi-card__top">
-            <button class="popup-close" aria-label="Close">&times;</button>
-          </div>
-          <h3 class="poi-card__title">${title}</h3>
-          ${imgUrl ? `<img class="poi-card__img" src="${imgUrl}" alt="">` : ""}
-          <p class="poi-card__desc">${desc}</p>
-        </div>
-      `;
-
-      const close = popupContainer.querySelector(".popup-close");
-      if (close) {
-        close.addEventListener("click", function () {
-          if (typeof resetFn === "function") resetFn();
-        });
-      }
+      renderPoiPopup(poi, popupContainer, resetFn);
     });
 
     return leafletMarker;
@@ -352,18 +372,16 @@
       const p = elevPoints[i] || {};
       const d = safeNum(p.distance, i > 0 ? distances[i - 1] : 0);
       const e = safeNum(p.elevation, i > 0 ? elevations[i - 1] : 0);
-
       distances.push(d);
       elevations.push(e);
       lats.push(Number(p.lat));
       lons.push(Number(p.lon));
-
       const raw = p.surfaceCategory ?? p.surface ?? p.category ?? "unknown";
       cats.push(normalizeSurfaceCategory(raw, unknownAsTrail));
     }
 
     const totalKm = distances.length ? distances[distances.length - 1] : 0;
-    return { distances, lats, lons, elevations, cats, totalKm };
+    return { distances, lats, lons, elevations, cats, totalKm, rawPoints: elevPoints };
   }
 
   function nearestOnRouteKm(routeIndex, lat, lon) {
@@ -391,7 +409,7 @@
     return { nearestKm: bestDist, fromStartKm, toEndKm, idx: bestIdx };
   }
 
-  function renderPositionResult(popupContainer, routeIndex, lat, lon) {
+  function renderPositionResultIntoPosBox(popupContainer, routeIndex, latlng) {
     if (!popupContainer) return;
     const posBox = ensurePosBox(popupContainer);
     if (!posBox) return;
@@ -399,7 +417,12 @@
     const lang = getLang();
     const t = infoTexts[lang] || infoTexts.no;
 
-    const res = nearestOnRouteKm(routeIndex, lat, lon);
+    if (!routeIndex) {
+      posBox.innerHTML = "";
+      return;
+    }
+
+    const res = nearestOnRouteKm(routeIndex, latlng.lat, latlng.lng);
     if (!res) {
       posBox.innerHTML = "";
       return;
@@ -422,6 +445,28 @@
     `;
   }
 
+  // ====== Finn nærmeste POI til en latlng ======
+  function findNearestPoi(latlng, pois, maxMeters = 1500) {
+    if (!latlng || !Array.isArray(pois) || !pois.length) return null;
+
+    let best = null;
+    let bestDist = Infinity;
+
+    for (const p of pois) {
+      const pos = getPoiPos(p);
+      if (!pos) continue;
+      const d = latlng.distanceTo(L.latLng(pos[0], pos[1]));
+      if (d < bestDist) {
+        bestDist = d;
+        best = p;
+      }
+    }
+
+    if (best && bestDist <= maxMeters) return { poi: best, distM: bestDist };
+    return null;
+  }
+
+  // ====== Chart ======
   function buildChart(canvas, elevPoints, movingMarker, surfaceSummaryEl, route, unknownAsTrail) {
     if (!canvas || !Array.isArray(elevPoints) || elevPoints.length === 0) return null;
     if (typeof Chart === "undefined") return null;
@@ -449,7 +494,10 @@
     const unknownPts = [];
     const linePts = [];
 
-    let asphaltKm = 0, gravelKm = 0, trailKm = 0, unknownKm = 0;
+    let asphaltKm = 0,
+      gravelKm = 0,
+      trailKm = 0,
+      unknownKm = 0;
 
     for (let i = 0; i < elevations.length; i++) {
       const x = distances[i];
@@ -483,8 +531,8 @@
 
     const datasets = [
       { data: asphaltPts, backgroundColor: "#37394E", borderColor: "#37394E", fill: true, pointRadius: 0, tension: 0.4, spanGaps: false },
-      { data: gravelPts,  backgroundColor: "#A3886C", borderColor: "#A3886C", fill: true, pointRadius: 0, tension: 0.4, spanGaps: false },
-      { data: trailPts,   backgroundColor: "#5C7936", borderColor: "#5C7936", fill: true, pointRadius: 0, tension: 0.4, spanGaps: false },
+      { data: gravelPts, backgroundColor: "#A3886C", borderColor: "#A3886C", fill: true, pointRadius: 0, tension: 0.4, spanGaps: false },
+      { data: trailPts, backgroundColor: "#5C7936", borderColor: "#5C7936", fill: true, pointRadius: 0, tension: 0.4, spanGaps: false },
     ];
 
     if (!unknownAsTrail) {
@@ -584,7 +632,7 @@
     return idx;
   }
 
-  // ====== MarkerCluster (optional) ======
+  // ====== MarkerCluster ======
   function hasMarkerCluster() {
     return typeof L !== "undefined" && typeof L.markerClusterGroup === "function";
   }
@@ -600,27 +648,103 @@
     }
   }
 
-  // ====== Position control (my location + pick marker + boost POI near marker) ======
-  function addPositionControl(map, popupContainer, getRouteIndex, revealPoisNearCb) {
+  function enableLazyPoiRendering(map, poisForRoute, popupContainer, resetPopup) {
+    const added = new Set();
+
+    function shouldShowPoi(poi) {
+      const pos = getPoiPos(poi);
+      if (!pos) return false;
+
+      const bounds = map.getBounds();
+      if (!bounds || !bounds.contains(L.latLng(pos[0], pos[1]))) return false;
+
+      const zoom = map.getZoom();
+      if (zoom >= ANCHOR_ZOOM) return true;
+
+      const t = normalizeSymbol(poi.symbolType || poi.symbol || "");
+      return ANCHOR_TYPES.has(t);
+    }
+
+    function key(poi) {
+      return poi && poi.id ? String(poi.id) : JSON.stringify(getPoiPos(poi) || []);
+    }
+
+    function render() {
+      for (const poi of poisForRoute) {
+        if (!shouldShowPoi(poi)) continue;
+        const k = key(poi);
+        if (added.has(k)) continue;
+        added.add(k);
+        addMarkerFromDb(map, poi, popupContainer, resetPopup);
+      }
+    }
+
+    map.on("moveend zoomend", render);
+    render();
+
+    // gi tilbake add-funksjon så vi kan "booste" uansett policy ved nål
+    return function forceAddPoi(poi) {
+      const k = key(poi);
+      if (added.has(k)) return false;
+      added.add(k);
+      addMarkerFromDb(map, poi, popupContainer, resetPopup);
+      return true;
+    };
+  }
+
+  // ====== Position control (my location + pick pin) ======
+  // Viktig: Nålen skal styre høyre panel: nærmeste POI rundt nålen innen radius,
+  // ellers fallback til ruteinfo.
+  function addPositionControl(opts) {
+    const {
+      map,
+      popupContainer,
+      getRouteIndex,     // () => routeIndex|null
+      getPoisForRoute,   // () => poisForRouteArray
+      renderRouteFallback, // () => renderStats(...)
+      onPinMoved,        // (latlng) => void  (for å booste markører nær nål)
+    } = opts || {};
+
     if (!map) return;
+
+    const lang = getLang();
+    const t = infoTexts[lang] || infoTexts.no;
 
     let userMarker = null;
     let userCircle = null;
     let chosenMarker = null;
     let pickMode = false;
 
+    // liten intern “husk”: sist valgt kontekst
+    let lastContext = { type: "route", poiId: null };
+
     function setPickMode(on) {
       pickMode = !!on;
       map.getContainer().style.cursor = pickMode ? "crosshair" : "";
     }
 
-    function updateAllFromLatLng(latlng) {
-      const idx = typeof getRouteIndex === "function" ? getRouteIndex() : null;
-      if (idx) renderPositionResult(popupContainer, idx, latlng.lat, latlng.lng);
+    function updateContextForLatLng(latlng) {
+      // 1) Oppdater rute-tekst (pos-boks)
+      const routeIndex = typeof getRouteIndex === "function" ? getRouteIndex() : null;
+      renderPositionResultIntoPosBox(popupContainer, routeIndex, latlng);
 
-      if (typeof revealPoisNearCb === "function") {
-        try { revealPoisNearCb(latlng, 3000); } catch (_) {}
+      // 2) Finn nærmeste POI og oppdater høyre panel (DETTE var feilen før)
+      const pois = typeof getPoisForRoute === "function" ? (getPoisForRoute() || []) : [];
+      const nearest = findNearestPoi(latlng, pois, 1500);
+
+      if (nearest && nearest.poi) {
+        const poiId = nearest.poi.id || nearest.poi.name || nearest.poi.title || "poi";
+        lastContext = { type: "poi", poiId };
+        renderPoiPopup(nearest.poi, popupContainer, renderRouteFallback);
+      } else {
+        lastContext = { type: "route", poiId: null };
+        renderRouteFallback();
       }
+
+      // 3) Boost: legg til markører rundt nålen uansett policy
+      try {
+        if (typeof onPinMoved === "function") onPinMoved(latlng);
+      } catch (_) {}
     }
 
     const ctrl = L.control({ position: "topleft" });
@@ -629,13 +753,13 @@
 
       const btnMe = L.DomUtil.create("button", "svingom-pos-btn", wrap);
       btnMe.type = "button";
-      btnMe.title = "Vis min posisjon";
+      btnMe.title = t.pickBtnMe;
       btnMe.innerHTML = "◎";
 
       const btnPick = L.DomUtil.create("button", "svingom-pos-btn", wrap);
       btnPick.type = "button";
-      btnPick.title = "Velg posisjon (klikk i kartet)";
-      btnPick.innerHTML = "✚";
+      btnPick.title = t.pickBtnPick;
+      btnPick.innerHTML = "📍";
 
       L.DomEvent.disableClickPropagation(wrap);
 
@@ -645,8 +769,10 @@
 
         navigator.geolocation.getCurrentPosition(
           (pos) => {
-            const ll = L.latLng(pos.coords.latitude, pos.coords.longitude);
+            const lat = pos.coords.latitude;
+            const lon = pos.coords.longitude;
             const acc = pos.coords.accuracy || 0;
+            const ll = L.latLng(lat, lon);
 
             if (!userMarker) userMarker = L.marker(ll).addTo(map);
             else userMarker.setLatLng(ll);
@@ -655,7 +781,7 @@
             else userCircle.setLatLng(ll).setRadius(acc);
 
             map.setView(ll, Math.max(map.getZoom(), 12));
-            updateAllFromLatLng(ll);
+            updateContextForLatLng(ll);
           },
           (err) => alert("Klarte ikke hente posisjon: " + (err.message || err.code)),
           { enableHighAccuracy: true, timeout: 8000, maximumAge: 30000 }
@@ -667,6 +793,21 @@
         const next = !pickMode;
         setPickMode(next);
         btnPick.classList.toggle("active", next);
+
+        // liten hint i pos-boksen når man aktiverer “pin”
+        if (next && popupContainer) {
+          const posBox = ensurePosBox(popupContainer);
+          if (posBox) {
+            const hint = document.createElement("p");
+            hint.className = "pos-hint";
+            hint.style.marginTop = "10px";
+            hint.style.fontStyle = "italic";
+            hint.textContent = t.pickHint;
+            // putt hint på toppen av pos-boksen, men ikke spam hver gang
+            const exists = posBox.querySelector(".pos-hint");
+            if (!exists) posBox.prepend(hint);
+          }
+        }
       });
 
       return wrap;
@@ -681,13 +822,14 @@
 
       if (!chosenMarker) {
         chosenMarker = L.marker(ll, { draggable: true }).addTo(map);
-        chosenMarker.on("drag", () => updateAllFromLatLng(chosenMarker.getLatLng()));
-        chosenMarker.on("dragend", () => updateAllFromLatLng(chosenMarker.getLatLng()));
+
+        chosenMarker.on("drag", () => updateContextForLatLng(chosenMarker.getLatLng()));
+        chosenMarker.on("dragend", () => updateContextForLatLng(chosenMarker.getLatLng()));
       } else {
         chosenMarker.setLatLng(ll);
       }
 
-      updateAllFromLatLng(ll);
+      updateContextForLatLng(ll);
 
       setPickMode(false);
       const active = map.getContainer().querySelector(".svingom-pos-btn.active");
@@ -800,17 +942,19 @@
       weight: 2,
     }).addTo(map);
 
-    renderStats(popupContainer, route);
-    function resetPopup() { renderStats(popupContainer, route); }
+    // reset-funksjon for høyre panel (rute fallback)
+    function resetPopup() {
+      renderStats(popupContainer, route);
+    }
+    resetPopup();
 
+    // RouteIndex fra elevation (for posisjon-tekst og evt. senere)
     let routeIndex = null;
-    let revealPoisNear = null; // settes etter at poisForRoute er kjent
 
-    // Elevation
     try {
       const elevJson = await fetchJsonCached(elevUrl);
       const pts = Array.isArray(elevJson.points) ? elevJson.points : elevJson;
-      const cleaned = (pts || []).filter((p) => p && p.elevation != null);
+      const cleaned = (pts || []).filter((p) => p && p.elevation != null && p.lat != null && p.lon != null);
       if (cleaned.length) {
         routeIndex = buildChart(chartCanvas, cleaned, movingMarker, surfaceSummaryEl, route, unknownAsTrail);
       } else {
@@ -820,100 +964,76 @@
       console.error("[route_map] Elevation-feil:", routeId, elevUrl, e);
     }
 
-    // Controls (wrapper gjør at revealPoisNear kan settes senere)
-    addPositionControl(
+    // POI-data (vi må ha dette tilgjengelig for nål-logikken)
+    let poisForRoute = [];
+    let forceAddFromLazy = null; // brukes hvis lazy rendering
+    const boosted = new Set(); // husk hva vi allerede har boostet
+
+    function boostPoisNear(latlng, radiusMeters = 3000) {
+      if (!latlng || !Array.isArray(poisForRoute) || !poisForRoute.length) return;
+
+      const center = L.latLng(latlng.lat, latlng.lng);
+
+      for (const p of poisForRoute) {
+        const pos = getPoiPos(p);
+        if (!pos) continue;
+        const ll = L.latLng(pos[0], pos[1]);
+        if (center.distanceTo(ll) <= radiusMeters) {
+          const k = p && p.id ? String(p.id) : JSON.stringify(pos);
+          if (boosted.has(k)) continue;
+          boosted.add(k);
+
+          // Hvis lazy: bruk forceAdd hvis vi har den, ellers legg direkte
+          if (typeof forceAddFromLazy === "function") {
+            forceAddFromLazy(p);
+          } else {
+            addMarkerFromDb(map, p, popupContainer, resetPopup);
+          }
+        }
+      }
+    }
+
+    // Legg kontroller NÅ, men gi dem getters som alltid er oppdatert
+    addPositionControl({
       map,
       popupContainer,
-      () => routeIndex,
-      (latlng, r) => revealPoisNear && revealPoisNear(latlng, r)
-    );
+      getRouteIndex: () => routeIndex,
+      getPoisForRoute: () => poisForRoute,
+      renderRouteFallback: resetPopup,
+      onPinMoved: (latlng) => boostPoisNear(latlng, 3000),
+    });
+
     addFullscreenControl(map, section);
 
-    // POI + route_markers
+    // Last POI og rute-marker mapping og render
     try {
-      const [poisJson, routeMarkersJson] = await Promise.all([
-        fetchJsonCached(poisUrl),
-        fetchJsonCached(routeMarkersUrl),
-      ]);
+      const [poisJson, routeMarkersJson] = await Promise.all([fetchJsonCached(poisUrl), fetchJsonCached(routeMarkersUrl)]);
 
       const allPois = Array.isArray(poisJson) ? poisJson : Object.values(poisJson || {});
       const poisById = new Map();
-      allPois.forEach((p) => { if (p && p.id) poisById.set(p.id, p); });
+      allPois.forEach((p) => {
+        if (p && p.id) poisById.set(p.id, p);
+      });
 
       const ids = routeMarkersJson[routeId] || [];
-      const poisForRoute = ids.map((id) => poisById.get(id)).filter(Boolean);
-
-      // Én felles "added" så vi aldri legger samme POI to ganger
-      const addedPoi = new Set();
-
-      // Hvor markører legges (cluster eller map)
-      let poiTarget = map;
-
-      function poiKey(p) {
-        if (p && p.id) return String(p.id);
-        const pos = getPoiPos(p);
-        return JSON.stringify(pos || []);
-      }
-
-      function addPoiOnce(p) {
-        const k = poiKey(p);
-        if (addedPoi.has(k)) return;
-        addedPoi.add(k);
-        addMarkerFromDb(poiTarget, p, popupContainer, resetPopup);
-      }
-
-      // Boost: vis alle POI nær valgt posisjon (uansett zoom/ankertyper)
-      revealPoisNear = function (latlng, radiusMeters = 3000) {
-        if (!latlng) return;
-        const center = L.latLng(latlng.lat, latlng.lng);
-
-        for (const p of poisForRoute) {
-          const pos = getPoiPos(p);
-          if (!pos) continue;
-          const ll = L.latLng(pos[0], pos[1]);
-          if (center.distanceTo(ll) <= radiusMeters) addPoiOnce(p);
-        }
-      };
+      poisForRoute = ids.map((id) => poisById.get(id)).filter(Boolean);
 
       if (poisForRoute.length <= POI_THRESHOLD) {
-        // Lite nok: legg inn alt
-        poisForRoute.forEach(addPoiOnce);
+        poisForRoute.forEach((p) => addMarkerFromDb(map, p, popupContainer, resetPopup));
       } else {
-        // Mange: cluster hvis mulig, ellers lazy
         const clusterLayer = createClusterLayer(map);
         if (clusterLayer) {
-          poiTarget = clusterLayer;
-          poisForRoute.forEach(addPoiOnce);
+          poisForRoute.forEach((p) => addMarkerFromDb(clusterLayer, p, popupContainer, resetPopup));
         } else {
-          function shouldShowPoi(poi) {
-            const pos = getPoiPos(poi);
-            if (!pos) return false;
-
-            const bounds = map.getBounds();
-            if (!bounds || !bounds.contains(L.latLng(pos[0], pos[1]))) return false;
-
-            const z = map.getZoom();
-            if (z >= ANCHOR_ZOOM) return true;
-
-            const t = normalizeSymbol(poi.symbolType || poi.symbol || "");
-            return ANCHOR_TYPES.has(t);
-          }
-
-          function renderLazy() {
-            for (const p of poisForRoute) {
-              if (shouldShowPoi(p)) addPoiOnce(p);
-            }
-          }
-
-          map.on("moveend zoomend", renderLazy);
-          renderLazy();
+          // lazy policy + forceAdd hook
+          forceAddFromLazy = enableLazyPoiRendering(map, poisForRoute, popupContainer, resetPopup);
         }
       }
     } catch (e) {
       console.error("[route_map] POI-feil:", routeId, e);
     }
 
-    // GPX track (kun linje)
+    // GPX rute
     try {
       new L.GPX(gpxUrl, {
         async: true,
