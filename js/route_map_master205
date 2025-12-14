@@ -666,6 +666,8 @@ addPositionControl(map);
       attribution: "Kartdata © OpenStreetMap",
       maxZoom: 19,
     }).addTo(map);
+    addFullscreenControl(map, section);
+    addPositionControl(map);
 
     const movingMarker = L.circleMarker([centerLat, centerLng], {
       radius: 6,
