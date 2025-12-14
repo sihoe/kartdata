@@ -4,6 +4,20 @@
 
 (function () {
   "use strict";
+const __jsonCache = new Map();
+
+async function fetchJsonCached(url) {
+  if (!url) throw new Error("Missing URL");
+  if (__jsonCache.has(url)) return __jsonCache.get(url);
+
+  const p = fetch(url, { cache: "force-cache" }).then(async (r) => {
+    if (!r.ok) throw new Error(`fetch failed ${r.status} for ${url}`);
+    return r.json();
+  });
+
+  __jsonCache.set(url, p);
+  return p;
+}
 
   // ====== POI-rendering policy ======
   const POI_THRESHOLD = 30;         // clustering/lazy-add aktiveres kun hvis flere enn dette
@@ -58,6 +72,22 @@
       unknown: "Unbekannt",
     },
   };
+  
+  // ====== JSON fetch cache (page-lifetime) ======
+  const __jsonCache = new Map();
+
+  async function fetchJsonCached(url) {
+    if (!url) throw new Error("Missing URL");
+    if (__jsonCache.has(url)) return __jsonCache.get(url);
+
+    const p = fetch(url, { cache: "force-cache" }).then(async (r) => {
+      if (!r.ok) throw new Error(`fetch failed ${r.status} for ${url}`);
+      return r.json();
+    });
+
+    __jsonCache.set(url, p);
+    return p;
+  }
 
   function getLang() {
     try {
