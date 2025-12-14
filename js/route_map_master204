@@ -530,6 +530,80 @@ async function fetchJsonCached(url) {
     map.on("moveend zoomend", render);
     render();
   }
+function addPositionControl(map) {
+  let userMarker = null;
+  let userCircle = null;
+  let chosenMarker = null;
+
+  const ctrl = L.control({ position: "topleft" });
+  ctrl.onAdd = function () {
+    const wrap = L.DomUtil.create("div", "leaflet-bar svingom-pos-wrap");
+
+    const btnMe = L.DomUtil.create("button", "svingom-pos-btn", wrap);
+    btnMe.type = "button";
+    btnMe.title = "Vis min posisjon";
+    btnMe.innerHTML = "◎";
+
+    const btnPick = L.DomUtil.create("button", "svingom-pos-btn", wrap);
+    btnPick.type = "button";
+    btnPick.title = "Velg posisjon (klikk i kartet)";
+    btnPick.innerHTML = "✚";
+
+    L.DomEvent.disableClickPropagation(wrap);
+
+    L.DomEvent.on(btnMe, "click", (e) => {
+      L.DomEvent.stop(e);
+      if (!navigator.geolocation) return alert("Geolocation støttes ikke i denne nettleseren.");
+
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          const lat = pos.coords.latitude;
+          const lon = pos.coords.longitude;
+          const acc = pos.coords.accuracy || 0;
+
+          if (!userMarker) userMarker = L.marker([lat, lon]).addTo(map);
+          else userMarker.setLatLng([lat, lon]);
+
+          if (!userCircle) userCircle = L.circle([lat, lon], { radius: acc, weight: 1 }).addTo(map);
+          else userCircle.setLatLng([lat, lon]).setRadius(acc);
+
+          map.setView([lat, lon], Math.max(map.getZoom(), 12));
+        },
+        (err) => alert("Klarte ikke hente posisjon: " + (err.message || err.code)),
+        { enableHighAccuracy: true, timeout: 8000, maximumAge: 30000 }
+      );
+    });
+
+    let pickMode = false;
+
+    L.DomEvent.on(btnPick, "click", (e) => {
+      L.DomEvent.stop(e);
+      pickMode = !pickMode;
+      btnPick.classList.toggle("active", pickMode);
+      map.getContainer().style.cursor = pickMode ? "crosshair" : "";
+    });
+
+    map.on("click", (evt) => {
+      if (!pickMode) return;
+      const ll = evt.latlng;
+      if (!chosenMarker) chosenMarker = L.marker(ll, { draggable: true }).addTo(map);
+      else chosenMarker.setLatLng(ll);
+
+      // hvis du vil: lagre valgt posisjon i popup-containeren eller i et datafelt
+      // console.log("Chosen:", ll.lat, ll.lng);
+
+      pickMode = false;
+      btnPick.classList.remove("active");
+      map.getContainer().style.cursor = "";
+    });
+
+    return wrap;
+  };
+
+  ctrl.addTo(map);
+}
+
+addPositionControl(map);
 
   async function initRouteSection(section) {
     const routeId = (section.dataset.routeId || "").trim();
