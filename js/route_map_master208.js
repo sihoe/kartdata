@@ -877,7 +877,7 @@ function addPositionControl(map, popupContainer, routeElevPoints) {
       console.error("[route_map] Elevation-feil:", routeId, elevUrl, e);
     }
 
-    addPositionControl(map, popupContainer, () => routeIndex);
+    addPositionControl(map, popupContainer, routeIndex);
     addFullscreenControl(map, section);
 
     try {
