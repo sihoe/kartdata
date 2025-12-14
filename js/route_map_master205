@@ -2,6 +2,8 @@
 // Krever: Leaflet + Leaflet-GPX + Chart.js lastet inn før denne.
 // Valgfritt: Leaflet.markercluster (clustering brukes automatisk når POI > terskel)
 
+console.log("[route_map] script loaded");
+
 (function () {
   "use strict";
 
@@ -786,7 +788,8 @@
   }
 
   function initAll() {
-    initChartDefaultsOnce();
+console.log("[route_map] initAll sections:", document.querySelectorAll(".map-section[data-route-id]").length); 
+initChartDefaultsOnce();
     const sections = document.querySelectorAll(".map-section[data-route-id]");
     sections.forEach((section) => initRouteSection(section));
   }
