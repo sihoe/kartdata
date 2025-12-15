@@ -1,13 +1,15 @@
 // route_map_master210.js
 // Krever: Leaflet + Leaflet-GPX + Chart.js lastet inn før denne.
-// Valgfritt: Leaflet.markercluster
+// Valgfritt: Leaflet.markercluster (clustering brukes automatisk ved mange POI)
 
 (function () {
   "use strict";
 
   console.log("[route_map] master210 loaded");
 
-  // ====== JSON fetch cache (page-lifetime) ======
+  // ---------------------------
+  // JSON fetch cache (page-lifetime)
+  // ---------------------------
   const __jsonCache = new Map();
   async function fetchJsonCached(url) {
     if (!url) throw new Error("Missing URL");
@@ -22,7 +24,9 @@
     return p;
   }
 
-  // ====== POI policy ======
+  // ---------------------------
+  // Policy
+  // ---------------------------
   const POI_THRESHOLD = 30;
   const ANCHOR_ZOOM = 11;
   const ANCHOR_TYPES = new Set([
@@ -35,9 +39,13 @@
     "sleepover",
     "tent",
   ]);
-  const AUTO_POI_RADIUS_M = 3000;
 
-  // ====== Texts ======
+  const DEFAULT_NEAR_RADIUS_M = 3000; // “se mye ut” uten å lyve: nok radius til at det føles rikt
+  const AUTO_POI_RADIUS_M = 2500;     // når nåla flyttes: finn nærmeste POI innen denne
+
+  // ---------------------------
+  // Texts
+  // ---------------------------
   const infoTexts = {
     no: {
       title: "Nøkkelinformasjon:",
@@ -53,17 +61,19 @@
       gravel: "Grus",
       trail: "Sti",
       unknown: "Ukjent",
+
       posTitle: "Din posisjon i forhold til ruta:",
       posNearest: "Nærmeste punkt",
       posStart: "Til start",
       posEnd: "Til mål",
       posOnRoute: "Du er på eller svært nær ruta.",
       posFar: "Du er et stykke unna ruta.",
-      pickHint: "Klikk i kartet for å sette en flyttbar nål.",
-      pickHint2: "Dra nåla for å se hva som er i nærheten.",
-      back: "Tilbake",
-      me: "Min posisjon",
-      pick: "Velg posisjon",
+
+      pinMe: "Vis min posisjon",
+      pinPick: "Plasser nål (klikk i kartet)",
+      pinHint: "Klikk i kartet for å plassere nåla. Dra for å flytte.",
+      nearNothing: "Ingen steder registrert i nærheten av nåla.",
+      nearHeading: "Nær nåla:",
     },
     en: {
       title: "Key info:",
@@ -79,17 +89,19 @@
       gravel: "Gravel",
       trail: "Trail",
       unknown: "Unknown",
+
       posTitle: "Your position relative to the route:",
       posNearest: "Nearest point",
       posStart: "To start",
       posEnd: "To finish",
       posOnRoute: "You are on or very near the route.",
       posFar: "You are quite far from the route.",
-      pickHint: "Click on the map to place a movable pin.",
-      pickHint2: "Drag the pin to see what’s nearby.",
-      back: "Back",
-      me: "My location",
-      pick: "Pick location",
+
+      pinMe: "Show my location",
+      pinPick: "Drop a pin (click the map)",
+      pinHint: "Click the map to drop the pin. Drag to move it.",
+      nearNothing: "No places registered near the pin.",
+      nearHeading: "Near the pin:",
     },
     de: {
       title: "Schlüsselinfo:",
@@ -105,17 +117,19 @@
       gravel: "Schotter",
       trail: "Pfad",
       unknown: "Unbekannt",
+
       posTitle: "Ihre Position relativ zur Route:",
       posNearest: "Nächstgelegener Punkt",
       posStart: "Zum Start",
       posEnd: "Zum Ziel",
       posOnRoute: "Sie sind auf oder sehr nahe an der Route.",
       posFar: "Sie sind ziemlich weit von der Route entfernt.",
-      pickHint: "Klicken Sie in die Karte, um eine verschiebbare Markierung zu setzen.",
-      pickHint2: "Ziehen Sie die Markierung, um zu sehen, was in der Nähe ist.",
-      back: "Zurück",
-      me: "Mein Standort",
-      pick: "Standort wählen",
+
+      pinMe: "Meinen Standort zeigen",
+      pinPick: "Pin setzen (Karte klicken)",
+      pinHint: "Klicken Sie in die Karte, um den Pin zu setzen. Ziehen zum Verschieben.",
+      nearNothing: "Keine Orte in der Nähe des Pins registriert.",
+      nearHeading: "In der Nähe des Pins:",
     },
   };
 
@@ -126,22 +140,18 @@
     return "no";
   }
 
+  // ---------------------------
+  // Helpers
+  // ---------------------------
   function safeNum(v, fallback = 0) {
     const n = Number(v);
     return Number.isFinite(n) ? n : fallback;
   }
+
   function fmtKm(v) {
     const n = Number(v);
     if (!Number.isFinite(n)) return "–";
     return n < 10 ? n.toFixed(1) : n.toFixed(0);
-  }
-
-  function initChartDefaultsOnce() {
-    if (typeof Chart === "undefined") return;
-    if (Chart.__svingom_defaults_set) return;
-    Chart.__svingom_defaults_set = true;
-    try { Chart.defaults.font.family = getComputedStyle(document.body).fontFamily; } catch (_) {}
-    Chart.defaults.color = "#422426";
   }
 
   function normalizeSymbol(sym) {
@@ -156,17 +166,6 @@
     return "https://cdn.jsdelivr.net/gh/sihoe/symbols@main/symbols-" + s + ".svg";
   }
 
-  function getRouteStats(route) {
-    const st = (route && route.stats) || {};
-    return {
-      distanceKm: safeNum(st.distanceKm, 0),
-      climbM: safeNum(st.climbM, 0),
-      descentM: safeNum(st.descentM, 0),
-      maxElevationM: safeNum(st.maxElevationM, 0),
-      minElevationM: safeNum(st.minElevationM, 0),
-    };
-  }
-
   function getPoiPos(poi) {
     return (
       poi.latlng ||
@@ -175,12 +174,15 @@
     );
   }
 
-  function normalizeSurfaceCategory(raw, unknownAsTrail) {
-    let cat = (raw || "").toString().toLowerCase().trim();
-    if (!cat) cat = "unknown";
-    if (cat !== "asphalt" && cat !== "gravel" && cat !== "trail" && cat !== "unknown") cat = "unknown";
-    if (unknownAsTrail && cat === "unknown") return "trail";
-    return cat;
+  function initChartDefaultsOnce() {
+    if (typeof Chart === "undefined") return;
+    if (Chart.__svingom_defaults_set) return;
+    Chart.__svingom_defaults_set = true;
+
+    try {
+      Chart.defaults.font.family = getComputedStyle(document.body).fontFamily;
+    } catch (_) {}
+    Chart.defaults.color = "#422426";
   }
 
   function destroyExistingChart(canvas) {
@@ -192,116 +194,61 @@
     } catch (_) {}
   }
 
-  // ====== Distance math ======
-  function haversineKm(lat1, lon1, lat2, lon2) {
-    const R = 6371;
-    const toRad = (x) => (x * Math.PI) / 180;
-    const dLat = toRad(lat2 - lat1);
-    const dLon = toRad(lon2 - lon1);
-    const a =
-      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-      Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    return R * c;
-  }
-
-  function buildRouteIndex(elevPoints, unknownAsTrail) {
-    const distances = [];
-    const lats = [];
-    const lons = [];
-    const elevations = [];
-    const cats = [];
-
-    for (let i = 0; i < elevPoints.length; i++) {
-      const p = elevPoints[i] || {};
-      const d = safeNum(p.distance, i > 0 ? distances[i - 1] : 0);
-      const e = safeNum(p.elevation, i > 0 ? elevations[i - 1] : 0);
-      distances.push(d);
-      elevations.push(e);
-      lats.push(Number(p.lat));
-      lons.push(Number(p.lon));
-      const raw = p.surfaceCategory ?? p.surface ?? p.category ?? "unknown";
-      cats.push(normalizeSurfaceCategory(raw, unknownAsTrail));
-    }
-
-    const totalKm = distances.length ? distances[distances.length - 1] : 0;
-    return { distances, lats, lons, elevations, cats, totalKm };
-  }
-
-  function nearestOnRouteKm(routeIndex, lat, lon) {
-    if (!routeIndex || !routeIndex.lats || !routeIndex.lats.length) return null;
-
-    let bestIdx = -1;
-    let bestDist = Infinity;
-
-    for (let i = 0; i < routeIndex.lats.length; i++) {
-      const la = routeIndex.lats[i];
-      const lo = routeIndex.lons[i];
-      if (!Number.isFinite(la) || !Number.isFinite(lo)) continue;
-
-      const d = haversineKm(lat, lon, la, lo);
-      if (d < bestDist) {
-        bestDist = d;
-        bestIdx = i;
-      }
-    }
-
-    if (bestIdx < 0) return null;
-
-    const fromStartKm = routeIndex.distances[bestIdx];
-    const toEndKm = Math.max(0, routeIndex.totalKm - fromStartKm);
-    return { nearestKm: bestDist, fromStartKm, toEndKm, idx: bestIdx };
-  }
-
-  // ====== Popup skeleton ======
-  function ensurePopupSkeleton(container) {
-    if (!container) return null;
-    if (container.__svingom_popup) return container.__svingom_popup;
-
-    const wrap = document.createElement("div");
-    wrap.className = "svingom-popup";
-
-    const stats = document.createElement("div");
-    stats.className = "svingom-popup__stats";
-
-    const poi = document.createElement("div");
-    poi.className = "svingom-popup__poi hidden";
-
-    wrap.appendChild(stats);
-    wrap.appendChild(poi);
-
-    container.innerHTML = "";
-    container.appendChild(wrap);
-
-    const api = {
-      wrap,
-      stats,
-      poi,
-      mode: "stats",
-      lastPoi: null,
-      setMode(next) {
-        this.mode = next;
-        if (next === "stats") {
-          this.stats.classList.remove("hidden");
-          this.poi.classList.add("hidden");
-        } else {
-          this.stats.classList.add("hidden");
-          this.poi.classList.remove("hidden");
-        }
-      },
+  // ---------------------------
+  // Route stats
+  // ---------------------------
+  function getRouteStats(route) {
+    const st = (route && route.stats) || {};
+    return {
+      distanceKm: safeNum(st.distanceKm, 0),
+      climbM: safeNum(st.climbM, 0),
+      descentM: safeNum(st.descentM, 0),
+      maxElevationM: safeNum(st.maxElevationM, 0),
+      minElevationM: safeNum(st.minElevationM, 0),
     };
-
-    container.__svingom_popup = api;
-    return api;
   }
 
-  function renderStats(popupApi, route) {
-    if (!popupApi || !route) return;
+  // ---------------------------
+  // Side panel structure (FIXER “hengende POI”)
+  // ---------------------------
+  function ensurePanelScaffold(container) {
+    if (!container) return null;
+
+    let root = container.querySelector(".svingom-panel");
+    if (root) return root;
+
+    container.innerHTML = `
+      <div class="svingom-panel">
+        <div class="svingom-panel__poi"></div>
+        <div class="svingom-panel__stats"></div>
+      </div>
+    `;
+
+    return container.querySelector(".svingom-panel");
+  }
+
+  function getPoiPanel(container) {
+    const root = ensurePanelScaffold(container);
+    return root ? root.querySelector(".svingom-panel__poi") : null;
+  }
+
+  function getStatsPanel(container) {
+    const root = ensurePanelScaffold(container);
+    return root ? root.querySelector(".svingom-panel__stats") : null;
+  }
+
+  function renderStats(container, route) {
+    if (!container || !route) return;
+
     const lang = getLang();
     const t = infoTexts[lang] || infoTexts.no;
     const s = getRouteStats(route);
 
-    popupApi.stats.innerHTML = `
+    const statsPanel = getStatsPanel(container);
+    if (!statsPanel) return;
+
+    container.classList.remove("hidden");
+    statsPanel.innerHTML = `
       <button class="route-close" aria-label="Close">&times;</button>
       <div class="stats-box">
         <p class="stats-title">${t.title}</p>
@@ -310,91 +257,34 @@
         <p><span class="icon">↘</span> ${t.descent}: <strong>${s.descentM.toFixed(0)}</strong> m</p>
         <p><span class="icon">▲</span> ${t.highest}: <strong>${s.maxElevationM.toFixed(0)}</strong> ${t.unit}</p>
         <p><span class="icon">▼</span> ${t.lowest}: <strong>${s.minElevationM.toFixed(0)}</strong> ${t.unit}</p>
+
         <div class="pos-box"></div>
-        <p style="margin-top:16px;font-style:italic;">${t.instruction}</p>
+
+        <p class="stats-instruction" style="margin-top:16px;font-style:italic;">${t.instruction}</p>
       </div>
     `;
 
-    const closeBtn = popupApi.stats.querySelector(".route-close");
+    const closeBtn = statsPanel.querySelector(".route-close");
     if (closeBtn && window.innerWidth <= 768) {
       closeBtn.addEventListener("click", function () {
-        const host = popupApi.wrap.closest(".route-popup");
-        if (host) host.classList.add("hidden");
+        container.classList.add("hidden");
       });
     }
-
-    popupApi.setMode("stats");
   }
 
-  function renderPoi(popupApi, poi) {
-    if (!popupApi || !poi) return;
-
-    const lang = getLang();
-    const t = infoTexts[lang] || infoTexts.no;
-
-    const texts = poi.texts || {};
-    const langBlock = texts[lang] || texts.no || {};
-    const title = langBlock.title || poi.name || poi.title || "";
-    const desc = langBlock.description || langBlock.desc || poi.description || "";
-    const imgUrl = poi.imageUrl || poi.image || null;
-
-    popupApi.poi.innerHTML = `
-      <button class="popup-back" type="button">${t.back}</button>
-      <button class="popup-close" aria-label="Close">&times;</button>
-      <div class="poi-card">
-        <h3 class="poi-card__title">${title}</h3>
-        ${imgUrl ? `<img class="poi-card__img" src="${imgUrl}" alt="">` : ""}
-        <p class="poi-card__desc">${desc}</p>
-        <div class="pos-box"></div>
-      </div>
-    `;
-
-    popupApi.poi.querySelector(".popup-back")?.addEventListener("click", () => popupApi.setMode("stats"));
-    popupApi.poi.querySelector(".popup-close")?.addEventListener("click", () => popupApi.setMode("stats"));
-
-    popupApi.lastPoi = poi;
-    popupApi.setMode("poi");
+  function setPoiPanelHtml(container, html) {
+    const poiPanel = getPoiPanel(container);
+    if (!poiPanel) return;
+    poiPanel.innerHTML = html || "";
   }
 
-  function setPosBoxHtml(popupApi, html) {
-    if (!popupApi) return;
-    const statsBox = popupApi.stats.querySelector(".pos-box");
-    if (statsBox) statsBox.innerHTML = html || "";
-    const poiBox = popupApi.poi.querySelector(".pos-box");
-    if (poiBox) poiBox.innerHTML = html || "";
+  function clearPoiPanel(container) {
+    setPoiPanelHtml(container, "");
   }
 
-  function renderPositionBox(popupApi, routeIndex, lat, lon) {
-    if (!popupApi) return;
-    const lang = getLang();
-    const t = infoTexts[lang] || infoTexts.no;
-
-    if (!routeIndex) {
-      setPosBoxHtml(popupApi, "");
-      return;
-    }
-    const res = nearestOnRouteKm(routeIndex, lat, lon);
-    if (!res) {
-      setPosBoxHtml(popupApi, "");
-      return;
-    }
-
-    const near = res.nearestKm;
-    const onRoute = near <= 0.2;
-    const far = near >= 5;
-    const hint = onRoute ? t.posOnRoute : far ? t.posFar : "";
-
-    const html = `
-      <p style="margin:14px 0 8px; font-weight:600;">${t.posTitle}</p>
-      ${hint ? `<p style="margin:0 0 10px; font-style:italic;">${hint}</p>` : ""}
-      <p style="margin:0 0 6px;">${t.posNearest}: <strong>${fmtKm(near)}</strong> km</p>
-      <p style="margin:0 0 6px;">${t.posStart}: <strong>${fmtKm(res.fromStartKm)}</strong> km</p>
-      <p style="margin:0;">${t.posEnd}: <strong>${fmtKm(res.toEndKm)}</strong> km</p>
-    `;
-    setPosBoxHtml(popupApi, html);
-  }
-
-  // ====== Surface summary ======
+  // ---------------------------
+  // Surface summary (unchanged – bruker din eksisterende DOM)
+  // ---------------------------
   function renderSurfaceSummary(container, route, computedFromFile, unknownAsTrail) {
     if (!container || !route) return;
 
@@ -423,7 +313,10 @@
     const tot0 = Number.isFinite(Number(totalKm)) ? Number(totalKm) : a0 + g0 + tr0 + u0;
 
     let a = a0, g = g0, tr = tr0, u = u0, tot = tot0;
-    if (unknownAsTrail) { tr += u; u = 0; }
+    if (unknownAsTrail) {
+      tr += u;
+      u = 0;
+    }
 
     if (tot <= 0.0001) {
       container.innerHTML = "";
@@ -442,7 +335,173 @@
     `;
   }
 
-  // ====== Chart ======
+  // ---------------------------
+  // Marker from DB (viser POI ved hover – men nå uten å ødelegge stats/pos)
+  // ---------------------------
+  function addMarkerFromDb(mapOrLayer, poi, popupContainer) {
+    if (!mapOrLayer || !poi) return null;
+
+    const pos = getPoiPos(poi);
+    if (!pos) return null;
+
+    const sym = poi.symbolType || poi.symbol || null;
+    const iconUrl = symbolUrl(sym);
+
+    const customIcon = L.divIcon({
+      className: "custom-icon",
+      html: iconUrl
+        ? `<img src="${iconUrl}" style="width:30px;height:30px;">`
+        : `<div style="width:30px;height:30px;background:#422426;border-radius:50%;"></div>`,
+      iconSize: [30, 30],
+      iconAnchor: [15, 30],
+    });
+
+    const m = L.marker(pos, { icon: customIcon });
+    m.addTo(mapOrLayer);
+
+    // Hover viser POI i POI-panelet (ikke hele containeren)
+    m.on("mouseover", function () {
+      if (!popupContainer) return;
+
+      const lang = getLang();
+      const texts = poi.texts || {};
+      const langBlock = texts[lang] || texts.no || {};
+
+      const title = langBlock.title || poi.name || poi.title || "";
+      const desc = langBlock.description || langBlock.desc || poi.description || "";
+      const imgUrl = poi.imageUrl || poi.image || null;
+
+      popupContainer.classList.remove("hidden");
+
+      setPoiPanelHtml(
+        popupContainer,
+        `
+        <div class="poi-card">
+          <div class="poi-card__top">
+            <button class="poi-close" aria-label="Close">&times;</button>
+          </div>
+          <h3 class="poi-card__title">${title}</h3>
+          ${imgUrl ? `<img class="poi-card__img" src="${imgUrl}" alt="">` : ""}
+          <p class="poi-card__desc">${desc}</p>
+        </div>
+        `
+      );
+
+      const close = popupContainer.querySelector(".poi-close");
+      if (close) close.addEventListener("click", () => clearPoiPanel(popupContainer));
+    });
+
+    return m;
+  }
+
+  // ---------------------------
+  // Distance math for “posisjon i forhold til ruta”
+  // ---------------------------
+  function haversineKm(lat1, lon1, lat2, lon2) {
+    const R = 6371;
+    const toRad = (x) => (x * Math.PI) / 180;
+    const dLat = toRad(lat2 - lat1);
+    const dLon = toRad(lon2 - lon1);
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return R * c;
+  }
+
+  function normalizeSurfaceCategory(raw, unknownAsTrail) {
+    let cat = (raw || "").toString().toLowerCase().trim();
+    if (!cat) cat = "unknown";
+    if (cat !== "asphalt" && cat !== "gravel" && cat !== "trail" && cat !== "unknown") cat = "unknown";
+    if (unknownAsTrail && cat === "unknown") return "trail";
+    return cat;
+  }
+
+  function buildRouteIndex(elevPoints, unknownAsTrail) {
+    const distances = [];
+    const lats = [];
+    const lons = [];
+    const elevations = [];
+    const cats = [];
+
+    for (let i = 0; i < elevPoints.length; i++) {
+      const p = elevPoints[i] || {};
+      const d = safeNum(p.distance, i > 0 ? distances[i - 1] : 0);
+      const e = safeNum(p.elevation, i > 0 ? elevations[i - 1] : 0);
+      distances.push(d);
+      elevations.push(e);
+      lats.push(Number(p.lat));
+      lons.push(Number(p.lon));
+      const raw = p.surfaceCategory ?? p.surface ?? p.category ?? "unknown";
+      cats.push(normalizeSurfaceCategory(raw, unknownAsTrail));
+    }
+
+    const totalKm = distances.length ? distances[distances.length - 1] : 0;
+    return { distances, lats, lons, elevations, cats, totalKm };
+  }
+
+  function nearestOnRoute(routeIndex, lat, lon) {
+    if (!routeIndex || !routeIndex.lats || !routeIndex.lats.length) return null;
+
+    let bestIdx = -1;
+    let bestDistKm = Infinity;
+
+    for (let i = 0; i < routeIndex.lats.length; i++) {
+      const la = routeIndex.lats[i];
+      const lo = routeIndex.lons[i];
+      if (!Number.isFinite(la) || !Number.isFinite(lo)) continue;
+
+      const dKm = haversineKm(lat, lon, la, lo);
+      if (dKm < bestDistKm) {
+        bestDistKm = dKm;
+        bestIdx = i;
+      }
+    }
+
+    if (bestIdx < 0) return null;
+
+    const fromStartKm = routeIndex.distances[bestIdx];
+    const toEndKm = Math.max(0, routeIndex.totalKm - fromStartKm);
+    return { bestIdx, bestDistKm, fromStartKm, toEndKm };
+  }
+
+  function renderPositionResult(popupContainer, routeIndex, latlng) {
+    if (!popupContainer || !routeIndex || !latlng) return;
+
+    const statsPanel = getStatsPanel(popupContainer);
+    if (!statsPanel) return;
+
+    const posBox = statsPanel.querySelector(".pos-box");
+    if (!posBox) return;
+
+    const lang = getLang();
+    const t = infoTexts[lang] || infoTexts.no;
+
+    const res = nearestOnRoute(routeIndex, latlng.lat, latlng.lng);
+    if (!res) {
+      posBox.innerHTML = "";
+      return;
+    }
+
+    const near = res.bestDistKm;
+    const onRoute = near <= 0.2;
+    const far = near >= 5;
+    const hint = onRoute ? t.posOnRoute : (far ? t.posFar : "");
+
+    posBox.innerHTML = `
+      <div class="pos-box__inner">
+        <p class="pos-title">${t.posTitle}</p>
+        ${hint ? `<p class="pos-hint">${hint}</p>` : ""}
+        <p class="pos-line">${t.posNearest}: <strong>${fmtKm(near)}</strong> km</p>
+        <p class="pos-line">${t.posStart}: <strong>${fmtKm(res.fromStartKm)}</strong> km</p>
+        <p class="pos-line">${t.posEnd}: <strong>${fmtKm(res.toEndKm)}</strong> km</p>
+      </div>
+    `;
+  }
+
+  // ---------------------------
+  // Chart (samme logikk, men returnerer routeIndex)
+  // ---------------------------
   function buildChart(canvas, elevPoints, movingMarker, surfaceSummaryEl, route, unknownAsTrail) {
     if (!canvas || !Array.isArray(elevPoints) || elevPoints.length === 0) return null;
     if (typeof Chart === "undefined") return null;
@@ -492,12 +551,7 @@
       }
     }
 
-    renderSurfaceSummary(
-      surfaceSummaryEl,
-      route,
-      { asphaltKm, gravelKm, trailKm, unknownKm, totalKm: idx.totalKm },
-      unknownAsTrail
-    );
+    renderSurfaceSummary(surfaceSummaryEl, route, { asphaltKm, gravelKm, trailKm, unknownKm, totalKm: idx.totalKm }, unknownAsTrail);
 
     const highest = Math.max.apply(null, elevations);
     const ctx = canvas.getContext("2d");
@@ -507,9 +561,11 @@
       { data: gravelPts,  backgroundColor: "#A3886C", borderColor: "#A3886C", fill: true, pointRadius: 0, tension: 0.4, spanGaps: false },
       { data: trailPts,   backgroundColor: "#5C7936", borderColor: "#5C7936", fill: true, pointRadius: 0, tension: 0.4, spanGaps: false },
     ];
+
     if (!unknownAsTrail) {
       datasets.push({ data: unknownPts, backgroundColor: "#9AA0A6", borderColor: "#9AA0A6", fill: true, pointRadius: 0, tension: 0.4, spanGaps: false });
     }
+
     datasets.push({
       data: linePts,
       borderColor: "#37394E",
@@ -541,7 +597,9 @@
               title: (items) => `${Number(items?.[0]?.parsed?.x ?? 0).toFixed(1)} km`,
               label: (c) => {
                 const i = c.dataIndex;
-                return `${elevations[i].toFixed(0)} moh / ${(slopes[i] || 0).toFixed(1)}%`;
+                const elev = elevations[i];
+                const slope = slopes[i] || 0;
+                return `${elev.toFixed(0)} moh / ${slope.toFixed(1)}%`;
               },
             },
           },
@@ -578,22 +636,33 @@
       if (points.length) moveMarkerToIndex(points[0].index);
     });
 
-    canvas.addEventListener("touchmove", function (e) {
-      if (!e.touches || !e.touches.length) return;
-      const touch = e.touches[0];
-      canvas.dispatchEvent(new MouseEvent("mousemove", {
-        bubbles: true, cancelable: true, view: window,
-        clientX: touch.clientX, clientY: touch.clientY,
-      }));
-    }, { passive: true });
+    canvas.addEventListener(
+      "touchmove",
+      function (e) {
+        if (!e.touches || !e.touches.length) return;
+        const touch = e.touches[0];
+        const simulatedEvent = new MouseEvent("mousemove", {
+          bubbles: true,
+          cancelable: true,
+          view: window,
+          clientX: touch.clientX,
+          clientY: touch.clientY,
+        });
+        canvas.dispatchEvent(simulatedEvent);
+      },
+      { passive: true }
+    );
 
     return idx;
   }
 
-  // ====== MarkerCluster ======
+  // ---------------------------
+  // MarkerCluster
+  // ---------------------------
   function hasMarkerCluster() {
     return typeof L !== "undefined" && typeof L.markerClusterGroup === "function";
   }
+
   function createClusterLayer(map) {
     if (!map || !hasMarkerCluster()) return null;
     try {
@@ -605,47 +674,8 @@
     }
   }
 
-  // ====== POI rendering (add once) ======
-  function makePoiKey(poi) {
-    const pos = getPoiPos(poi);
-    return (poi && poi.id) ? String(poi.id) : JSON.stringify(pos || []);
-  }
-
-  function createPoiRenderer(map, popupApi) {
+  function enableLazyPoiRendering(map, poisForRoute, popupContainer) {
     const added = new Set();
-
-    function addMarker(mapOrLayer, poi) {
-      if (!mapOrLayer || !poi) return null;
-      const pos = getPoiPos(poi);
-      if (!pos) return null;
-
-      const k = makePoiKey(poi);
-      if (added.has(k)) return null;
-      added.add(k);
-
-      const sym = poi.symbolType || poi.symbol || null;
-      const iconUrl = symbolUrl(sym);
-
-      const customIcon = L.divIcon({
-        className: "custom-icon",
-        html: iconUrl
-          ? `<img src="${iconUrl}" style="width:30px;height:30px;">`
-          : `<div style="width:30px;height:30px;background:#422426;border-radius:50%;"></div>`,
-        iconSize: [30, 30],
-        iconAnchor: [15, 30],
-      });
-
-      const leafletMarker = L.marker(pos, { icon: customIcon });
-      leafletMarker.addTo(mapOrLayer);
-
-      leafletMarker.on("mouseover", function () {
-        const host = popupApi.wrap.closest(".route-popup");
-        if (host) host.classList.remove("hidden");
-        renderPoi(popupApi, poi);
-      });
-
-      return leafletMarker;
-    }
 
     function shouldShowPoi(poi) {
       const pos = getPoiPos(poi);
@@ -661,90 +691,135 @@
       return ANCHOR_TYPES.has(t);
     }
 
-    function enableLazy(pois) {
-      function render() {
-        for (const poi of pois) {
-          if (!shouldShowPoi(poi)) continue;
-          addMarker(map, poi);
-        }
-      }
-      map.on("moveend zoomend", render);
-      render();
+    function key(poi) {
+      return poi && poi.id ? String(poi.id) : JSON.stringify(getPoiPos(poi) || []);
     }
 
-    function revealNear(pois, latlng, radiusMeters) {
-      if (!Array.isArray(pois) || !latlng) return;
-      const center = L.latLng(latlng.lat, latlng.lng);
-      for (const p of pois) {
-        const pos = getPoiPos(p);
-        if (!pos) continue;
-        const ll = L.latLng(pos[0], pos[1]);
-        if (center.distanceTo(ll) <= radiusMeters) addMarker(map, p);
+    function render() {
+      for (const poi of poisForRoute) {
+        if (!shouldShowPoi(poi)) continue;
+        const k = key(poi);
+        if (added.has(k)) continue;
+        added.add(k);
+        addMarkerFromDb(map, poi, popupContainer);
       }
     }
 
-    return { addMarker, enableLazy, revealNear };
+    map.on("moveend zoomend", render);
+    render();
   }
 
-  function findNearestPoi(map, pois, latlng, radiusMeters) {
-    if (!map || !Array.isArray(pois) || !latlng) return null;
-    let best = null;
-    let bestD = Infinity;
+  // ---------------------------
+  // “Nær nåla”: finn nærmeste POI og/eller vis flere nær
+  // ---------------------------
+  function findNearestPoiWithin(pois, latlng, maxMeters, map) {
+    if (!Array.isArray(pois) || !pois.length || !latlng) return null;
+    let best = { poi: null, d: Infinity };
 
     for (const p of pois) {
       const pos = getPoiPos(p);
       if (!pos) continue;
       const d = map.distance(latlng, L.latLng(pos[0], pos[1]));
-      if (d < bestD) { bestD = d; best = p; }
+      if (d < best.d) best = { poi: p, d };
     }
 
-    if (!best || bestD > radiusMeters) return null;
-    return { poi: best, distanceM: bestD };
+    if (!best.poi || best.d > maxMeters) return null;
+    return best;
   }
 
-  // ====== Position control ======
-  function addPositionControl(map, popupApi, getRouteIndex, onChooseLatLng) {
-    if (!map || !popupApi) return;
+  function renderNearestPoiPanel(popupContainer, poi, distanceM) {
+    if (!popupContainer) return;
+
+    const lang = getLang();
+    const t = infoTexts[lang] || infoTexts.no;
+
+    if (!poi) {
+      setPoiPanelHtml(
+        popupContainer,
+        `<div class="poi-card"><h3 class="poi-card__title">${t.nearHeading}</h3><p class="poi-card__desc">${t.nearNothing}</p></div>`
+      );
+      return;
+    }
+
+    const texts = poi.texts || {};
+    const langBlock = texts[lang] || texts.no || {};
+    const title = langBlock.title || poi.name || poi.title || "";
+    const desc = langBlock.description || langBlock.desc || poi.description || "";
+    const imgUrl = poi.imageUrl || poi.image || null;
+
+    const distKm = distanceM / 1000;
+
+    setPoiPanelHtml(
+      popupContainer,
+      `
+      <div class="poi-card">
+        <div class="poi-card__top">
+          <button class="poi-close" aria-label="Close">&times;</button>
+        </div>
+        <h3 class="poi-card__title">${title}</h3>
+        ${imgUrl ? `<img class="poi-card__img" src="${imgUrl}" alt="">` : ""}
+        <p class="poi-card__desc">${desc}</p>
+        <p class="poi-card__desc" style="margin-top:10px;font-style:italic;">
+          ${t.nearHeading} <strong>${fmtKm(distKm)}</strong> km
+        </p>
+      </div>
+      `
+    );
+
+    const close = popupContainer.querySelector(".poi-close");
+    if (close) close.addEventListener("click", () => clearPoiPanel(popupContainer));
+  }
+
+  // ---------------------------
+  // Position control (min pos + plasser/draggable nål)
+  // ---------------------------
+  function addPositionControl(map, popupContainer, getRouteIndexFn, poisForRoute, revealPoisNearFn) {
+    if (!map) return;
 
     let userMarker = null;
     let userCircle = null;
     let chosenMarker = null;
     let pickMode = false;
 
+    const lang = getLang();
+    const t = infoTexts[lang] || infoTexts.no;
+
     function setPickMode(on) {
       pickMode = !!on;
       map.getContainer().style.cursor = pickMode ? "crosshair" : "";
+    }
 
-      const lang = getLang();
-      const t = infoTexts[lang] || infoTexts.no;
+    function updateAllForLatLng(latlng) {
+      const routeIndex = typeof getRouteIndexFn === "function" ? getRouteIndexFn() : null;
+      if (routeIndex) renderPositionResult(popupContainer, routeIndex, latlng);
 
-      const statsBox = popupApi.stats.querySelector(".stats-box");
-      if (!statsBox) return;
-
-      let hint = statsBox.querySelector(".pick-hint");
-      if (!hint) {
-        hint = document.createElement("div");
-        hint.className = "pick-hint";
-        hint.style.marginTop = "12px";
-        hint.style.fontStyle = "italic";
-        hint.style.opacity = "0.9";
-        statsBox.appendChild(hint);
+      // “se mye ut”: legg til POI i radius (uten å kreve zoom/ankertyper)
+      if (typeof revealPoisNearFn === "function") {
+        try { revealPoisNearFn(latlng, DEFAULT_NEAR_RADIUS_M); } catch (_) {}
       }
-      hint.innerHTML = pickMode ? `${t.pickHint}<br>${t.pickHint2}` : "";
+
+      // Vis nærmeste POI (automatisk) – dette er det som manglet hos deg
+      if (Array.isArray(poisForRoute) && poisForRoute.length) {
+        const nearest = findNearestPoiWithin(poisForRoute, latlng, AUTO_POI_RADIUS_M, map);
+        if (nearest) renderNearestPoiPanel(popupContainer, nearest.poi, nearest.d);
+        else renderNearestPoiPanel(popupContainer, null, 0);
+      }
     }
 
     const ctrl = L.control({ position: "topleft" });
     ctrl.onAdd = function () {
       const wrap = L.DomUtil.create("div", "leaflet-bar svingom-pos-wrap");
 
+      // Min posisjon
       const btnMe = L.DomUtil.create("button", "svingom-pos-btn", wrap);
       btnMe.type = "button";
-      btnMe.title = (infoTexts[getLang()] || infoTexts.no).me;
-      btnMe.innerHTML = "🎯";
+      btnMe.title = t.pinMe;
+      btnMe.innerHTML = "◎";
 
+      // Plasser nål (mer intuitivt enn “+”)
       const btnPick = L.DomUtil.create("button", "svingom-pos-btn", wrap);
       btnPick.type = "button";
-      btnPick.title = (infoTexts[getLang()] || infoTexts.no).pick;
+      btnPick.title = t.pinPick;
       btnPick.innerHTML = "📍";
 
       L.DomEvent.disableClickPropagation(wrap);
@@ -767,10 +842,7 @@
             else userCircle.setLatLng(ll).setRadius(acc);
 
             map.setView(ll, Math.max(map.getZoom(), 12));
-
-            const routeIndex = typeof getRouteIndex === "function" ? getRouteIndex() : null;
-            renderPositionBox(popupApi, routeIndex, lat, lon);
-            if (typeof onChooseLatLng === "function") onChooseLatLng(ll, "me");
+            updateAllForLatLng(ll);
           },
           (err) => alert("Klarte ikke hente posisjon: " + (err.message || err.code)),
           { enableHighAccuracy: true, timeout: 8000, maximumAge: 30000 }
@@ -782,39 +854,36 @@
         const next = !pickMode;
         setPickMode(next);
         btnPick.classList.toggle("active", next);
+
+        // Liten “hint” i POI-panelet når pickMode slås på
+        if (next && popupContainer) {
+          setPoiPanelHtml(
+            popupContainer,
+            `<div class="poi-card"><h3 class="poi-card__title">📍</h3><p class="poi-card__desc">${t.pinHint}</p></div>`
+          );
+        }
       });
 
       return wrap;
     };
+
     ctrl.addTo(map);
 
     map.on("click", (evt) => {
       if (!pickMode) return;
+
       const ll = evt.latlng;
 
       if (!chosenMarker) {
         chosenMarker = L.marker(ll, { draggable: true }).addTo(map);
 
-        chosenMarker.on("drag", () => {
-          const p = chosenMarker.getLatLng();
-          const routeIndex = typeof getRouteIndex === "function" ? getRouteIndex() : null;
-          renderPositionBox(popupApi, routeIndex, p.lat, p.lng);
-          if (typeof onChooseLatLng === "function") onChooseLatLng(p, "drag");
-        });
-
-        chosenMarker.on("dragend", () => {
-          const p = chosenMarker.getLatLng();
-          const routeIndex = typeof getRouteIndex === "function" ? getRouteIndex() : null;
-          renderPositionBox(popupApi, routeIndex, p.lat, p.lng);
-          if (typeof onChooseLatLng === "function") onChooseLatLng(p, "dragend");
-        });
+        chosenMarker.on("drag", () => updateAllForLatLng(chosenMarker.getLatLng()));
+        chosenMarker.on("dragend", () => updateAllForLatLng(chosenMarker.getLatLng()));
       } else {
         chosenMarker.setLatLng(ll);
       }
 
-      const routeIndex = typeof getRouteIndex === "function" ? getRouteIndex() : null;
-      renderPositionBox(popupApi, routeIndex, ll.lat, ll.lng);
-      if (typeof onChooseLatLng === "function") onChooseLatLng(ll, "pick");
+      updateAllForLatLng(ll);
 
       setPickMode(false);
       const active = map.getContainer().querySelector(".svingom-pos-btn.active");
@@ -822,7 +891,9 @@
     });
   }
 
-  // ====== Fullscreen control ======
+  // ---------------------------
+  // Fullscreen control
+  // ---------------------------
   function enterFullscreen(el) {
     if (!el) return;
     const fn = el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen;
@@ -835,8 +906,10 @@
   function isFullscreen() {
     return !!(document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement);
   }
+
   function addFullscreenControl(map, sectionEl) {
     if (!map || !sectionEl) return;
+
     const ctrl = L.control({ position: "topleft" });
     ctrl.onAdd = function () {
       const wrap = L.DomUtil.create("div", "leaflet-bar svingom-fs-wrap");
@@ -846,6 +919,7 @@
       btn.innerHTML = "⤢";
 
       L.DomEvent.disableClickPropagation(wrap);
+
       L.DomEvent.on(btn, "click", (e) => {
         L.DomEvent.stop(e);
         if (isFullscreen()) exitFullscreen();
@@ -855,15 +929,14 @@
 
       return wrap;
     };
+
     ctrl.addTo(map);
   }
 
-  // ====== Route section init ======
+  // ---------------------------
+  // Init per route section
+  // ---------------------------
   async function initRouteSection(section) {
-    // dobbelt-init stopper vi hardt
-    if (section.dataset.routeMapInited === "1") return;
-    section.dataset.routeMapInited = "1";
-
     const routeId = (section.dataset.routeId || "").trim();
     const routesUrl = (section.dataset.routesUrl || "").trim();
     const poisUrl = (section.dataset.poisUrl || "").trim();
@@ -871,12 +944,7 @@
     const unknownAsTrail = String(section.dataset.unknownAsTrail || "").trim() === "1";
 
     if (!routeId || !routesUrl || !poisUrl || !routeMarkersUrl) {
-      console.error("[route_map] Mangler data-attributter på seksjon:", section, { routeId, routesUrl, poisUrl, routeMarkersUrl });
-      return;
-    }
-
-    if (typeof L === "undefined") {
-      console.error("[route_map] Leaflet (L) er ikke lastet før route_map_master210.js");
+      console.error("[route_map] Mangler data-attributter:", { routeId, routesUrl, poisUrl, routeMarkersUrl });
       return;
     }
 
@@ -886,11 +954,12 @@
     const surfaceSummaryEl = section.querySelector(".surface-summary");
 
     if (!mapDiv || !popupContainer || !chartCanvas) {
-      console.error("[route_map] Mangler DOM i seksjon:", { mapDiv: !!mapDiv, popupContainer: !!popupContainer, chartCanvas: !!chartCanvas }, section);
+      console.error("[route_map] Mangler nødvendige DOM-elementer for", routeId);
       return;
     }
 
-    const popupApi = ensurePopupSkeleton(popupContainer);
+    // Sørg for panelstruktur før vi gjør noe (fikser hele “heng igjen”-problemet)
+    ensurePanelScaffold(popupContainer);
 
     let routesJson;
     try {
@@ -935,10 +1004,10 @@
       weight: 2,
     }).addTo(map);
 
-    renderStats(popupApi, route);
+    renderStats(popupContainer, route);
 
+    // ---- Elevation + chart index ----
     let routeIndex = null;
-
     try {
       const elevJson = await fetchJsonCached(elevUrl);
       const pts = Array.isArray(elevJson.points) ? elevJson.points : elevJson;
@@ -952,9 +1021,10 @@
       console.error("[route_map] Elevation-feil:", routeId, elevUrl, e);
     }
 
-    // ---- POI ----
+    // ---- Load POIs + route markers ----
     let poisForRoute = [];
-    let poiRenderer = null;
+    let boosted = new Set(); // for reveal near (unngå dobbelt)
+    let revealPoisNear = function () {};
 
     try {
       const [poisJson, routeMarkersJson] = await Promise.all([
@@ -969,42 +1039,46 @@
       const ids = routeMarkersJson[routeId] || [];
       poisForRoute = ids.map((id) => poisById.get(id)).filter(Boolean);
 
-      poiRenderer = createPoiRenderer(map, popupApi);
+      // --- “Boost”: vis alle POI nær valgt posisjon (uansett zoom/ankertyper) ---
+      revealPoisNear = function (latlng, radiusMeters = DEFAULT_NEAR_RADIUS_M) {
+        if (!latlng) return;
+        const center = L.latLng(latlng.lat, latlng.lng);
+
+        for (const p of poisForRoute) {
+          const pos = getPoiPos(p);
+          if (!pos) continue;
+          const ll = L.latLng(pos[0], pos[1]);
+          if (center.distanceTo(ll) <= radiusMeters) {
+            const k = p && p.id ? String(p.id) : JSON.stringify(pos);
+            if (boosted.has(k)) continue;
+            boosted.add(k);
+            addMarkerFromDb(map, p, popupContainer);
+          }
+        }
+      };
 
       if (poisForRoute.length <= POI_THRESHOLD) {
-        poisForRoute.forEach((p) => poiRenderer.addMarker(map, p));
+        poisForRoute.forEach((p) => addMarkerFromDb(map, p, popupContainer));
       } else {
         const clusterLayer = createClusterLayer(map);
-        if (clusterLayer) poisForRoute.forEach((p) => poiRenderer.addMarker(clusterLayer, p));
-        else poiRenderer.enableLazy(poisForRoute);
+        if (clusterLayer) poisForRoute.forEach((p) => addMarkerFromDb(clusterLayer, p, popupContainer));
+        else enableLazyPoiRendering(map, poisForRoute, popupContainer);
       }
     } catch (e) {
       console.error("[route_map] POI-feil:", routeId, e);
     }
 
-    function onChooseLatLng(latlng) {
-      if (!latlng) return;
-      popupContainer.classList.remove("hidden");
-
-      if (routeIndex) renderPositionBox(popupApi, routeIndex, latlng.lat, latlng.lng);
-
-      if (poiRenderer && poisForRoute.length) {
-        poiRenderer.revealNear(poisForRoute, latlng, AUTO_POI_RADIUS_M);
-        const hit = findNearestPoi(map, poisForRoute, latlng, AUTO_POI_RADIUS_M);
-        if (hit && hit.poi) {
-          renderPoi(popupApi, hit.poi);
-          return;
-        }
-      }
-
-      renderStats(popupApi, route);
-      if (routeIndex) renderPositionBox(popupApi, routeIndex, latlng.lat, latlng.lng);
-    }
-
-    addPositionControl(map, popupApi, () => routeIndex, onChooseLatLng);
+    // ---- Controls (nå riktig koblet) ----
+    addPositionControl(
+      map,
+      popupContainer,
+      () => routeIndex,
+      poisForRoute,
+      (latlng, r) => revealPoisNear(latlng, r)
+    );
     addFullscreenControl(map, section);
 
-    // ---- GPX ----
+    // ---- GPX route line ----
     try {
       new L.GPX(gpxUrl, {
         async: true,
@@ -1018,54 +1092,23 @@
     } catch (e) {
       console.error("[route_map] GPX-feil:", routeId, gpxUrl, e);
     }
-
-    console.log("[route_map] inited section:", routeId);
-  }
-
-  // ====== Robust init for Squarespace (ajax + late DOM) ======
-  function findSections() {
-    // robust: finn elementer med data-route-id OG url-attributter
-    return Array.from(document.querySelectorAll("[data-route-id][data-routes-url][data-pois-url][data-route-markers-url]"));
   }
 
   function initAll() {
     initChartDefaultsOnce();
-
-    const sections = findSections();
+    const sections = document.querySelectorAll(".map-section[data-route-id]");
     console.log("[route_map] initAll sections:", sections.length);
 
-    sections.forEach((section) => {
-      try { initRouteSection(section); }
-      catch (e) { console.error("[route_map] initRouteSection crash:", e); }
-    });
-  }
-
-  function scheduleInit() {
-    // kjør et par ganger, fordi Squarespace kan være treg med å injecte blokker
-    initAll();
-    setTimeout(initAll, 400);
-    setTimeout(initAll, 1200);
-  }
-
-  // 1) klassisk
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", scheduleInit);
-  else scheduleInit();
-
-  // 2) sikkerhetsnett
-  window.addEventListener("load", scheduleInit);
-
-  // 3) ajax/partial load: observer DOM
-  const obs = new MutationObserver(() => {
-    const sections = findSections();
-    // init kun de som ikke er inited
-    let did = false;
-    for (const s of sections) {
-      if (s.dataset.routeMapInited !== "1") { did = true; break; }
+    if (!sections.length) {
+      console.error(
+        "[route_map] Fant 0 seksjoner. Da skjer ingenting. Sjekk at HTML har .map-section med data-route-id + data-URLs."
+      );
+      return;
     }
-    if (did) scheduleInit();
-  });
 
-  try {
-    obs.observe(document.documentElement, { childList: true, subtree: true });
-  } catch (_) {}
+    sections.forEach((section) => initRouteSection(section));
+  }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initAll);
+  else initAll();
 })();
