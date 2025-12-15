@@ -1,0 +1,1516 @@
+{
+  "config": {
+    "elevation_dir": "C:\\Users\\SigridOterholmHoem\\Dropbox\\Mat- og opplevelsesruter i Tinn og Numedal\\SvingOm videreutvikling av kart og ruter 2024\\Kart og ruter OSM\\2026\\surface",
+    "glob_pattern": "*with_surface*.json",
+    "unknown_value": "unknown",
+    "gap_tol_km": 0.05,
+    "min_segment_km": 0.1
+  },
+  "routes": [
+    {
+      "route_id": "baklivegenrundt",
+      "file": "baklivegenrundt_elevation_with_surface.json",
+      "total_km_est": 29.335,
+      "unknown_km": 9.541,
+      "unknown_share": 0.3252,
+      "unknown_segments": [
+        {
+          "from_km": 0.176,
+          "to_km": 0.352,
+          "length_km": 0.176
+        },
+        {
+          "from_km": 3.567,
+          "to_km": 4.727,
+          "length_km": 1.16
+        },
+        {
+          "from_km": 9.006,
+          "to_km": 9.752,
+          "length_km": 0.746
+        },
+        {
+          "from_km": 9.815,
+          "to_km": 9.974,
+          "length_km": 0.159
+        },
+        {
+          "from_km": 10.033,
+          "to_km": 11.94,
+          "length_km": 1.907
+        },
+        {
+          "from_km": 11.998,
+          "to_km": 12.644,
+          "length_km": 0.646
+        },
+        {
+          "from_km": 12.996,
+          "to_km": 13.88,
+          "length_km": 0.884
+        },
+        {
+          "from_km": 13.94,
+          "to_km": 15.883,
+          "length_km": 1.943
+        },
+        {
+          "from_km": 17.999,
+          "to_km": 19.919,
+          "length_km": 1.92
+        }
+      ]
+    },
+    {
+      "route_id": "bingenrunden",
+      "file": "bingenrunden_elevation_with_surface.json",
+      "total_km_est": 47.634,
+      "unknown_km": 0.551,
+      "unknown_share": 0.0116,
+      "unknown_segments": [
+        {
+          "from_km": 14.909,
+          "to_km": 15.46,
+          "length_km": 0.551
+        }
+      ]
+    },
+    {
+      "route_id": "blaafarverunden",
+      "file": "blaafarverunden_elevation_with_surface.json",
+      "total_km_est": 90.181,
+      "unknown_km": 2.182,
+      "unknown_share": 0.0242,
+      "unknown_segments": [
+        {
+          "from_km": 15.036,
+          "to_km": 15.187,
+          "length_km": 0.151
+        },
+        {
+          "from_km": 15.305,
+          "to_km": 15.457,
+          "length_km": 0.152
+        },
+        {
+          "from_km": 30.566,
+          "to_km": 31.152,
+          "length_km": 0.586
+        },
+        {
+          "from_km": 31.202,
+          "to_km": 32.225,
+          "length_km": 1.023
+        },
+        {
+          "from_km": 32.285,
+          "to_km": 32.555,
+          "length_km": 0.27
+        }
+      ]
+    },
+    {
+      "route_id": "blefjell_juvefossen",
+      "file": "blefjell_juvefossen_elevation_with_surface.json",
+      "total_km_est": 46.641,
+      "unknown_km": 26.391,
+      "unknown_share": 0.5658,
+      "unknown_segments": [
+        {
+          "from_km": 9.356,
+          "to_km": 10.005,
+          "length_km": 0.649
+        },
+        {
+          "from_km": 10.062,
+          "to_km": 14.366,
+          "length_km": 4.304
+        },
+        {
+          "from_km": 14.53,
+          "to_km": 15.052,
+          "length_km": 0.522
+        },
+        {
+          "from_km": 15.103,
+          "to_km": 15.456,
+          "length_km": 0.353
+        },
+        {
+          "from_km": 15.544,
+          "to_km": 16.231,
+          "length_km": 0.687
+        },
+        {
+          "from_km": 16.297,
+          "to_km": 19.271,
+          "length_km": 2.974
+        },
+        {
+          "from_km": 19.323,
+          "to_km": 19.48,
+          "length_km": 0.157
+        },
+        {
+          "from_km": 19.681,
+          "to_km": 19.938,
+          "length_km": 0.257
+        },
+        {
+          "from_km": 19.988,
+          "to_km": 21.046,
+          "length_km": 1.058
+        },
+        {
+          "from_km": 21.11,
+          "to_km": 25.532,
+          "length_km": 4.422
+        },
+        {
+          "from_km": 25.596,
+          "to_km": 26.653,
+          "length_km": 1.057
+        },
+        {
+          "from_km": 26.704,
+          "to_km": 26.96,
+          "length_km": 0.256
+        },
+        {
+          "from_km": 27.161,
+          "to_km": 27.318,
+          "length_km": 0.157
+        },
+        {
+          "from_km": 27.37,
+          "to_km": 30.344,
+          "length_km": 2.974
+        },
+        {
+          "from_km": 30.411,
+          "to_km": 31.097,
+          "length_km": 0.686
+        },
+        {
+          "from_km": 31.185,
+          "to_km": 32.111,
+          "length_km": 0.926
+        },
+        {
+          "from_km": 32.276,
+          "to_km": 36.58,
+          "length_km": 4.304
+        },
+        {
+          "from_km": 36.637,
+          "to_km": 37.285,
+          "length_km": 0.648
+        }
+      ]
+    },
+    {
+      "route_id": "bolkesjorunden",
+      "file": "bolkesjorunden_elevation_with_surface.json",
+      "total_km_est": 12.512,
+      "unknown_km": 7.434,
+      "unknown_share": 0.5941,
+      "unknown_segments": [
+        {
+          "from_km": 4.528,
+          "to_km": 4.868,
+          "length_km": 0.34
+        },
+        {
+          "from_km": 4.931,
+          "to_km": 5.206,
+          "length_km": 0.275
+        },
+        {
+          "from_km": 5.268,
+          "to_km": 12.088,
+          "length_km": 6.819
+        }
+      ]
+    },
+    {
+      "route_id": "dusanfossrunden",
+      "file": "dusanfossrunden_elevation_with_surface.json",
+      "total_km_est": 12.658,
+      "unknown_km": 6.823,
+      "unknown_share": 0.539,
+      "unknown_segments": [
+        {
+          "from_km": 2.271,
+          "to_km": 3.294,
+          "length_km": 1.023
+        },
+        {
+          "from_km": 3.686,
+          "to_km": 4.124,
+          "length_km": 0.438
+        },
+        {
+          "from_km": 4.547,
+          "to_km": 5.565,
+          "length_km": 1.018
+        },
+        {
+          "from_km": 8.13,
+          "to_km": 10.544,
+          "length_km": 2.414
+        },
+        {
+          "from_km": 10.607,
+          "to_km": 11.931,
+          "length_km": 1.324
+        },
+        {
+          "from_km": 11.991,
+          "to_km": 12.597,
+          "length_km": 0.606
+        }
+      ]
+    },
+    {
+      "route_id": "fjellruta",
+      "file": "fjellruta_elevation_with_surface.json",
+      "total_km_est": 124.553,
+      "unknown_km": 3.95,
+      "unknown_share": 0.0317,
+      "unknown_segments": [
+        {
+          "from_km": 5.522,
+          "to_km": 5.64,
+          "length_km": 0.118
+        },
+        {
+          "from_km": 62.613,
+          "to_km": 62.766,
+          "length_km": 0.154
+        },
+        {
+          "from_km": 62.891,
+          "to_km": 63.075,
+          "length_km": 0.184
+        },
+        {
+          "from_km": 63.142,
+          "to_km": 63.267,
+          "length_km": 0.125
+        },
+        {
+          "from_km": 63.322,
+          "to_km": 63.643,
+          "length_km": 0.321
+        },
+        {
+          "from_km": 64.267,
+          "to_km": 64.392,
+          "length_km": 0.125
+        },
+        {
+          "from_km": 65.09,
+          "to_km": 65.29,
+          "length_km": 0.2
+        },
+        {
+          "from_km": 65.488,
+          "to_km": 65.763,
+          "length_km": 0.275
+        },
+        {
+          "from_km": 65.961,
+          "to_km": 66.176,
+          "length_km": 0.214
+        },
+        {
+          "from_km": 66.255,
+          "to_km": 66.489,
+          "length_km": 0.234
+        },
+        {
+          "from_km": 66.805,
+          "to_km": 66.932,
+          "length_km": 0.127
+        },
+        {
+          "from_km": 68.007,
+          "to_km": 68.149,
+          "length_km": 0.142
+        },
+        {
+          "from_km": 69.214,
+          "to_km": 69.381,
+          "length_km": 0.166
+        },
+        {
+          "from_km": 69.597,
+          "to_km": 69.742,
+          "length_km": 0.145
+        },
+        {
+          "from_km": 70.069,
+          "to_km": 70.2,
+          "length_km": 0.13
+        },
+        {
+          "from_km": 70.706,
+          "to_km": 70.985,
+          "length_km": 0.28
+        },
+        {
+          "from_km": 72.707,
+          "to_km": 72.86,
+          "length_km": 0.153
+        },
+        {
+          "from_km": 73.482,
+          "to_km": 73.601,
+          "length_km": 0.119
+        },
+        {
+          "from_km": 73.939,
+          "to_km": 74.099,
+          "length_km": 0.16
+        },
+        {
+          "from_km": 82.328,
+          "to_km": 82.583,
+          "length_km": 0.255
+        },
+        {
+          "from_km": 82.89,
+          "to_km": 83.007,
+          "length_km": 0.116
+        },
+        {
+          "from_km": 83.062,
+          "to_km": 83.269,
+          "length_km": 0.207
+        }
+      ]
+    },
+    {
+      "route_id": "follsjo",
+      "file": "follsjo_elevation_with_surface.json",
+      "total_km_est": 33.205,
+      "unknown_km": 8.147,
+      "unknown_share": 0.2454,
+      "unknown_segments": [
+        {
+          "from_km": 4.549,
+          "to_km": 5.37,
+          "length_km": 0.821
+        },
+        {
+          "from_km": 5.46,
+          "to_km": 5.599,
+          "length_km": 0.139
+        },
+        {
+          "from_km": 5.649,
+          "to_km": 6.045,
+          "length_km": 0.395
+        },
+        {
+          "from_km": 6.095,
+          "to_km": 6.256,
+          "length_km": 0.162
+        },
+        {
+          "from_km": 6.385,
+          "to_km": 6.62,
+          "length_km": 0.235
+        },
+        {
+          "from_km": 6.811,
+          "to_km": 8.008,
+          "length_km": 1.197
+        },
+        {
+          "from_km": 8.062,
+          "to_km": 8.173,
+          "length_km": 0.111
+        },
+        {
+          "from_km": 8.292,
+          "to_km": 9.842,
+          "length_km": 1.55
+        },
+        {
+          "from_km": 9.898,
+          "to_km": 11.562,
+          "length_km": 1.664
+        },
+        {
+          "from_km": 11.616,
+          "to_km": 11.913,
+          "length_km": 0.297
+        },
+        {
+          "from_km": 12.089,
+          "to_km": 13.201,
+          "length_km": 1.111
+        },
+        {
+          "from_km": 30.429,
+          "to_km": 30.894,
+          "length_km": 0.465
+        }
+      ]
+    },
+    {
+      "route_id": "imingfjellrundt",
+      "file": "imingfjellrundt_elevation_with_surface.json",
+      "total_km_est": 47.69,
+      "unknown_km": 13.145,
+      "unknown_share": 0.2756,
+      "unknown_segments": [
+        {
+          "from_km": 0.715,
+          "to_km": 0.906,
+          "length_km": 0.191
+        },
+        {
+          "from_km": 1.071,
+          "to_km": 1.288,
+          "length_km": 0.217
+        },
+        {
+          "from_km": 1.717,
+          "to_km": 1.908,
+          "length_km": 0.191
+        },
+        {
+          "from_km": 2.146,
+          "to_km": 3.527,
+          "length_km": 1.381
+        },
+        {
+          "from_km": 3.661,
+          "to_km": 4.197,
+          "length_km": 0.536
+        },
+        {
+          "from_km": 4.559,
+          "to_km": 5.885,
+          "length_km": 1.326
+        },
+        {
+          "from_km": 6.247,
+          "to_km": 6.781,
+          "length_km": 0.534
+        },
+        {
+          "from_km": 6.833,
+          "to_km": 7.01,
+          "length_km": 0.177
+        },
+        {
+          "from_km": 7.138,
+          "to_km": 8.074,
+          "length_km": 0.936
+        },
+        {
+          "from_km": 8.131,
+          "to_km": 10.648,
+          "length_km": 2.517
+        },
+        {
+          "from_km": 10.704,
+          "to_km": 10.807,
+          "length_km": 0.103
+        },
+        {
+          "from_km": 10.873,
+          "to_km": 11.589,
+          "length_km": 0.716
+        },
+        {
+          "from_km": 11.765,
+          "to_km": 12.253,
+          "length_km": 0.488
+        },
+        {
+          "from_km": 12.304,
+          "to_km": 12.454,
+          "length_km": 0.15
+        },
+        {
+          "from_km": 12.523,
+          "to_km": 12.939,
+          "length_km": 0.416
+        },
+        {
+          "from_km": 13.019,
+          "to_km": 13.496,
+          "length_km": 0.477
+        },
+        {
+          "from_km": 13.552,
+          "to_km": 13.768,
+          "length_km": 0.216
+        },
+        {
+          "from_km": 13.83,
+          "to_km": 13.946,
+          "length_km": 0.116
+        },
+        {
+          "from_km": 13.996,
+          "to_km": 14.355,
+          "length_km": 0.359
+        },
+        {
+          "from_km": 14.406,
+          "to_km": 14.645,
+          "length_km": 0.239
+        },
+        {
+          "from_km": 35.379,
+          "to_km": 35.529,
+          "length_km": 0.15
+        },
+        {
+          "from_km": 35.618,
+          "to_km": 36.075,
+          "length_km": 0.457
+        },
+        {
+          "from_km": 36.13,
+          "to_km": 37.382,
+          "length_km": 1.252
+        }
+      ]
+    },
+    {
+      "route_id": "kirkebygdarundt",
+      "file": "kirkebygdarundt_elevation_with_surface.json",
+      "total_km_est": 13.138,
+      "unknown_km": 1.275,
+      "unknown_share": 0.097,
+      "unknown_segments": [
+        {
+          "from_km": 0.184,
+          "to_km": 0.355,
+          "length_km": 0.171
+        },
+        {
+          "from_km": 3.573,
+          "to_km": 4.291,
+          "length_km": 0.718
+        },
+        {
+          "from_km": 4.353,
+          "to_km": 4.739,
+          "length_km": 0.386
+        }
+      ]
+    },
+    {
+      "route_id": "kunstkobolt",
+      "file": "kunstkobolt_elevation_with_surface.json",
+      "total_km_est": 120.435,
+      "unknown_km": 11.035,
+      "unknown_share": 0.0916,
+      "unknown_segments": [
+        {
+          "from_km": 14.888,
+          "to_km": 15.124,
+          "length_km": 0.236
+        },
+        {
+          "from_km": 30.29,
+          "to_km": 31.09,
+          "length_km": 0.8
+        },
+        {
+          "from_km": 31.189,
+          "to_km": 31.554,
+          "length_km": 0.365
+        },
+        {
+          "from_km": 31.617,
+          "to_km": 32.162,
+          "length_km": 0.545
+        },
+        {
+          "from_km": 32.233,
+          "to_km": 32.578,
+          "length_km": 0.345
+        },
+        {
+          "from_km": 33.147,
+          "to_km": 33.585,
+          "length_km": 0.438
+        },
+        {
+          "from_km": 74.294,
+          "to_km": 74.579,
+          "length_km": 0.285
+        },
+        {
+          "from_km": 84.665,
+          "to_km": 84.786,
+          "length_km": 0.121
+        },
+        {
+          "from_km": 86.915,
+          "to_km": 87.021,
+          "length_km": 0.106
+        },
+        {
+          "from_km": 89.36,
+          "to_km": 90.085,
+          "length_km": 0.725
+        },
+        {
+          "from_km": 90.14,
+          "to_km": 90.357,
+          "length_km": 0.217
+        },
+        {
+          "from_km": 90.43,
+          "to_km": 90.599,
+          "length_km": 0.169
+        },
+        {
+          "from_km": 90.687,
+          "to_km": 90.808,
+          "length_km": 0.121
+        },
+        {
+          "from_km": 90.861,
+          "to_km": 91.227,
+          "length_km": 0.366
+        },
+        {
+          "from_km": 91.289,
+          "to_km": 91.393,
+          "length_km": 0.104
+        },
+        {
+          "from_km": 91.467,
+          "to_km": 91.946,
+          "length_km": 0.479
+        },
+        {
+          "from_km": 92.003,
+          "to_km": 92.132,
+          "length_km": 0.129
+        },
+        {
+          "from_km": 92.183,
+          "to_km": 92.544,
+          "length_km": 0.361
+        },
+        {
+          "from_km": 92.612,
+          "to_km": 93.109,
+          "length_km": 0.497
+        },
+        {
+          "from_km": 93.216,
+          "to_km": 93.457,
+          "length_km": 0.241
+        },
+        {
+          "from_km": 93.533,
+          "to_km": 93.758,
+          "length_km": 0.225
+        },
+        {
+          "from_km": 93.93,
+          "to_km": 94.831,
+          "length_km": 0.901
+        },
+        {
+          "from_km": 94.89,
+          "to_km": 95.531,
+          "length_km": 0.641
+        },
+        {
+          "from_km": 95.585,
+          "to_km": 96.04,
+          "length_km": 0.455
+        },
+        {
+          "from_km": 96.107,
+          "to_km": 96.396,
+          "length_km": 0.289
+        },
+        {
+          "from_km": 96.783,
+          "to_km": 96.885,
+          "length_km": 0.102
+        },
+        {
+          "from_km": 96.95,
+          "to_km": 97.191,
+          "length_km": 0.241
+        },
+        {
+          "from_km": 97.256,
+          "to_km": 97.44,
+          "length_km": 0.184
+        },
+        {
+          "from_km": 97.581,
+          "to_km": 97.793,
+          "length_km": 0.212
+        },
+        {
+          "from_km": 97.979,
+          "to_km": 98.784,
+          "length_km": 0.805
+        },
+        {
+          "from_km": 98.855,
+          "to_km": 99.052,
+          "length_km": 0.197
+        },
+        {
+          "from_km": 99.119,
+          "to_km": 99.252,
+          "length_km": 0.133
+        }
+      ]
+    },
+    {
+      "route_id": "norerunden",
+      "file": "norerunden_elevation_with_surface.json",
+      "total_km_est": 36.191,
+      "unknown_km": 2.477,
+      "unknown_share": 0.0684,
+      "unknown_segments": [
+        {
+          "from_km": 0.397,
+          "to_km": 0.578,
+          "length_km": 0.181
+        },
+        {
+          "from_km": 4.813,
+          "to_km": 5.943,
+          "length_km": 1.13
+        },
+        {
+          "from_km": 8.479,
+          "to_km": 9.5,
+          "length_km": 1.021
+        },
+        {
+          "from_km": 35.648,
+          "to_km": 35.793,
+          "length_km": 0.145
+        }
+      ]
+    },
+    {
+      "route_id": "NS_5_Numedalsruta",
+      "file": "NS_5_Numedalsruta_elevation_with_surface.json",
+      "total_km_est": 165.207,
+      "unknown_km": 10.585,
+      "unknown_share": 0.0641,
+      "unknown_segments": [
+        {
+          "from_km": 1.555,
+          "to_km": 1.728,
+          "length_km": 0.173
+        },
+        {
+          "from_km": 1.804,
+          "to_km": 2.696,
+          "length_km": 0.892
+        },
+        {
+          "from_km": 2.771,
+          "to_km": 3.139,
+          "length_km": 0.368
+        },
+        {
+          "from_km": 3.258,
+          "to_km": 3.8,
+          "length_km": 0.542
+        },
+        {
+          "from_km": 3.851,
+          "to_km": 4.757,
+          "length_km": 0.906
+        },
+        {
+          "from_km": 4.905,
+          "to_km": 5.224,
+          "length_km": 0.319
+        },
+        {
+          "from_km": 5.284,
+          "to_km": 5.408,
+          "length_km": 0.124
+        },
+        {
+          "from_km": 5.873,
+          "to_km": 6.175,
+          "length_km": 0.302
+        },
+        {
+          "from_km": 6.242,
+          "to_km": 6.573,
+          "length_km": 0.331
+        },
+        {
+          "from_km": 6.662,
+          "to_km": 6.863,
+          "length_km": 0.201
+        },
+        {
+          "from_km": 7.145,
+          "to_km": 7.311,
+          "length_km": 0.166
+        },
+        {
+          "from_km": 7.365,
+          "to_km": 7.621,
+          "length_km": 0.256
+        },
+        {
+          "from_km": 7.678,
+          "to_km": 7.93,
+          "length_km": 0.252
+        },
+        {
+          "from_km": 7.98,
+          "to_km": 8.284,
+          "length_km": 0.304
+        },
+        {
+          "from_km": 70.958,
+          "to_km": 71.143,
+          "length_km": 0.185
+        },
+        {
+          "from_km": 71.204,
+          "to_km": 71.383,
+          "length_km": 0.179
+        },
+        {
+          "from_km": 98.561,
+          "to_km": 98.663,
+          "length_km": 0.102
+        },
+        {
+          "from_km": 99.182,
+          "to_km": 99.313,
+          "length_km": 0.131
+        },
+        {
+          "from_km": 99.433,
+          "to_km": 99.574,
+          "length_km": 0.141
+        },
+        {
+          "from_km": 105.898,
+          "to_km": 106.126,
+          "length_km": 0.228
+        },
+        {
+          "from_km": 106.332,
+          "to_km": 106.558,
+          "length_km": 0.226
+        },
+        {
+          "from_km": 106.806,
+          "to_km": 107.054,
+          "length_km": 0.248
+        },
+        {
+          "from_km": 107.219,
+          "to_km": 107.394,
+          "length_km": 0.175
+        },
+        {
+          "from_km": 107.838,
+          "to_km": 107.96,
+          "length_km": 0.122
+        },
+        {
+          "from_km": 108.795,
+          "to_km": 108.981,
+          "length_km": 0.186
+        },
+        {
+          "from_km": 109.036,
+          "to_km": 109.461,
+          "length_km": 0.425
+        },
+        {
+          "from_km": 109.587,
+          "to_km": 110.251,
+          "length_km": 0.664
+        },
+        {
+          "from_km": 110.314,
+          "to_km": 110.422,
+          "length_km": 0.108
+        },
+        {
+          "from_km": 110.493,
+          "to_km": 110.78,
+          "length_km": 0.287
+        },
+        {
+          "from_km": 115.801,
+          "to_km": 115.982,
+          "length_km": 0.181
+        },
+        {
+          "from_km": 119.94,
+          "to_km": 120.118,
+          "length_km": 0.178
+        },
+        {
+          "from_km": 120.536,
+          "to_km": 120.931,
+          "length_km": 0.395
+        },
+        {
+          "from_km": 120.992,
+          "to_km": 122.141,
+          "length_km": 1.149
+        },
+        {
+          "from_km": 163.976,
+          "to_km": 164.115,
+          "length_km": 0.139
+        }
+      ]
+    },
+    {
+      "route_id": "overbygderunden_lang",
+      "file": "overbygderunden_lang_elevation_with_surface.json",
+      "total_km_est": 23.265,
+      "unknown_km": 4.202,
+      "unknown_share": 0.1806,
+      "unknown_segments": [
+        {
+          "from_km": 8.399,
+          "to_km": 9.981,
+          "length_km": 1.582
+        },
+        {
+          "from_km": 10.038,
+          "to_km": 10.779,
+          "length_km": 0.741
+        },
+        {
+          "from_km": 10.838,
+          "to_km": 11.972,
+          "length_km": 1.134
+        },
+        {
+          "from_km": 12.028,
+          "to_km": 12.773,
+          "length_km": 0.745
+        }
+      ]
+    },
+    {
+      "route_id": "rollagrundt",
+      "file": "rollagrundt_elevation_with_surface.json",
+      "total_km_est": 19.422,
+      "unknown_km": 5.858,
+      "unknown_share": 0.3016,
+      "unknown_segments": [
+        {
+          "from_km": 0.117,
+          "to_km": 0.698,
+          "length_km": 0.581
+        },
+        {
+          "from_km": 1.801,
+          "to_km": 2.278,
+          "length_km": 0.477
+        },
+        {
+          "from_km": 6.119,
+          "to_km": 6.39,
+          "length_km": 0.271
+        },
+        {
+          "from_km": 14.528,
+          "to_km": 15.388,
+          "length_km": 0.86
+        },
+        {
+          "from_km": 15.44,
+          "to_km": 16.237,
+          "length_km": 0.797
+        },
+        {
+          "from_km": 16.308,
+          "to_km": 16.707,
+          "length_km": 0.399
+        },
+        {
+          "from_km": 16.757,
+          "to_km": 17.208,
+          "length_km": 0.451
+        },
+        {
+          "from_km": 17.266,
+          "to_km": 17.395,
+          "length_km": 0.129
+        },
+        {
+          "from_km": 17.466,
+          "to_km": 18.921,
+          "length_km": 1.455
+        },
+        {
+          "from_km": 18.984,
+          "to_km": 19.422,
+          "length_km": 0.438
+        }
+      ]
+    },
+    {
+      "route_id": "routes_with_stats",
+      "file": "routes_with_stats_with_surface.json",
+      "total_km_est": null,
+      "unknown_km": 0,
+      "unknown_share": null,
+      "unknown_segments": []
+    },
+    {
+      "route_id": "skagsaasenrundt",
+      "file": "skagsaasenrundt_elevation_with_surface.json",
+      "total_km_est": 34.765,
+      "unknown_km": 0.471,
+      "unknown_share": 0.0135,
+      "unknown_segments": [
+        {
+          "from_km": 33.957,
+          "to_km": 34.184,
+          "length_km": 0.227
+        },
+        {
+          "from_km": 34.234,
+          "to_km": 34.478,
+          "length_km": 0.244
+        }
+      ]
+    },
+    {
+      "route_id": "smaadoldalenrundt",
+      "file": "smaadoldalenrundt_elevation_with_surface.json",
+      "total_km_est": 72.29,
+      "unknown_km": 2.587,
+      "unknown_share": 0.0358,
+      "unknown_segments": [
+        {
+          "from_km": 0.217,
+          "to_km": 0.361,
+          "length_km": 0.144
+        },
+        {
+          "from_km": 59.689,
+          "to_km": 60.153,
+          "length_km": 0.464
+        },
+        {
+          "from_km": 60.205,
+          "to_km": 60.796,
+          "length_km": 0.591
+        },
+        {
+          "from_km": 60.995,
+          "to_km": 61.506,
+          "length_km": 0.511
+        },
+        {
+          "from_km": 67.881,
+          "to_km": 68.186,
+          "length_km": 0.305
+        },
+        {
+          "from_km": 68.248,
+          "to_km": 68.706,
+          "length_km": 0.458
+        },
+        {
+          "from_km": 71.96,
+          "to_km": 72.074,
+          "length_km": 0.114
+        }
+      ]
+    },
+    {
+      "route_id": "trillemarkarundt",
+      "file": "trillemarkarundt_elevation_with_surface.json",
+      "total_km_est": 76.435,
+      "unknown_km": 32.651,
+      "unknown_share": 0.4272,
+      "unknown_segments": [
+        {
+          "from_km": 14.799,
+          "to_km": 15.898,
+          "length_km": 1.099
+        },
+        {
+          "from_km": 15.961,
+          "to_km": 16.704,
+          "length_km": 0.743
+        },
+        {
+          "from_km": 17.427,
+          "to_km": 18.351,
+          "length_km": 0.924
+        },
+        {
+          "from_km": 18.41,
+          "to_km": 20.576,
+          "length_km": 2.166
+        },
+        {
+          "from_km": 20.714,
+          "to_km": 21.121,
+          "length_km": 0.407
+        },
+        {
+          "from_km": 21.218,
+          "to_km": 21.491,
+          "length_km": 0.273
+        },
+        {
+          "from_km": 21.631,
+          "to_km": 21.957,
+          "length_km": 0.326
+        },
+        {
+          "from_km": 22.013,
+          "to_km": 22.343,
+          "length_km": 0.33
+        },
+        {
+          "from_km": 22.625,
+          "to_km": 22.931,
+          "length_km": 0.306
+        },
+        {
+          "from_km": 23.078,
+          "to_km": 23.389,
+          "length_km": 0.311
+        },
+        {
+          "from_km": 23.466,
+          "to_km": 23.618,
+          "length_km": 0.152
+        },
+        {
+          "from_km": 23.848,
+          "to_km": 24.165,
+          "length_km": 0.317
+        },
+        {
+          "from_km": 24.23,
+          "to_km": 24.841,
+          "length_km": 0.611
+        },
+        {
+          "from_km": 24.897,
+          "to_km": 25.012,
+          "length_km": 0.115
+        },
+        {
+          "from_km": 25.223,
+          "to_km": 25.453,
+          "length_km": 0.23
+        },
+        {
+          "from_km": 25.582,
+          "to_km": 25.759,
+          "length_km": 0.177
+        },
+        {
+          "from_km": 25.964,
+          "to_km": 26.217,
+          "length_km": 0.253
+        },
+        {
+          "from_km": 26.672,
+          "to_km": 27.211,
+          "length_km": 0.539
+        },
+        {
+          "from_km": 27.271,
+          "to_km": 27.517,
+          "length_km": 0.246
+        },
+        {
+          "from_km": 27.655,
+          "to_km": 28.054,
+          "length_km": 0.399
+        },
+        {
+          "from_km": 28.11,
+          "to_km": 28.74,
+          "length_km": 0.63
+        },
+        {
+          "from_km": 28.797,
+          "to_km": 29.052,
+          "length_km": 0.255
+        },
+        {
+          "from_km": 29.122,
+          "to_km": 29.275,
+          "length_km": 0.153
+        },
+        {
+          "from_km": 29.35,
+          "to_km": 29.513,
+          "length_km": 0.163
+        },
+        {
+          "from_km": 29.58,
+          "to_km": 29.894,
+          "length_km": 0.314
+        },
+        {
+          "from_km": 29.963,
+          "to_km": 30.419,
+          "length_km": 0.456
+        },
+        {
+          "from_km": 30.549,
+          "to_km": 31.135,
+          "length_km": 0.586
+        },
+        {
+          "from_km": 31.721,
+          "to_km": 32.179,
+          "length_km": 0.458
+        },
+        {
+          "from_km": 32.521,
+          "to_km": 32.656,
+          "length_km": 0.135
+        },
+        {
+          "from_km": 32.909,
+          "to_km": 33.096,
+          "length_km": 0.187
+        },
+        {
+          "from_km": 33.227,
+          "to_km": 33.54,
+          "length_km": 0.313
+        },
+        {
+          "from_km": 48.754,
+          "to_km": 48.918,
+          "length_km": 0.164
+        },
+        {
+          "from_km": 49.221,
+          "to_km": 49.846,
+          "length_km": 0.625
+        },
+        {
+          "from_km": 49.912,
+          "to_km": 50.459,
+          "length_km": 0.547
+        },
+        {
+          "from_km": 50.524,
+          "to_km": 50.624,
+          "length_km": 0.1
+        },
+        {
+          "from_km": 50.676,
+          "to_km": 51.288,
+          "length_km": 0.612
+        },
+        {
+          "from_km": 51.347,
+          "to_km": 51.594,
+          "length_km": 0.247
+        },
+        {
+          "from_km": 51.652,
+          "to_km": 52.453,
+          "length_km": 0.801
+        },
+        {
+          "from_km": 52.511,
+          "to_km": 52.619,
+          "length_km": 0.108
+        },
+        {
+          "from_km": 52.684,
+          "to_km": 52.988,
+          "length_km": 0.304
+        },
+        {
+          "from_km": 53.199,
+          "to_km": 53.367,
+          "length_km": 0.168
+        },
+        {
+          "from_km": 53.428,
+          "to_km": 53.653,
+          "length_km": 0.225
+        },
+        {
+          "from_km": 53.71,
+          "to_km": 53.9,
+          "length_km": 0.19
+        },
+        {
+          "from_km": 53.963,
+          "to_km": 54.651,
+          "length_km": 0.688
+        },
+        {
+          "from_km": 54.728,
+          "to_km": 55.038,
+          "length_km": 0.31
+        },
+        {
+          "from_km": 55.11,
+          "to_km": 55.222,
+          "length_km": 0.112
+        },
+        {
+          "from_km": 55.412,
+          "to_km": 55.568,
+          "length_km": 0.156
+        },
+        {
+          "from_km": 55.947,
+          "to_km": 56.091,
+          "length_km": 0.144
+        },
+        {
+          "from_km": 56.164,
+          "to_km": 57.326,
+          "length_km": 1.162
+        },
+        {
+          "from_km": 57.403,
+          "to_km": 58.064,
+          "length_km": 0.661
+        },
+        {
+          "from_km": 58.244,
+          "to_km": 58.702,
+          "length_km": 0.458
+        },
+        {
+          "from_km": 58.753,
+          "to_km": 59.604,
+          "length_km": 0.851
+        },
+        {
+          "from_km": 59.745,
+          "to_km": 60.157,
+          "length_km": 0.412
+        },
+        {
+          "from_km": 60.224,
+          "to_km": 61.454,
+          "length_km": 1.23
+        },
+        {
+          "from_km": 61.683,
+          "to_km": 61.836,
+          "length_km": 0.153
+        },
+        {
+          "from_km": 61.888,
+          "to_km": 62.142,
+          "length_km": 0.254
+        },
+        {
+          "from_km": 62.194,
+          "to_km": 62.525,
+          "length_km": 0.331
+        },
+        {
+          "from_km": 62.575,
+          "to_km": 62.751,
+          "length_km": 0.176
+        },
+        {
+          "from_km": 62.802,
+          "to_km": 62.983,
+          "length_km": 0.181
+        },
+        {
+          "from_km": 63.135,
+          "to_km": 63.531,
+          "length_km": 0.396
+        },
+        {
+          "from_km": 63.662,
+          "to_km": 64.97,
+          "length_km": 1.308
+        },
+        {
+          "from_km": 65.035,
+          "to_km": 65.658,
+          "length_km": 0.623
+        },
+        {
+          "from_km": 65.709,
+          "to_km": 66.116,
+          "length_km": 0.407
+        },
+        {
+          "from_km": 66.174,
+          "to_km": 66.617,
+          "length_km": 0.443
+        },
+        {
+          "from_km": 66.672,
+          "to_km": 67.801,
+          "length_km": 1.129
+        },
+        {
+          "from_km": 68.326,
+          "to_km": 68.634,
+          "length_km": 0.308
+        },
+        {
+          "from_km": 68.715,
+          "to_km": 69.174,
+          "length_km": 0.459
+        },
+        {
+          "from_km": 69.327,
+          "to_km": 69.643,
+          "length_km": 0.316
+        },
+        {
+          "from_km": 69.785,
+          "to_km": 71.161,
+          "length_km": 1.376
+        },
+        {
+          "from_km": 71.314,
+          "to_km": 71.62,
+          "length_km": 0.306
+        },
+        {
+          "from_km": 71.672,
+          "to_km": 71.849,
+          "length_km": 0.177
+        },
+        {
+          "from_km": 71.925,
+          "to_km": 72.384,
+          "length_km": 0.459
+        }
+      ]
+    }
+  ]
+}
