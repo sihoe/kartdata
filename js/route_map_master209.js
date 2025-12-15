@@ -36,8 +36,7 @@
     "tent",
   ]);
 
-  // Når bruker velger posisjon (nål / min posisjon):
-  // vis automatisk nærmeste POI innen radius (meter). Hvis ingen: vis stats.
+  // Auto-vis POI når bruker setter posisjon (meter)
   const AUTO_POI_RADIUS_M = 3000;
 
   // ====== Texts ======
@@ -65,6 +64,8 @@
       pickHint: "Klikk i kartet for å sette en flyttbar nål.",
       pickHint2: "Dra nåla for å se hva som er i nærheten.",
       back: "Tilbake",
+      me: "Min posisjon",
+      pick: "Velg posisjon",
     },
     en: {
       title: "Key info:",
@@ -89,6 +90,8 @@
       pickHint: "Click on the map to place a movable pin.",
       pickHint2: "Drag the pin to see what’s nearby.",
       back: "Back",
+      me: "My location",
+      pick: "Pick location",
     },
     de: {
       title: "Schlüsselinfo:",
@@ -113,6 +116,8 @@
       pickHint: "Klicken Sie in die Karte, um eine verschiebbare Markierung zu setzen.",
       pickHint2: "Ziehen Sie die Markierung, um zu sehen, was in der Nähe ist.",
       back: "Zurück",
+      me: "Mein Standort",
+      pick: "Standort wählen",
     },
   };
 
@@ -254,6 +259,158 @@
     return { nearestKm: bestDist, fromStartKm, toEndKm, idx: bestIdx };
   }
 
+  // ====== Popup controller (stats + poi + shared position box) ======
+  function ensurePopupSkeleton(container) {
+    if (!container) return null;
+    if (container.__svingom_popup) return container.__svingom_popup;
+
+    const wrap = document.createElement("div");
+    wrap.className = "svingom-popup";
+
+    const stats = document.createElement("div");
+    stats.className = "svingom-popup__stats";
+
+    const poi = document.createElement("div");
+    poi.className = "svingom-popup__poi hidden";
+
+    wrap.appendChild(stats);
+    wrap.appendChild(poi);
+
+    container.innerHTML = "";
+    container.appendChild(wrap);
+
+    const api = {
+      wrap,
+      stats,
+      poi,
+      mode: "stats", // "stats" | "poi"
+      lastPoi: null,
+      setMode(next) {
+        this.mode = next;
+        if (next === "stats") {
+          this.stats.classList.remove("hidden");
+          this.poi.classList.add("hidden");
+        } else {
+          this.stats.classList.add("hidden");
+          this.poi.classList.remove("hidden");
+        }
+      },
+    };
+
+    container.__svingom_popup = api;
+    return api;
+  }
+
+  function renderStats(popupApi, route) {
+    if (!popupApi || !route) return;
+
+    const lang = getLang();
+    const t = infoTexts[lang] || infoTexts.no;
+    const s = getRouteStats(route);
+
+    popupApi.stats.innerHTML = `
+      <button class="route-close" aria-label="Close">&times;</button>
+      <div class="stats-box">
+        <p class="stats-title">${t.title}</p>
+        <p><span class="icon">↔</span> ${t.length}: <strong>${s.distanceKm.toFixed(1)}</strong> km</p>
+        <p><span class="icon">↗</span> ${t.ascent}: <strong>${s.climbM.toFixed(0)}</strong> m</p>
+        <p><span class="icon">↘</span> ${t.descent}: <strong>${s.descentM.toFixed(0)}</strong> m</p>
+        <p><span class="icon">▲</span> ${t.highest}: <strong>${s.maxElevationM.toFixed(0)}</strong> ${t.unit}</p>
+        <p><span class="icon">▼</span> ${t.lowest}: <strong>${s.minElevationM.toFixed(0)}</strong> ${t.unit}</p>
+
+        <div class="pos-box"></div>
+
+        <p style="margin-top:16px;font-style:italic;">${t.instruction}</p>
+      </div>
+    `;
+
+    // mobil-X (kun skjul container, ikke ødelegg state)
+    const closeBtn = popupApi.stats.querySelector(".route-close");
+    if (closeBtn && window.innerWidth <= 768) {
+      closeBtn.addEventListener("click", function () {
+        // skjul HELE popup-containeren (samme som før)
+        const host = popupApi.wrap.closest(".route-popup");
+        if (host) host.classList.add("hidden");
+      });
+    }
+
+    popupApi.setMode("stats");
+  }
+
+  function renderPoi(popupApi, poi) {
+    if (!popupApi || !poi) return;
+
+    const lang = getLang();
+    const t = infoTexts[lang] || infoTexts.no;
+
+    const texts = poi.texts || {};
+    const langBlock = texts[lang] || texts.no || {};
+    const title = langBlock.title || poi.name || poi.title || "";
+    const desc = langBlock.description || langBlock.desc || poi.description || "";
+    const imgUrl = poi.imageUrl || poi.image || null;
+
+    popupApi.poi.innerHTML = `
+      <button class="popup-back" type="button">${t.back}</button>
+      <button class="popup-close" aria-label="Close">&times;</button>
+
+      <div class="poi-card">
+        <h3 class="poi-card__title">${title}</h3>
+        ${imgUrl ? `<img class="poi-card__img" src="${imgUrl}" alt="">` : ""}
+        <p class="poi-card__desc">${desc}</p>
+        <div class="pos-box"></div>
+      </div>
+    `;
+
+    const backBtn = popupApi.poi.querySelector(".popup-back");
+    if (backBtn) backBtn.addEventListener("click", () => popupApi.setMode("stats"));
+
+    const closeBtn = popupApi.poi.querySelector(".popup-close");
+    if (closeBtn) closeBtn.addEventListener("click", () => popupApi.setMode("stats"));
+
+    popupApi.lastPoi = poi;
+    popupApi.setMode("poi");
+  }
+
+  function setPosBoxHtml(popupApi, html) {
+    if (!popupApi) return;
+    const statsBox = popupApi.stats.querySelector(".pos-box");
+    if (statsBox) statsBox.innerHTML = html || "";
+    const poiBox = popupApi.poi.querySelector(".pos-box");
+    if (poiBox) poiBox.innerHTML = html || "";
+  }
+
+  function renderPositionBox(popupApi, routeIndex, lat, lon) {
+    if (!popupApi) return;
+
+    const lang = getLang();
+    const t = infoTexts[lang] || infoTexts.no;
+
+    if (!routeIndex) {
+      setPosBoxHtml(popupApi, "");
+      return;
+    }
+
+    const res = nearestOnRouteKm(routeIndex, lat, lon);
+    if (!res) {
+      setPosBoxHtml(popupApi, "");
+      return;
+    }
+
+    const near = res.nearestKm;
+    const onRoute = near <= 0.2;
+    const far = near >= 5;
+    const hint = onRoute ? t.posOnRoute : far ? t.posFar : "";
+
+    const html = `
+      <p style="margin:14px 0 8px; font-weight:600;">${t.posTitle}</p>
+      ${hint ? `<p style="margin:0 0 10px; font-style:italic;">${hint}</p>` : ""}
+      <p style="margin:0 0 6px;">${t.posNearest}: <strong>${fmtKm(near)}</strong> km</p>
+      <p style="margin:0 0 6px;">${t.posStart}: <strong>${fmtKm(res.fromStartKm)}</strong> km</p>
+      <p style="margin:0;">${t.posEnd}: <strong>${fmtKm(res.toEndKm)}</strong> km</p>
+    `;
+    setPosBoxHtml(popupApi, html);
+  }
+
   // ====== Surface summary ======
   function renderSurfaceSummary(container, route, computedFromFile, unknownAsTrail) {
     if (!container || !route) return;
@@ -283,11 +440,647 @@
     const tot0 = Number.isFinite(Number(totalKm)) ? Number(totalKm) : a0 + g0 + tr0 + u0;
 
     let a = a0, g = g0, tr = tr0, u = u0, tot = tot0;
-    if (unknownAsTrail) confirm; // <-- fjern dette
+    if (unknownAsTrail) {
+      tr += u;
+      u = 0;
+    }
+
+    if (tot <= 0.0001) {
+      container.innerHTML = "";
+      return;
+    }
+
+    const pct = (v) => (tot > 0 ? Math.round((v / tot) * 100) : 0);
+    const showUnknown = !unknownAsTrail && u > 0.01;
+
+    container.innerHTML = `
+      <span class="surface-label">${t.surfaceLabel}</span>
+      <span class="surface-legend-item"><span class="surface-swatch asphalt"></span>${t.asphalt} ${a.toFixed(1)} km (${pct(a)} %)</span>
+      <span class="surface-legend-item"><span class="surface-swatch gravel"></span>${t.gravel} ${g.toFixed(1)} km (${pct(g)} %)</span>
+      <span class="surface-legend-item"><span class="surface-swatch trail"></span>${t.trail} ${tr.toFixed(1)} km (${pct(tr)} %)</span>
+      ${showUnknown ? `<span class="surface-legend-item"><span class="surface-swatch unknown"></span>${t.unknown} ${u.toFixed(1)} km (${pct(u)} %)</span>` : ""}
+    `;
   }
 
-  // ^^^ Det der over er åpenbart trash: jeg lot en “confirm;” snike seg inn.
-  // Den MÅ bort ellers får du crash.
-  // Jeg fortsetter med riktig implementasjon under, komplett. Ikke bland.
+  // ====== POI markers (with stable add-once) ======
+  function makePoiKey(poi) {
+    const pos = getPoiPos(poi);
+    return (poi && poi.id) ? String(poi.id) : JSON.stringify(pos || []);
+  }
 
+  function createPoiRenderer(map, popupApi, resetToStatsFn) {
+    const added = new Set();
+
+    function addMarker(mapOrLayer, poi) {
+      if (!mapOrLayer || !poi) return null;
+      const pos = getPoiPos(poi);
+      if (!pos) return null;
+
+      const k = makePoiKey(poi);
+      if (added.has(k)) return null;
+      added.add(k);
+
+      const sym = poi.symbolType || poi.symbol || null;
+      const iconUrl = symbolUrl(sym);
+
+      const customIcon = L.divIcon({
+        className: "custom-icon",
+        html: iconUrl
+          ? `<img src="${iconUrl}" style="width:30px;height:30px;">`
+          : `<div style="width:30px;height:30px;background:#422426;border-radius:50%;"></div>`,
+        iconSize: [30, 30],
+        iconAnchor: [15, 30],
+      });
+
+      const leafletMarker = L.marker(pos, { icon: customIcon });
+      leafletMarker.addTo(mapOrLayer);
+
+      leafletMarker.on("mouseover", function () {
+        // Hover-POI skal fungere, men det skal ikke låse posisjonslogikk.
+        // Vi viser POI, men lar posisjonskontrollen overstyre når den er aktiv.
+        if (!popupApi) return;
+        popupApi.wrap.closest(".route-popup")?.classList.remove("hidden");
+        renderPoi(popupApi, poi);
+      });
+
+      return leafletMarker;
+    }
+
+    function revealNear(pois, latlng, radiusMeters) {
+      if (!map || !Array.isArray(pois) || !latlng) return;
+      const center = L.latLng(latlng.lat, latlng.lng);
+      for (const p of pois) {
+        const pos = getPoiPos(p);
+        if (!pos) continue;
+        const ll = L.latLng(pos[0], pos[1]);
+        if (center.distanceTo(ll) <= radiusMeters) {
+          addMarker(map, p);
+        }
+      }
+    }
+
+    function shouldShowPoi(poi) {
+      const pos = getPoiPos(poi);
+      if (!pos) return false;
+
+      const bounds = map.getBounds();
+      if (!bounds || !bounds.contains(L.latLng(pos[0], pos[1]))) return false;
+
+      const zoom = map.getZoom();
+      if (zoom >= ANCHOR_ZOOM) return true;
+
+      const t = normalizeSymbol(poi.symbolType || poi.symbol || "");
+      return ANCHOR_TYPES.has(t);
+    }
+
+    function enableLazy(pois) {
+      function render() {
+        for (const poi of pois) {
+          if (!shouldShowPoi(poi)) continue;
+          addMarker(map, poi);
+        }
+      }
+      map.on("moveend zoomend", render);
+      render();
+    }
+
+    return { addMarker, enableLazy, revealNear };
+  }
+
+  // ====== Chart (elevation) ======
+  function buildChart(canvas, elevPoints, movingMarker, surfaceSummaryEl, route, unknownAsTrail) {
+    if (!canvas || !Array.isArray(elevPoints) || elevPoints.length === 0) return null;
+    if (typeof Chart === "undefined") return null;
+
+    initChartDefaultsOnce();
+    destroyExistingChart(canvas);
+
+    const idx = buildRouteIndex(elevPoints, unknownAsTrail);
+
+    const distances = idx.distances;
+    const elevations = idx.elevations;
+    const cats = idx.cats;
+
+    const slopes = [0];
+    for (let i = 1; i < elevations.length; i++) {
+      const delta = elevations[i] - elevations[i - 1];
+      const distKm = distances[i] - distances[i - 1];
+      const slope = distKm > 0 ? (delta / (distKm * 1000)) * 100 : 0;
+      slopes.push(slope);
+    }
+
+    const asphaltPts = [];
+    const gravelPts = [];
+    const trailPts = [];
+    const unknownPts = [];
+    const linePts = [];
+
+    let asphaltKm = 0, gravelKm = 0, trailKm = 0, unknownKm = 0;
+
+    for (let i = 0; i < elevations.length; i++) {
+      const x = distances[i];
+      const y = elevations[i];
+      const cat = cats[i];
+
+      linePts.push({ x, y });
+      asphaltPts.push({ x, y: cat === "asphalt" ? y : null });
+      gravelPts.push({ x, y: cat === "gravel" ? y : null });
+      trailPts.push({ x, y: cat === "trail" ? y : null });
+      unknownPts.push({ x, y: cat === "unknown" ? y : null });
+
+      if (i > 0) {
+        const segKm = distances[i] - distances[i - 1];
+        if (cat === "asphalt") asphaltKm += segKm;
+        else if (cat === "gravel") gravelKm += segKm;
+        else if (cat === "trail") trailKm += segKm;
+        else unknownKm += segKm;
+      }
+    }
+
+    renderSurfaceSummary(
+      surfaceSummaryEl,
+      route,
+      { asphaltKm, gravelKm, trailKm, unknownKm, totalKm: idx.totalKm },
+      unknownAsTrail
+    );
+
+    const highest = Math.max.apply(null, elevations);
+    const ctx = canvas.getContext("2d");
+
+    const datasets = [
+      { data: asphaltPts, backgroundColor: "#37394E", borderColor: "#37394E", fill: true, pointRadius: 0, tension: 0.4, spanGaps: false },
+      { data: gravelPts,  backgroundColor: "#A3886C", borderColor: "#A3886C", fill: true, pointRadius: 0, tension: 0.4, spanGaps: false },
+      { data: trailPts,   backgroundColor: "#5C7936", borderColor: "#5C7936", fill: true, pointRadius: 0, tension: 0.4, spanGaps: false },
+    ];
+
+    if (!unknownAsTrail) {
+      datasets.push({ data: unknownPts, backgroundColor: "#9AA0A6", borderColor: "#9AA0A6", fill: true, pointRadius: 0, tension: 0.4, spanGaps: false });
+    }
+
+    datasets.push({
+      data: linePts,
+      borderColor: "#37394E",
+      borderWidth: 4,
+      pointRadius: 0,
+      tension: 0.4,
+      fill: false,
+      spanGaps: false,
+    });
+
+    const lineDatasetIndex = datasets.length - 1;
+
+    const chart = new Chart(ctx, {
+      type: "line",
+      data: { datasets },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: false,
+        parsing: true,
+        interaction: { intersect: false, mode: "index" },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: "#37394E",
+            displayColors: false,
+            filter: (item) => item.datasetIndex === lineDatasetIndex,
+            callbacks: {
+              title: (items) => {
+                const x = items?.[0]?.parsed?.x ?? 0;
+                return `${Number(x).toFixed(1)} km`;
+              },
+              label: (c) => {
+                const i = c.dataIndex;
+                const elev = elevations[i];
+                const slope = slopes[i] || 0;
+                return `${elev.toFixed(0)} moh / ${slope.toFixed(1)}%`;
+              },
+            },
+          },
+        },
+        scales: {
+          x: {
+            type: "linear",
+            min: 0,
+            max: idx.totalKm,
+            ticks: { color: "#37394E", callback: (v) => `${Number(v).toFixed(0)} km` },
+            grid: { display: false },
+          },
+          y: {
+            min: 0,
+            max: Math.ceil(highest / 50) * 50,
+            ticks: { stepSize: 50, color: "#37394E" },
+            grid: { display: false },
+          },
+        },
+      },
+    });
+
+    canvas.__chart = chart;
+
+    function moveMarkerToIndex(i) {
+      if (!movingMarker) return;
+      const lat = idx.lats[i];
+      const lon = idx.lons[i];
+      if (Number.isFinite(lat) && Number.isFinite(lon)) movingMarker.setLatLng([lat, lon]);
+    }
+
+    canvas.addEventListener("mousemove", function (evt) {
+      const points = chart.getElementsAtEventForMode(evt, "index", { intersect: false }, true);
+      if (points.length) moveMarkerToIndex(points[0].index);
+    });
+
+    canvas.addEventListener("touchmove", function (e) {
+      if (!e.touches || !e.touches.length) return;
+      const touch = e.touches[0];
+      const simulatedEvent = new MouseEvent("mousemove", {
+        bubbles: true,
+        cancelable: true,
+        view: window,
+        clientX: touch.clientX,
+        clientY: touch.clientY,
+      });
+      canvas.dispatchEvent(simulatedEvent);
+    }, { passive: true });
+
+    return idx;
+  }
+
+  // ====== MarkerCluster ======
+  function hasMarkerCluster() {
+    return typeof L !== "undefined" && typeof L.markerClusterGroup === "function";
+  }
+
+  function createClusterLayer(map) {
+    if (!map || !hasMarkerCluster()) return null;
+    try {
+      const layer = L.markerClusterGroup();
+      map.addLayer(layer);
+      return layer;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  // ====== Find nearest POI to a chosen position ======
+  function findNearestPoi(map, pois, latlng, radiusMeters) {
+    if (!map || !Array.isArray(pois) || !latlng) return null;
+
+    let best = null;
+    let bestD = Infinity;
+
+    for (const p of pois) {
+      const pos = getPoiPos(p);
+      if (!pos) continue;
+      const d = map.distance(latlng, L.latLng(pos[0], pos[1]));
+      if (d < bestD) {
+        bestD = d;
+        best = p;
+      }
+    }
+
+    if (!best || bestD > radiusMeters) return null;
+    return { poi: best, distanceM: bestD };
+  }
+
+  // ====== Position control (my location + pick location) ======
+  function addPositionControl(map, popupApi, getRouteIndex, onChooseLatLng) {
+    if (!map || !popupApi) return;
+
+    let userMarker = null;
+    let userCircle = null;
+    let chosenMarker = null;
+    let pickMode = false;
+
+    function setPickMode(on) {
+      pickMode = !!on;
+      map.getContainer().style.cursor = pickMode ? "crosshair" : "";
+      const lang = getLang();
+      const t = infoTexts[lang] || infoTexts.no;
+
+      // Hint i stats-visning (ikke mas, bare vis når aktiv)
+      const statsBox = popupApi.stats.querySelector(".stats-box");
+      if (!statsBox) return;
+      let hint = statsBox.querySelector(".pick-hint");
+      if (!hint) {
+        hint = document.createElement("div");
+        hint.className = "pick-hint";
+        hint.style.marginTop = "12px";
+        hint.style.fontStyle = "italic";
+        hint.style.opacity = "0.9";
+        statsBox.appendChild(hint);
+      }
+      hint.innerHTML = pickMode ? `${t.pickHint}<br>${t.pickHint2}` : "";
+    }
+
+    const ctrl = L.control({ position: "topleft" });
+    ctrl.onAdd = function () {
+      const wrap = L.DomUtil.create("div", "leaflet-bar svingom-pos-wrap");
+
+      const btnMe = L.DomUtil.create("button", "svingom-pos-btn", wrap);
+      btnMe.type = "button";
+      btnMe.title = (infoTexts[getLang()] || infoTexts.no).me;
+      btnMe.innerHTML = "🎯";
+
+      const btnPick = L.DomUtil.create("button", "svingom-pos-btn", wrap);
+      btnPick.type = "button";
+      btnPick.title = (infoTexts[getLang()] || infoTexts.no).pick;
+      btnPick.innerHTML = "📍";
+
+      L.DomEvent.disableClickPropagation(wrap);
+
+      L.DomEvent.on(btnMe, "click", (e) => {
+        L.DomEvent.stop(e);
+        if (!navigator.geolocation) return alert("Geolocation støttes ikke i denne nettleseren.");
+
+        navigator.geolocation.getCurrentPosition(
+          (pos) => {
+            const lat = pos.coords.latitude;
+            const lon = pos.coords.longitude;
+            const acc = pos.coords.accuracy || 0;
+            const ll = L.latLng(lat, lon);
+
+            if (!userMarker) userMarker = L.marker(ll).addTo(map);
+            else userMarker.setLatLng(ll);
+
+            if (!userCircle) userCircle = L.circle(ll, { radius: acc, weight: 1 }).addTo(map);
+            else userCircle.setLatLng(ll).setRadius(acc);
+
+            map.setView(ll, Math.max(map.getZoom(), 12));
+
+            const routeIndex = typeof getRouteIndex === "function" ? getRouteIndex() : null;
+            renderPositionBox(popupApi, routeIndex, lat, lon);
+
+            // viktig: bruk posisjonen til å styre hva som vises
+            if (typeof onChooseLatLng === "function") onChooseLatLng(ll, "me");
+          },
+          (err) => alert("Klarte ikke hente posisjon: " + (err.message || err.code)),
+          { enableHighAccuracy: true, timeout: 8000, maximumAge: 30000 }
+        );
+      });
+
+      L.DomEvent.on(btnPick, "click", (e) => {
+        L.DomEvent.stop(e);
+        const next = !pickMode;
+        setPickMode(next);
+        btnPick.classList.toggle("active", next);
+      });
+
+      return wrap;
+    };
+
+    ctrl.addTo(map);
+
+    map.on("click", (evt) => {
+      if (!pickMode) return;
+
+      const ll = evt.latlng;
+
+      if (!chosenMarker) {
+        chosenMarker = L.marker(ll, { draggable: true }).addTo(map);
+
+        chosenMarker.on("drag", () => {
+          const p = chosenMarker.getLatLng();
+          const routeIndex = typeof getRouteIndex === "function" ? getRouteIndex() : null;
+          renderPositionBox(popupApi, routeIndex, p.lat, p.lng);
+          if (typeof onChooseLatLng === "function") onChooseLatLng(p, "drag");
+        });
+
+        chosenMarker.on("dragend", () => {
+          const p = chosenMarker.getLatLng();
+          const routeIndex = typeof getRouteIndex === "function" ? getRouteIndex() : null;
+          renderPositionBox(popupApi, routeIndex, p.lat, p.lng);
+          if (typeof onChooseLatLng === "function") onChooseLatLng(p, "dragend");
+        });
+      } else {
+        chosenMarker.setLatLng(ll);
+      }
+
+      const routeIndex = typeof getRouteIndex === "function" ? getRouteIndex() : null;
+      renderPositionBox(popupApi, routeIndex, ll.lat, ll.lng);
+      if (typeof onChooseLatLng === "function") onChooseLatLng(ll, "pick");
+
+      setPickMode(false);
+      const active = map.getContainer().querySelector(".svingom-pos-btn.active");
+      if (active) active.classList.remove("active");
+    });
+  }
+
+  // ====== Fullscreen control ======
+  function enterFullscreen(el) {
+    if (!el) return;
+    const fn = el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen;
+    if (fn) fn.call(el);
+  }
+  function exitFullscreen() {
+    const fn = document.exitFullscreen || document.webkitExitFullscreen || document.msExitFullscreen;
+    if (fn) fn.call(document);
+  }
+  function isFullscreen() {
+    return !!(document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement);
+  }
+
+  function addFullscreenControl(map, sectionEl) {
+    if (!map || !sectionEl) return;
+
+    const ctrl = L.control({ position: "topleft" });
+    ctrl.onAdd = function () {
+      const wrap = L.DomUtil.create("div", "leaflet-bar svingom-fs-wrap");
+      const btn = L.DomUtil.create("button", "svingom-fs-btn", wrap);
+      btn.type = "button";
+      btn.title = "Fullskjerm";
+      btn.innerHTML = "⤢";
+
+      L.DomEvent.disableClickPropagation(wrap);
+
+      L.DomEvent.on(btn, "click", (e) => {
+        L.DomEvent.stop(e);
+        if (isFullscreen()) exitFullscreen();
+        else enterFullscreen(sectionEl);
+        setTimeout(() => map.invalidateSize(), 250);
+      });
+
+      return wrap;
+    };
+
+    ctrl.addTo(map);
+  }
+
+  async function initRouteSection(section) {
+    const routeId = (section.dataset.routeId || "").trim();
+    const routesUrl = (section.dataset.routesUrl || "").trim();
+    const poisUrl = (section.dataset.poisUrl || "").trim();
+    const routeMarkersUrl = (section.dataset.routeMarkersUrl || "").trim();
+    const unknownAsTrail = String(section.dataset.unknownAsTrail || "").trim() === "1";
+
+    if (!routeId || !routesUrl || !poisUrl || !routeMarkersUrl) {
+      console.error("[route_map] Mangler data-attributter:", { routeId, routesUrl, poisUrl, routeMarkersUrl });
+      return;
+    }
+
+    const mapDiv = section.querySelector(".route-map");
+    const popupContainer = section.querySelector(".route-popup");
+    const chartCanvas = section.querySelector(".chart-wrapper canvas");
+    const surfaceSummaryEl = section.querySelector(".surface-summary");
+
+    if (!mapDiv || !popupContainer || !chartCanvas) {
+      console.error("[route_map] Mangler nødvendige DOM-elementer for", routeId);
+      return;
+    }
+
+    const popupApi = ensurePopupSkeleton(popupContainer);
+
+    let routesJson;
+    try {
+      routesJson = await fetchJsonCached(routesUrl);
+    } catch (e) {
+      console.error("[route_map] Klarte ikke å laste routes.json:", routesUrl, e);
+      return;
+    }
+
+    const route = Array.isArray(routesJson)
+      ? routesJson.find((x) => x && x.id === routeId)
+      : (routesJson && routesJson[routeId]) || null;
+
+    if (!route) {
+      console.error("[route_map] Fant ikke routeId i routes.json:", routeId);
+      return;
+    }
+
+    const gpxUrl = (route.gpxUrl || "").trim();
+    const elevUrl = (route.elevationSurfaceUrl || route.elevationUrl || "").trim();
+    if (!gpxUrl || !elevUrl) {
+      console.error("[route_map] Route mangler gpxUrl/elevationUrl:", routeId, route);
+      return;
+    }
+
+    const centerLat = parseFloat(section.dataset.centerLat || route.centerLat || "59.83467");
+    const centerLng = parseFloat(section.dataset.centerLng || route.centerLng || "9.57846");
+    const zoom = parseInt(section.dataset.zoom || route.zoom || "11", 10);
+
+    const map = L.map(mapDiv, { center: [centerLat, centerLng], zoom, scrollWheelZoom: true });
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: "Kartdata © OpenStreetMap",
+      maxZoom: 19,
+    }).addTo(map);
+
+    const movingMarker = L.circleMarker([centerLat, centerLng], {
+      radius: 6,
+      color: "#CA6B2A",
+      fillColor: "#CA6B2A",
+      fillOpacity: 1,
+      weight: 2,
+    }).addTo(map);
+
+    renderStats(popupApi, route);
+
+    let routeIndex = null;
+
+    try {
+      const elevJson = await fetchJsonCached(elevUrl);
+      const pts = Array.isArray(elevJson.points) ? elevJson.points : elevJson;
+      const cleaned = (pts || []).filter((p) => p && p.elevation != null);
+      if (cleaned.length) {
+        routeIndex = buildChart(chartCanvas, cleaned, movingMarker, surfaceSummaryEl, route, unknownAsTrail);
+      } else {
+        console.warn("[route_map] Elevation: ingen punkter i", elevUrl);
+      }
+    } catch (e) {
+      console.error("[route_map] Elevation-feil:", routeId, elevUrl, e);
+    }
+
+    // ---- POI loading ----
+    let poisForRoute = [];
+    let poiRenderer = null;
+
+    try {
+      const [poisJson, routeMarkersJson] = await Promise.all([
+        fetchJsonCached(poisUrl),
+        fetchJsonCached(routeMarkersUrl),
+      ]);
+
+      const allPois = Array.isArray(poisJson) ? poisJson : Object.values(poisJson || {});
+      const poisById = new Map();
+      allPois.forEach((p) => { if (p && p.id) poisById.set(p.id, p); });
+
+      const ids = routeMarkersJson[routeId] || [];
+      poisForRoute = ids.map((id) => poisById.get(id)).filter(Boolean);
+
+      // renderer (add once + revealNear + lazy)
+      poiRenderer = createPoiRenderer(map, popupApi, () => renderStats(popupApi, route));
+
+      if (poisForRoute.length <= POI_THRESHOLD) {
+        // få POI: legg alle på kart
+        poisForRoute.forEach((p) => poiRenderer.addMarker(map, p));
+      } else {
+        // mange POI: cluster hvis mulig, ellers lazy
+        const clusterLayer = createClusterLayer(map);
+        if (clusterLayer) {
+          poisForRoute.forEach((p) => poiRenderer.addMarker(clusterLayer, p));
+        } else {
+          poiRenderer.enableLazy(poisForRoute);
+        }
+      }
+    } catch (e) {
+      console.error("[route_map] POI-feil:", routeId, e);
+    }
+
+    // ---- Position-driven POI (THIS is the fix) ----
+    function onChooseLatLng(latlng, reason) {
+      if (!latlng) return;
+
+      // sørg for at popup er synlig hvis den var lukket på mobil
+      popupContainer.classList.remove("hidden");
+
+      // 1) oppdater “posisjon i forhold til ruta” (gjelder alltid)
+      if (routeIndex) renderPositionBox(popupApi, routeIndex, latlng.lat, latlng.lng);
+
+      // 2) “boost”: sørg for at alt i nærheten faktisk vises i kartet
+      if (poiRenderer && Array.isArray(poisForRoute) && poisForRoute.length) {
+        poiRenderer.revealNear(poisForRoute, latlng, AUTO_POI_RADIUS_M);
+      }
+
+      // 3) velg nærmeste POI innen radius og vis den (ellers stats)
+      if (Array.isArray(poisForRoute) && poisForRoute.length) {
+        const hit = findNearestPoi(map, poisForRoute, latlng, AUTO_POI_RADIUS_M);
+        if (hit && hit.poi) {
+          renderPoi(popupApi, hit.poi);
+          return;
+        }
+      }
+
+      // ingen POI i nærheten: tilbake til nøkkelinformasjon
+      renderStats(popupApi, route);
+      if (routeIndex) renderPositionBox(popupApi, routeIndex, latlng.lat, latlng.lng);
+    }
+
+    addPositionControl(map, popupApi, () => routeIndex, onChooseLatLng);
+    addFullscreenControl(map, section);
+
+    // ---- GPX route ----
+    try {
+      new L.GPX(gpxUrl, {
+        async: true,
+        polyline_options: { color: "#37394E", weight: 5, opacity: 0.9 },
+        marker_options: { startIconUrl: null, endIconUrl: null, shadowUrl: null, wptIconUrls: {} },
+      })
+        .on("loaded", function (e) {
+          map.fitBounds(e.target.getBounds(), { padding: [50, 50] });
+        })
+        .addTo(map);
+    } catch (e) {
+      console.error("[route_map] GPX-feil:", routeId, gpxUrl, e);
+    }
+  }
+
+  function initAll() {
+    initChartDefaultsOnce();
+    const sections = document.querySelectorAll(".map-section[data-route-id]");
+    console.log("[route_map] initAll sections:", sections.length);
+    sections.forEach((section) => initRouteSection(section));
+  }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initAll);
+  else initAll();
 })();
