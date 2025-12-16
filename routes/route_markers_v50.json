@@ -25,19 +25,19 @@
     "vatnebrynnvatnet-gapahuk-e8b7500acfaf"
   ],
   "imingfjell-rundt": [
-    "solheimstulen-605cdb33",
-    "imingfjell-turistheim-34954512",
-    "utfartsparkering-050f03ca",
-    "utsiktvikstul-952b9dd2",
-    "krysselv-9f5a9fc7",
-    "merking-6b216b34",
-    "badeplass-olmos-4cc06a9d47fe",
-    "campuvdal-cd1d1120",
-    "imingfjell-ef4e7dec4fbc",
-    "beltetjonn-9ea7eef5",
-    "sonstevann-bf33c455eb07",	
-    "slepa-f94b8c7b"
-  ],
+  "solheimstulen-605cdb33",
+  "imingfjellturistheim-34954512",
+  "utfartsparkering-050f03ca",
+  "utsiktvikstul-952b9dd2",
+  "krysselv-9f5a9fc7",
+  "merking-6b216b34",
+  "olmos-4cc06a9d",
+  "campuvdal-cd1d1120",
+  "imingfjell-ef4e7dec4fbc",
+  "beltetjonn-9ea7eef5",
+  "sonstevann-bf33c455eb07",
+  "slepa-f94b8c7b"
+ ],
   "trillemarka-rundt": [
     "andersnatten-d97e80719027",
     "badedammen-pa-veggli-9468b2127fb9",
@@ -330,5 +330,6 @@
     "arestua-bolkesjo-gaard-fa12d59b9127"
   ]
 }
+
 
 
