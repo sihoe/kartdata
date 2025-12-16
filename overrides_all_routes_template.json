@@ -1,0 +1,1755 @@
+{
+  "baklivegenrundt": {
+    "units": "km",
+    "apply_only_when_category_is": [
+      "unknown"
+    ],
+    "overrides": [
+      {
+        "from": 0.176,
+        "to": 0.352,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 3.567,
+        "to": 4.727,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 9.006,
+        "to": 9.752,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 9.815,
+        "to": 9.974,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 10.033,
+        "to": 11.94,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 11.998,
+        "to": 12.644,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 12.996,
+        "to": 13.88,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 13.94,
+        "to": 15.883,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 17.999,
+        "to": 19.919,
+        "surface": "unknown",
+        "note": ""
+      }
+    ]
+  },
+  "bingenrunden": {
+    "units": "km",
+    "apply_only_when_category_is": [
+      "unknown"
+    ],
+    "overrides": [
+      {
+        "from": 14.909,
+        "to": 15.46,
+        "surface": "unknown",
+        "note": ""
+      }
+    ]
+  },
+  "blaafarverunden": {
+    "units": "km",
+    "apply_only_when_category_is": [
+      "unknown"
+    ],
+    "overrides": [
+      {
+        "from": 15.036,
+        "to": 15.187,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 15.305,
+        "to": 15.457,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 30.566,
+        "to": 31.152,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 31.202,
+        "to": 32.225,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 32.285,
+        "to": 32.555,
+        "surface": "unknown",
+        "note": ""
+      }
+    ]
+  },
+  "blefjell_juvefossen": {
+    "units": "km",
+    "apply_only_when_category_is": [
+      "unknown"
+    ],
+    "overrides": [
+      {
+        "from": 9.356,
+        "to": 10.005,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 10.062,
+        "to": 14.366,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 14.53,
+        "to": 15.052,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 15.103,
+        "to": 15.456,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 15.544,
+        "to": 16.231,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 16.297,
+        "to": 19.271,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 19.323,
+        "to": 19.48,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 19.681,
+        "to": 19.938,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 19.988,
+        "to": 21.046,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 21.11,
+        "to": 25.532,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 25.596,
+        "to": 26.653,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 26.704,
+        "to": 26.96,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 27.161,
+        "to": 27.318,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 27.37,
+        "to": 30.344,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 30.411,
+        "to": 31.097,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 31.185,
+        "to": 32.111,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 32.276,
+        "to": 36.58,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 36.637,
+        "to": 37.285,
+        "surface": "unknown",
+        "note": ""
+      }
+    ]
+  },
+  "bolkesjorunden": {
+    "units": "km",
+    "apply_only_when_category_is": [
+      "unknown"
+    ],
+    "overrides": [
+      {
+        "from": 4.528,
+        "to": 4.868,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 4.931,
+        "to": 5.206,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 5.268,
+        "to": 12.088,
+        "surface": "unknown",
+        "note": ""
+      }
+    ]
+  },
+  "dusanfossrunden": {
+    "units": "km",
+    "apply_only_when_category_is": [
+      "unknown"
+    ],
+    "overrides": [
+      {
+        "from": 2.271,
+        "to": 3.294,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 3.686,
+        "to": 4.124,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 4.547,
+        "to": 5.565,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 8.13,
+        "to": 10.544,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 10.607,
+        "to": 11.931,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 11.991,
+        "to": 12.597,
+        "surface": "unknown",
+        "note": ""
+      }
+    ]
+  },
+  "fjellruta": {
+    "units": "km",
+    "apply_only_when_category_is": [
+      "unknown"
+    ],
+    "overrides": [
+      {
+        "from": 5.522,
+        "to": 5.64,
+        "surface": "gravel",
+        "note": "EKSEMPEL: utfylt (sett riktig underlag)"
+      },
+      {
+        "from": 62.613,
+        "to": 62.766,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 62.891,
+        "to": 63.075,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 63.142,
+        "to": 63.267,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 63.322,
+        "to": 63.643,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 64.267,
+        "to": 64.392,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 65.09,
+        "to": 65.29,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 65.488,
+        "to": 65.763,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 65.961,
+        "to": 66.176,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 66.255,
+        "to": 66.489,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 66.805,
+        "to": 66.932,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 68.007,
+        "to": 68.149,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 69.214,
+        "to": 69.381,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 69.597,
+        "to": 69.742,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 70.069,
+        "to": 70.2,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 70.706,
+        "to": 70.985,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 72.707,
+        "to": 72.86,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 73.482,
+        "to": 73.601,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 73.939,
+        "to": 74.099,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 82.328,
+        "to": 82.583,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 82.89,
+        "to": 83.007,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 83.062,
+        "to": 83.269,
+        "surface": "unknown",
+        "note": ""
+      }
+    ]
+  },
+  "follsjo": {
+    "units": "km",
+    "apply_only_when_category_is": [
+      "unknown"
+    ],
+    "overrides": [
+      {
+        "from": 4.549,
+        "to": 5.37,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 5.46,
+        "to": 5.599,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 5.649,
+        "to": 6.045,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 6.095,
+        "to": 6.256,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 6.385,
+        "to": 6.62,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 6.811,
+        "to": 8.008,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 8.062,
+        "to": 8.173,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 8.292,
+        "to": 9.842,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 9.898,
+        "to": 11.562,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 11.616,
+        "to": 11.913,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 12.089,
+        "to": 13.201,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 30.429,
+        "to": 30.894,
+        "surface": "unknown",
+        "note": ""
+      }
+    ]
+  },
+  "imingfjellrundt": {
+    "units": "km",
+    "apply_only_when_category_is": [
+      "unknown"
+    ],
+    "overrides": [
+      {
+        "from": 0.715,
+        "to": 0.906,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 1.071,
+        "to": 1.288,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 1.717,
+        "to": 1.908,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 2.146,
+        "to": 3.527,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 3.661,
+        "to": 4.197,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 4.559,
+        "to": 5.885,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 6.247,
+        "to": 6.781,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 6.833,
+        "to": 7.01,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 7.138,
+        "to": 8.074,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 8.131,
+        "to": 10.648,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 10.704,
+        "to": 10.807,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 10.873,
+        "to": 11.589,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 11.765,
+        "to": 12.253,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 12.304,
+        "to": 12.454,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 12.523,
+        "to": 12.939,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 13.019,
+        "to": 13.496,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 13.552,
+        "to": 13.768,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 13.83,
+        "to": 13.946,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 13.996,
+        "to": 14.355,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 14.406,
+        "to": 14.645,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 35.379,
+        "to": 35.529,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 35.618,
+        "to": 36.075,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 36.13,
+        "to": 37.382,
+        "surface": "unknown",
+        "note": ""
+      }
+    ]
+  },
+  "kirkebygdarundt": {
+    "units": "km",
+    "apply_only_when_category_is": [
+      "unknown"
+    ],
+    "overrides": [
+      {
+        "from": 0.184,
+        "to": 0.355,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 3.573,
+        "to": 4.291,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 4.353,
+        "to": 4.739,
+        "surface": "unknown",
+        "note": ""
+      }
+    ]
+  },
+  "kunstkobolt": {
+    "units": "km",
+    "apply_only_when_category_is": [
+      "unknown"
+    ],
+    "overrides": [
+      {
+        "from": 14.888,
+        "to": 15.124,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 30.29,
+        "to": 31.09,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 31.189,
+        "to": 31.554,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 31.617,
+        "to": 32.162,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 32.233,
+        "to": 32.578,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 33.147,
+        "to": 33.585,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 74.294,
+        "to": 74.579,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 84.665,
+        "to": 84.786,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 86.915,
+        "to": 87.021,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 89.36,
+        "to": 90.085,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 90.14,
+        "to": 90.357,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 90.43,
+        "to": 90.599,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 90.687,
+        "to": 90.808,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 90.861,
+        "to": 91.227,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 91.289,
+        "to": 91.393,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 91.467,
+        "to": 91.946,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 92.003,
+        "to": 92.132,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 92.183,
+        "to": 92.544,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 92.612,
+        "to": 93.109,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 93.216,
+        "to": 93.457,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 93.533,
+        "to": 93.758,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 93.93,
+        "to": 94.831,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 94.89,
+        "to": 95.531,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 95.585,
+        "to": 96.04,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 96.107,
+        "to": 96.396,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 96.783,
+        "to": 96.885,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 96.95,
+        "to": 97.191,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 97.256,
+        "to": 97.44,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 97.581,
+        "to": 97.793,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 97.979,
+        "to": 98.784,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 98.855,
+        "to": 99.052,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 99.119,
+        "to": 99.252,
+        "surface": "unknown",
+        "note": ""
+      }
+    ]
+  },
+  "norerunden": {
+    "units": "km",
+    "apply_only_when_category_is": [
+      "unknown"
+    ],
+    "overrides": [
+      {
+        "from": 0.397,
+        "to": 0.578,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 4.813,
+        "to": 5.943,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 8.479,
+        "to": 9.5,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 35.648,
+        "to": 35.793,
+        "surface": "unknown",
+        "note": ""
+      }
+    ]
+  },
+  "NS_5_Numedalsruta": {
+    "units": "km",
+    "apply_only_when_category_is": [
+      "unknown"
+    ],
+    "overrides": [
+      {
+        "from": 1.555,
+        "to": 1.728,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 1.804,
+        "to": 2.696,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 2.771,
+        "to": 3.139,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 3.258,
+        "to": 3.8,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 3.851,
+        "to": 4.757,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 4.905,
+        "to": 5.224,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 5.284,
+        "to": 5.408,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 5.873,
+        "to": 6.175,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 6.242,
+        "to": 6.573,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 6.662,
+        "to": 6.863,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 7.145,
+        "to": 7.311,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 7.365,
+        "to": 7.621,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 7.678,
+        "to": 7.93,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 7.98,
+        "to": 8.284,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 70.958,
+        "to": 71.143,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 71.204,
+        "to": 71.383,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 98.561,
+        "to": 98.663,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 99.182,
+        "to": 99.313,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 99.433,
+        "to": 99.574,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 105.898,
+        "to": 106.126,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 106.332,
+        "to": 106.558,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 106.806,
+        "to": 107.054,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 107.219,
+        "to": 107.394,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 107.838,
+        "to": 107.96,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 108.795,
+        "to": 108.981,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 109.036,
+        "to": 109.461,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 109.587,
+        "to": 110.251,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 110.314,
+        "to": 110.422,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 110.493,
+        "to": 110.78,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 115.801,
+        "to": 115.982,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 119.94,
+        "to": 120.118,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 120.536,
+        "to": 120.931,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 120.992,
+        "to": 122.141,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 163.976,
+        "to": 164.115,
+        "surface": "unknown",
+        "note": ""
+      }
+    ]
+  },
+  "overbygderunden_lang": {
+    "units": "km",
+    "apply_only_when_category_is": [
+      "unknown"
+    ],
+    "overrides": [
+      {
+        "from": 8.399,
+        "to": 9.981,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 10.038,
+        "to": 10.779,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 10.838,
+        "to": 11.972,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 12.028,
+        "to": 12.773,
+        "surface": "unknown",
+        "note": ""
+      }
+    ]
+  },
+  "rollagrundt": {
+    "units": "km",
+    "apply_only_when_category_is": [
+      "unknown"
+    ],
+    "overrides": [
+      {
+        "from": 0.117,
+        "to": 0.698,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 1.801,
+        "to": 2.278,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 6.119,
+        "to": 6.39,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 14.528,
+        "to": 15.388,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 15.44,
+        "to": 16.237,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 16.308,
+        "to": 16.707,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 16.757,
+        "to": 17.208,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 17.266,
+        "to": 17.395,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 17.466,
+        "to": 18.921,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 18.984,
+        "to": 19.422,
+        "surface": "unknown",
+        "note": ""
+      }
+    ]
+  },
+  "routes_with_stats": {
+    "units": "km",
+    "apply_only_when_category_is": [
+      "unknown"
+    ],
+    "overrides": []
+  },
+  "skagsaasenrundt": {
+    "units": "km",
+    "apply_only_when_category_is": [
+      "unknown"
+    ],
+    "overrides": [
+      {
+        "from": 33.957,
+        "to": 34.184,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 34.234,
+        "to": 34.478,
+        "surface": "unknown",
+        "note": ""
+      }
+    ]
+  },
+  "smaadoldalenrundt": {
+    "units": "km",
+    "apply_only_when_category_is": [
+      "unknown"
+    ],
+    "overrides": [
+      {
+        "from": 0.217,
+        "to": 0.361,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 59.689,
+        "to": 60.153,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 60.205,
+        "to": 60.796,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 60.995,
+        "to": 61.506,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 67.881,
+        "to": 68.186,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 68.248,
+        "to": 68.706,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 71.96,
+        "to": 72.074,
+        "surface": "unknown",
+        "note": ""
+      }
+    ]
+  },
+  "trillemarkarundt": {
+    "units": "km",
+    "apply_only_when_category_is": [
+      "unknown"
+    ],
+    "overrides": [
+      {
+        "from": 14.799,
+        "to": 15.898,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 15.961,
+        "to": 16.704,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 17.427,
+        "to": 18.351,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 18.41,
+        "to": 20.576,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 20.714,
+        "to": 21.121,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 21.218,
+        "to": 21.491,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 21.631,
+        "to": 21.957,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 22.013,
+        "to": 22.343,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 22.625,
+        "to": 22.931,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 23.078,
+        "to": 23.389,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 23.466,
+        "to": 23.618,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 23.848,
+        "to": 24.165,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 24.23,
+        "to": 24.841,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 24.897,
+        "to": 25.012,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 25.223,
+        "to": 25.453,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 25.582,
+        "to": 25.759,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 25.964,
+        "to": 26.217,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 26.672,
+        "to": 27.211,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 27.271,
+        "to": 27.517,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 27.655,
+        "to": 28.054,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 28.11,
+        "to": 28.74,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 28.797,
+        "to": 29.052,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 29.122,
+        "to": 29.275,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 29.35,
+        "to": 29.513,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 29.58,
+        "to": 29.894,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 29.963,
+        "to": 30.419,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 30.549,
+        "to": 31.135,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 31.721,
+        "to": 32.179,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 32.521,
+        "to": 32.656,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 32.909,
+        "to": 33.096,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 33.227,
+        "to": 33.54,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 48.754,
+        "to": 48.918,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 49.221,
+        "to": 49.846,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 49.912,
+        "to": 50.459,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 50.524,
+        "to": 50.624,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 50.676,
+        "to": 51.288,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 51.347,
+        "to": 51.594,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 51.652,
+        "to": 52.453,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 52.511,
+        "to": 52.619,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 52.684,
+        "to": 52.988,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 53.199,
+        "to": 53.367,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 53.428,
+        "to": 53.653,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 53.71,
+        "to": 53.9,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 53.963,
+        "to": 54.651,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 54.728,
+        "to": 55.038,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 55.11,
+        "to": 55.222,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 55.412,
+        "to": 55.568,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 55.947,
+        "to": 56.091,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 56.164,
+        "to": 57.326,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 57.403,
+        "to": 58.064,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 58.244,
+        "to": 58.702,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 58.753,
+        "to": 59.604,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 59.745,
+        "to": 60.157,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 60.224,
+        "to": 61.454,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 61.683,
+        "to": 61.836,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 61.888,
+        "to": 62.142,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 62.194,
+        "to": 62.525,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 62.575,
+        "to": 62.751,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 62.802,
+        "to": 62.983,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 63.135,
+        "to": 63.531,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 63.662,
+        "to": 64.97,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 65.035,
+        "to": 65.658,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 65.709,
+        "to": 66.116,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 66.174,
+        "to": 66.617,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 66.672,
+        "to": 67.801,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 68.326,
+        "to": 68.634,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 68.715,
+        "to": 69.174,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 69.327,
+        "to": 69.643,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 69.785,
+        "to": 71.161,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 71.314,
+        "to": 71.62,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 71.672,
+        "to": 71.849,
+        "surface": "unknown",
+        "note": ""
+      },
+      {
+        "from": 71.925,
+        "to": 72.384,
+        "surface": "unknown",
+        "note": ""
+      }
+    ]
+  }
+}
