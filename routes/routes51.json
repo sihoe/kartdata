@@ -177,7 +177,7 @@
   "numedalsruta-nasjonal-rute-5": {
     "id": "numedalsruta-nasjonal-rute-5",
     "name": {
-      "no": "Numedalsruta (Nasjonal rute 5)"
+      "no": "Numedalsruta (Nasjonal sykkelrute nr. 5)"
     },
     "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/NS_5_Numedalsruta.gpx",
     "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/NS_5_Numedalsruta_elevation_with_surface.json",
@@ -186,8 +186,8 @@
       "distanceKm": 186.01,
       "climbM": 789,
       "descentM": 1170,
-      "minElevationM": 162,
-      "maxElevationM": 1014
+      "maxElevationM": 1014,
+      "minElevationM": 162
     },
     "surface": {
       "totalKm": 165.207,
@@ -467,5 +467,6 @@
     }
   }
 }
+
 
 
