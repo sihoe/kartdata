@@ -183,11 +183,11 @@
     "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/NS_5_Numedalsruta_elevation_with_surface.json",
     "elevationSurfaceUrl": null,
     "stats": {
-      "distanceKm": 165.21,
-      "climbM": 3255.0,
-      "descentM": 3883.0,
-      "maxElevationM": 1060.0,
-      "minElevationM": 155.0
+      "distanceKm": 186.01,
+      "climbM": 789,
+      "descentM": 1170,
+      "minElevationM": 162,
+      "maxElevationM": 1014
     },
     "surface": {
       "totalKm": 165.207,
@@ -467,4 +467,5 @@
     }
   }
 }
+
 
