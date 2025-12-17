@@ -1050,7 +1050,7 @@
       }
     ]
   },
-  "smadoldalen-rund": {
+  "smadoldalen-rundt": {
     "units": "km",
     "apply_only_when_category_is": [
       "unknown"
