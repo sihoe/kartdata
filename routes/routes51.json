@@ -447,23 +447,6 @@
       }
     }
   },
-  "ostskauen-rundt": {
-    "id": "ostskauen-rundt",
-    "name": {
-      "no": "Østskauen rundt"
-    },
-    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/ostskauenrundt.gpx",
-    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/ostskauenrundt_elevation_with_surface.json",
-    "elevationSurfaceUrl": null,
-    "stats": {
-      "distanceKm": 45.14,
-      "climbM": 1008.0,
-      "descentM": 1008.0,
-      "maxElevationM": 500.0,
-      "minElevationM": 187.0
-    },
-    "surface": null
-  },
   "bingenrunden": {
     "id": "bingenrunden",
     "name": {
@@ -586,3 +569,4 @@
     }
   }
 }
+
