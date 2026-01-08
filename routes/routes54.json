@@ -37,7 +37,7 @@
       "no": "Fjellruta over Vegglifjell"
     },
     "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/Fjellruta_over_Vegglifjell_og_Imingfjell.gpx",
-    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/fjellruta_elevation_with_surface_newer.json",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/fjellruta_elevation_with_surface.json",
     "elevationSurfaceUrl": null,
     "stats": {
       "distanceKm": 124.55,
@@ -101,7 +101,7 @@
       "no": "Trillemarka rundt"
     },
     "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/Trillemarkarundt.gpx",
-    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/trillemarkarundt_elevation_with_surface.json",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/trillemarkarundt_elevation_with_surface_new.json",
     "elevationSurfaceUrl": null,
     "stats": {
       "distanceKm": 76.44,
@@ -569,6 +569,7 @@
     }
   }
 }
+
 
 
 
