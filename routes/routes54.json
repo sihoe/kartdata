@@ -37,7 +37,7 @@
       "no": "Fjellruta over Vegglifjell"
     },
     "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/Fjellruta_over_Vegglifjell_og_Imingfjell.gpx",
-    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/fjellruta_elevation_with_surface_new.json",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/fjellruta_elevation_with_surface_newer.json",
     "elevationSurfaceUrl": null,
     "stats": {
       "distanceKm": 124.55,
@@ -569,6 +569,7 @@
     }
   }
 }
+
 
 
 
