@@ -262,29 +262,6 @@
     "texts": {
       "no": {
         "title": "Badeplass Ølmøs",
-        "description": "Avkjølende bademulighet langs ruta."
-      },
-      "en": {
-        "title": "Swimming Spot Ølmøs",
-        "description": "Cooling swimming spot along the route."
-      },
-      "de": {
-        "title": "Badestelle Ølmøs",
-        "description": "Erfrischender Badeplatz entlang der Route."
-      }
-    },
-    "id": "badeplass-olmos-4cc06a9d"
-  },
-  {
-    "latlng": [
-      60.255229238,
-      8.619871772
-    ],
-    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder@main/olmosbadekulp.jpg",
-    "symbolType": "bathingspot",
-    "texts": {
-      "no": {
-        "title": "Badeplass Ølmøs",
         "description": "sjekk svingom.no for mer informasjon"
       },
       "en": {
@@ -5543,3 +5520,4 @@
     "id": "ovrebygde-rundt-kort-0cf553f1"
   }
 ]
+
