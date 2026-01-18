@@ -316,10 +316,10 @@
     "elevation": 232.8100128173828,
     "lat": 59.69398,
     "lon": 9.26365,
-    "surface": "unknown",
-    "surfaceSource": "current",
-    "surfaceCategory": "unknown",
-    "surfaceRaw": "unknown",
+    "surface": "asphalt",
+    "surfaceSource": "review",
+    "surfaceCategory": "asphalt",
+    "surfaceRaw": "asphalt",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -420,10 +420,10 @@
     "elevation": 230.57931518554688,
     "lat": 59.69552,
     "lon": 9.26127,
-    "surface": "unknown",
-    "surfaceSource": "current",
-    "surfaceCategory": "unknown",
-    "surfaceRaw": "unknown",
+    "surface": "asphalt",
+    "surfaceSource": "review",
+    "surfaceCategory": "asphalt",
+    "surfaceRaw": "asphalt",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -1161,10 +1161,10 @@
     "elevation": 297.92169189453125,
     "lat": 59.71036,
     "lon": 9.25926,
-    "surface": "unknown",
-    "surfaceSource": "current",
-    "surfaceCategory": "unknown",
-    "surfaceRaw": "unknown",
+    "surface": "asphalt",
+    "surfaceSource": "review",
+    "surfaceCategory": "asphalt",
+    "surfaceRaw": "asphalt",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -1928,10 +1928,10 @@
     "elevation": 402.1170654296875,
     "lat": 59.72233,
     "lon": 9.27519,
-    "surface": "unknown",
-    "surfaceSource": "current",
-    "surfaceCategory": "unknown",
-    "surfaceRaw": "unknown",
+    "surface": "asphalt",
+    "surfaceSource": "review_fill",
+    "surfaceCategory": "asphalt",
+    "surfaceRaw": "asphalt",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -2604,10 +2604,10 @@
     "elevation": 343.5202941894531,
     "lat": 59.72488,
     "lon": 9.26408,
-    "surface": "unknown",
-    "surfaceSource": "current",
-    "surfaceCategory": "unknown",
-    "surfaceRaw": "unknown",
+    "surface": "trail",
+    "surfaceSource": "review_fill",
+    "surfaceCategory": "trail",
+    "surfaceRaw": "trail",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -2916,10 +2916,10 @@
     "elevation": 336.8265686035156,
     "lat": 59.72122,
     "lon": 9.25716,
-    "surface": "unknown",
-    "surfaceSource": "current",
-    "surfaceCategory": "unknown",
-    "surfaceRaw": "unknown",
+    "surface": "gravel",
+    "surfaceSource": "review",
+    "surfaceCategory": "gravel",
+    "surfaceRaw": "gravel",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -4931,10 +4931,10 @@
     "elevation": 239.2832489013672,
     "lat": 59.71438,
     "lon": 9.22193,
-    "surface": "unknown",
-    "surfaceSource": "current",
-    "surfaceCategory": "unknown",
-    "surfaceRaw": "unknown",
+    "surface": "gravel",
+    "surfaceSource": "review_fill",
+    "surfaceCategory": "gravel",
+    "surfaceRaw": "gravel",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -5295,10 +5295,10 @@
     "elevation": 238.62998962402344,
     "lat": 59.71364,
     "lon": 9.21596,
-    "surface": "unknown",
-    "surfaceSource": "current",
-    "surfaceCategory": "unknown",
-    "surfaceRaw": "unknown",
+    "surface": "trail",
+    "surfaceSource": "review",
+    "surfaceCategory": "trail",
+    "surfaceRaw": "trail",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -5451,10 +5451,10 @@
     "elevation": 238.48594665527344,
     "lat": 59.71291,
     "lon": 9.21295,
-    "surface": "unknown",
-    "surfaceSource": "current",
-    "surfaceCategory": "unknown",
-    "surfaceRaw": "unknown",
+    "surface": "trail",
+    "surfaceSource": "review",
+    "surfaceCategory": "trail",
+    "surfaceRaw": "trail",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8142,10 +8142,10 @@
     "elevation": 266.7278747558594,
     "lat": 59.68524,
     "lon": 9.1842,
-    "surface": "unknown",
-    "surfaceSource": "current",
-    "surfaceCategory": "unknown",
-    "surfaceRaw": "unknown",
+    "surface": "gravel",
+    "surfaceSource": "review",
+    "surfaceCategory": "gravel",
+    "surfaceRaw": "gravel",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8158,7 +8158,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8171,7 +8171,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8184,7 +8184,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8197,7 +8197,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8210,7 +8210,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8223,7 +8223,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8236,7 +8236,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8249,7 +8249,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8262,7 +8262,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8275,7 +8275,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8288,7 +8288,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8301,7 +8301,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8314,7 +8314,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8327,7 +8327,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8340,7 +8340,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8353,7 +8353,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8366,7 +8366,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8379,7 +8379,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8392,7 +8392,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8405,7 +8405,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8418,7 +8418,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8431,7 +8431,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8444,7 +8444,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8457,7 +8457,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8470,7 +8470,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8483,7 +8483,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8496,7 +8496,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8509,7 +8509,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8522,7 +8522,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8535,7 +8535,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8548,7 +8548,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8561,7 +8561,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8574,7 +8574,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8587,7 +8587,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8600,7 +8600,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8613,7 +8613,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8626,7 +8626,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8639,7 +8639,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8678,7 +8678,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8691,7 +8691,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8704,7 +8704,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8717,7 +8717,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8730,7 +8730,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8743,7 +8743,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8756,7 +8756,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8769,7 +8769,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8782,7 +8782,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8795,7 +8795,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8808,7 +8808,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8821,7 +8821,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8834,7 +8834,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8847,7 +8847,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8860,7 +8860,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8873,7 +8873,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8886,7 +8886,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8899,7 +8899,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8912,7 +8912,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8925,7 +8925,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8938,7 +8938,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8951,7 +8951,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8964,7 +8964,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8977,7 +8977,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -8990,7 +8990,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9003,7 +9003,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9016,7 +9016,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9029,7 +9029,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9042,7 +9042,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9055,7 +9055,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9068,7 +9068,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9081,7 +9081,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9094,7 +9094,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9107,7 +9107,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9120,7 +9120,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9133,7 +9133,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9146,7 +9146,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9159,7 +9159,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9169,10 +9169,10 @@
     "elevation": 262.841064453125,
     "lat": 59.68117,
     "lon": 9.20108,
-    "surface": "unknown",
-    "surfaceSource": "current",
-    "surfaceCategory": "unknown",
-    "surfaceRaw": "unknown",
+    "surface": "gravel",
+    "surfaceSource": "review",
+    "surfaceCategory": "gravel",
+    "surfaceRaw": "gravel",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9312,10 +9312,10 @@
     "elevation": 261.707275390625,
     "lat": 59.67983,
     "lon": 9.20354,
-    "surface": "unknown",
-    "surfaceSource": "current",
-    "surfaceCategory": "unknown",
-    "surfaceRaw": "unknown",
+    "surface": "gravel",
+    "surfaceSource": "review",
+    "surfaceCategory": "gravel",
+    "surfaceRaw": "gravel",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9328,7 +9328,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9341,7 +9341,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9354,7 +9354,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9367,7 +9367,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9380,7 +9380,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9393,7 +9393,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9406,7 +9406,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9419,7 +9419,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9432,7 +9432,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9445,7 +9445,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9458,7 +9458,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9471,7 +9471,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9484,7 +9484,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9497,7 +9497,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9510,7 +9510,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9523,7 +9523,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9536,7 +9536,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9549,7 +9549,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9562,7 +9562,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9575,7 +9575,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9588,7 +9588,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9601,7 +9601,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9614,7 +9614,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9627,7 +9627,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9640,7 +9640,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9653,7 +9653,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9666,7 +9666,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9679,7 +9679,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9692,7 +9692,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9705,7 +9705,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9718,7 +9718,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9731,7 +9731,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9744,7 +9744,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9757,7 +9757,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9770,7 +9770,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9783,7 +9783,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9796,7 +9796,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9809,7 +9809,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9822,7 +9822,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9835,7 +9835,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9848,7 +9848,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9861,7 +9861,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9874,7 +9874,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9887,7 +9887,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9900,7 +9900,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9913,7 +9913,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9926,7 +9926,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9939,7 +9939,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9952,7 +9952,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9965,7 +9965,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9978,7 +9978,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -9991,7 +9991,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10004,7 +10004,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10017,7 +10017,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10030,7 +10030,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10043,7 +10043,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10056,7 +10056,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10069,7 +10069,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10082,7 +10082,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10095,7 +10095,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10108,7 +10108,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10121,7 +10121,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10134,7 +10134,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10147,7 +10147,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10160,7 +10160,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10173,7 +10173,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10186,7 +10186,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10199,7 +10199,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10212,7 +10212,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10225,7 +10225,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10238,7 +10238,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10251,7 +10251,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10264,7 +10264,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10277,7 +10277,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10290,7 +10290,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10303,7 +10303,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10316,7 +10316,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10329,7 +10329,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10342,7 +10342,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10355,7 +10355,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10368,7 +10368,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10381,7 +10381,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10394,7 +10394,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10407,7 +10407,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10420,7 +10420,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10433,7 +10433,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10446,7 +10446,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10459,7 +10459,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10472,7 +10472,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10485,7 +10485,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10498,7 +10498,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10511,7 +10511,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10524,7 +10524,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10537,7 +10537,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10550,7 +10550,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10563,7 +10563,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10576,7 +10576,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10589,7 +10589,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10602,7 +10602,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10615,7 +10615,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10628,7 +10628,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10641,7 +10641,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10654,7 +10654,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10664,10 +10664,10 @@
     "elevation": 147.38821411132812,
     "lat": 59.66396,
     "lon": 9.21272,
-    "surface": "unknown",
-    "surfaceSource": "current",
-    "surfaceCategory": "unknown",
-    "surfaceRaw": "unknown",
+    "surface": "gravel",
+    "surfaceSource": "review",
+    "surfaceCategory": "gravel",
+    "surfaceRaw": "gravel",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10680,7 +10680,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10693,7 +10693,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10706,7 +10706,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10719,7 +10719,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10732,7 +10732,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10745,7 +10745,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10758,7 +10758,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10771,7 +10771,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10784,7 +10784,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10797,7 +10797,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10810,7 +10810,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10823,7 +10823,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10836,7 +10836,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10849,7 +10849,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10862,7 +10862,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10875,7 +10875,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10888,7 +10888,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10901,7 +10901,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10914,7 +10914,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10927,7 +10927,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10940,7 +10940,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10953,7 +10953,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10966,7 +10966,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10979,7 +10979,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -10992,7 +10992,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11005,7 +11005,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11018,7 +11018,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11031,7 +11031,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11044,7 +11044,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11057,7 +11057,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11070,7 +11070,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11083,7 +11083,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11096,7 +11096,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11109,7 +11109,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11122,7 +11122,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11135,7 +11135,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11148,7 +11148,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11161,7 +11161,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11174,7 +11174,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11187,7 +11187,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11200,7 +11200,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11213,7 +11213,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11226,7 +11226,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11239,7 +11239,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11252,7 +11252,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11265,7 +11265,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11278,7 +11278,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11291,7 +11291,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11304,7 +11304,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11317,7 +11317,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11330,7 +11330,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11343,7 +11343,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11356,7 +11356,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11369,7 +11369,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11382,7 +11382,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11395,7 +11395,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11408,7 +11408,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11421,7 +11421,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11434,7 +11434,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11447,7 +11447,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11460,7 +11460,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11473,7 +11473,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11483,10 +11483,10 @@
     "elevation": 136.9582977294922,
     "lat": 59.65454,
     "lon": 9.22125,
-    "surface": "unknown",
-    "surfaceSource": "current",
-    "surfaceCategory": "unknown",
-    "surfaceRaw": "unknown",
+    "surface": "gravel",
+    "surfaceSource": "review",
+    "surfaceCategory": "gravel",
+    "surfaceRaw": "gravel",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11655,7 +11655,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11668,7 +11668,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11681,7 +11681,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11694,7 +11694,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11707,7 +11707,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11720,7 +11720,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11733,7 +11733,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11746,7 +11746,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11759,7 +11759,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11772,7 +11772,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11785,7 +11785,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11798,7 +11798,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11811,7 +11811,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11824,7 +11824,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11837,7 +11837,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11850,7 +11850,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11863,7 +11863,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11876,7 +11876,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11889,7 +11889,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11902,7 +11902,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11915,7 +11915,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11928,7 +11928,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11941,7 +11941,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11954,7 +11954,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11967,7 +11967,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11980,7 +11980,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -11993,7 +11993,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12006,7 +12006,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12019,7 +12019,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12032,7 +12032,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12045,7 +12045,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12058,7 +12058,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12071,7 +12071,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12084,7 +12084,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12097,7 +12097,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12110,7 +12110,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12123,7 +12123,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12136,7 +12136,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12149,7 +12149,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12162,7 +12162,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12175,7 +12175,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12188,7 +12188,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12201,7 +12201,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12214,7 +12214,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12227,7 +12227,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12240,7 +12240,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12253,7 +12253,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12266,7 +12266,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12279,7 +12279,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12292,7 +12292,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12305,7 +12305,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12318,7 +12318,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12331,7 +12331,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12344,7 +12344,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12357,7 +12357,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12370,7 +12370,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12383,7 +12383,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12396,7 +12396,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12409,7 +12409,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12422,7 +12422,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12435,7 +12435,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12448,7 +12448,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12461,7 +12461,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12474,7 +12474,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12487,7 +12487,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12500,7 +12500,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12513,7 +12513,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12526,7 +12526,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12539,7 +12539,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12552,7 +12552,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12565,7 +12565,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12575,10 +12575,10 @@
     "elevation": 159.7490997314453,
     "lat": 59.63586,
     "lon": 9.23349,
-    "surface": "unknown",
-    "surfaceSource": "current",
-    "surfaceCategory": "unknown",
-    "surfaceRaw": "unknown",
+    "surface": "gravel",
+    "surfaceSource": "review",
+    "surfaceCategory": "gravel",
+    "surfaceRaw": "gravel",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12591,7 +12591,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12604,7 +12604,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12617,7 +12617,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12630,7 +12630,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12643,7 +12643,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12656,7 +12656,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12669,7 +12669,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12682,7 +12682,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12695,7 +12695,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12708,7 +12708,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12721,7 +12721,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12734,7 +12734,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12747,7 +12747,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12760,7 +12760,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12773,7 +12773,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12786,7 +12786,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12799,7 +12799,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12812,7 +12812,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12825,7 +12825,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12838,7 +12838,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12851,7 +12851,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12864,7 +12864,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12877,7 +12877,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12890,7 +12890,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12903,7 +12903,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12916,7 +12916,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12929,7 +12929,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12942,7 +12942,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12955,7 +12955,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12968,7 +12968,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12981,7 +12981,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -12994,7 +12994,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13007,7 +13007,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13020,7 +13020,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13033,7 +13033,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13046,7 +13046,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13059,7 +13059,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13072,7 +13072,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13085,7 +13085,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13098,7 +13098,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13111,7 +13111,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13124,7 +13124,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13137,7 +13137,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13150,7 +13150,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13163,7 +13163,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13176,7 +13176,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13189,7 +13189,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13202,7 +13202,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13215,7 +13215,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13228,7 +13228,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13241,7 +13241,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13254,7 +13254,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13267,7 +13267,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13280,7 +13280,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13293,7 +13293,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13306,7 +13306,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13319,7 +13319,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13332,7 +13332,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13345,7 +13345,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13358,7 +13358,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13371,7 +13371,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13384,7 +13384,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13397,7 +13397,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13410,7 +13410,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13423,7 +13423,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13436,7 +13436,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13449,7 +13449,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13462,7 +13462,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13475,7 +13475,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13488,7 +13488,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13501,7 +13501,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13514,7 +13514,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13527,7 +13527,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13540,7 +13540,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13553,7 +13553,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13566,7 +13566,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13579,7 +13579,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13592,7 +13592,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13605,7 +13605,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13618,7 +13618,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13631,7 +13631,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13644,7 +13644,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13657,7 +13657,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13670,7 +13670,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13683,7 +13683,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13696,7 +13696,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13706,10 +13706,10 @@
     "elevation": 148.24806213378906,
     "lat": 59.62239,
     "lon": 9.24889,
-    "surface": "unknown",
-    "surfaceSource": "current",
-    "surfaceCategory": "unknown",
-    "surfaceRaw": "unknown",
+    "surface": "gravel",
+    "surfaceSource": "review",
+    "surfaceCategory": "gravel",
+    "surfaceRaw": "gravel",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13722,7 +13722,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13735,7 +13735,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13748,7 +13748,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13761,7 +13761,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13774,7 +13774,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13787,7 +13787,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13800,7 +13800,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13813,7 +13813,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13826,7 +13826,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13839,7 +13839,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13852,7 +13852,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13865,7 +13865,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13878,7 +13878,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13891,7 +13891,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13904,7 +13904,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13917,7 +13917,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13930,7 +13930,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13943,7 +13943,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13956,7 +13956,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13969,7 +13969,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13982,7 +13982,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -13995,7 +13995,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14008,7 +14008,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14021,7 +14021,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14034,7 +14034,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14047,7 +14047,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14060,7 +14060,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14073,7 +14073,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14086,7 +14086,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14099,7 +14099,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14112,7 +14112,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14125,7 +14125,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14138,7 +14138,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14151,7 +14151,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14164,7 +14164,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14177,7 +14177,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14190,7 +14190,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14203,7 +14203,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14216,7 +14216,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14229,7 +14229,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14242,7 +14242,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14255,7 +14255,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14268,7 +14268,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14281,7 +14281,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14294,7 +14294,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14307,7 +14307,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14320,7 +14320,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14333,7 +14333,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14346,7 +14346,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14359,7 +14359,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14372,7 +14372,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14385,7 +14385,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14398,7 +14398,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14411,7 +14411,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14424,7 +14424,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14437,7 +14437,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14450,7 +14450,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14463,7 +14463,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14476,7 +14476,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14489,7 +14489,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14502,7 +14502,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14515,7 +14515,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14528,7 +14528,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14541,7 +14541,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14554,7 +14554,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14567,7 +14567,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14580,7 +14580,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14593,7 +14593,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14606,7 +14606,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14619,7 +14619,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14632,7 +14632,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14645,7 +14645,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14658,7 +14658,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14671,7 +14671,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14684,7 +14684,7 @@
     "surface": "gravel",
     "surfaceSource": "review",
     "surfaceCategory": "gravel",
-    "surfaceRaw": "gravel",
+    "surfaceRaw": "unpaved",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -14694,10 +14694,10 @@
     "elevation": 136.58749389648438,
     "lat": 59.61865,
     "lon": 9.2796,
-    "surface": "unknown",
-    "surfaceSource": "current",
-    "surfaceCategory": "unknown",
-    "surfaceRaw": "unknown",
+    "surface": "gravel",
+    "surfaceSource": "review_fill",
+    "surfaceCategory": "gravel",
+    "surfaceRaw": "gravel",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -15084,9 +15084,9 @@
     "elevation": 151.4600067138672,
     "lat": 59.621679997571704,
     "lon": 9.278814344178423,
-    "surface": "unknown",
-    "surfaceSource": "current",
-    "surfaceCategory": "unknown",
+    "surface": "asphalt",
+    "surfaceSource": "review_patch",
+    "surfaceCategory": "asphalt",
     "surfaceRaw": "unknown",
     "matchDistanceM": null,
     "matchedHighway": null,
@@ -15097,9 +15097,9 @@
     "elevation": 152.13038635253906,
     "lat": 59.62219,
     "lon": 9.27918,
-    "surface": "unknown",
-    "surfaceSource": "current",
-    "surfaceCategory": "unknown",
+    "surface": "asphalt",
+    "surfaceSource": "review_patch",
+    "surfaceCategory": "asphalt",
     "surfaceRaw": "unknown",
     "matchDistanceM": null,
     "matchedHighway": null,
@@ -15412,7 +15412,7 @@
     "surface": "asphalt",
     "surfaceSource": "review",
     "surfaceCategory": "asphalt",
-    "surfaceRaw": "asphalt",
+    "surfaceRaw": "compacted",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -15425,7 +15425,7 @@
     "surface": "asphalt",
     "surfaceSource": "review",
     "surfaceCategory": "asphalt",
-    "surfaceRaw": "asphalt",
+    "surfaceRaw": "compacted",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -15438,7 +15438,7 @@
     "surface": "asphalt",
     "surfaceSource": "review",
     "surfaceCategory": "asphalt",
-    "surfaceRaw": "asphalt",
+    "surfaceRaw": "compacted",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -15451,7 +15451,7 @@
     "surface": "asphalt",
     "surfaceSource": "review",
     "surfaceCategory": "asphalt",
-    "surfaceRaw": "asphalt",
+    "surfaceRaw": "compacted",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -15464,7 +15464,7 @@
     "surface": "asphalt",
     "surfaceSource": "review",
     "surfaceCategory": "asphalt",
-    "surfaceRaw": "asphalt",
+    "surfaceRaw": "compacted",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -15477,7 +15477,7 @@
     "surface": "asphalt",
     "surfaceSource": "review",
     "surfaceCategory": "asphalt",
-    "surfaceRaw": "asphalt",
+    "surfaceRaw": "compacted",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -15490,7 +15490,7 @@
     "surface": "asphalt",
     "surfaceSource": "review",
     "surfaceCategory": "asphalt",
-    "surfaceRaw": "asphalt",
+    "surfaceRaw": "compacted",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -15503,7 +15503,7 @@
     "surface": "asphalt",
     "surfaceSource": "review",
     "surfaceCategory": "asphalt",
-    "surfaceRaw": "asphalt",
+    "surfaceRaw": "compacted",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -15513,10 +15513,10 @@
     "elevation": 180.66265869140625,
     "lat": 59.63168,
     "lon": 9.27798,
-    "surface": "unknown",
-    "surfaceSource": "current",
-    "surfaceCategory": "unknown",
-    "surfaceRaw": "unknown",
+    "surface": "asphalt",
+    "surfaceSource": "review",
+    "surfaceCategory": "asphalt",
+    "surfaceRaw": "asphalt",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -15864,9 +15864,9 @@
     "elevation": 206.04641723632812,
     "lat": 59.63987,
     "lon": 9.27901,
-    "surface": "unknown",
-    "surfaceSource": "current",
-    "surfaceCategory": "unknown",
+    "surface": "asphalt",
+    "surfaceSource": "review_patch",
+    "surfaceCategory": "asphalt",
     "surfaceRaw": "unknown",
     "matchDistanceM": null,
     "matchedHighway": null,
@@ -15877,10 +15877,10 @@
     "elevation": 207.0500030517578,
     "lat": 59.64012646991523,
     "lon": 9.279306966058968,
-    "surface": "unknown",
-    "surfaceSource": "current",
-    "surfaceCategory": "unknown",
-    "surfaceRaw": "unknown",
+    "surface": "asphalt",
+    "surfaceSource": "review",
+    "surfaceCategory": "asphalt",
+    "surfaceRaw": "asphalt",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -16839,10 +16839,10 @@
     "elevation": 232.7100067138672,
     "lat": 59.65954779298978,
     "lon": 9.275206883603186,
-    "surface": "unknown",
-    "surfaceSource": "current",
-    "surfaceCategory": "unknown",
-    "surfaceRaw": "unknown",
+    "surface": "asphalt",
+    "surfaceSource": "review",
+    "surfaceCategory": "asphalt",
+    "surfaceRaw": "asphalt",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -17788,10 +17788,10 @@
     "elevation": 228.45919799804688,
     "lat": 59.66934,
     "lon": 9.26786,
-    "surface": "unknown",
-    "surfaceSource": "current",
-    "surfaceCategory": "unknown",
-    "surfaceRaw": "unknown",
+    "surface": "asphalt",
+    "surfaceSource": "review",
+    "surfaceCategory": "asphalt",
+    "surfaceRaw": "asphalt",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -17996,10 +17996,10 @@
     "elevation": 228.58795166015625,
     "lat": 59.67058,
     "lon": 9.26929,
-    "surface": "unknown",
-    "surfaceSource": "current",
-    "surfaceCategory": "unknown",
-    "surfaceRaw": "unknown",
+    "surface": "asphalt",
+    "surfaceSource": "review",
+    "surfaceCategory": "asphalt",
+    "surfaceRaw": "asphalt",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -19075,10 +19075,10 @@
     "elevation": 227.0578155517578,
     "lat": 59.68722,
     "lon": 9.26789,
-    "surface": "unknown",
-    "surfaceSource": "current",
-    "surfaceCategory": "unknown",
-    "surfaceRaw": "unknown",
+    "surface": "asphalt",
+    "surfaceSource": "review",
+    "surfaceCategory": "asphalt",
+    "surfaceRaw": "asphalt",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
@@ -19088,9 +19088,9 @@
     "elevation": 226.5890655517578,
     "lat": 59.68747,
     "lon": 9.26839,
-    "surface": "unknown",
-    "surfaceSource": "current",
-    "surfaceCategory": "unknown",
+    "surface": "asphalt",
+    "surfaceSource": "review_patch",
+    "surfaceCategory": "asphalt",
     "surfaceRaw": "unknown",
     "matchDistanceM": null,
     "matchedHighway": null,
@@ -19101,9 +19101,9 @@
     "elevation": 226.45252990722656,
     "lat": 59.68755,
     "lon": 9.26852,
-    "surface": "unknown",
-    "surfaceSource": "current",
-    "surfaceCategory": "unknown",
+    "surface": "asphalt",
+    "surfaceSource": "review_patch",
+    "surfaceCategory": "asphalt",
     "surfaceRaw": "unknown",
     "matchDistanceM": null,
     "matchedHighway": null,
@@ -19114,10 +19114,10 @@
     "elevation": 226.27999877929688,
     "lat": 59.68766,
     "lon": 9.26866,
-    "surface": "unknown",
-    "surfaceSource": "current",
-    "surfaceCategory": "unknown",
-    "surfaceRaw": "unknown",
+    "surface": "asphalt",
+    "surfaceSource": "review_fill",
+    "surfaceCategory": "asphalt",
+    "surfaceRaw": "asphalt",
     "matchDistanceM": null,
     "matchedHighway": null,
     "matchedWayId": null
