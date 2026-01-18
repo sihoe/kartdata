@@ -1,0 +1,517 @@
+[
+  {
+    "id": "baklivegen-rundt",
+    "name": "Baklivegen rundt",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/baklivegenrundt_elevation_latlon_converted.json",
+    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/Baklivegenrundt.gpx",
+    "distanceKm": 29.34,
+    "climbM": 769.0,
+    "descentM": 769.0,
+    "minElevationM": 466.0,
+    "maxElevationM": 827.0,
+    "surface": {
+      "totalKm": 29.335,
+      "categoryKm": {
+        "asphalt": 14.224,
+        "gravel": 13.613,
+        "trail": 1.498,
+        "unknown": 0.0
+      },
+      "osmSurfaceKm": {
+        "asphalt": 0.146,
+        "gravel": 0.0,
+        "trail": 0.0,
+        "unknown": 0.0
+      },
+      "maxMatchDistanceM": 21.95
+    },
+    "surfaceSource": "baklivegen-rundt/baklivegenrundt_elevation_with_surface_legacy.json"
+  },
+  {
+    "id": "bingenrunden",
+    "name": "Bingenrunden",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/bingenrunden_elevation_latlon_converted.json",
+    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/bingenrunden.gpx",
+    "distanceKm": 47.63,
+    "climbM": 1154.0,
+    "descentM": 1154.0,
+    "minElevationM": 147.0,
+    "maxElevationM": 548.0,
+    "surface": {
+      "totalKm": 47.634,
+      "categoryKm": {
+        "asphalt": 21.038,
+        "gravel": 26.596,
+        "trail": 0.0,
+        "unknown": 0.0
+      },
+      "osmSurfaceKm": {
+        "asphalt": 0.883,
+        "gravel": 0.471,
+        "trail": 0.0,
+        "unknown": 0.0
+      },
+      "maxMatchDistanceM": 7.57
+    },
+    "surfaceSource": "bingenrunden/bingenrunden_elevation_with_surface_legacy.json"
+  },
+  {
+    "id": "blaafarverunden",
+    "name": "Blaafarverunden",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/blaafarverunden_elevation_latlon_converted.json",
+    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/Blaafarverunden.gpx",
+    "distanceKm": 90.18,
+    "climbM": 2234.0,
+    "descentM": 2234.0,
+    "minElevationM": 71.0,
+    "maxElevationM": 548.0,
+    "surface": {
+      "totalKm": 90.181,
+      "categoryKm": {
+        "asphalt": 58.588,
+        "gravel": 31.593,
+        "trail": 0.0,
+        "unknown": 0.0
+      },
+      "osmSurfaceKm": {
+        "asphalt": 0.0,
+        "gravel": 0.0,
+        "trail": 0.0,
+        "unknown": 0.0
+      },
+      "maxMatchDistanceM": 7.57
+    },
+    "surfaceSource": "blaafarverunden/blaafarverunden_elevation_with_surface_legacy.json"
+  },
+  {
+    "id": "blefjell-juvefossen",
+    "name": "Blefjell – Juvefossen",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/blefjell_juvefossen_elevation_latlon_converted.json",
+    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/blefjell_juvefossen.gpx",
+    "distanceKm": 46.64,
+    "climbM": 1408.0,
+    "descentM": 1408.0,
+    "minElevationM": 480.0,
+    "maxElevationM": 681.0,
+    "surface": {
+      "totalKm": 46.641,
+      "categoryKm": {
+        "asphalt": 0.0,
+        "gravel": 42.685,
+        "trail": 3.956,
+        "unknown": 0.0
+      },
+      "osmSurfaceKm": {
+        "asphalt": 0.0,
+        "gravel": 0.0,
+        "trail": 0.0,
+        "unknown": 0.0
+      },
+      "maxMatchDistanceM": 8.1
+    },
+    "surfaceSource": "blefjell-juvefossen/blefjell_juvefossen_elevation_with_surface_legacy.json"
+  },
+  {
+    "id": "bolkesjorunden",
+    "name": "Bolkesjørunden",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/bolkesjorunden_elevation_latlon_converted.json",
+    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/bolkesjorunden.gpx",
+    "distanceKm": 12.47,
+    "climbM": 311.0,
+    "descentM": 311.0,
+    "minElevationM": 225.0,
+    "maxElevationM": 480.0,
+    "surface": {
+      "totalKm": 12.512,
+      "categoryKm": {
+        "asphalt": 5.347,
+        "gravel": 7.165,
+        "trail": 0.0,
+        "unknown": 0.0
+      },
+      "osmSurfaceKm": {
+        "asphalt": 0.326,
+        "gravel": 0.0,
+        "trail": 0.0,
+        "unknown": 0.0
+      },
+      "maxMatchDistanceM": 1.25
+    },
+    "surfaceSource": "_with_surface_export/bolkesjorunden_elevation_with_surface_legacy.json"
+  },
+  {
+    "id": "dusanfossrunden",
+    "name": "Dusanfossrunden",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/dusanfossrunden_elevation_latlon_converted.json",
+    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/dusanfossrunden.gpx",
+    "distanceKm": 12.66,
+    "climbM": 247.0,
+    "descentM": 247.0,
+    "minElevationM": 413.0,
+    "maxElevationM": 554.0,
+    "surface": {
+      "totalKm": 12.658,
+      "categoryKm": {
+        "asphalt": 4.93,
+        "gravel": 1.817,
+        "trail": 5.911,
+        "unknown": 0.0
+      },
+      "osmSurfaceKm": {
+        "asphalt": 0.185,
+        "gravel": 0.0,
+        "trail": 0.0,
+        "unknown": 0.0
+      },
+      "maxMatchDistanceM": 23.88
+    },
+    "surfaceSource": "_with_surface_export/dusanfossrunden_elevation_with_surface_legacy.json"
+  },
+  {
+    "id": "fjellruta-over-vegglifjell",
+    "name": "Fjellruta over Vegglifjell",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/fjellruta_elevation_latlon_converted.json",
+    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/Fjellruta_over_Vegglifjell_og_Imingfjell.gpx",
+    "distanceKm": 124.13,
+    "climbM": 2096.0,
+    "descentM": 2096.0,
+    "minElevationM": 217.0,
+    "maxElevationM": 1171.0,
+    "surface": {
+      "totalKm": 124.553,
+      "categoryKm": {
+        "asphalt": 85.848,
+        "gravel": 38.704,
+        "trail": 0.0,
+        "unknown": 0.0
+      },
+      "osmSurfaceKm": {
+        "asphalt": 0.0,
+        "gravel": 0.0,
+        "trail": 0.0,
+        "unknown": 0.0
+      },
+      "maxMatchDistanceM": null
+    },
+    "surfaceSource": "fjellruta-over-vegglifjell/fjellruta_elevation_with_surface_legacy.json"
+  },
+  {
+    "id": "follsj-rundt",
+    "name": "Follsjø rundt",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/follsjo_elevation_with_surface.json",
+    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/follsjorundt.gpx",
+    "distanceKm": 33.14,
+    "climbM": 465.0,
+    "descentM": 465.0,
+    "minElevationM": 126.0,
+    "maxElevationM": 403.0,
+    "surface": {
+      "totalKm": 33.205,
+      "categoryKm": {
+        "asphalt": 12.995,
+        "gravel": 15.934,
+        "trail": 4.275,
+        "unknown": 0.0
+      },
+      "osmSurfaceKm": {
+        "asphalt": 0.299,
+        "gravel": 0.063,
+        "trail": 0.091,
+        "unknown": 0.0
+      },
+      "maxMatchDistanceM": null
+    },
+    "surfaceSource": "_with_surface_export/follsjorundt_elevation_with_surface_legacy.json"
+  },
+  {
+    "id": "imingfjell-rundt",
+    "name": "Imingfjell rundt",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/imingfjellrundt_elevation_latlon_converted.json",
+    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/Imingfjellrundt.gpx",
+    "distanceKm": 47.69,
+    "climbM": 1205.0,
+    "descentM": 1205.0,
+    "minElevationM": 593.0,
+    "maxElevationM": 1308.0,
+    "surface": {
+      "totalKm": 47.69,
+      "categoryKm": {
+        "asphalt": 9.394,
+        "gravel": 28.982,
+        "trail": 9.314,
+        "unknown": 0.0
+      },
+      "osmSurfaceKm": {
+        "asphalt": 0.0,
+        "gravel": 0.0,
+        "trail": 0.0,
+        "unknown": 0.0
+      },
+      "maxMatchDistanceM": 15.77
+    },
+    "surfaceSource": "imingfjell-rundt/imingfjellrundt_elevation_with_surface_legacy.json"
+  },
+  {
+    "id": "kirkebygda-rundt",
+    "name": "Kirkebygda rundt",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/kirkebygdarundt_elevation_latlon_converted.json",
+    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/kirkebydgarundt.gpx",
+    "distanceKm": 13.14,
+    "climbM": 329.0,
+    "descentM": 329.0,
+    "minElevationM": 466.0,
+    "maxElevationM": 641.0,
+    "surface": {
+      "totalKm": 13.138,
+      "categoryKm": {
+        "asphalt": 9.733,
+        "gravel": 2.956,
+        "trail": 0.449,
+        "unknown": 0.0
+      },
+      "osmSurfaceKm": {
+        "asphalt": 0.128,
+        "gravel": 0.0,
+        "trail": 0.0,
+        "unknown": 0.0
+      },
+      "maxMatchDistanceM": 16.65
+    },
+    "surfaceSource": "kirkebygda-rundt/kirkebygdarundt_elevation_with_surface_legacy.json"
+  },
+  {
+    "id": "kunst-og-koboltrunden",
+    "name": "Kunst- og koboltrunden",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/kunstkobolt_elevation_latlon_converted.json",
+    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/Kunst-koboltrunden.gpx",
+    "distanceKm": 120.43,
+    "climbM": 2925.0,
+    "descentM": 2925.0,
+    "minElevationM": 42.0,
+    "maxElevationM": 548.0,
+    "surface": {
+      "totalKm": 120.435,
+      "categoryKm": {
+        "asphalt": 75.886,
+        "gravel": 44.549,
+        "trail": 0.0,
+        "unknown": 0.0
+      },
+      "osmSurfaceKm": {
+        "asphalt": 0.145,
+        "gravel": 0.0,
+        "trail": 0.0,
+        "unknown": 0.0
+      },
+      "maxMatchDistanceM": 21.05
+    },
+    "surfaceSource": "kunst-og-koboltrunden/kunstkobolt_elevation_with_surface_legacy.json"
+  },
+  {
+    "id": "norerunden",
+    "name": "Norerunden",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/norerunden_elevation_latlon_converted.json",
+    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/norerunden.gpx",
+    "distanceKm": 36.19,
+    "climbM": 1299.0,
+    "descentM": 1299.0,
+    "minElevationM": 237.0,
+    "maxElevationM": 899.0,
+    "surface": {
+      "totalKm": 36.191,
+      "categoryKm": {
+        "asphalt": 19.415,
+        "gravel": 16.776,
+        "trail": 0.0,
+        "unknown": 0.0
+      },
+      "osmSurfaceKm": {
+        "asphalt": 0.069,
+        "gravel": 0.0,
+        "trail": 0.0,
+        "unknown": 0.0
+      },
+      "maxMatchDistanceM": 6.29
+    },
+    "surfaceSource": "norerunden/norerunden_elevation_with_surface_legacy.json"
+  },
+  {
+    "id": "numedalsruta-nasjonal-rute-5",
+    "name": "Numedalsruta (Nasjonal rute 5)",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/NS_5_Numedalsruta_elevation_latlon_converted.json",
+    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/NS_5_Numedalsruta.gpx",
+    "distanceKm": 165.21,
+    "climbM": 3255.0,
+    "descentM": 3883.0,
+    "minElevationM": 155.0,
+    "maxElevationM": 1060.0,
+    "surface": {
+      "totalKm": 186.009,
+      "categoryKm": {
+        "asphalt": 112.193,
+        "gravel": 73.007,
+        "trail": 0.809,
+        "unknown": 0.0
+      },
+      "osmSurfaceKm": {
+        "asphalt": 1.916,
+        "gravel": 1.522,
+        "trail": 0.01,
+        "unknown": 0.0
+      },
+      "maxMatchDistanceM": null
+    },
+    "surfaceSource": "numedalsruta-nasjonal-rute-5/NS_5_Numedalsruta_elevation_with_surface_legacy.json"
+  },
+  {
+    "id": "ostskauen-rundt",
+    "name": "Østskauen rundt",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/ostskauenrundt_elevation_latlon_converted.json",
+    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/ostskauenrundt.gpx",
+    "distanceKm": 45.14,
+    "climbM": 1008.0,
+    "descentM": 1008.0,
+    "minElevationM": 187.0,
+    "maxElevationM": 500.0
+  },
+  {
+    "id": "ovrebygderunden",
+    "name": "Øvrebygderunden",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/overbygderunden_lang_elevation_latlon_converted.json",
+    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/overbygderunden_lang.gpx",
+    "distanceKm": 23.27,
+    "climbM": 572.0,
+    "descentM": 572.0,
+    "minElevationM": 192.0,
+    "maxElevationM": 615.0,
+    "surface": {
+      "totalKm": 23.265,
+      "categoryKm": {
+        "asphalt": 21.025,
+        "gravel": 1.628,
+        "trail": 0.612,
+        "unknown": 0.0
+      },
+      "osmSurfaceKm": {
+        "asphalt": 21.025,
+        "gravel": 1.628,
+        "trail": 0.612,
+        "unknown": 0.0
+      },
+      "maxMatchDistanceM": 23.76
+    },
+    "surfaceSource": "ovrebygderunden/overbygderunden_lang_elevation_with_surface_legacy.json"
+  },
+  {
+    "id": "rollag-rundt",
+    "name": "Rollag rundt",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/rollagrundt_elevation_latlon_converted.json",
+    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/rollagrundt.gpx",
+    "distanceKm": 19.42,
+    "climbM": 491.0,
+    "descentM": 491.0,
+    "minElevationM": 196.0,
+    "maxElevationM": 380.0,
+    "surface": {
+      "totalKm": 19.422,
+      "categoryKm": {
+        "asphalt": 13.326,
+        "gravel": 4.344,
+        "trail": 1.752,
+        "unknown": 0.0
+      },
+      "osmSurfaceKm": {
+        "asphalt": 0.0,
+        "gravel": 0.0,
+        "trail": 0.0,
+        "unknown": 0.0
+      },
+      "maxMatchDistanceM": 18.25
+    },
+    "surfaceSource": "rollag-rundt/rollagrundt_elevation_with_surface_legacy.json"
+  },
+  {
+    "id": "skagsaasen-og-kravikfjorden-rundt",
+    "name": "Skagsåsen og Kravikfjorden rundt",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/skagsaasenrundt_elevation_latlon_converted.json",
+    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/skagsaasenrundt.gpx",
+    "distanceKm": 34.76,
+    "climbM": 1128.0,
+    "descentM": 1128.0,
+    "minElevationM": 260.0,
+    "maxElevationM": 557.0,
+    "surface": {
+      "totalKm": 34.765,
+      "categoryKm": {
+        "asphalt": 17.259,
+        "gravel": 17.506,
+        "trail": 0.0,
+        "unknown": 0.0
+      },
+      "osmSurfaceKm": {
+        "asphalt": 0.0,
+        "gravel": 0.0,
+        "trail": 0.0,
+        "unknown": 0.0
+      },
+      "maxMatchDistanceM": 12.41
+    },
+    "surfaceSource": "skagsaasen-og-kravikfjorden-rundt/skagsaasenrundt_elevation_with_surface_legacy.json"
+  },
+  {
+    "id": "smadoldalen-rundt",
+    "name": "Smådøldalen rundt",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/smaadoldalenrundt_elevation_latlon_converted.json",
+    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/smaadoldalenrundt.gpx",
+    "distanceKm": 72.29,
+    "climbM": 1363.0,
+    "descentM": 1363.0,
+    "minElevationM": 466.0,
+    "maxElevationM": 1107.0,
+    "surface": {
+      "totalKm": 72.29,
+      "categoryKm": {
+        "asphalt": 24.095,
+        "gravel": 47.737,
+        "trail": 0.458,
+        "unknown": 0.0
+      },
+      "osmSurfaceKm": {
+        "asphalt": 0.027,
+        "gravel": 0.117,
+        "trail": 0.0,
+        "unknown": 0.0
+      },
+      "maxMatchDistanceM": 16.65
+    },
+    "surfaceSource": "smadoldalen-rundt/smaadoldalenrundt_elevation_with_surface_legacy.json"
+  },
+  {
+    "id": "trillemarka-rundt",
+    "name": "Trillemarka rundt",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/trillemarkarundt_elevation_latlon_converted.json",
+    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/Trillemarkarundt.gpx",
+    "distanceKm": 76.44,
+    "climbM": 2343.0,
+    "descentM": 2344.0,
+    "minElevationM": 142.0,
+    "maxElevationM": 896.0,
+    "surface": {
+      "totalKm": 76.435,
+      "categoryKm": {
+        "asphalt": 27.55,
+        "gravel": 41.958,
+        "trail": 6.927,
+        "unknown": 0.0
+      },
+      "osmSurfaceKm": {
+        "asphalt": 0.0,
+        "gravel": 0.0,
+        "trail": 0.0,
+        "unknown": 0.0
+      },
+      "maxMatchDistanceM": null
+    },
+    "surfaceSource": "trillemarka-rundt/trillemarka-rundt_elevation_with_surface_legacy.json"
+  }
+]
