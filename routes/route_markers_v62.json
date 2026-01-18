@@ -185,7 +185,21 @@
     "sti-til-juvefossen-kort-vei-2b5ebb93",
     "sti-til-juvefossen-nordfra-cc3ea87d"
   ],
-  "bingenrunden": [],
+  "bingenrunden": [
+    "andersnatten-d97e80719027",
+    "bingen-kapell-2b6160ef8d5c",
+    "friluftsbua-af4c03d607ad",
+    "lampeland-hotell-368c075ba0fa",
+    "lampeland-spiseri-30f929f4baaa",
+    "lyngdal-landhandel-154a9112ca6f",
+    "lyngdal-kirke-ce478962a7b1",
+    "rema1000-lampeland-f042c85a5bd7",
+    "skattekista-svommehall-31d226ce0424",
+    "tekslehogget-197ce0d34b9e",
+    "vatnas-kirke-015703a3"
+    "vatnebrynnvatnet-badeplass-55ac42ac7788",
+    "vatnebrynnvatnet-gapahuk-e8b7500acfaf"
+  ],
   "ovrebygderunden": [
     "austbygde-bakeri-8876d7660919",
     "austbygde-kirke-dfc3f990bcf4",
@@ -330,6 +344,7 @@
     "arestua-bolkesjo-gaard-fa12d59b9127"
   ]
 }
+
 
 
 
