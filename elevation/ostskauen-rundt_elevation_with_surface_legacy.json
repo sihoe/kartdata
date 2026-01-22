@@ -3965,7 +3965,7 @@
     "distance": 8.520887939813717,
     "elevation": 261.10601806640625,
     "surfaceRaw": null,
-    "surfaceCategory": "unknown",
+    "surfaceCategory": "asphalt",
     "surfaceHighway": "service",
     "surfaceTracktype": null,
     "surfaceMatchDistM": 0.5
@@ -5373,7 +5373,7 @@
     "distance": 11.297556000541524,
     "elevation": 360.65789794921875,
     "surfaceRaw": null,
-    "surfaceCategory": "unknown",
+    "surfaceCategory": "asphalt",
     "surfaceHighway": "service",
     "surfaceTracktype": null,
     "surfaceMatchDistM": 0.2
@@ -7254,7 +7254,7 @@
     "distance": 16.05806675038341,
     "elevation": 475.63134765625,
     "surfaceRaw": null,
-    "surfaceCategory": "unknown",
+    "surfaceCategory": "asphalt",
     "surfaceHighway": "service",
     "surfaceTracktype": null,
     "surfaceMatchDistM": 0.2
@@ -7408,7 +7408,7 @@
     "distance": 16.351650579143275,
     "elevation": 478.9889831542969,
     "surfaceRaw": null,
-    "surfaceCategory": "unknown",
+    "surfaceCategory": "asphalt",
     "surfaceHighway": "service",
     "surfaceTracktype": null,
     "surfaceMatchDistM": 0.0
@@ -10488,7 +10488,7 @@
     "distance": 21.923963541852306,
     "elevation": 389.97662353515625,
     "surfaceRaw": null,
-    "surfaceCategory": "unknown",
+    "surfaceCategory": "asphalt",
     "surfaceHighway": "service",
     "surfaceTracktype": null,
     "surfaceMatchDistM": 0.2
@@ -12006,7 +12006,7 @@
     "distance": 24.59868260328744,
     "elevation": 407.7391357421875,
     "surfaceRaw": null,
-    "surfaceCategory": "unknown",
+    "surfaceCategory": "asphalt",
     "surfaceHighway": "service",
     "surfaceTracktype": null,
     "surfaceMatchDistM": 0.3
@@ -12017,7 +12017,7 @@
     "distance": 24.61012020140675,
     "elevation": 410.001708984375,
     "surfaceRaw": null,
-    "surfaceCategory": "unknown",
+    "surfaceCategory": "asphalt",
     "surfaceHighway": "service",
     "surfaceTracktype": null,
     "surfaceMatchDistM": 0.1
@@ -12028,7 +12028,7 @@
     "distance": 24.63257184394846,
     "elevation": 413.46484375,
     "surfaceRaw": null,
-    "surfaceCategory": "unknown",
+    "surfaceCategory": "asphalt",
     "surfaceHighway": "service",
     "surfaceTracktype": null,
     "surfaceMatchDistM": 0.5
@@ -12039,7 +12039,7 @@
     "distance": 24.643817800722736,
     "elevation": 411.9619445800781,
     "surfaceRaw": null,
-    "surfaceCategory": "unknown",
+    "surfaceCategory": "asphalt",
     "surfaceHighway": "service",
     "surfaceTracktype": null,
     "surfaceMatchDistM": 0.3
@@ -12050,7 +12050,7 @@
     "distance": 24.655023486490176,
     "elevation": 410.001708984375,
     "surfaceRaw": null,
-    "surfaceCategory": "unknown",
+    "surfaceCategory": "asphalt",
     "surfaceHighway": "service",
     "surfaceTracktype": null,
     "surfaceMatchDistM": 0.1
@@ -12424,7 +12424,7 @@
     "distance": 25.038672204078633,
     "elevation": 403.5428466796875,
     "surfaceRaw": null,
-    "surfaceCategory": "unknown",
+    "surfaceCategory": "asphalt",
     "surfaceHighway": "service",
     "surfaceTracktype": null,
     "surfaceMatchDistM": 0.0
@@ -13788,7 +13788,7 @@
     "distance": 27.34189672868567,
     "elevation": 389.97662353515625,
     "surfaceRaw": null,
-    "surfaceCategory": "unknown",
+    "surfaceCategory": "asphalt",
     "surfaceHighway": "service",
     "surfaceTracktype": null,
     "surfaceMatchDistM": 0.2
@@ -17088,7 +17088,7 @@
     "distance": 34.17220590096896,
     "elevation": 355.127197265625,
     "surfaceRaw": null,
-    "surfaceCategory": "unknown",
+    "surfaceCategory": "asphalt",
     "surfaceHighway": "service",
     "surfaceTracktype": null,
     "surfaceMatchDistM": 0.5
@@ -18210,7 +18210,7 @@
     "distance": 36.5081303613614,
     "elevation": 261.10601806640625,
     "surfaceRaw": null,
-    "surfaceCategory": "unknown",
+    "surfaceCategory": "asphalt",
     "surfaceHighway": "service",
     "surfaceTracktype": null,
     "surfaceMatchDistM": 0.5
@@ -18826,7 +18826,7 @@
     "distance": 37.733128073766224,
     "elevation": 256.68267822265625,
     "surfaceRaw": null,
-    "surfaceCategory": "unknown",
+    "surfaceCategory": "asphalt",
     "surfaceHighway": "service",
     "surfaceTracktype": null,
     "surfaceMatchDistM": 0.1
@@ -22038,7 +22038,7 @@
     "distance": 44.6146813113983,
     "elevation": 190.2958221435547,
     "surfaceRaw": null,
-    "surfaceCategory": "unknown",
+    "surfaceCategory": "asphalt",
     "surfaceHighway": "service",
     "surfaceTracktype": null,
     "surfaceMatchDistM": 0.1
