@@ -101,6 +101,16 @@
     "a-camp-04b0b9573cf1",
     "oktodden-molle-a77695be"
   ],
+    "heimseterrunden": [
+    "badedammen-pa-veggli-9468b2127fb9",
+    "coop-extra-veggli-e2096c021ad1",
+    "dresin-numedalsbanen-4616ba38481e",
+    "fjellkompaniet-a5906ffbe725",
+    "havardsrud-seterliv-b149b3e7e5b2",
+    "numedal-blomster-8447ae7d24cb",
+    "veggli-vertshus-905a770d212e",
+    "veggli-stasjon-ef92ddf91bdb",
+  ],
   "skagsaasen-og-kravikfjorden-rundt": [
     "badedammen-pa-veggli-9468b2127fb9",
     "bruholen-482e9f370595",
@@ -184,6 +194,22 @@
     "skattekista-svommehall-31d226ce0424",
     "tekslehogget-197ce0d34b9e",
     "th-kittelsen-museum-1a6e35a0",
+    "vatnebrynnvatnet-badeplass-55ac42ac7788",
+    "vatnebrynnvatnet-gapahuk-e8b7500acfaf",
+    "vatnas-kirke-015703a3"
+  ],
+   "ostskauen-rundt": [
+    "friluftsbua-af4c03d607ad",
+    "klofterholen-badeplass-dc13753f5aa2",
+    "lampeland-hotell-368c075ba0fa",
+    "lampeland-spiseri-30f929f4baaa",
+    "letmolivatnet-badeplass-9edff5fb",
+    "lyngdal-landhandel-154a9112ca6f",
+    "lyngdal-kirke-ce478962a7b1",
+    "olavskilden-47472db9",
+    "rema1000-lampeland-f042c85a5bd7",
+    "skattekista-svommehall-31d226ce0424",
+    "tekslehogget-197ce0d34b9e",
     "vatnebrynnvatnet-badeplass-55ac42ac7788",
     "vatnebrynnvatnet-gapahuk-e8b7500acfaf",
     "vatnas-kirke-015703a3"
@@ -364,6 +390,7 @@
     "arestua-bolkesjo-gaard-fa12d59b9127"
   ]
 }
+
 
 
 
