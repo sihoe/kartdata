@@ -724,8 +724,8 @@
     "name": {
       "no": "heimseterrunden"
     },
-    "gpxUrl": null,
-    "elevationUrl": null,
+    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/heimseterrunden.gpx",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/heimseterrunden_elevation_with_surface_legacy.json",
     "elevationSurfaceUrl": null,
     "stats": {
       "distanceKm": 16.2,
@@ -764,8 +764,8 @@
     "name": {
       "no": "ostskauen-rundt"
     },
-    "gpxUrl": null,
-    "elevationUrl": null,
+    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/ostskauen-rundt.gpx",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/ostskauen-rundt_elevation_with_surface_legacy.json",
     "elevationSurfaceUrl": null,
     "stats": {
       "distanceKm": 45.1,
@@ -799,4 +799,5 @@
     },
     "surfaceSource": "ostskauen-rundt/ostskauen-rundt_elevation_with_surface_legacy.json"
   }
+
 }
