@@ -168,7 +168,7 @@
       60.0461018,
       9.1506699
     ],
-    "imageUrl": "",
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/rollag-friluftsliv-bilder@main/mykstufoss-friluftsomrade-rollag-c434da03_3.jpg",
     "symbolType": "marker",
     "texts": {
       "no": {
@@ -465,7 +465,7 @@
       60.042467,
       9.154814
     ],
-    "imageUrl": "",
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/rollag-friluftsliv-bilder@main/hvilebenk-veggli-sentrum-9b3c17ca_2.jpg",
     "symbolType": "marker",
     "texts": {
       "no": {
@@ -514,7 +514,7 @@
   },
   {
     "name": "sittegruppebenk-rollag-e871db72",
-    "title": "sittegruppebenk-rollag-e871db72",
+    "title": "Sittegruppe Rollag sentrum",
     "latlng": [
       59.9844556,
       9.2941868
@@ -523,46 +523,19 @@
     "symbolType": "marker",
     "texts": {
       "no": {
-        "title": "sittegruppebenk-rollag-e871db72",
+        "title": "Sittegruppe Rollag sentrum",
         "description": ""
       },
       "en": {
-        "title": "sittegruppebenk-rollag-e871db72",
+        "title": "Sittegruppe Rollag sentrum",
         "description": ""
       },
       "de": {
-        "title": "sittegruppebenk-rollag-e871db72",
+        "title": "Sittegruppe Rollag sentrum",
         "description": ""
       }
     },
     "id": "sittegruppebenk-rollag-e871db72",
-    "symbol": "marker",
-    "routes": []
-  },
-  {
-    "name": "sittegruppebenk-rollag-sentrum-18518c74",
-    "title": "Sittegruppebenk",
-    "latlng": [
-      59.9845442,
-      9.293983
-    ],
-    "imageUrl": "",
-    "symbolType": "marker",
-    "texts": {
-      "no": {
-        "title": "sittegruppebenk-rollag-18518c74",
-        "description": ""
-      },
-      "en": {
-        "title": "sittegruppebenk-rollag-18518c74",
-        "description": ""
-      },
-      "de": {
-        "title": "sittegruppebenk-rollag-18518c74",
-        "description": ""
-      }
-    },
-    "id": "sittegruppebenk-rollag-sentrum-18518c74",
     "symbol": "marker",
     "routes": []
   },
@@ -675,3 +648,4 @@
     "routes": []
   }
 ]
+
