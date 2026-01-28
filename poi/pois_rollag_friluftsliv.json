@@ -157,18 +157,18 @@
         "description": ""
       }
     },
-    "id": "pois_selected-rollag-3a41ea6a",
+    "id": "wc-mykstufoss-rollag-3a41ea6a",
     "symbol": "marker",
     "routes": []
   },
   {
-    "name": "Parkering Mykstufoss",
-    "title": "parkering-mykstufoss-rollag-c6eed4c9",
+    "name": "parkering-mykstufoss-rollag-c6eed4c9",
+    "title": "Parkering Mykstufoss",
     "latlng": [
       60.0461018,
       9.1506699
     ],
-    "imageUrl": "",
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder/rollag-friluftsliv@main/mykstufoss-friluftsomrade-rollag-c434da03_3.jpg",
     "symbolType": "marker",
     "texts": {
       "no": {
@@ -184,7 +184,7 @@
         "description": ""
       }
     },
-    "id": "pois_selected-rollag-c6eed4c9",
+    "id": "parkering-mykstufoss-rollag-c6eed4c9",
     "symbol": "marker",
     "routes": []
   },
@@ -253,19 +253,19 @@
     "symbolType": "marker",
     "texts": {
       "no": {
-        "title": "pois_selected-rollag-a7b52e8a",
+        "title": "Hvilebenk ved Numedalslågen",
         "description": ""
       },
       "en": {
-        "title": "pois_selected-rollag-a7b52e8a",
+        "title": "Hvilebenk ved Numedalslågen",
         "description": ""
       },
       "de": {
-        "title": "pois_selected-rollag-a7b52e8a",
+        "title": "Hvilebenk ved Numedalslågen",
         "description": ""
       }
     },
-    "id": "pois_selected-rollag-a7b52e8a",
+    "id": "hvilebenk-numedalslaagen-rollag-a7b52e8a",
     "symbol": "marker",
     "routes": []
   },
@@ -334,15 +334,15 @@
     "symbolType": "marker",
     "texts": {
       "no": {
-        "title": "pois_selected-rollag-d1696baf",
+        "title": "Hvilebenk med utsikt til Lågen",
         "description": ""
       },
       "en": {
-        "title": "pois_selected-rollag-d1696baf",
+        "title": "Hvilebenk med utsikt til Lågen",
         "description": ""
       },
       "de": {
-        "title": "pois_selected-rollag-d1696baf",
+        "title": "Hvilebenk med utsikt til Lågen",
         "description": ""
       }
     },
@@ -674,4 +674,5 @@
     "symbol": "marker",
     "routes": []
   }
+
 ]
