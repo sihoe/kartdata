@@ -2293,6 +2293,7 @@
       59.836204458,
       9.579600729
     ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-4@main/rema1000-lampeland.jpg",
     "symbolType": "handlevogn",
     "texts": {
       "no": {
@@ -3428,4 +3429,5 @@
     },
     "id": "ovrebygde-rundt-kort-0cf553f1"
   }
+
 ]
