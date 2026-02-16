@@ -24,7 +24,7 @@
         "bikecharge",
         "secureparking"
       ],
-      "difficultyLegacy": "middels",
+      "difficultyLegacy": "krevende",
       "tagsSuggested": [
         "bad",
         "severdigheter",
@@ -146,9 +146,31 @@
       "color": "#37394E",
       "articleUrl": "https://www.svingom.no/sykkeltur/blefjell/blefjell-lodge-juvefossen",
       "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-3@main/blefjelljuvefossen.jpg",
-      "symbols": [],
-      "difficultyLegacy": "",
+      "symbols": [
+        "bathingspot",
+        "attractions",
+        "handlevogn",
+        "kaffekopp",
+        "eat",
+        "fishing",
+        "hiking",
+        "hotel",
+        "cabin",
+        "bikecharge",
+        "secureparking"
+      ],
+      "difficultyLegacy": "middels",
       "tagsSuggested": [
+        "badeplass",
+        "severdigheter",
+        "matbutikk",
+        "kaffe",
+        "mat",
+        "fiske",
+        "overnatting",
+        "fottur",
+        "lading",
+        "sykkelparkering",
         "mest-grus"
       ],
       "surfaceClassAuto": "mest-grus",
@@ -1162,3 +1184,4 @@
     }
   }
 }
+
