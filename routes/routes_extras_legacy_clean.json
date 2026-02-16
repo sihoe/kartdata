@@ -14,7 +14,7 @@
       "sortOrder": 2,
       "color": "#D38262",
       "articleUrl": "https://www.svingom.no/sykkeltur-smadoldalen-rundt",
-      "imageUrl": "https://raw.githubusercontent.com/sihoe/svingombilder/main/smaadolrunden.jpg",
+      "imageUrl": "https://raw.githubusercontent.com/sihoe/svingombilder-4/main/smaadolrunden.jpg",
       "symbols": [
         "bathingspot",
         "attractions",
@@ -65,7 +65,7 @@
       "sortOrder": 6,
       "color": "#37394E",
       "articleUrl": "https://www.svingom.no/sykkeltur/fjellruta",
-      "imageUrl": "https://raw.githubusercontent.com/sihoe/svingombilder/main/fjellruta.jpg",
+      "imageUrl": "https://raw.githubusercontent.com/sihoe/svingombilder-1/main/fjellruta.jpg",
       "symbols": [
         "bathingspot",
         "attractions",
@@ -126,8 +126,8 @@
     "blefjell-juvefossen": {
       "sortOrder": 9999,
       "color": "#37394E",
-      "articleUrl": "",
-      "imageUrl": "",
+      "articleUrl": "https://www.svingom.no/sykkeltur/blefjell/blefjell-lodge-juvefossen",
+      "imageUrl": "https://raw.githubusercontent.com/sihoe/svingombilder-3/main/blefjelljuvefossen.jpg",
       "symbols": [],
       "difficultyLegacy": "",
       "tagsSuggested": [
@@ -164,7 +164,7 @@
       "sortOrder": 10,
       "color": "#37394E",
       "articleUrl": "https://www.svingom.no/sykkeltur/trillemarka-rundt",
-      "imageUrl": "https://raw.githubusercontent.com/sihoe/svingombilder/main/trillemarkarundt.jpg",
+      "imageUrl": "https://raw.githubusercontent.com/sihoe/svingombilder-3/main/trillemarkarundt.jpg",
       "symbols": [
         "bathingspot",
         "attractions",
@@ -177,7 +177,7 @@
       ],
       "difficultyLegacy": "krevende",
       "tagsSuggested": [
-        "bad",
+        "badeplass",
         "severdigheter",
         "matbutikk",
         "kaffe",
@@ -201,7 +201,6 @@
       "needsReview": false,
       "season": {
         "months": [
-          4,
           5,
           6,
           7,
@@ -211,7 +210,7 @@
         ]
       },
       "bases": [
-        "Veggli"
+        "Veggli", "Eggedal"
       ],
       "routeShape": "loop"
     },
@@ -219,7 +218,7 @@
       "sortOrder": 12,
       "color": "#37394E",
       "articleUrl": "https://www.svingom.no/sykkeltur/kunst-og-kobolt-runden",
-      "imageUrl": "https://raw.githubusercontent.com/sihoe/svingombilder/main/kunstogkobolt.jpg",
+      "imageUrl": "https://raw.githubusercontent.com/sihoe/svingombilder-1/main/kunstogkobolt.jpg",
       "symbols": [
         "bathingspot",
         "attractions",
@@ -265,7 +264,7 @@
         ]
       },
       "bases": [
-        "Veggli"
+        "Lampeland", "Åmot", "Prestfoss"
       ],
       "routeShape": "loop"
     },
@@ -273,7 +272,7 @@
       "sortOrder": 11,
       "color": "#D38262",
       "articleUrl": "https://www.svingom.no/sykkeltur/rollag-rundt",
-      "imageUrl": "https://raw.githubusercontent.com/sihoe/svingombilder/main/rollagrundt.jpg",
+      "imageUrl": "https://raw.githubusercontent.com/sihoe/svingombilder-4/main/rollagrundt.jpg",
       "symbols": [
         "attractions",
         "handlevogn"
@@ -307,7 +306,7 @@
         ]
       },
       "bases": [
-        "Veggli"
+        "Veggli", "Rollag"
       ],
       "routeShape": "loop"
     },
@@ -414,7 +413,7 @@
       "sortOrder": 13,
       "color": "#4484A2",
       "articleUrl": "https://www.svingom.no/sykkeltur/blaafarverunden",
-      "imageUrl": "https://raw.githubusercontent.com/sihoe/svingombilder/main/blaafarverunden.jpg",
+      "imageUrl": "https://raw.githubusercontent.com/sihoe/svingombilder-4/main/blaafarverunden.jpg",
       "symbols": [
         "bathingspot",
         "attractions",
@@ -462,7 +461,7 @@
         ]
       },
       "bases": [
-        "Lampeland"
+        "Lampeland", "Åmot"
       ],
       "routeShape": "loop"
     },
@@ -470,7 +469,7 @@
       "sortOrder": 7,
       "color": "#9C6B2A",
       "articleUrl": "https://www.svingom.no/sykkeltur/tinn/ovrebygde-rundene",
-      "imageUrl": "https://raw.githubusercontent.com/sihoe/svingombilder/main/ovrebygderundene.jpg",
+      "imageUrl": "https://raw.githubusercontent.com/sihoe/svingombilder-3/main/ovrebygderundene.jpg",
       "symbols": [
         "attractions",
         "bathingspot",
@@ -487,11 +486,11 @@
       "difficultyLegacy": "middels",
       "tagsSuggested": [
         "severdigheter",
-        "bad",
+        "badeplass",
         "overnatting",
         "mat",
         "fiske",
-        "gard",
+        "seter",
         "fottur",
         "kaffe",
         "lading",
@@ -521,7 +520,7 @@
         ]
       },
       "bases": [
-        "Veggli"
+        "Tinn Austbygde"
       ],
       "routeShape": "loop"
     },
@@ -529,7 +528,7 @@
       "sortOrder": 3,
       "color": "#CA6B2A",
       "articleUrl": "https://www.svingom.no/sykkeltur-imingfjell-rundt",
-      "imageUrl": "https://raw.githubusercontent.com/sihoe/svingombilder/main/Imingfjellrundt.jpg",
+      "imageUrl": "https://raw.githubusercontent.com/sihoe/svingombilder-2/main/Imingfjellrundt.jpg",
       "symbols": [
         "bathingspot",
         "cabin",
@@ -541,7 +540,7 @@
       ],
       "difficultyLegacy": "krevende",
       "tagsSuggested": [
-        "bad",
+        "badeplass",
         "overnatting",
         "mat",
         "fiske",
@@ -563,8 +562,6 @@
       "needsReview": false,
       "season": {
         "months": [
-          4,
-          5,
           6,
           7,
           8,
@@ -581,7 +578,7 @@
       "sortOrder": 4,
       "color": "#E0922F",
       "articleUrl": "https://www.svingom.no/sykkeltur/uvdal/kirkebygda-rundt",
-      "imageUrl": "https://raw.githubusercontent.com/sihoe/svingombilder/main/Kirkebygdarundt.jpg",
+      "imageUrl": "https://raw.githubusercontent.com/sihoe/svingombilder-1/main/Kirkebygdarundt.jpg",
       "symbols": [
         "attractions",
         "bathingspot",
@@ -619,7 +616,6 @@
       "needsReview": false,
       "season": {
         "months": [
-          4,
           5,
           6,
           7,
@@ -637,7 +633,7 @@
       "sortOrder": 9,
       "color": "#AB4B2A",
       "articleUrl": "https://www.svingom.no/sykkeltur-norerunden",
-      "imageUrl": "https://raw.githubusercontent.com/sihoe/svingombilder/main/Norerunden.JPG",
+      "imageUrl": "https://raw.githubusercontent.com/sihoe/svingombilder-2/main/Norerunden.JPG",
       "symbols": [
         "attractions",
         "bathingspot",
@@ -672,8 +668,6 @@
       "needsReview": false,
       "season": {
         "months": [
-          4,
-          5,
           6,
           7,
           8,
@@ -682,7 +676,7 @@
         ]
       },
       "bases": [
-        "Rødberg"
+        "Veggli"
       ],
       "routeShape": "loop"
     },
@@ -690,7 +684,7 @@
       "sortOrder": 8,
       "color": "#C4683A",
       "articleUrl": "https://www.svingom.no/sykkeltur/nore/skagsaasen-rundt",
-      "imageUrl": "https://raw.githubusercontent.com/sihoe/svingombilder/main/skagsaasen.jpg",
+      "imageUrl": "https://raw.githubusercontent.com/sihoe/svingombilder-2/main/skagsaasen.jpg",
       "symbols": [
         "attractions"
       ],
@@ -713,7 +707,6 @@
       "needsReview": false,
       "season": {
         "months": [
-          4,
           5,
           6,
           7,
@@ -731,7 +724,7 @@
       "sortOrder": 14,
       "color": "#84492A",
       "articleUrl": "https://www.svingom.no/sykkeltur/bingen-runden",
-      "imageUrl": "https://raw.githubusercontent.com/sihoe/svingombilder/main/Bingenrunden.jpg",
+      "imageUrl": "https://raw.githubusercontent.com/sihoe/svingombilder-3/main/Bingenrunden.jpg",
       "symbols": [
         "attractions",
         "bathingspot",
@@ -745,7 +738,7 @@
       "difficultyLegacy": "middels",
       "tagsSuggested": [
         "severdigheter",
-        "bad",
+        "badeplass",
         "mat",
         "fiske",
         "kaffe",
@@ -768,7 +761,6 @@
       "needsReview": false,
       "season": {
         "months": [
-          4,
           5,
           6,
           7,
@@ -786,7 +778,7 @@
       "sortOrder": 17,
       "color": "#84492A",
       "articleUrl": "https://www.svingom.no/sykkeltur/bolkesjo/bolkesjorunden",
-      "imageUrl": "https://raw.githubusercontent.com/sihoe/svingombilder/main/bolkesjorunden.jpg",
+      "imageUrl": "https://raw.githubusercontent.com/sihoe/svingombilder-2/main/bolkesjorunden.jpg",
       "symbols": [
         "attractions",
         "bathingspot",
@@ -794,19 +786,14 @@
         "fishing",
         "cabin",
         "hiking",
-        "bikecharge",
-        "secureparking"
       ],
       "difficultyLegacy": "enkel",
       "tagsSuggested": [
         "severdigheter",
-        "bad",
-        "mat",
+        "badeplass",
         "fiske",
         "overnatting",
         "fottur",
-        "lading",
-        "sykkelparkering",
         "familie",
         "miks"
       ],
@@ -824,7 +811,6 @@
       "needsReview": false,
       "season": {
         "months": [
-          4,
           5,
           6,
           7,
@@ -841,11 +827,24 @@
     "follsj-rundt": {
       "sortOrder": 9999,
       "color": "#37394E",
-      "articleUrl": "",
-      "imageUrl": "",
-      "symbols": [],
-      "difficultyLegacy": "",
+      "articleUrl": "https://www.svingom.no/sykkeltur/bolkesjo/follsjorundt",
+      "imageUrl": "https://raw.githubusercontent.com/sihoe/svingombilder-1/main/follsjorundt.jpg",
+      "symbols": [
+        "attractions",
+        "bathingspot",
+        "eat",
+        "fishing",
+        "cabin",
+        "hiking",
+      ],
+      "difficultyLegacy": "middels",
       "tagsSuggested": [
+        "severdigheter",
+        "badeplass",
+        "fiske",
+        "overnatting",
+        "fottur",
+        "familie",
         "miks"
       ],
       "surfaceClassAuto": "miks",
@@ -862,7 +861,6 @@
       "needsReview": true,
       "season": {
         "months": [
-          4,
           5,
           6,
           7,
@@ -872,19 +870,25 @@
         ]
       },
       "bases": [
-        "Veggli"
+        "Bolkesjø"
       ],
       "routeShape": "loop"
     },
     "dusanfossrunden": {
       "sortOrder": 9999,
       "color": "#37394E",
-      "articleUrl": "",
-      "imageUrl": "",
+      "articleUrl": "https://www.svingom.no/sykkeltur/jondal/dusanfossrunden",
+      "imageUrl": "https://raw.githubusercontent.com/sihoe/svingombilder-1/main/dusanfossrunden.jpg",
       "symbols": [],
-      "difficultyLegacy": "",
+      "difficultyLegacy": "enkel",
       "tagsSuggested": [
         "stiinnslag"
+        "severdigheter",
+        "badeplass",
+        "overnatting",
+        "fottur",
+        "familie",
+        "miks"
       ],
       "surfaceClassAuto": "stiinnslag",
       "bikeTypeAuto": [
@@ -900,7 +904,6 @@
       "needsReview": true,
       "season": {
         "months": [
-          4,
           5,
           6,
           7,
@@ -910,7 +913,7 @@
         ]
       },
       "bases": [
-        "Bolkesjø"
+        "Bolkesjø", "Jondalen"
       ],
       "routeShape": "loop"
     },
@@ -937,8 +940,6 @@
       "durationEstimate": null,
       "season": {
         "months": [
-          4,
-          5,
           6,
           7,
           8,
