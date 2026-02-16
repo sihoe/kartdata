@@ -48,7 +48,6 @@
       "needsReview": false,
       "season": {
         "months": [
-          4,
           5,
           6,
           7,
@@ -58,7 +57,7 @@
         ]
       },
       "bases": [
-        "Veggli"
+        "Uvdal", "Rødberg"
       ],
       "routeShape": "loop"
     },
@@ -84,7 +83,7 @@
       ],
       "difficultyLegacy": "krevende",
       "tagsSuggested": [
-        "bad",
+        "badeplass",
         "severdigheter",
         "matbutikk",
         "kaffe",
@@ -111,7 +110,6 @@
       "needsReview": false,
       "season": {
         "months": [
-          4,
           5,
           6,
           7,
@@ -121,7 +119,7 @@
         ]
       },
       "bases": [
-        "Veggli"
+        "Veggli", "Rødberg", "Uvdal", "Tinn Austbygde"
       ],
       "routeShape": "loop"
     },
