@@ -24,7 +24,7 @@
         "bikecharge",
         "secureparking"
       ],
-      "difficultyLegacy": "krevende",
+      "difficultyLegacy": "middels",
       "tagsSuggested": [
         "bad",
         "severdigheter",
@@ -159,7 +159,7 @@
         "bikecharge",
         "secureparking"
       ],
-      "difficultyLegacy": "middels",
+      "difficultyLegacy": "enkel",
       "tagsSuggested": [
         "badeplass",
         "severdigheter",
@@ -193,8 +193,6 @@
       "needsReview": true,
       "season": {
         "months": [
-          4,
-          5,
           6,
           7,
           8,
@@ -341,7 +339,7 @@
         "attractions",
         "handlevogn"
       ],
-      "difficultyLegacy": "middels",
+      "difficultyLegacy": "enkel",
       "tagsSuggested": [
         "severdigheter",
         "matbutikk",
@@ -513,7 +511,7 @@
         "bikecharge",
         "secureparking"
       ],
-      "difficultyLegacy": "enkel",
+      "difficultyLegacy": "krevende",
       "tagsSuggested": [
         "bad",
         "severdigheter",
@@ -579,7 +577,7 @@
         "bikecharge",
         "secureparking"
       ],
-      "difficultyLegacy": "middels",
+      "difficultyLegacy": "enkel",
       "tagsSuggested": [
         "severdigheter",
         "badeplass",
@@ -760,7 +758,7 @@
         "bikecharge",
         "secureparking"
       ],
-      "difficultyLegacy": "krevende",
+      "difficultyLegacy": "middels",
       "tagsSuggested": [
         "severdigheter",
         "bad",
@@ -1184,4 +1182,5 @@
     }
   }
 }
+
 
