@@ -1029,7 +1029,14 @@
       "color": "#37394E",
       "articleUrl": "https://www.svingom.no/sykkeltur/jondal/dusanfossrunden",
       "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-1@main/dusanfossrunden.jpg",
-      "symbols": [],
+      "symbols": [
+        "attractions",
+        "bathingspot",
+        "eat",
+        "fishing",
+        "cabin",
+        "hiking"
+      ],
       "difficultyLegacy": "enkel",
       "tagsSuggested": [
         "stiinnslag",
@@ -1182,5 +1189,6 @@
     }
   }
 }
+
 
 
