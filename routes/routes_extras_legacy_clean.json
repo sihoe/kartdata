@@ -383,13 +383,31 @@
     "baklivegen-rundt": {
       "sortOrder": 9999,
       "color": "#37394E",
-      "articleUrl": "",
-      "imageUrl": "",
-      "symbols": [],
-      "difficultyLegacy": "",
-      "tagsSuggested": [
-        "miks"
+      "articleUrl": "https://www.svingom.no/sykkeltur/uvdal/baklie-rundt",
+      "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-1@main/baklierundt.jpg",
+      "symbols": [
+        "attractions",
+        "bathingspot",
+        "cabin",
+        "eat",
+        "fishing",
+        "kaffekopp",
+        "tent",
+        "bikecharge",
+        "secureparking"
       ],
+      "difficultyLegacy": "enkel",
+      "tagsSuggested": [
+        "severdigheter",
+        "bad",
+        "overnatting",
+        "mat",
+        "fiske",
+        "kaffe",
+        "lading",
+        "sykkelparkering",
+        "familie",
+        ],
       "surfaceClassAuto": "miks",
       "bikeTypeAuto": [
         "gravel",
@@ -421,7 +439,7 @@
         ]
       },
       "bases": [
-        "Veggli"
+        "Uvdal"
       ],
       "routeShape": "loop"
     },
@@ -1189,6 +1207,7 @@
     }
   }
 }
+
 
 
 
