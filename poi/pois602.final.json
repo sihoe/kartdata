@@ -2107,29 +2107,6 @@
   },
   {
     "latlng": [
-      59.952684901,
-      9.324648678
-    ],
-    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-3@main/numedalkro.jpg",
-    "symbolType": "eat",
-    "texts": {
-      "no": {
-        "title": "Numedal Kro & Camping",
-        "description": "Her kan du nyte søte franske fristelser, lokalt snadder med elg fra egen skog, pizza og annet godt."
-      },
-      "en": {
-        "title": "Numedal Inn & Camping",
-        "description": "Enjoy French pastries, local moose dishes from the forest, pizza and more"
-      },
-      "de": {
-        "title": "Numedal Gasthof & Camping",
-        "description": "Französische Leckereien, Elch aus dem eigenen Wald, Pizza und mehr"
-      }
-    },
-    "id": "numedal-kro-camping-0e82798e"
-  },
-  {
-    "latlng": [
       60.227296561,
       8.395850658
     ],
@@ -3431,3 +3408,4 @@
   }
 
 ]
+
