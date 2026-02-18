@@ -333,7 +333,7 @@
       "attractions",
       "handlevogn"
     ],
-    "difficulty": "middels"
+    "difficulty": "enkel"
   },
   "baklivegen-rundt": {
     "id": "baklivegen-rundt",
@@ -392,7 +392,7 @@
       "bikecharge",
       "secureparking"
     ],
-    "difficulty": "middels"
+    "difficulty": "enkel"
   },
   "numedalsruta-nasjonal-rute-5": {
     "id": "numedalsruta-nasjonal-rute-5",
@@ -509,7 +509,7 @@
       "bikecharge",
       "secureparking"
     ],
-    "difficulty": "enkel"
+    "difficulty": "krevende"
   },
   "ovrebygderunden": {
     "id": "ovrebygderunden",
@@ -568,7 +568,7 @@
       "bikecharge",
       "secureparking"
     ],
-    "difficulty": "middels"
+    "difficulty": "enkel"
   },
   "imingfjell-rundt": {
     "id": "imingfjell-rundt",
@@ -735,7 +735,7 @@
       "bikecharge",
       "secureparking"
     ],
-    "difficulty": "krevende"
+    "difficulty": "middels"
   },
   "skagsaasen-og-kravikfjorden-rundt": {
     "id": "skagsaasen-og-kravikfjorden-rundt",
@@ -893,8 +893,6 @@
       "fishing",
       "cabin",
       "hiking",
-      "bikecharge",
-      "secureparking"
     ],
     "difficulty": "enkel"
   },
@@ -938,6 +936,15 @@
     },
     "surfaceSource": "_with_surface_export/follsjorundt_elevation_with_surface_legacy.json",
     "pageUrl": "https://www.svingom.no/sykkeltur/bolkesjo/follsjorundt"
+      "symbols": [
+      "attractions",
+      "bathingspot",
+      "eat",
+      "fishing",
+      "cabin",
+      "hiking",
+    ],
+    "difficulty": "middels"
   },
   "dusanfossrunden": {
     "id": "dusanfossrunden",
@@ -979,6 +986,19 @@
     },
     "surfaceSource": "_with_surface_export/dusanfossrunden_elevation_with_surface_legacy.json",
     "pageUrl": "https://www.svingom.no/sykkeltur/jondal/dusanfossrunden"
+      "symbols": [
+      "attractions",
+      "bathingspot",
+      "eat",
+      "fishing",
+      "cabin",
+      "hiking",
+      "bikecharge",
+      "hotel",
+      "kayak",
+      "secureparking"
+    ],
+    "difficulty": "enkel"
   },
   "heimseterrunden": {
     "id": "heimseterrunden",
@@ -1020,6 +1040,10 @@
     },
     "surfaceSource": "heimseterrunden/heimseterrunden_elevation_with_surface_legacy.json",
     "pageUrl": "https://www.svingom.no/sykkeltur-heimseterrunden-vegglifjell"
+      "symbols": [
+      "hiking",
+    ],
+    "difficulty": "middels"
   },
   "ostskauen-rundt": {
     "id": "ostskauen-rundt",
