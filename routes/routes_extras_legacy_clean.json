@@ -406,7 +406,7 @@
         "kaffe",
         "lading",
         "sykkelparkering",
-        "familie",
+        "familie"
         ],
       "surfaceClassAuto": "miks",
       "bikeTypeAuto": [
@@ -1207,6 +1207,7 @@
     }
   }
 }
+
 
 
 
