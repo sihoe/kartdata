@@ -1045,7 +1045,7 @@
     "surfaceSource": "heimseterrunden/heimseterrunden_elevation_with_surface_legacy.json",
     "pageUrl": "https://www.svingom.no/sykkeltur-heimseterrunden-vegglifjell",
       "symbols": [
-      "hiking",
+      "hiking"
     ],
     "difficulty": "middels"
   },
