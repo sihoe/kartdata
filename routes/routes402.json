@@ -985,7 +985,7 @@
       "maxMatchDistanceM": 23.9
     },
     "surfaceSource": "_with_surface_export/dusanfossrunden_elevation_with_surface_legacy.json",
-    "pageUrl": "https://www.svingom.no/sykkeltur/jondal/dusanfossrunden"
+    "pageUrl": "https://www.svingom.no/sykkeltur/jondal/dusanfossrunden",
       "symbols": [
       "attractions",
       "bathingspot",
@@ -1039,7 +1039,7 @@
       "maxMatchDistanceM": 13.7
     },
     "surfaceSource": "heimseterrunden/heimseterrunden_elevation_with_surface_legacy.json",
-    "pageUrl": "https://www.svingom.no/sykkeltur-heimseterrunden-vegglifjell"
+    "pageUrl": "https://www.svingom.no/sykkeltur-heimseterrunden-vegglifjell",
       "symbols": [
       "hiking",
     ],
