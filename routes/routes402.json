@@ -990,7 +990,7 @@
     },
     "surfaceSource": "_with_surface_export/dusanfossrunden_elevation_with_surface_legacy.json",
     "pageUrl": "https://www.svingom.no/sykkeltur/jondal/dusanfossrunden",
-      "symbols": [
+    "symbols": [
       "attractions",
       "bathingspot",
       "eat",
@@ -1004,51 +1004,51 @@
     ],
     "difficulty": "enkel"
   },
-  "heimseterrunden": {
-    "id": "heimseterrunden",
-    "name": {
-      "no": "Heimseterrunden"
-    },
-    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/heimseterrunden.gpx",
-    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/heimseterrunden_elevation_with_surface_legacy.json",
-    "elevationSurfaceUrl": null,
-    "stats": {
-      "distanceKm": 16.2,
-      "climbM": 407,
-      "descentM": 407,
-      "maxElevationM": 872,
-      "minElevationM": 618,
-      "biggestClimb": {
-        "gainM": 248,
-        "lengthKm": 5.24,
-        "fromKm": 10.92,
-        "toKm": 16.16,
-        "avgGradePct": 4.7
-      }
-    },
-    "surface": {
-      "totalKm": 16.2,
-      "categoryKm": {
-        "asphalt": 0.0,
-        "gravel": 14.3,
-        "trail": 1.9,
-        "unknown": 0.0
-      },
-      "osmSurfaceKm": {
-        "asphalt": 0.0,
-        "gravel": 14.281,
-        "trail": 1.912,
-        "unknown": 0.0
-      },
-      "maxMatchDistanceM": 13.7
-    },
-    "surfaceSource": "heimseterrunden/heimseterrunden_elevation_with_surface_legacy.json",
-    "pageUrl": "https://www.svingom.no/sykkeltur-heimseterrunden-vegglifjell",
-      "symbols": [
-      "hiking"
-    ],
-    "difficulty": "middels"
+"heimseterrunden": {
+  "id": "heimseterrunden",
+  "name": {
+    "no": "Heimseterrunden"
   },
+  "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/heimseterrunden.gpx",
+  "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/heimseterrunden_elevation_with_surface_legacy.json",
+  "elevationSurfaceUrl": null,
+  "stats": {
+    "distanceKm": 16.2,
+    "climbM": 407,
+    "descentM": 407,
+    "maxElevationM": 872,
+    "minElevationM": 618,
+    "biggestClimb": {
+      "gainM": 248,
+      "lengthKm": 5.24,
+      "fromKm": 10.92,
+      "toKm": 16.16,
+      "avgGradePct": 4.7
+    }
+  },
+  "surface": {
+    "totalKm": 16.2,
+    "categoryKm": {
+      "asphalt": 0.0,
+      "gravel": 14.3,
+      "trail": 1.9,
+      "unknown": 0.0
+    },
+    "osmSurfaceKm": {
+      "asphalt": 0.0,
+      "gravel": 14.281,
+      "trail": 1.912,
+      "unknown": 0.0
+    },
+    "maxMatchDistanceM": 13.7
+  },
+  "surfaceSource": "heimseterrunden/heimseterrunden_elevation_with_surface_legacy.json",
+  "pageUrl": "https://www.svingom.no/sykkeltur-heimseterrunden-vegglifjell",
+  "symbols": [
+    "hiking"
+  ],
+  "difficulty": "middels"
+},
   "ostskauen-rundt": {
     "id": "ostskauen-rundt",
     "name": {
