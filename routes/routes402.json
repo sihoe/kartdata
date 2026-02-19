@@ -935,15 +935,15 @@
       "maxMatchDistanceM": null
     },
     "surfaceSource": "_with_surface_export/follsjorundt_elevation_with_surface_legacy.json",
-    "pageUrl": "https://www.svingom.no/sykkeltur/bolkesjo/follsjorundt"
-    "symbols": [
-      "attractions",
-      "bathingspot",
-      "eat",
-      "fishing",
-      "cabin",
-      "hiking"
-    ],
+"pageUrl": "https://www.svingom.no/sykkeltur/bolkesjo/follsjorundt",
+"symbols": [
+  "attractions",
+  "bathingspot",
+  "eat",
+  "fishing",
+  "cabin",
+  "hiking"
+],
     "difficulty": "middels"
   },
   "dusanfossrunden": {
