@@ -3024,33 +3024,4 @@
 				<time>2000-01-01T00:00:00Z</time>
 			</trkpt>
 		</trkseg>
-	</trk>
-	<wpt lat="59.719121642" lon="9.286112416">
-		<name>Parkering</name>
-		<sym>parking</sym>
-	</wpt>
-	<wpt lat="59.729280646" lon="9.351663406">
-		<name>Søstrene Storås Hotell</name>
-		<sym>lodging</sym>
-	</wpt>
-	<wpt lat="59.746790985" lon="9.335377514">
-		<name>Dusanfoss</name>
-		<sym>beach</sym>
-	</wpt>
-	<wpt lat="59.721641387" lon="9.278439065">
-		<name>Bolkesjø Turisthotell</name>
-		<sym>generic</sym>
-	</wpt>
-	<wpt lat="59.721193093" lon="9.274365613">
-		<name>Bo i Norges eldste trehus</name>
-		<sym>house</sym>
-	</wpt>
-	<wpt lat="59.71737252" lon="9.260466099">
-		<name>Bolkesjø</name>
-		<sym>fishing</sym>
-	</wpt>
-	<wpt lat="59.744772842" lon="9.209311029">
-		<name>Midtbøen gård</name>
-		<sym>favorite</sym>
-	</wpt>
 </gpx>
