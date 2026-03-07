@@ -1,11 +1,11 @@
-// route_map_master216.js
+// route_map_master217.js
 // Krever: Leaflet + Chart.js lastet inn før denne.
 // Valgfritt: Leaflet.markercluster (brukes automatisk ved mange POI)
 
 (function () {
   "use strict";
 
-  console.log("[route_map] master216 loaded");
+  console.log("[route_map] master217 loaded");
 
   // ======================
   // JSON fetch cache (page-lifetime)
@@ -76,8 +76,6 @@
   const POS_FAR_KM = 5.0;
   const NEARBY_RADIUS_M = 5000;
   const NEARBY_LIMIT = 8;
-
-  // Auto-fit default (kan overstyres per seksjon med data-auto-fit="0")
   const AUTO_FIT_DEFAULT = true;
 
   // ======================
@@ -458,6 +456,17 @@
     };
   }
 
+  function latLngsFromRouteIndex(routeIndex) {
+    if (!routeIndex || !routeIndex.lats || !routeIndex.lats.length) return [];
+    const out = [];
+    for (let i = 0; i < routeIndex.lats.length; i++) {
+      const lat = routeIndex.lats[i];
+      const lon = routeIndex.lons[i];
+      if (Number.isFinite(lat) && Number.isFinite(lon)) out.push([lat, lon]);
+    }
+    return out;
+  }
+
   // ======================
   // Haversine / route nearest
   // ======================
@@ -469,10 +478,8 @@
 
     const a =
       Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-      Math.cos(toRad(lat1)) *
-        Math.cos(toRad(lat2)) *
-        Math.sin(dLon / 2) *
-        Math.sin(dLon / 2);
+      Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+      Math.sin(dLon / 2) * Math.sin(dLon / 2);
 
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     return R * c;
@@ -618,71 +625,37 @@
   }
 
   // ======================
-  // Bounds helpers (AUTO-FIT)
+  // Bounds helpers
   // ======================
-  function boundsFromRouteIndex(routeIndex) {
-    if (!routeIndex || !routeIndex.lats || !routeIndex.lats.length) return null;
-
-    const latlngs = [];
-    for (let i = 0; i < routeIndex.lats.length; i++) {
-      const la = routeIndex.lats[i];
-      const lo = routeIndex.lons[i];
-      if (Number.isFinite(la) && Number.isFinite(lo)) latlngs.push([la, lo]);
-    }
-
-    if (!latlngs.length) return null;
-
+  function boundsFromLatLngs(latlngs) {
+    if (!latlngs || !latlngs.length) return null;
     const b = L.latLngBounds(latlngs);
     return b && b.isValid() ? b : null;
   }
 
-  function boundsDiagonalKm(bounds) {
-    try {
-      if (!bounds || !bounds.isValid()) return Infinity;
-      const sw = bounds.getSouthWest();
-      const ne = bounds.getNorthEast();
-      return haversineKm(sw.lat, sw.lng, ne.lat, ne.lng);
-    } catch (_) {
-      return Infinity;
-    }
+  function boundsFromRouteIndex(routeIndex) {
+    return boundsFromLatLngs(latLngsFromRouteIndex(routeIndex));
   }
 
-  // Hvis GPX har outlier og blir altfor stort, bruk idxBounds
   function chooseBestBounds(gpxBounds, idxBounds) {
-    if (idxBounds && idxBounds.isValid() && (!gpxBounds || !gpxBounds.isValid())) return idxBounds;
-    if (gpxBounds && gpxBounds.isValid() && (!idxBounds || !idxBounds.isValid())) return gpxBounds;
-    if (!gpxBounds || !gpxBounds.isValid() || !idxBounds || !idxBounds.isValid()) return null;
-
-    const g = boundsDiagonalKm(gpxBounds);
-    const i = boundsDiagonalKm(idxBounds);
-
-    if (Number.isFinite(g) && Number.isFinite(i) && i > 0) {
-      if (g / i >= 4) return idxBounds; // GPX er 4x større => sannsynlig outlier
-    }
-
-    return gpxBounds;
+    // RouteIndex/elevation er primær kilde for embed og dynamisk sentrering.
+    if (idxBounds && idxBounds.isValid()) return idxBounds;
+    if (gpxBounds && gpxBounds.isValid()) return gpxBounds;
+    return null;
   }
 
   // ======================
-  // GPX loader (uten leaflet-gpx)
+  // GPX loader (tolerant)
   // ======================
-  async function loadGpxTrackToMap(gpxUrl, map, polylineOptions) {
-    const res = await fetch(gpxUrl, { cache: "no-store" });
-    if (!res.ok) throw new Error(`GPX fetch failed ${res.status} for ${gpxUrl}`);
+  function sanitizeGpxText(text) {
+    let s = String(text || "");
+    s = s.replace(/^\uFEFF/, "");
+    const firstXml = s.indexOf("<");
+    if (firstXml > 0) s = s.slice(firstXml);
+    return s.trim();
+  }
 
-    const text = await res.text();
-
-    // Enkle sanity checks
-    if (!text || text.length < 20 || text.indexOf("<gpx") === -1) {
-      throw new Error("GPX content looks invalid (missing <gpx>)");
-    }
-
-    const parser = new DOMParser();
-    const xml = parser.parseFromString(text, "application/xml");
-    const parseErr = xml.getElementsByTagName("parsererror");
-    if (parseErr && parseErr.length) throw new Error("GPX XML parse error");
-
-    // Prefer trkpt, fallback rtept
+  function parseTrackPointsFromXml(xml) {
     let pts = Array.from(xml.getElementsByTagName("trkpt"));
     if (!pts.length) pts = Array.from(xml.getElementsByTagName("rtept"));
 
@@ -690,22 +663,89 @@
     for (const p of pts) {
       const lat = Number(p.getAttribute("lat"));
       const lon = Number(p.getAttribute("lon"));
-      if (Number.isFinite(lat) && Number.isFinite(lon)) latlngs.push([lat, lon]);
+      if (Number.isFinite(lat) && Number.isFinite(lon)) {
+        latlngs.push([lat, lon]);
+      }
+    }
+    return latlngs;
+  }
+
+  function parseTrackPointsByRegex(text) {
+    const latlngs = [];
+    const re = /<(trkpt|rtept)\b[^>]*?\blat="([^"]+)"[^>]*?\blon="([^"]+)"/gi;
+    let m;
+    while ((m = re.exec(text))) {
+      const lat = Number(m[2]);
+      const lon = Number(m[3]);
+      if (Number.isFinite(lat) && Number.isFinite(lon)) {
+        latlngs.push([lat, lon]);
+      }
+    }
+    return latlngs;
+  }
+
+  async function loadGpxTrack(gpxUrl) {
+    const res = await fetch(gpxUrl, { cache: "no-store" });
+    if (!res.ok) throw new Error(`GPX fetch failed ${res.status} for ${gpxUrl}`);
+
+    const raw = await res.text();
+    const text = sanitizeGpxText(raw);
+
+    if (!text || text.length < 20 || text.indexOf("<gpx") === -1) {
+      throw new Error("GPX content looks invalid (missing <gpx>)");
     }
 
-    if (latlngs.length < 2) throw new Error("GPX has too few track points");
+    let latlngs = [];
 
-    const line = L.polyline(
-      latlngs,
-      polylineOptions || { color: "#37394E", weight: 5, opacity: 0.9 }
-    );
-    line.addTo(map);
+    try {
+      const parser = new DOMParser();
+      const xml = parser.parseFromString(text, "application/xml");
+      const parseErr = xml.getElementsByTagName("parsererror");
 
-    const b = L.latLngBounds(latlngs);
+      if (!parseErr || !parseErr.length) {
+        latlngs = parseTrackPointsFromXml(xml);
+      }
+    } catch (_) {}
+
+    if (!latlngs.length) {
+      latlngs = parseTrackPointsByRegex(text);
+    }
+
+    if (latlngs.length < 2) {
+      throw new Error("GPX has too few usable track points");
+    }
+
     return {
-      polyline: line,
-      bounds: b && b.isValid() ? b : null,
+      latlngs,
+      bounds: boundsFromLatLngs(latlngs),
     };
+  }
+
+  // ======================
+  // Route line helpers
+  // ======================
+  function createRouteLine(map, latlngs) {
+    if (!map || !latlngs || latlngs.length < 2) return null;
+
+    const line = L.polyline(latlngs, {
+      color: "#37394E",
+      weight: 5,
+      opacity: 0.9,
+      lineJoin: "round",
+      lineCap: "round",
+    });
+
+    line.addTo(map);
+    try { line.bringToBack(); } catch (_) {}
+    return line;
+  }
+
+  function replaceRouteLine(map, currentLine, latlngs) {
+    if (!map || !latlngs || latlngs.length < 2) return currentLine || null;
+    if (currentLine) {
+      try { map.removeLayer(currentLine); } catch (_) {}
+    }
+    return createRouteLine(map, latlngs);
   }
 
   // ======================
@@ -884,7 +924,6 @@
       }
     }
 
-    // Sett prikk på ruta umiddelbart
     for (let i = 0; i < idx.lats.length; i++) {
       const lat = idx.lats[i], lon = idx.lons[i];
       if (Number.isFinite(lat) && Number.isFinite(lon)) {
@@ -1020,7 +1059,7 @@
   }
 
   // ======================
-  // Position control (my location + place pin)
+  // Position control
   // ======================
   function addPositionControl(map, popupContainer, getRouteIndex, poisForRoute, revealPoisNear, resetPopup) {
     if (!map) return;
@@ -1065,9 +1104,7 @@
       box.addTo(map);
 
       setTimeout(() => {
-        try {
-          map.removeControl(box);
-        } catch (_) {}
+        try { map.removeControl(box); } catch (_) {}
       }, 4500);
     }
 
@@ -1114,9 +1151,7 @@
             updatePanels(ll);
 
             if (typeof revealPoisNear === "function") {
-              try {
-                revealPoisNear(ll, 3000);
-              } catch (_) {}
+              try { revealPoisNear(ll, 3000); } catch (_) {}
             }
           },
           (err) => alert("Klarte ikke hente posisjon: " + (err.message || err.code)),
@@ -1150,9 +1185,7 @@
           updatePanels(p);
 
           if (typeof revealPoisNear === "function") {
-            try {
-              revealPoisNear(p, 3000);
-            } catch (_) {}
+            try { revealPoisNear(p, 3000); } catch (_) {}
           }
         };
 
@@ -1166,15 +1199,35 @@
       updatePanels(ll);
 
       if (typeof revealPoisNear === "function") {
-        try {
-          revealPoisNear(ll, 3000);
-        } catch (_) {}
+        try { revealPoisNear(ll, 3000); } catch (_) {}
       }
 
       setPickMode(false);
       const active = map.getContainer().querySelector(".svingom-pos-btn.active");
       if (active) active.classList.remove("active");
     });
+  }
+
+  // ======================
+  // Resize handling for embeds
+  // ======================
+  function attachResizeHandling(targetEl, map, onResize) {
+    if (!targetEl || !map) return;
+
+    if (typeof ResizeObserver !== "undefined") {
+      const ro = new ResizeObserver(() => {
+        map.invalidateSize();
+        if (typeof onResize === "function") {
+          setTimeout(onResize, 60);
+        }
+      });
+      ro.observe(targetEl);
+    } else {
+      window.addEventListener("resize", () => {
+        map.invalidateSize();
+        if (typeof onResize === "function") onResize();
+      });
+    }
   }
 
   // ======================
@@ -1192,12 +1245,7 @@
       const enablePosition = getBool(section.dataset.enablePosition, true);
 
       if (!routeId || !routesUrl || !poisUrl || !routeMarkersUrl) {
-        console.error("[route_map] Missing data attributes:", {
-          routeId,
-          routesUrl,
-          poisUrl,
-          routeMarkersUrl,
-        });
+        console.error("[route_map] Missing data attributes:", { routeId, routesUrl, poisUrl, routeMarkersUrl });
         return;
       }
 
@@ -1232,8 +1280,8 @@
       const gpxUrl = (route.gpxUrl || "").trim();
       const elevUrl = (route.elevationSurfaceUrl || route.elevationUrl || "").trim();
 
-      if (!gpxUrl || !elevUrl) {
-        console.error("[route_map] Route missing gpxUrl/elevationUrl:", routeId, route);
+      if (!elevUrl) {
+        console.error("[route_map] Route missing elevationUrl:", routeId, route);
         return;
       }
 
@@ -1266,20 +1314,20 @@
         renderStats(popupContainer, route);
       }
 
-      // ==========
-      // AUTO-FIT state
-      // ==========
       let routeIndex = null;
       let idxBounds = null;
       let gpxBounds = null;
+      let routeLine = null;
+
       let userLockedView = false;
+      let programmaticViewChange = false;
 
       map.on("dragstart", () => {
-        userLockedView = true;
+        if (!programmaticViewChange) userLockedView = true;
       });
 
       map.on("zoomstart", () => {
-        userLockedView = true;
+        if (!programmaticViewChange) userLockedView = true;
       });
 
       function maybeAutoFit() {
@@ -1289,14 +1337,24 @@
         const best = chooseBestBounds(gpxBounds, idxBounds);
         if (!best || !best.isValid()) return;
 
+        programmaticViewChange = true;
         map.invalidateSize();
-        map.fitBounds(best, { padding: [50, 50], maxZoom: 15, animate: false });
-        setTimeout(() => map.invalidateSize(), 60);
+        map.fitBounds(best, {
+          padding: [50, 50],
+          maxZoom: 15,
+          animate: false,
+        });
+
+        setTimeout(() => {
+          map.invalidateSize();
+          programmaticViewChange = false;
+        }, 80);
       }
 
-      // ==========
-      // Start async loading in parallel
-      // ==========
+      attachResizeHandling(section, map, maybeAutoFit);
+
+      let poisForRoute = [];
+
       const elevPromise = (async () => {
         try {
           const elevJson = await fetchJsonCached(elevUrl);
@@ -1310,40 +1368,51 @@
               p.distance != null
           );
 
-          if (cleaned.length) {
-            routeIndex = buildChart(
-              chartCanvas,
-              cleaned,
-              movingMarker,
-              surfaceSummaryEl,
-              route,
-              unknownAsTrail
-            );
-            idxBounds = boundsFromRouteIndex(routeIndex);
-            maybeAutoFit();
-          } else {
+          if (!cleaned.length) {
             console.warn("[route_map] Elevation: no usable points in", elevUrl);
+            return;
           }
+
+          routeIndex = buildChart(
+            chartCanvas,
+            cleaned,
+            movingMarker,
+            surfaceSummaryEl,
+            route,
+            unknownAsTrail
+          );
+
+          idxBounds = boundsFromRouteIndex(routeIndex);
+
+          // Viktig fallback: tegn ruta direkte fra elevation/routeIndex
+          const fallbackLatLngs = latLngsFromRouteIndex(routeIndex);
+          if (fallbackLatLngs.length >= 2) {
+            routeLine = replaceRouteLine(map, routeLine, fallbackLatLngs);
+          }
+
+          maybeAutoFit();
         } catch (e) {
           console.error("[route_map] Elevation error:", routeId, elevUrl, e);
         }
       })();
 
       const gpxPromise = (async () => {
+        if (!gpxUrl) return;
+
         try {
-          const out = await loadGpxTrackToMap(gpxUrl, map, {
-            color: "#37394E",
-            weight: 5,
-            opacity: 0.9,
-          });
+          const out = await loadGpxTrack(gpxUrl);
           gpxBounds = out.bounds || null;
+
+          // Hvis GPX lykkes, bruk den. Hvis ikke blir fallback-linjen stående.
+          if (out.latlngs && out.latlngs.length >= 2) {
+            routeLine = replaceRouteLine(map, routeLine, out.latlngs);
+          }
+
           maybeAutoFit();
         } catch (e) {
           console.error("[route_map] GPX load error:", routeId, gpxUrl, e);
         }
       })();
-
-      let poisForRoute = [];
 
       const poiPromise = (async () => {
         try {
@@ -1359,9 +1428,7 @@
             if (p && p.id) poisById.set(p.id, p);
           });
 
-          const ids =
-            routeMarkersJson && routeMarkersJson[routeId] ? routeMarkersJson[routeId] : [];
-
+          const ids = routeMarkersJson && routeMarkersJson[routeId] ? routeMarkersJson[routeId] : [];
           poisForRoute = ids.map((id) => poisById.get(id)).filter(Boolean);
 
           if (poisForRoute.length <= POI_THRESHOLD) {
@@ -1369,9 +1436,7 @@
           } else {
             const clusterLayer = createClusterLayer(map);
             if (clusterLayer) {
-              poisForRoute.forEach((p) =>
-                addMarkerFromDb(clusterLayer, p, popupContainer, resetPopup)
-              );
+              poisForRoute.forEach((p) => addMarkerFromDb(clusterLayer, p, popupContainer, resetPopup));
             } else {
               enableLazyPoiRendering(map, poisForRoute, popupContainer, resetPopup);
             }
@@ -1381,7 +1446,6 @@
         }
       })();
 
-      // Reveal POIs near user-chosen position
       const boosted = new Set();
 
       function revealPoisNear(latlng, radiusMeters = 3000) {
@@ -1419,6 +1483,7 @@
 
       await Promise.allSettled([elevPromise, gpxPromise, poiPromise]);
       setTimeout(() => map.invalidateSize(), 60);
+      setTimeout(() => maybeAutoFit(), 120);
     } catch (e) {
       console.error("[route_map] initRouteSection fatal:", e);
     }
@@ -1459,9 +1524,7 @@
       obs.observe(document.documentElement, { childList: true, subtree: true });
 
       setTimeout(() => {
-        try {
-          obs.disconnect();
-        } catch (_) {}
+        try { obs.disconnect(); } catch (_) {}
       }, 30000);
     } catch (_) {}
   }
