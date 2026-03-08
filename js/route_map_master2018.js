@@ -1319,39 +1319,42 @@
       let gpxBounds = null;
       let routeLine = null;
 
-      let userLockedView = false;
-      let programmaticViewChange = false;
+let userLockedView = false;
+let programmaticViewChange = false;
+let initialFitDone = false;
 
-      map.on("dragstart", () => {
-        if (!programmaticViewChange) userLockedView = true;
-      });
+map.on("dragstart", () => {
+  if (!programmaticViewChange && initialFitDone) userLockedView = true;
+});
 
-      map.on("zoomstart", () => {
-        if (!programmaticViewChange) userLockedView = true;
-      });
+map.on("zoomstart", () => {
+  if (!programmaticViewChange && initialFitDone) userLockedView = true;
+});
 
-      function maybeAutoFit() {
-        if (!autoFit) return;
-        if (userLockedView) return;
+function maybeAutoFit(force = false) {
+  if (!autoFit) return;
+  if (userLockedView && !force) return;
 
-        const best = chooseBestBounds(gpxBounds, idxBounds);
-        if (!best || !best.isValid()) return;
+  const best = chooseBestBounds(gpxBounds, idxBounds);
+  if (!best || !best.isValid()) return;
 
-        programmaticViewChange = true;
-        map.invalidateSize();
-        map.fitBounds(best, {
-          padding: [50, 50],
-          maxZoom: 15,
-          animate: false,
-        });
+  programmaticViewChange = true;
 
-        setTimeout(() => {
-          map.invalidateSize();
-          programmaticViewChange = false;
-        }, 80);
-      }
+  map.invalidateSize();
+  map.fitBounds(best, {
+    padding: [50, 50],
+    maxZoom: 15,
+    animate: false,
+  });
 
-      attachResizeHandling(section, map, maybeAutoFit);
+  setTimeout(() => {
+    map.invalidateSize();
+    programmaticViewChange = false;
+    initialFitDone = true;
+  }, 120);
+}
+
+attachResizeHandling(section, map, () => maybeAutoFit(false));
 
       let poisForRoute = [];
 
@@ -1481,9 +1484,22 @@
 
       if (enableFullscreen) addFullscreenControl(map, section);
 
-      await Promise.allSettled([elevPromise, gpxPromise, poiPromise]);
-      setTimeout(() => map.invalidateSize(), 60);
-      setTimeout(() => maybeAutoFit(), 120);
+await Promise.allSettled([elevPromise, gpxPromise, poiPromise]);
+
+setTimeout(() => {
+  map.invalidateSize();
+  maybeAutoFit(true);
+}, 80);
+
+setTimeout(() => {
+  map.invalidateSize();
+  maybeAutoFit(true);
+}, 250);
+
+setTimeout(() => {
+  map.invalidateSize();
+  maybeAutoFit(true);
+}, 700);
     } catch (e) {
       console.error("[route_map] initRouteSection fatal:", e);
     }
