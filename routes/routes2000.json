@@ -1145,6 +1145,206 @@
     ],
     "difficulty": "middels"
   },
+    "flesberg-bading": {
+    "id": "flesberg-bading",
+    "name": {
+      "no": "Flesberg bading"
+    },
+    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/flesberg-bading.gpx",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/flesberg-bading_elevation_with_surface_legacy.json",
+    "elevationSurfaceUrl": null,
+    "stats": {
+      "distanceKm": 29.2,
+      "climbM": 409,
+      "descentM": 409,
+      "maxElevationM": 364,
+      "minElevationM": 179,
+      "biggestClimb": {
+        "gainM": 186,
+        "lengthKm": 13.05,
+        "fromKm": 1.52,
+        "toKm": 14.57,
+        "avgGradePct": 1.4
+      }
+    },
+    "surface": {
+      "totalKm": 29.2,
+      "categoryKm": {
+        "asphalt": 25.3,
+        "gravel": 3.9,
+        "trail": 0.0,
+        "unknown": 0.0
+      },
+      "osmSurfaceKm": {
+        "asphalt": 0.0,
+        "gravel": 0.0,
+        "trail": 0.0,
+        "unknown": 0.0
+      },
+      "maxMatchDistanceM": 30.0
+    },
+    "surfaceSource": "flesberg-bading/flesberg-bading_elevation_with_surface_legacy.json"
+  },
+  "halvorsetloop": {
+    "id": "halvorsetloop",
+    "name": {
+      "no": "Halvorsetloop"
+    },
+    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/halvorsetloop.gpx",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/halvorsetloop_elevation_with_surface_legacy.json",
+    "elevationSurfaceUrl": null,
+    "stats": {
+      "distanceKm": 32.0,
+      "climbM": 656,
+      "descentM": 656,
+      "maxElevationM": 516,
+      "minElevationM": 297,
+      "biggestClimb": {
+        "gainM": 214,
+        "lengthKm": 20.39,
+        "fromKm": 0.04,
+        "toKm": 20.43,
+        "avgGradePct": 1.1
+      }
+    },
+    "surface": {
+      "totalKm": 32.0,
+      "categoryKm": {
+        "asphalt": 13.9,
+        "gravel": 18.1,
+        "trail": 0.0,
+        "unknown": 0.0
+      },
+      "osmSurfaceKm": {
+        "asphalt": 0.0,
+        "gravel": 0.0,
+        "trail": 0.0,
+        "unknown": 0.0
+      },
+      "maxMatchDistanceM": 16.0
+    },
+    "surfaceSource": "halvorsetloop/halvorsetloop_elevation_with_surface_legacy.json"
+  },
+  "langaasen-rundt": {
+    "id": "langaasen-rundt",
+    "name": {
+      "no": "Langaasen rundt"
+    },
+    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/langaasen-rundt.gpx",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/langaasen-rundt_elevation_with_surface_legacy.json",
+    "elevationSurfaceUrl": null,
+    "stats": {
+      "distanceKm": 21.0,
+      "climbM": 497,
+      "descentM": 497,
+      "maxElevationM": 589,
+      "minElevationM": 226,
+      "biggestClimb": {
+        "gainM": 351,
+        "lengthKm": 11.6,
+        "fromKm": 0.02,
+        "toKm": 11.63,
+        "avgGradePct": 3.0
+      }
+    },
+    "surface": {
+      "totalKm": 21.0,
+      "categoryKm": {
+        "asphalt": 6.8,
+        "gravel": 14.2,
+        "trail": 0.0,
+        "unknown": 0.0
+      },
+      "osmSurfaceKm": {
+        "asphalt": 0.0,
+        "gravel": 0.0,
+        "trail": 0.0,
+        "unknown": 0.0
+      },
+      "maxMatchDistanceM": 1.5
+    },
+    "surfaceSource": "langaasen-rundt/langaasen-rundt_elevation_with_surface_legacy.json"
+  },
+  "lurdalsrunden": {
+    "id": "lurdalsrunden",
+    "name": {
+      "no": "Lurdalsrunden"
+    },
+    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/lurdalsrunden.gpx",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/lurdalsrunden_elevation_with_surface_legacy.json",
+    "elevationSurfaceUrl": null,
+    "stats": {
+      "distanceKm": 50.1,
+      "climbM": 426,
+      "descentM": 426,
+      "maxElevationM": 407,
+      "minElevationM": 155,
+      "biggestClimb": {
+        "gainM": 252,
+        "lengthKm": 18.02,
+        "fromKm": 20.38,
+        "toKm": 38.4,
+        "avgGradePct": 1.4
+      }
+    },
+    "surface": {
+      "totalKm": 50.1,
+      "categoryKm": {
+        "asphalt": 50.1,
+        "gravel": 0.0,
+        "trail": 0.0,
+        "unknown": 0.0
+      },
+      "osmSurfaceKm": {
+        "asphalt": 0.0,
+        "gravel": 0.0,
+        "trail": 0.0,
+        "unknown": 0.0
+      },
+      "maxMatchDistanceM": 1.2
+    },
+    "surfaceSource": "lurdalsrunden/lurdalsrunden_elevation_with_surface_legacy.json"
+  },
+  "solvveien-kort": {
+    "id": "solvveien-kort",
+    "name": {
+      "no": "Solvveien kort"
+    },
+    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/solvveien-kort.gpx",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/solvveien-kort_elevation_with_surface_legacy.json",
+    "elevationSurfaceUrl": null,
+    "stats": {
+      "distanceKm": 55.2,
+      "climbM": 262,
+      "descentM": 433,
+      "maxElevationM": 272,
+      "minElevationM": 1,
+      "biggestClimb": {
+        "gainM": 122,
+        "lengthKm": 2.42,
+        "fromKm": 9.0,
+        "toKm": 11.42,
+        "avgGradePct": 5.0
+      }
+    },
+    "surface": {
+      "totalKm": 55.2,
+      "categoryKm": {
+        "asphalt": 52.9,
+        "gravel": 1.9,
+        "trail": 0.4,
+        "unknown": 0.0
+      },
+      "osmSurfaceKm": {
+        "asphalt": 48.801,
+        "gravel": 1.276,
+        "trail": 0.415,
+        "unknown": 0.0
+      },
+      "maxMatchDistanceM": 15.5
+    },
+    "surfaceSource": "solvveien-kort/solvveien-kort_elevation_with_surface_legacy.json"
+  },
   "trillemarkarundt-lang": {
     "id": "trillemarkarundt-lang",
     "name": {
