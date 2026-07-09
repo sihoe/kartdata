@@ -10,20 +10,44 @@
   // ======================
   // JSON fetch cache (page-lifetime)
   // ======================
-  const __jsonCache = new Map();
-  async function fetchJsonCached(url) {
-    if (!url) throw new Error("Missing URL");
-    if (__jsonCache.has(url)) return __jsonCache.get(url);
+const __jsonCache = new Map();
 
-    const p = fetch(url, { cache: "force-cache" }).then(async (r) => {
-      if (!r.ok) throw new Error(`fetch failed ${r.status} for ${url}`);
-      return r.json();
-    });
+function cacheBustUrl(url) {
+  if (!url) return url;
 
-    __jsonCache.set(url, p);
-    return p;
-  }
+  const shouldBust =
+    url.includes("cdn.jsdelivr.net/gh/sihoe/kartdata@main/") ||
+    url.includes("raw.githubusercontent.com/sihoe/kartdata/main/");
 
+  if (!shouldBust) return url;
+
+  const u = new URL(url, window.location.href);
+
+  // Én felles versjon for alle kartdata.
+  // Endre denne ved behov, eller overstyr globalt fra Squarespace.
+  const version =
+    window.SVINGOM_KARTDATA_VERSION ||
+    "live-20260709-1";
+
+  u.searchParams.set("sv", version);
+  return u.toString();
+}
+
+async function fetchJsonCached(url) {
+  if (!url) throw new Error("Missing URL");
+
+  const bustedUrl = cacheBustUrl(url);
+
+  if (__jsonCache.has(bustedUrl)) return __jsonCache.get(bustedUrl);
+
+  const p = fetch(bustedUrl, { cache: "no-store" }).then(async (r) => {
+    if (!r.ok) throw new Error(`fetch failed ${r.status} for ${bustedUrl}`);
+    return r.json();
+  });
+
+  __jsonCache.set(bustedUrl, p);
+  return p;
+}
   // ======================
   // Config
   // ======================
@@ -1138,7 +1162,7 @@
       if (enableFullscreen) addFullscreenControl(map, section);
 
       try {
-        new L.GPX(gpxUrl, {
+        new L.GPX(cacheBustUrl(gpxUrl), {
           async: true,
           polyline_options: { color: "#37394E", weight: 5, opacity: 0.9 },
           marker_options: { startIconUrl: null, endIconUrl: null, shadowUrl: null, wptIconUrls: {} },
