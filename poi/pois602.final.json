@@ -24,6 +24,144 @@
   },
   {
     "latlng": [
+      59.83869,
+      9.57014
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-4@main/stemingsmogen.jpg",
+    "symbolType": "attractions",
+    "texts": {
+      "no": {
+        "title": "Stevningsmogen Fritidspark",
+        "description": "Flott idrettsanlegg med fotballbaner, tennisbane, sandvolleyball og lekeapparater."
+      },
+      "en": {
+        "title": "Stevningsmogen Fritidspark",
+        "description": "Great sports and activity park with football pitches, a tennis court, sand volleyball and playground equipment."
+      },
+      "de": {
+        "title": "Stevningsmogen Fritidspark",
+        "description": "Schöne Sport- und Freizeitanlage mit Fußballplätzen, Tennisplatz, Beachvolleyball und Spielgeräten."
+      }
+    },
+    "id": "stevningsmogen-fritidspark-757315266616"
+  },
+  {
+    "latlng": [
+      59.83697,
+      9.57204
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-4@main/frisbeegolf-lampeland.jpg",
+    "symbolType": "attractions",
+    "texts": {
+      "no": {
+        "title": "Frisbeegolf Lampeland",
+        "description": "Frisbeegolf-bane med 9 hull på Stevningsmogen Fritidspark. Stor parkeringsplass rett ved."
+      },
+      "en": {
+        "title": "Disc Golf Lampeland",
+        "description": "9-hole disc golf course at Stevningsmogen Fritidspark. Large parking area close by."
+      },
+      "de": {
+        "title": "Discgolf Lampeland",
+        "description": "9-Loch-Discgolfanlage im Stevningsmogen Fritidspark. Großer Parkplatz direkt in der Nähe."
+      }
+    },
+    "id": "frisbeegolf-lampeland-6059e498ff5a"
+  },
+  {
+    "latlng": [
+      59.8868977,
+      9.4902391
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-4@main/paradisgrenda-ligrenda-flesberg.jpg",
+    "symbolType": "marker",
+    "texts": {
+      "no": {
+        "title": "Ligrenda i Flesberg",
+        "description": "Idyllisk grend i Flesberg med flott utsikt over Vatnebrynvatnet."
+      },
+      "en": {
+        "title": "Ligrenda in Flesberg",
+        "description": "Idyllic hamlet in Flesberg with beautiful views over Lake Vatnebrynvatnet."
+      },
+      "de": {
+        "title": "Ligrenda in Flesberg",
+        "description": "Idyllischer Weiler in Flesberg mit schöner Aussicht auf den Vatnebrynvatnet."
+      }
+    },
+    "id": "ligrenda-i-flesberg-b1c3b13c474e"
+  },
+  {
+    "latlng": [
+      59.83446,
+      9.57862
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-4@main/gatekjokken-lampeland.jpg",
+    "symbolType": "eat",
+    "texts": {
+      "no": {
+        "title": "Gatekjøkken Lampeland Hotell",
+        "description": "Gatekjøkken på Lampeland Hotell – ypperlig for et raskt stopp."
+      },
+      "en": {
+        "title": "Lampeland Hotell Fast Food",
+        "description": "Fast food and takeaway at Lampeland Hotell – ideal for a quick stop."
+      },
+      "de": {
+        "title": "Imbiss Lampeland Hotell",
+        "description": "Imbiss und Take-away am Lampeland Hotell – ideal für einen kurzen Stopp."
+      }
+    },
+    "id": "gatekjokken-lampeland-hotell-00dd6c9cfe00"
+  },
+  {
+    "latlng": [
+      60.071168073945934,
+      9.112350813247822
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-4@main/kjerre-stasjon.jpg",
+    "symbolType": "attractions",
+    "texts": {
+      "no": {
+        "title": "Kjerre stasjon",
+        "description": "Flott stasjon på Numedalsbanen med et lite dresinmuseum du kan titte inn i."
+      },
+      "en": {
+        "title": "Kjerre Station",
+        "description": "Beautiful station on the Numedal Line with a small rail-bike museum you can look into."
+      },
+      "de": {
+        "title": "Kjerre Bahnhof",
+        "description": "Schöner Bahnhof an der Numedalsbanen mit einem kleinen Draisinenmuseum, in das man hineinschauen kann."
+      }
+    },
+    "id": "kjerre-stasjon-ea6f4ea5e874"
+  },
+  {
+    "latlng": [
+      59.8868977,
+      9.4902391
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-4@main/toen-gaard.jpg",
+    "symbolType": "handlevogn",
+    "texts": {
+      "no": {
+        "title": "Toen Gård",
+        "description": "Vakker gammel gård i Svene med gårdsbutikk, blomster, bær, grønnsaker og sesongarrangementer."
+      },
+      "en": {
+        "title": "Toen Gård",
+        "description": "Beautiful old farm in Svene with a farm shop, flowers, berries, vegetables and seasonal events."
+      },
+      "de": {
+        "title": "Toen Gård",
+        "description": "Schöner alter Hof in Svene mit Hofladen, Blumen, Beeren, Gemüse und saisonalen Veranstaltungen."
+      }
+    },
+    "id": "toen-gard-84df3925ebaa"
+  },
+  {
+    "latlng": [
       59.995255107,
       8.828221442
     ],
