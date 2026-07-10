@@ -1148,7 +1148,7 @@
     "flesberg-bading": {
     "id": "flesberg-bading",
     "name": {
-      "no": "Flesberg bading"
+      "no": "Flesberg sykkel og bading"
     },
     "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/flesberg-bading.gpx",
     "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/flesberg-bading_elevation_with_surface_legacy.json",
@@ -1228,7 +1228,7 @@
   "langaasen-rundt": {
     "id": "langaasen-rundt",
     "name": {
-      "no": "Langaasen rundt"
+      "no": "Kjerre og Langåsen rundt"
     },
     "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/langaasen-rundt.gpx",
     "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/langaasen-rundt_elevation_with_surface_legacy.json",
