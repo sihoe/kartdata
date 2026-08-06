@@ -28,7 +28,7 @@
       9.866863752044058
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/fossesholm_herregaard-43.jpg",
-    "symbolType": "attraction",
+    "symbolType": "attractions",
     "texts": {
       "no": {
         "title": "Fossesholm herregård",
@@ -74,7 +74,7 @@
       9.913998712709267
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/noestetangen-norsk-glassmuseum-43.jpg",
-    "symbolType": "attraction",
+    "symbolType": "attractions",
     "texts": {
       "no": {
         "title": "Nøstetangen Norsk Glassmuseum",
@@ -235,7 +235,7 @@
       9.67070246639364
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/kjaerlighetsstien-43.jpg",
-    "symbolType": "attraction",
+    "symbolType": "attractions",
     "texts": {
       "no": {
         "title": "Kjærlighetsstien",
@@ -327,7 +327,7 @@
       9.650113482315147
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/norsk-bergverksmuseum-avd-museet-i-smeltehytta-43.jpg",
-    "symbolType": "attraction",
+    "symbolType": "attractions",
     "texts": {
       "no": {
         "title": "Museet i Smeltehytta",
@@ -557,7 +557,7 @@
       9.600495855323349
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/solvgruvene-saggrenda-43.jpg",
-    "symbolType": "attraction",
+    "symbolType": "attractions",
     "texts": {
       "no": {
         "title": "Sølvgruvene i Saggrenda",
@@ -626,7 +626,7 @@
       9.870718926199428
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/vestfossen-kunstlaboratorium-43.jpg",
-    "symbolType": "attraction",
+    "symbolType": "attractions",
     "texts": {
       "no": {
         "title": "Vestfossen Kunstlaboratorium",
@@ -649,7 +649,7 @@
       9.7737536
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/solvveien_fiskum_old_church_norway_by_bike-scaled-320x240.jpg",
-    "symbolType": "attraction",
+    "symbolType": "attractions",
     "texts": {
       "no": {
         "title": "Fiskum gamle kirke",
@@ -672,7 +672,7 @@
       9.6738166
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/solvveien_bomstua_skilt_norway_by_bike-scaled-800x600.jpg",
-    "symbolType": "attraction",
+    "symbolType": "attractions",
     "texts": {
       "no": {
         "title": "Bomstua",
@@ -741,7 +741,7 @@
       9.7840533
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/solvveien_dunserud_stein_tavle_hus_norway_by_bike-scaled-320x240.jpg",
-    "symbolType": "attraction",
+    "symbolType": "attractions",
     "texts": {
       "no": {
         "title": "Gamle Dunserud Kro",
@@ -764,7 +764,7 @@
       9.90484
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/solvveien_haug_kirke_hokksund_norway_by_bike-scaled-320x240.jpg",
-    "symbolType": "attraction",
+    "symbolType": "attractions",
     "texts": {
       "no": {
         "title": "Haug kirke i Hokksund",
@@ -787,7 +787,7 @@
       9.7282
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/solvveien_jorandrudmoen_small_farm_norway_by_bike-scaled-320x240.jpg",
-    "symbolType": "attraction",
+    "symbolType": "attractions",
     "texts": {
       "no": {
         "title": "Jorandrudmoen",
@@ -810,7 +810,7 @@
       9.64631
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/solvveien_kongsberg_kirke_interior_norway_by_bike-scaled-320x240.jpg",
-    "symbolType": "attraction",
+    "symbolType": "attractions",
     "texts": {
       "no": {
         "title": "Kongsberg kirke",
@@ -833,7 +833,7 @@
       9.741748
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/solvveien_lille_smedbru_norway_by_bike-scaled-320x240.jpg",
-    "symbolType": "attraction",
+    "symbolType": "attractions",
     "texts": {
       "no": {
         "title": "Lille Smedbru",
@@ -856,7 +856,7 @@
       9.9628791
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/solvveien_temte_farm_horse_statue_norway_by_bike-scaled-320x240.jpg",
-    "symbolType": "attraction",
+    "symbolType": "attractions",
     "texts": {
       "no": {
         "title": "Temte gård",
@@ -879,7 +879,7 @@
       9.7078843
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/solvveien_smedbrua_norway_by_bike-scaled-320x240.jpg",
-    "symbolType": "attraction",
+    "symbolType": "attractions",
     "texts": {
       "no": {
         "title": "Smedbrua",
