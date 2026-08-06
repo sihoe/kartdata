@@ -1308,7 +1308,7 @@
   "solvveien-kort": {
     "id": "solvveien-kort",
     "name": {
-      "no": "Solvveien kort"
+      "no": "Sølvveien fra Kongsberg til Drammen"
     },
     "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/solvveien-kort.gpx",
     "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/solvveien-kort_elevation_with_surface_legacy.json",
