@@ -1,4 +1,4 @@
-// route_map_master212.js
+// route_map_master214.js
 // Krever: Leaflet + Leaflet-GPX + Chart.js lastet inn før denne.
 // Valgfritt: Leaflet.markercluster (clustering brukes automatisk ved mange POI)
 
