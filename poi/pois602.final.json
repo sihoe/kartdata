@@ -22,7 +22,904 @@
     },
     "id": "andersnatten-d97e80719027"
   },
+   {
+    "latlng": [
+      59.72848176940147,
+      9.866863752044058
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/fossesholm_herregaard-43.jpg",
+    "symbolType": "attraction",
+    "texts": {
+      "no": {
+        "title": "Fossesholm herregård",
+        "description": "En av Norges best bevarte herregårder fra 1700-tallet."
+      },
+      "en": {
+        "title": "Fossesholm Manor",
+        "description": "One of Norway's best-preserved 18th-century manor houses."
+      },
+      "de": {
+        "title": "Herrenhaus Fossesholm",
+        "description": "Eines der am besten erhaltenen norwegischen Herrenhäuser aus dem 18. Jahrhundert."
+      }
+    },
+    "id": "fossesholm-herregard-2b4ae13a624a"
+  },
   {
+    "latlng": [
+      59.66962163305181,
+      9.654026712995536
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/home-hotel-1624-43.jpg",
+    "symbolType": "hotel",
+    "texts": {
+      "no": {
+        "title": "Home Hotel 1624",
+        "description": "Sentrumshotell med egen restaurant og Sky Bar i toppetasjen."
+      },
+      "en": {
+        "title": "Home Hotel 1624",
+        "description": "Centrally located hotel with its own restaurant and a Sky Bar on the top floor."
+      },
+      "de": {
+        "title": "Home Hotel 1624",
+        "description": "Zentral gelegenes Hotel mit eigenem Restaurant und Sky Bar im obersten Stockwerk."
+      }
+    },
+    "id": "home-hotel-1624-64dd55fdc793"
+  },
+  {
+    "latlng": [
+      59.774442391178894,
+      9.913998712709267
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/noestetangen-norsk-glassmuseum-43.jpg",
+    "symbolType": "attraction",
+    "texts": {
+      "no": {
+        "title": "Nøstetangen Norsk Glassmuseum",
+        "description": "Museum på stedet der Norges første større glassverk lå. Formidler historien om norsk glasskunst."
+      },
+      "en": {
+        "title": "Nøstetangen Norwegian Glass Museum",
+        "description": "Museum at the site of Norway's first major glassworks, presenting the history of Norwegian glass art."
+      },
+      "de": {
+        "title": "Norwegisches Glasmuseum Nøstetangen",
+        "description": "Museum am Standort der ersten größeren Glashütte Norwegens zur Geschichte der norwegischen Glaskunst."
+      }
+    },
+    "id": "nostetangen-norsk-glassmuseum-d6a4d5b68d36"
+  },
+  {
+    "latlng": [
+      59.770450015105084,
+      9.909977382024445
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/stasjonsgata-lokalhandel-hokksund-43.jpg",
+    "symbolType": "handlevogn",
+    "texts": {
+      "no": {
+        "title": "Stasjonsgata lokalhandel",
+        "description": "En sentral handlegate i Hokksund."
+      },
+      "en": {
+        "title": "Local shops in Stasjonsgata",
+        "description": "A central shopping street in Hokksund."
+      },
+      "de": {
+        "title": "Lokale Geschäfte in der Stasjonsgata",
+        "description": "Eine zentrale Einkaufsstraße in Hokksund."
+      }
+    },
+    "id": "stasjonsgata-lokalhandel-2e9e91d93030"
+  },
+  {
+    "latlng": [
+      59.67226754199518,
+      9.648985953480565
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/berja-senter-kongsberg-43.jpg",
+    "symbolType": "handlevogn",
+    "texts": {
+      "no": {
+        "title": "Berja senter Kongsberg",
+        "description": "Senter med et variert utvalg av butikker."
+      },
+      "en": {
+        "title": "Berja Shopping Centre Kongsberg",
+        "description": "Shopping centre with a varied selection of shops."
+      },
+      "de": {
+        "title": "Einkaufszentrum Berja Kongsberg",
+        "description": "Einkaufszentrum mit einer vielfältigen Auswahl an Geschäften."
+      }
+    },
+    "id": "berja-senter-kongsberg-4c36896aeb58"
+  },
+  {
+    "latlng": [
+      59.67143526245007,
+      9.650632539985509
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/best-western-gyldenlove-43.jpg",
+    "symbolType": "hotel",
+    "texts": {
+      "no": {
+        "title": "Best Western Plus Gyldenløve Hotell",
+        "description": "Sentralt forretningshotell med restaurant og bar."
+      },
+      "en": {
+        "title": "Best Western Plus Gyldenløve Hotel",
+        "description": "Centrally located business hotel with a restaurant and bar."
+      },
+      "de": {
+        "title": "Best Western Plus Hotel Gyldenløve",
+        "description": "Zentral gelegenes Businesshotel mit Restaurant und Bar."
+      }
+    },
+    "id": "best-western-plus-gyldenlove-hotell-e6a1163902bf"
+  },
+  {
+    "latlng": [
+      59.73260044392897,
+      9.87061015133703
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/cafe-cellulose-43.jpg",
+    "symbolType": "eat",
+    "texts": {
+      "no": {
+        "title": "Café Cellulose",
+        "description": "Egenkomponerte lunsjretter, gode bakervarer og et bredt utvalg av kaffe."
+      },
+      "en": {
+        "title": "Café Cellulose",
+        "description": "Original lunch dishes, delicious baked goods and a wide selection of coffee."
+      },
+      "de": {
+        "title": "Café Cellulose",
+        "description": "Kreative Mittagsgerichte, köstliches Gebäck und eine große Kaffeeauswahl."
+      }
+    },
+    "id": "cafe-cellulose-4e3fe5552c27"
+  },
+  {
+    "latlng": [
+      59.761175912094345,
+      9.903322568530452
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/eiker-senter-43.jpg",
+    "symbolType": "handlevogn",
+    "texts": {
+      "no": {
+        "title": "Eiker Senter",
+        "description": "Senter med et variert utvalg av butikker og spisesteder."
+      },
+      "en": {
+        "title": "Eiker Shopping Centre",
+        "description": "Shopping centre with a varied selection of shops and places to eat."
+      },
+      "de": {
+        "title": "Einkaufszentrum Eiker",
+        "description": "Einkaufszentrum mit einer vielfältigen Auswahl an Geschäften und Gastronomie."
+      }
+    },
+    "id": "eiker-senter-0e2c73231146"
+  },
+  {
+    "latlng": [
+      59.685706313274984,
+      9.65119618329475
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/jonas-b-gundersen-kongsberg-43.jpg",
+    "symbolType": "eat",
+    "texts": {
+      "no": {
+        "title": "Jonas B. Gundersen",
+        "description": "Mest kjent for pizza, men har også mye annet på menyen."
+      },
+      "en": {
+        "title": "Jonas B. Gundersen",
+        "description": "Best known for pizza, but with plenty of other dishes on the menu as well."
+      },
+      "de": {
+        "title": "Jonas B. Gundersen",
+        "description": "Vor allem für Pizza bekannt, bietet aber auch viele weitere Gerichte an."
+      }
+    },
+    "id": "jonas-b-gundersen-e579bd0f60e9"
+  },
+  {
+    "latlng": [
+      59.669525469237676,
+      9.67070246639364
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/kjaerlighetsstien-43.jpg",
+    "symbolType": "attraction",
+    "texts": {
+      "no": {
+        "title": "Kjærlighetsstien",
+        "description": "En av de eldste og best bevarte delene av Sølvveien."
+      },
+      "en": {
+        "title": "Kjærlighetsstien",
+        "description": "One of the oldest and best-preserved sections of the Silver Road."
+      },
+      "de": {
+        "title": "Kjærlighetsstien",
+        "description": "Einer der ältesten und am besten erhaltenen Abschnitte des Silberwegs."
+      }
+    },
+    "id": "kjaerlighetsstien-12f0fdcfac2d"
+  },
+  {
+    "latlng": [
+      59.66915789992111,
+      9.650721184082768
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/kongsberg-sentrum-43.jpg",
+    "symbolType": "marker",
+    "texts": {
+      "no": {
+        "title": "Kongsberg sentrum",
+        "description": "Servering, handel, parker og byliv – godt tilrettelagt for syklister."
+      },
+      "en": {
+        "title": "Kongsberg town centre",
+        "description": "Restaurants, shops, parks and urban life – well suited for cyclists."
+      },
+      "de": {
+        "title": "Stadtzentrum von Kongsberg",
+        "description": "Gastronomie, Geschäfte, Parks und Stadtleben – gut auf Radfahrende eingestellt."
+      }
+    },
+    "id": "kongsberg-sentrum-603a69ab1fba"
+  },
+  {
+    "latlng": [
+      59.768732003098364,
+      9.911533826845382
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/maitree-thai-og-sushi-43.jpg",
+    "symbolType": "eat",
+    "texts": {
+      "no": {
+        "title": "Maitree Thai & Sushi",
+        "description": "Sushi, sashimi og maki i mange varianter samt gode thailandske gryteretter."
+      },
+      "en": {
+        "title": "Maitree Thai & Sushi",
+        "description": "A wide variety of sushi, sashimi and maki, as well as tasty Thai curries."
+      },
+      "de": {
+        "title": "Maitree Thai & Sushi",
+        "description": "Eine große Auswahl an Sushi, Sashimi und Maki sowie leckere thailändische Currygerichte."
+      }
+    },
+    "id": "maitree-thai-og-sushi-4fcfdec4b2d2"
+  },
+  {
+    "latlng": [
+      59.66841478161495,
+      9.65126052348727
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/meeat-gastropub-43.jpg",
+    "symbolType": "eat",
+    "texts": {
+      "no": {
+        "title": "Meeat Gastropub",
+        "description": "Amerikanskinspirert meny og et variert utvalg av øl."
+      },
+      "en": {
+        "title": "Meeat Gastropub",
+        "description": "American-inspired menu and a varied selection of beer."
+      },
+      "de": {
+        "title": "Meeat Gastropub",
+        "description": "Amerikanisch inspirierte Speisekarte und eine vielfältige Bierauswahl."
+      }
+    },
+    "id": "meeat-gastropub-a38e5f37ac3a"
+  },
+  {
+    "latlng": [
+      59.66615791818133,
+      9.650113482315147
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/norsk-bergverksmuseum-avd-museet-i-smeltehytta-43.jpg",
+    "symbolType": "attraction",
+    "texts": {
+      "no": {
+        "title": "Museet i Smeltehytta",
+        "description": "Viser hvilken betydning sølvbergverket hadde for Kongsberg og Norge."
+      },
+      "en": {
+        "title": "The Smelting Works Museum",
+        "description": "Shows the importance of the silver mines to Kongsberg and Norway."
+      },
+      "de": {
+        "title": "Museum in der Schmelzhütte",
+        "description": "Zeigt die Bedeutung des Silberbergbaus für Kongsberg und Norwegen."
+      }
+    },
+    "id": "museet-i-smeltehytta-22aa114e1e39"
+  },
+  {
+    "latlng": [
+      59.73231058366954,
+      9.867955509008201
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/onkel-thor-43.jpg",
+    "symbolType": "eat",
+    "texts": {
+      "no": {
+        "title": "Onkel Thor",
+        "description": "Restaurant med klassiske pubretter og sesongbaserte spesialiteter."
+      },
+      "en": {
+        "title": "Onkel Thor",
+        "description": "Restaurant serving classic pub dishes and seasonal specialities."
+      },
+      "de": {
+        "title": "Onkel Thor",
+        "description": "Restaurant mit klassischen Pubgerichten und saisonalen Spezialitäten."
+      }
+    },
+    "id": "onkel-thor-2b6da4090cd8"
+  },
+  {
+    "latlng": [
+      59.66918235246515,
+      9.649692528335585
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/quality-hotel-grand-kongbserg-43.jpg",
+    "symbolType": "hotel",
+    "texts": {
+      "no": {
+        "title": "Quality Hotel Grand Kongsberg",
+        "description": "Uformelt hotell med restaurant, levende musikk, innendørsbasseng og utsikt mot elven."
+      },
+      "en": {
+        "title": "Quality Hotel Grand Kongsberg",
+        "description": "Informal hotel with a restaurant, live music, indoor pool and river views."
+      },
+      "de": {
+        "title": "Quality Hotel Grand Kongsberg",
+        "description": "Ungezwungenes Hotel mit Restaurant, Livemusik, Innenpool und Flussblick."
+      }
+    },
+    "id": "quality-hotel-grand-kongsberg-aa2fb34b2583"
+  },
+  {
+    "latlng": [
+      59.627278720346915,
+      9.600711111148087
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/saggrendadammen-43.jpg",
+    "symbolType": "bathingspot",
+    "texts": {
+      "no": {
+        "title": "Saggrendadammen",
+        "description": "Badeplass med sandstrand, vannleker, ballnett, grillmuligheter, lekeplass, benker og toalett."
+      },
+      "en": {
+        "title": "Saggrendadammen bathing area",
+        "description": "Bathing area with a sandy beach, water play equipment, ball net, barbecues, playground, benches and toilet."
+      },
+      "de": {
+        "title": "Badestelle Saggrendadammen",
+        "description": "Badestelle mit Sandstrand, Wasserspielgeräten, Ballnetz, Grillmöglichkeiten, Spielplatz, Bänken und Toilette."
+      }
+    },
+    "id": "saggrendadammen-7c87d464a2c8"
+  },
+  {
+    "latlng": [
+      59.62925811907729,
+      9.598996643094493
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/solvveien_sakkerhus_norwaybybike-320x240.jpg",
+    "symbolType": "handlevogn",
+    "texts": {
+      "no": {
+        "title": "Sakkerhusene, Norsk Bergverksmuseum",
+        "description": "Museumsbutikk i de gamle arbeiderboligene som kalles Sakkerhusene."
+      },
+      "en": {
+        "title": "Sakkerhusene, Norwegian Mining Museum",
+        "description": "Museum shop in the old workers' dwellings known as Sakkerhusene."
+      },
+      "de": {
+        "title": "Sakkerhusene, Norwegisches Bergbaumuseum",
+        "description": "Museumsladen in den alten Arbeiterwohnungen, den sogenannten Sakkerhusene."
+      }
+    },
+    "id": "sakkerhusene-norsk-bergverksmuseum-a9e21808348c"
+  },
+  {
+    "latlng": [
+      59.77465299247132,
+      9.911721012709314
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/sanden-hotell-43.jpg",
+    "symbolType": "hotel",
+    "texts": {
+      "no": {
+        "title": "Sanden Hotell",
+        "description": "Familieeid hotell kjent for hjemmekoselig atmosfære og god mat."
+      },
+      "en": {
+        "title": "Sanden Hotel",
+        "description": "Family-owned hotel known for its homely atmosphere and good food."
+      },
+      "de": {
+        "title": "Sanden Hotel",
+        "description": "Familiengeführtes Hotel, bekannt für seine gemütliche Atmosphäre und gutes Essen."
+      }
+    },
+    "id": "sanden-hotell-9c5c465b3a82"
+  },
+  {
+    "latlng": [
+      59.774663794309625,
+      9.911678097367036
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/sanden-hotell-restaurant-43.jpg",
+    "symbolType": "eat",
+    "texts": {
+      "no": {
+        "title": "Sanden Hotell Restaurant",
+        "description": "Restaurant som kombinerer lokale råvarer med internasjonale smaker."
+      },
+      "en": {
+        "title": "Sanden Hotel Restaurant",
+        "description": "Restaurant combining local ingredients with international flavours."
+      },
+      "de": {
+        "title": "Restaurant im Sanden Hotel",
+        "description": "Restaurant, das regionale Zutaten mit internationalen Aromen verbindet."
+      }
+    },
+    "id": "sanden-hotell-restaurant-8768f750cd8b"
+  },
+  {
+    "latlng": [
+      59.7328017442035,
+      9.86841149921288
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/sjokolade-salongen-43.jpg",
+    "symbolType": "kaffekopp",
+    "texts": {
+      "no": {
+        "title": "Sjokolade Salongen",
+        "description": "Koselig kafé med håndlaget sjokolade, kaker og varme drikker."
+      },
+      "en": {
+        "title": "Sjokolade Salongen",
+        "description": "Cosy café serving handmade chocolate, cakes and hot drinks."
+      },
+      "de": {
+        "title": "Sjokolade Salongen",
+        "description": "Gemütliches Café mit handgemachter Schokolade, Kuchen und heißen Getränken."
+      }
+    },
+    "id": "sjokolade-salongen-2b0ca282a745"
+  },
+  {
+    "latlng": [
+      59.67049800134854,
+      9.652426639985398
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/stortorvet-senter-kongsberg-43.jpg",
+    "symbolType": "handlevogn",
+    "texts": {
+      "no": {
+        "title": "Stortorvet Senter Kongsberg",
+        "description": "Senter med et variert utvalg av butikker og spisesteder."
+      },
+      "en": {
+        "title": "Stortorvet Shopping Centre Kongsberg",
+        "description": "Shopping centre with a varied selection of shops and places to eat."
+      },
+      "de": {
+        "title": "Einkaufszentrum Stortorvet Kongsberg",
+        "description": "Einkaufszentrum mit einer vielfältigen Auswahl an Geschäften und Gastronomie."
+      }
+    },
+    "id": "stortorvet-senter-kongsberg-775af953bfd2"
+  },
+  {
+    "latlng": [
+      59.697382816445646,
+      9.842919247085986
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/sundhaugen-badeplass-43.jpg",
+    "symbolType": "bathingspot",
+    "texts": {
+      "no": {
+        "title": "Sundhaugen badeplass",
+        "description": "Badeplass med restaurant, turveier, fiskebrygge og store grøntarealer."
+      },
+      "en": {
+        "title": "Sundhaugen bathing area",
+        "description": "Bathing area with a restaurant, walking trails, fishing pier and large green spaces."
+      },
+      "de": {
+        "title": "Badestelle Sundhaugen",
+        "description": "Badestelle mit Restaurant, Spazierwegen, Angelsteg und großen Grünflächen."
+      }
+    },
+    "id": "sundhaugen-badeplass-d7fe63daca4e"
+  },
+  {
+    "latlng": [
+      59.63044750814317,
+      9.600495855323349
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/solvgruvene-saggrenda-43.jpg",
+    "symbolType": "attraction",
+    "texts": {
+      "no": {
+        "title": "Sølvgruvene i Saggrenda",
+        "description": "Gruvetoget tar deg 2 300 meter inn til Sølvverkets største gruve, Kongens gruve."
+      },
+      "en": {
+        "title": "The Silver Mines at Saggrenda",
+        "description": "The mine train takes you 2,300 metres into the largest mine of the Kongsberg Silver Works, the King's Mine."
+      },
+      "de": {
+        "title": "Die Silberminen in Saggrenda",
+        "description": "Der Grubenzug bringt Sie 2.300 Meter weit in die größte Mine des Kongsberger Silberbergwerks, die Königsgrube."
+      }
+    },
+    "id": "solvgruvene-i-saggrenda-047ff0c4af13"
+  },
+  {
+    "latlng": [
+      59.66388341967133,
+      9.643045239985108
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/solvgryta-kongsberg-43.jpg",
+    "symbolType": "eat",
+    "texts": {
+      "no": {
+        "title": "Sølvgryta",
+        "description": "Her serveres kun plantebasert mat."
+      },
+      "en": {
+        "title": "Sølvgryta",
+        "description": "Serving exclusively plant-based food."
+      },
+      "de": {
+        "title": "Sølvgryta",
+        "description": "Hier werden ausschließlich pflanzliche Speisen serviert."
+      }
+    },
+    "id": "solvgryta-ee729fccf2f0"
+  },
+  {
+    "latlng": [
+      59.66957854355625,
+      9.648473284160552
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/trakka-mat-vinhus-43.jpg",
+    "symbolType": "eat",
+    "texts": {
+      "no": {
+        "title": "Tråkka Mat & Vinhus",
+        "description": "Sesongbasert meny med gode råvarer."
+      },
+      "en": {
+        "title": "Tråkka Mat & Vinhus",
+        "description": "Seasonal menu featuring high-quality ingredients."
+      },
+      "de": {
+        "title": "Tråkka Mat & Vinhus",
+        "description": "Saisonale Speisekarte mit hochwertigen Zutaten."
+      }
+    },
+    "id": "trakka-mat-og-vinhus-4755c854e7dd"
+  },
+  {
+    "latlng": [
+      59.73258401400735,
+      9.870718926199428
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/vestfossen-kunstlaboratorium-43.jpg",
+    "symbolType": "attraction",
+    "texts": {
+      "no": {
+        "title": "Vestfossen Kunstlaboratorium",
+        "description": "Gjør internasjonal samtidskunst av høy kvalitet tilgjengelig for alle."
+      },
+      "en": {
+        "title": "Vestfossen Kunstlaboratorium",
+        "description": "Makes high-quality international contemporary art accessible to everyone."
+      },
+      "de": {
+        "title": "Vestfossen Kunstlaboratorium",
+        "description": "Macht internationale zeitgenössische Kunst von hoher Qualität für alle zugänglich."
+      }
+    },
+    "id": "vestfossen-kunstlaboratorium-27750453876f"
+  },
+  {
+    "latlng": [
+      59.7001968,
+      9.7737536
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/solvveien_fiskum_old_church_norway_by_bike-scaled-320x240.jpg",
+    "symbolType": "attraction",
+    "texts": {
+      "no": {
+        "title": "Fiskum gamle kirke",
+        "description": "Steinkirke fra rundt 1250. Presten reddet den fra å bli revet i 1866."
+      },
+      "en": {
+        "title": "Fiskum Old Church",
+        "description": "Stone church dating from around 1250. The local priest saved it from demolition in 1866."
+      },
+      "de": {
+        "title": "Alte Kirche von Fiskum",
+        "description": "Steinkirche aus der Zeit um 1250. Der Pfarrer bewahrte sie 1866 vor dem Abriss."
+      }
+    },
+    "id": "fiskum-gamle-kirke-b0f002b143d3"
+  },
+  {
+    "latlng": [
+      59.6736519,
+      9.6738166
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/solvveien_bomstua_skilt_norway_by_bike-scaled-800x600.jpg",
+    "symbolType": "attraction",
+    "texts": {
+      "no": {
+        "title": "Bomstua",
+        "description": "Norges eldste bomstasjon, i drift fra 1721 til 1841. Inntektene ble brukt til å vedlikeholde broene."
+      },
+      "en": {
+        "title": "Bomstua toll house",
+        "description": "Norway's oldest toll station, operating from 1721 to 1841. The revenue was used to maintain the bridges."
+      },
+      "de": {
+        "title": "Mautstation Bomstua",
+        "description": "Norwegens älteste Mautstation, die von 1721 bis 1841 in Betrieb war. Die Einnahmen dienten der Instandhaltung der Brücken."
+      }
+    },
+    "id": "bomstua-95206f0ba62d"
+  },
+  {
+    "latlng": [
+      59.7625641,
+      9.9823798
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/solvveien_brekke_bru_norwaybybike-320x240.jpg",
+    "symbolType": "marker",
+    "texts": {
+      "no": {
+        "title": "Brekke bru",
+        "description": "Bru fra 1700-tallet som var en del av hovedveien frem til midten av 1930-tallet."
+      },
+      "en": {
+        "title": "Brekke Bridge",
+        "description": "18th-century bridge that formed part of the main road until the mid-1930s."
+      },
+      "de": {
+        "title": "Brekke-Brücke",
+        "description": "Brücke aus dem 18. Jahrhundert, die bis Mitte der 1930er-Jahre Teil der Hauptstraße war."
+      }
+    },
+    "id": "brekke-bru-b684147d23a0"
+  },
+  {
+    "latlng": [
+      59.7384832,
+      10.2165449
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/solvveien_drammen_havnepromenade_norwaybybike-320x240.jpg",
+    "symbolType": "marker",
+    "texts": {
+      "no": {
+        "title": "Drammen havnepromenade",
+        "description": "Bystranden og Fjordparken med benker, strender og skulpturer."
+      },
+      "en": {
+        "title": "Drammen harbour promenade",
+        "description": "The city beach and Fjordparken, with benches, beaches and sculptures."
+      },
+      "de": {
+        "title": "Hafenpromenade Drammen",
+        "description": "Stadtstrand und Fjordparken mit Bänken, Stränden und Skulpturen."
+      }
+    },
+    "id": "drammen-havnepromenade-c8b37e9f5539"
+  },
+  {
+    "latlng": [
+      59.7001968,
+      9.7840533
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/solvveien_dunserud_stein_tavle_hus_norway_by_bike-scaled-320x240.jpg",
+    "symbolType": "attraction",
+    "texts": {
+      "no": {
+        "title": "Gamle Dunserud Kro",
+        "description": "Tidligere gjestehus med vakker utsikt over Eikerbygda."
+      },
+      "en": {
+        "title": "Old Dunserud Inn",
+        "description": "Former guesthouse with beautiful views over the Eiker district."
+      },
+      "de": {
+        "title": "Altes Gasthaus Dunserud",
+        "description": "Ehemaliges Gasthaus mit schöner Aussicht über die Landschaft von Eiker."
+      }
+    },
+    "id": "gamle-dunserud-kro-d5e28b22f685"
+  },
+  {
+    "latlng": [
+      59.76457,
+      9.90484
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/solvveien_haug_kirke_hokksund_norway_by_bike-scaled-320x240.jpg",
+    "symbolType": "attraction",
+    "texts": {
+      "no": {
+        "title": "Haug kirke i Hokksund",
+        "description": "Middelalderkirke med røtter tilbake til 1200-tallet."
+      },
+      "en": {
+        "title": "Haug Church in Hokksund",
+        "description": "Medieval church with roots dating back to the 13th century."
+      },
+      "de": {
+        "title": "Haug-Kirche in Hokksund",
+        "description": "Mittelalterliche Kirche mit Wurzeln im 13. Jahrhundert."
+      }
+    },
+    "id": "haug-kirke-i-hokksund-b01dc34fe608"
+  },
+  {
+    "latlng": [
+      59.68408,
+      9.7282
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/solvveien_jorandrudmoen_small_farm_norway_by_bike-scaled-320x240.jpg",
+    "symbolType": "attraction",
+    "texts": {
+      "no": {
+        "title": "Jorandrudmoen",
+        "description": "Gård der reisende tidligere kunne hvile og skifte hest. Deler av huset kan dateres tilbake til 1600-tallet."
+      },
+      "en": {
+        "title": "Jorandrudmoen",
+        "description": "Farm where travellers once rested and changed horses. Parts of the house date back to the 17th century."
+      },
+      "de": {
+        "title": "Jorandrudmoen",
+        "description": "Hof, auf dem Reisende früher rasten und die Pferde wechselten. Teile des Hauses stammen aus dem 17. Jahrhundert."
+      }
+    },
+    "id": "jorandrudmoen-a47e61017285"
+  },
+  {
+    "latlng": [
+      59.66582,
+      9.64631
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/solvveien_kongsberg_kirke_interior_norway_by_bike-scaled-320x240.jpg",
+    "symbolType": "attraction",
+    "texts": {
+      "no": {
+        "title": "Kongsberg kirke",
+        "description": "Norges største barokkirke, innviet i 1761. Det enkle eksteriøret skjuler et rikt rokokkointeriør."
+      },
+      "en": {
+        "title": "Kongsberg Church",
+        "description": "Norway's largest Baroque church, consecrated in 1761. Its simple exterior conceals a richly decorated Rococo interior."
+      },
+      "de": {
+        "title": "Kirche von Kongsberg",
+        "description": "Norwegens größte Barockkirche, 1761 eingeweiht. Hinter der schlichten Fassade verbirgt sich ein reich ausgestatteter Rokokoinnenraum."
+      }
+    },
+    "id": "kongsberg-kirke-9d17be2c7f47"
+  },
+  {
+    "latlng": [
+      59.6816745,
+      9.741748
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/solvveien_lille_smedbru_norway_by_bike-scaled-320x240.jpg",
+    "symbolType": "attraction",
+    "texts": {
+      "no": {
+        "title": "Lille Smedbru",
+        "description": "Mindre steinbuebru over Liverødbekken, oppkalt etter smedene som bodde i området."
+      },
+      "en": {
+        "title": "Lille Smedbru Bridge",
+        "description": "Small stone arch bridge over the Liverød stream, named after the blacksmiths who lived in the area."
+      },
+      "de": {
+        "title": "Brücke Lille Smedbru",
+        "description": "Kleine Steinbogenbrücke über den Liverød-Bach, benannt nach den Schmieden, die in der Gegend lebten."
+      }
+    },
+    "id": "lille-smedbru-9c7e81813318"
+  },
+  {
+    "latlng": [
+      59.7668566,
+      9.9628791
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/solvveien_temte_farm_horse_statue_norway_by_bike-scaled-320x240.jpg",
+    "symbolType": "attraction",
+    "texts": {
+      "no": {
+        "title": "Temte gård",
+        "description": "Historisk gård mellom Hokksund og Krokstadelva, første gang nevnt i 1417. På gårdsplassen finnes en unik samling av hestevogner og bronsehester."
+      },
+      "en": {
+        "title": "Temte Farm",
+        "description": "Historic farm between Hokksund and Krokstadelva, first mentioned in 1417. The courtyard has a unique collection of horse-drawn carriages and bronze horses."
+      },
+      "de": {
+        "title": "Temte-Hof",
+        "description": "Historischer Hof zwischen Hokksund und Krokstadelva, erstmals 1417 erwähnt. Im Hof befindet sich eine einzigartige Sammlung von Pferdewagen und Bronzepferden."
+      }
+    },
+    "id": "temte-gard-cde404a8bee7"
+  },
+  {
+    "latlng": [
+      59.6806626,
+      9.7078843
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/solvveien_smedbrua_norway_by_bike-scaled-320x240.jpg",
+    "symbolType": "attraction",
+    "texts": {
+      "no": {
+        "title": "Smedbrua",
+        "description": "Steinvelvbru fra 1767 og en del av den gamle Sølvveien. Den er Norges nest eldste bevarte bru av denne typen."
+      },
+      "en": {
+        "title": "Smedbrua Bridge",
+        "description": "Stone arch bridge dating from 1767 and part of the old Silver Road. It is Norway's second-oldest surviving bridge of its kind."
+      },
+      "de": {
+        "title": "Smedbrua-Brücke",
+        "description": "Steingewölbebrücke aus dem Jahr 1767 und Teil des alten Silberwegs. Sie ist Norwegens zweitälteste erhaltene Brücke dieser Art."
+      }
+    },
+    "id": "smedbrua-e2987e09cdbd"
+  },
+  {
+    "latlng": [
+      59.7728777,
+      9.908823
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/solvveien_spade_hokksund_norwaybybike-320x240.jpg",
+    "symbolType": "marker",
+    "texts": {
+      "no": {
+        "title": "Hoen-skatten",
+        "description": "Vikingskatt fra slutten av 800-tallet, funnet ved Hokksund i 1834. Spaden i rundkjøringen er en forstørret kopi av spaden som ble brukt da skatten ble funnet."
+      },
+      "en": {
+        "title": "The Hoen Hoard",
+        "description": "Viking hoard from the late 9th century, discovered near Hokksund in 1834. The spade in the roundabout is an enlarged replica of the one used when the hoard was found."
+      },
+      "de": {
+        "title": "Der Hoen-Schatz",
+        "description": "Wikingerschatz aus dem späten 9. Jahrhundert, 1834 bei Hokksund entdeckt. Der Spaten im Kreisverkehr ist eine vergrößerte Kopie des Spatens, mit dem der Schatz gefunden wurde."
+      }
+    },
+    "id": "hoen-skatten-208a6ddcc989"
+  },
+{
     "latlng": [
       59.83869,
       9.57014
@@ -3544,6 +4441,5 @@
     },
     "id": "ovrebygde-rundt-kort-0cf553f1"
   }
-
 ]
 
