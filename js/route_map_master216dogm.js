@@ -1776,16 +1776,15 @@
           if (isFullscreen()) {
             exitFullscreen();
           } else {
-const isMobile =
-  window.matchMedia(
-    "(max-width: 768px)"
-  ).matches;
+            enterFullscreen(sectionEl);
 
-if (isMobile) {
-  const mapWrapper =
-    sectionEl.querySelector(
-      ".map-wrapper"
-    );
+            setTimeout(
+              () => map.invalidateSize(),
+              250
+            );
+          }
+        }
+      );
 
   enterFullscreen(
     mapWrapper
