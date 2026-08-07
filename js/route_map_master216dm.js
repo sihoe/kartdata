@@ -1786,17 +1786,7 @@
         }
       );
 
-  enterFullscreen(
-    mapWrapper
-  );
-} else {
-  enterFullscreen(
-    sectionEl
-  );
-}        }
-      );
-
-      return wrap;
+    return wrap;
     };
 
     ctrl.addTo(map);
