@@ -1240,6 +1240,14 @@
     let trailKm = 0;
     let unknownKm = 0;
 
+    const pointsByCategory = {
+      asphalt: asphaltPts,
+      gravel: gravelPts,
+      trail: trailPts,
+      unknown: unknownPts,
+    };
+
+    // Opprett først alle punktene med tom underlagsfarge
     for (
       let i = 0;
       i < elevations.length;
@@ -1247,63 +1255,51 @@
     ) {
       const x = distances[i];
       const y = elevations[i];
-      const cat = cats[i];
 
       linePts.push({ x, y });
 
-      asphaltPts.push({
-        x,
-        y:
-          cat === "asphalt"
-            ? y
-            : null,
-      });
-
-      gravelPts.push({
-        x,
-        y:
-          cat === "gravel"
-            ? y
-            : null,
-      });
-
-      trailPts.push({
-        x,
-        y:
-          cat === "trail"
-            ? y
-            : null,
-      });
-
-      unknownPts.push({
-        x,
-        y:
-          cat === "unknown"
-            ? y
-            : null,
-      });
-
-      if (i > 0) {
-        const segKm =
-          distances[i] -
-          distances[i - 1];
-
-        if (cat === "asphalt") {
-          asphaltKm += segKm;
-        } else if (
-          cat === "gravel"
-        ) {
-          gravelKm += segKm;
-        } else if (
-          cat === "trail"
-        ) {
-          trailKm += segKm;
-        } else {
-          unknownKm += segKm;
-        }
-      }
+      asphaltPts.push({ x, y: null });
+      gravelPts.push({ x, y: null });
+      trailPts.push({ x, y: null });
+      unknownPts.push({ x, y: null });
     }
 
+    // Tegn hvert stykke mellom to punkter med underlaget
+    // som er registrert på det siste punktet i stykket.
+    // Begge endepunktene legges inn, slik at det ikke blir
+    // hvite sprekker ved skifte av underlag.
+    for (
+      let i = 1;
+      i < elevations.length;
+      i++
+    ) {
+      const cat = pointsByCategory[cats[i]]
+        ? cats[i]
+        : "unknown";
+
+      const targetPoints =
+        pointsByCategory[cat];
+
+      targetPoints[i - 1].y =
+        elevations[i - 1];
+
+      targetPoints[i].y =
+        elevations[i];
+
+      const segKm =
+        distances[i] -
+        distances[i - 1];
+
+      if (cat === "asphalt") {
+        asphaltKm += segKm;
+      } else if (cat === "gravel") {
+        gravelKm += segKm;
+      } else if (cat === "trail") {
+        trailKm += segKm;
+      } else {
+        unknownKm += segKm;
+      }
+    }
     renderSurfaceSummary(
       surfaceSummaryEl,
       route,
