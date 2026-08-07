@@ -2191,8 +2191,8 @@
                   DEFAULT_BICYCLE_PARKING_ICON_URL
               ),
 
-              iconSize: [22, 22],
-              iconAnchor: [11, 11],
+              iconSize: [15, 15],
+              iconAnchor: [7.5, 7.5],
 
               className:
                 "svingom-bicycle-parking-icon",
@@ -2210,20 +2210,20 @@
                 latlng
               ) =>
                 L.marker(
-                  latlng,
-                  {
-                    icon:
-                      parkingIcon,
+  latlng,
+  {
+    icon: parkingIcon,
 
-                    interactive:
-                      false,
+    opacity: 0.55,
 
-                    keyboard:
-                      false,
+    zIndexOffset: -500,
 
-                    title:
-                      "Sykkelparkering",
-                  }
+    interactive: false,
+
+    keyboard: false,
+
+    title: "Sykkelparkering",
+  }
                 ),
             }
           );
