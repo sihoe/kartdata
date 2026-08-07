@@ -1776,17 +1776,25 @@
           if (isFullscreen()) {
             exitFullscreen();
           } else {
-            enterFullscreen(
-              map.getContainer()
-            );
+const isMobile =
+  window.matchMedia(
+    "(max-width: 768px)"
+  ).matches;
 
-            setTimeout(
-              () =>
-                map.invalidateSize(),
-              250
-            );
-          }
-        }
+if (isMobile) {
+  const mapWrapper =
+    sectionEl.querySelector(
+      ".map-wrapper"
+    );
+
+  enterFullscreen(
+    mapWrapper
+  );
+} else {
+  enterFullscreen(
+    sectionEl
+  );
+}        }
       );
 
       return wrap;
