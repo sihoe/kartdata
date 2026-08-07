@@ -1776,15 +1776,16 @@
           if (isFullscreen()) {
             exitFullscreen();
           } else {
-enterFullscreen(
-  map.getContainer()
-);
+            enterFullscreen(
+              map.getContainer()
+            );
 
-          setTimeout(
-            () =>
-              map.invalidateSize(),
-            250
-          );
+            setTimeout(
+              () =>
+                map.invalidateSize(),
+              250
+            );
+          }
         }
       );
 
