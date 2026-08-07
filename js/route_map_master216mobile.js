@@ -1776,8 +1776,9 @@
           if (isFullscreen()) {
             exitFullscreen();
           } else {
-            enterFullscreen(sectionEl);
-          }
+enterFullscreen(
+  map.getContainer()
+);
 
           setTimeout(
             () =>
