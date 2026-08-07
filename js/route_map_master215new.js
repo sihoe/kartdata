@@ -739,3 +739,2269 @@
     const distances = [];
     const lats = [];
     const lons = [];
+    const elevations = [];
+    const cats = [];
+
+    for (let i = 0; i < elevPoints.length; i++) {
+      const p = elevPoints[i] || {};
+      const d = safeNum(
+        p.distance,
+        i > 0 ? distances[i - 1] : 0
+      );
+      const e = safeNum(
+        p.elevation,
+        i > 0 ? elevations[i - 1] : 0
+      );
+
+      distances.push(d);
+      elevations.push(e);
+      lats.push(Number(p.lat));
+      lons.push(Number(p.lon));
+
+      const raw =
+        p.surfaceCategory ??
+        p.surface ??
+        p.category ??
+        "unknown";
+
+      cats.push(
+        normalizeSurfaceCategory(
+          raw,
+          unknownAsTrail
+        )
+      );
+    }
+
+    const totalKm =
+      distances.length
+        ? distances[distances.length - 1]
+        : 0;
+
+    return {
+      distances,
+      lats,
+      lons,
+      elevations,
+      cats,
+      totalKm,
+    };
+  }
+
+  function haversineKm(
+    lat1,
+    lon1,
+    lat2,
+    lon2
+  ) {
+    const R = 6371;
+    const toRad = (x) =>
+      (x * Math.PI) / 180;
+
+    const dLat = toRad(lat2 - lat1);
+    const dLon = toRad(lon2 - lon1);
+
+    const a =
+      Math.sin(dLat / 2) *
+        Math.sin(dLat / 2) +
+      Math.cos(toRad(lat1)) *
+        Math.cos(toRad(lat2)) *
+        Math.sin(dLon / 2) *
+        Math.sin(dLon / 2);
+
+    const c =
+      2 *
+      Math.atan2(
+        Math.sqrt(a),
+        Math.sqrt(1 - a)
+      );
+
+    return R * c;
+  }
+
+  function nearestOnRouteKm(
+    routeIndex,
+    lat,
+    lon
+  ) {
+    if (
+      !routeIndex ||
+      !routeIndex.lats ||
+      !routeIndex.lats.length
+    ) {
+      return null;
+    }
+
+    let bestIdx = -1;
+    let bestDist = Infinity;
+
+    for (
+      let i = 0;
+      i < routeIndex.lats.length;
+      i++
+    ) {
+      const la = routeIndex.lats[i];
+      const lo = routeIndex.lons[i];
+
+      if (
+        !Number.isFinite(la) ||
+        !Number.isFinite(lo)
+      ) {
+        continue;
+      }
+
+      const d = haversineKm(
+        lat,
+        lon,
+        la,
+        lo
+      );
+
+      if (d < bestDist) {
+        bestDist = d;
+        bestIdx = i;
+      }
+    }
+
+    if (bestIdx < 0) return null;
+
+    const fromStartKm =
+      routeIndex.distances[bestIdx];
+
+    const toEndKm = Math.max(
+      0,
+      routeIndex.totalKm - fromStartKm
+    );
+
+    return {
+      nearestKm: bestDist,
+      fromStartKm,
+      toEndKm,
+      idx: bestIdx,
+    };
+  }
+
+  function renderPositionResult(
+    popupContainer,
+    routeIndex,
+    lat,
+    lon
+  ) {
+    if (!popupContainer) return;
+
+    const statsBox =
+      popupContainer.querySelector(
+        ".stats-box"
+      );
+
+    if (!statsBox) return;
+
+    const posBox =
+      ensurePosBox(popupContainer);
+
+    if (!posBox) return;
+
+    const lang = getLang();
+    const t =
+      infoTexts[lang] ||
+      infoTexts.no;
+
+    const res = nearestOnRouteKm(
+      routeIndex,
+      lat,
+      lon
+    );
+
+    if (!res) {
+      posBox.innerHTML = "";
+      return;
+    }
+
+    const near = res.nearestKm;
+    const onRoute =
+      near <= POS_NEAR_KM;
+    const far =
+      near >= POS_FAR_KM;
+
+    const hint = onRoute
+      ? t.posOnRoute
+      : far
+        ? t.posFar
+        : "";
+
+    posBox.innerHTML = `
+      <div class="pos-box__inner">
+        <p
+          class="pos-title"
+          style="font-weight:700;margin:10px 0 8px;"
+        >
+          ${t.posTitle}
+        </p>
+
+        ${
+          hint
+            ? `
+              <p
+                class="pos-hint"
+                style="margin:0 0 8px;font-style:italic;"
+              >
+                ${hint}
+              </p>
+            `
+            : ""
+        }
+
+        <p
+          class="pos-line"
+          style="margin:6px 0;"
+        >
+          ${t.posNearest}:
+          <strong>${fmtKm(near)}</strong> km
+        </p>
+
+        <p
+          class="pos-line"
+          style="margin:6px 0;"
+        >
+          ${t.posStart}:
+          <strong>${fmtKm(
+            res.fromStartKm
+          )}</strong> km
+        </p>
+
+        <p
+          class="pos-line"
+          style="margin:6px 0;"
+        >
+          ${t.posEnd}:
+          <strong>${fmtKm(
+            res.toEndKm
+          )}</strong> km
+        </p>
+      </div>
+    `;
+  }
+
+  function getNearbyPoisSorted(
+    pois,
+    latlng,
+    radiusMeters = NEARBY_RADIUS_M,
+    limit = NEARBY_LIMIT
+  ) {
+    if (
+      !Array.isArray(pois) ||
+      !pois.length ||
+      !latlng
+    ) {
+      return [];
+    }
+
+    const center = L.latLng(
+      latlng.lat,
+      latlng.lng
+    );
+
+    const res = [];
+
+    for (const p of pois) {
+      const pos = getPoiPos(p);
+
+      if (!pos) continue;
+
+      const ll = L.latLng(
+        pos[0],
+        pos[1]
+      );
+
+      const d = center.distanceTo(ll);
+
+      if (d <= radiusMeters) {
+        res.push({
+          poi: p,
+          distM: d,
+        });
+      }
+    }
+
+    res.sort(
+      (a, b) => a.distM - b.distM
+    );
+
+    return res.slice(0, limit);
+  }
+
+  function renderNearbyPoisBox(
+    popupContainer,
+    nearby,
+    resetFn
+  ) {
+    if (!popupContainer) return;
+
+    const statsBox =
+      popupContainer.querySelector(
+        ".stats-box"
+      );
+
+    if (!statsBox) return;
+
+    const box =
+      ensureNearbyBox(popupContainer);
+
+    if (!box) return;
+
+    const lang = getLang();
+    const t =
+      infoTexts[lang] ||
+      infoTexts.no;
+
+    if (!nearby || !nearby.length) {
+      box.innerHTML = `
+        <div
+          style="margin-top:10px;padding-top:10px;border-top:1px solid rgba(66,36,38,0.15);"
+        >
+          <p
+            style="font-weight:700;margin:0 0 8px;"
+          >
+            ${t.nearbyTitle}
+          </p>
+
+          <p
+            style="margin:0;font-style:italic;"
+          >
+            ${t.nearbyEmpty}
+          </p>
+        </div>
+      `;
+
+      return;
+    }
+
+    box.innerHTML = `
+      <div
+        style="margin-top:10px;padding-top:10px;border-top:1px solid rgba(66,36,38,0.15);"
+      >
+        <p
+          style="font-weight:700;margin:0 0 8px;"
+        >
+          ${t.nearbyTitle}
+        </p>
+
+        <div
+          class="nearby-list"
+          style="display:flex;flex-direction:column;gap:6px;"
+        ></div>
+      </div>
+    `;
+
+    const list =
+      box.querySelector(
+        ".nearby-list"
+      );
+
+    nearby.forEach(
+      ({ poi, distM }) => {
+        const texts =
+          poi.texts || {};
+
+        const langBlock =
+          texts[lang] ||
+          texts.no ||
+          {};
+
+        const name =
+          langBlock.title ||
+          poi.name ||
+          poi.title ||
+          "POI";
+
+        const km = distM / 1000;
+
+        const label =
+          `${name} (` +
+          `${
+            km < 10
+              ? km.toFixed(1)
+              : km.toFixed(0)
+          } km)`;
+
+        const btn =
+          document.createElement(
+            "button"
+          );
+
+        btn.type = "button";
+        btn.textContent = label;
+        btn.style.textAlign = "left";
+        btn.style.border = "none";
+        btn.style.background =
+          "transparent";
+        btn.style.padding = "6px 8px";
+        btn.style.borderRadius =
+          "10px";
+        btn.style.cursor = "pointer";
+        btn.style.color = "#422426";
+
+        btn.addEventListener(
+          "mouseenter",
+          () =>
+            showPoiCard(
+              popupContainer,
+              poi,
+              resetFn
+            )
+        );
+
+        btn.addEventListener(
+          "click",
+          () =>
+            showPoiCard(
+              popupContainer,
+              poi,
+              resetFn
+            )
+        );
+
+        list.appendChild(btn);
+      }
+    );
+  }
+
+  // ======================
+  // Chart builder
+  // Returns routeIndex
+  // ======================
+  function buildChart(
+    canvas,
+    elevPoints,
+    movingMarker,
+    surfaceSummaryEl,
+    route,
+    unknownAsTrail
+  ) {
+    if (
+      !canvas ||
+      !Array.isArray(elevPoints) ||
+      elevPoints.length === 0
+    ) {
+      return null;
+    }
+
+    if (
+      typeof Chart === "undefined"
+    ) {
+      return null;
+    }
+
+    initChartDefaultsOnce();
+    destroyExistingChart(canvas);
+
+    const idx = buildRouteIndex(
+      elevPoints,
+      unknownAsTrail
+    );
+
+    const distances = idx.distances;
+    const elevations = idx.elevations;
+    const cats = idx.cats;
+
+    const slopes = [0];
+
+    for (
+      let i = 1;
+      i < elevations.length;
+      i++
+    ) {
+      const delta =
+        elevations[i] -
+        elevations[i - 1];
+
+      const distKm =
+        distances[i] -
+        distances[i - 1];
+
+      const slope =
+        distKm > 0
+          ? (
+              delta /
+              (distKm * 1000)
+            ) * 100
+          : 0;
+
+      slopes.push(slope);
+    }
+
+    const asphaltPts = [];
+    const gravelPts = [];
+    const trailPts = [];
+    const unknownPts = [];
+    const linePts = [];
+
+    let asphaltKm = 0;
+    let gravelKm = 0;
+    let trailKm = 0;
+    let unknownKm = 0;
+
+    for (
+      let i = 0;
+      i < elevations.length;
+      i++
+    ) {
+      const x = distances[i];
+      const y = elevations[i];
+      const cat = cats[i];
+
+      linePts.push({ x, y });
+
+      asphaltPts.push({
+        x,
+        y:
+          cat === "asphalt"
+            ? y
+            : null,
+      });
+
+      gravelPts.push({
+        x,
+        y:
+          cat === "gravel"
+            ? y
+            : null,
+      });
+
+      trailPts.push({
+        x,
+        y:
+          cat === "trail"
+            ? y
+            : null,
+      });
+
+      unknownPts.push({
+        x,
+        y:
+          cat === "unknown"
+            ? y
+            : null,
+      });
+
+      if (i > 0) {
+        const segKm =
+          distances[i] -
+          distances[i - 1];
+
+        if (cat === "asphalt") {
+          asphaltKm += segKm;
+        } else if (
+          cat === "gravel"
+        ) {
+          gravelKm += segKm;
+        } else if (
+          cat === "trail"
+        ) {
+          trailKm += segKm;
+        } else {
+          unknownKm += segKm;
+        }
+      }
+    }
+
+    renderSurfaceSummary(
+      surfaceSummaryEl,
+      route,
+      {
+        asphaltKm,
+        gravelKm,
+        trailKm,
+        unknownKm,
+        totalKm: idx.totalKm,
+      },
+      unknownAsTrail
+    );
+
+    const highest =
+      Math.max.apply(
+        null,
+        elevations
+      );
+
+    const ctx =
+      canvas.getContext("2d");
+
+    const datasets = [
+      {
+        data: asphaltPts,
+        backgroundColor: "#37394E",
+        borderColor: "#37394E",
+        fill: true,
+        pointRadius: 0,
+        tension: 0.4,
+        spanGaps: false,
+      },
+      {
+        data: gravelPts,
+        backgroundColor: "#A3886C",
+        borderColor: "#A3886C",
+        fill: true,
+        pointRadius: 0,
+        tension: 0.4,
+        spanGaps: false,
+      },
+      {
+        data: trailPts,
+        backgroundColor: "#5C7936",
+        borderColor: "#5C7936",
+        fill: true,
+        pointRadius: 0,
+        tension: 0.4,
+        spanGaps: false,
+      },
+    ];
+
+    if (!unknownAsTrail) {
+      datasets.push({
+        data: unknownPts,
+        backgroundColor: "#9AA0A6",
+        borderColor: "#9AA0A6",
+        fill: true,
+        pointRadius: 0,
+        tension: 0.4,
+        spanGaps: false,
+      });
+    }
+
+    datasets.push({
+      data: linePts,
+      borderColor: "#37394E",
+      borderWidth: 4,
+      pointRadius: 0,
+      tension: 0.4,
+      fill: false,
+      spanGaps: false,
+    });
+
+    const lineDatasetIndex =
+      datasets.length - 1;
+
+    const chart = new Chart(
+      ctx,
+      {
+        type: "line",
+
+        data: {
+          datasets,
+        },
+
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          animation: false,
+          parsing: true,
+
+          interaction: {
+            intersect: false,
+            mode: "index",
+          },
+
+          plugins: {
+            legend: {
+              display: false,
+            },
+
+            tooltip: {
+              backgroundColor:
+                "#37394E",
+
+              displayColors: false,
+
+              filter: (item) =>
+                item.datasetIndex ===
+                lineDatasetIndex,
+
+              callbacks: {
+                title: (items) => {
+                  const x =
+                    items?.[0]
+                      ?.parsed?.x ?? 0;
+
+                  return (
+                    `${Number(x).toFixed(1)}` +
+                    " km"
+                  );
+                },
+
+                label: (c) => {
+                  const i =
+                    c.dataIndex;
+
+                  const elev =
+                    elevations[i];
+
+                  const slope =
+                    slopes[i] || 0;
+
+                  return (
+                    `${elev.toFixed(0)} moh / ` +
+                    `${slope.toFixed(1)}%`
+                  );
+                },
+              },
+            },
+          },
+
+          scales: {
+            x: {
+              type: "linear",
+              min: 0,
+              max: idx.totalKm,
+
+              ticks: {
+                color: "#37394E",
+
+                callback: (v) =>
+                  `${Number(v).toFixed(0)} km`,
+              },
+
+              grid: {
+                display: false,
+              },
+            },
+
+            y: {
+              min: 0,
+
+              max:
+                Math.ceil(
+                  highest / 50
+                ) * 50,
+
+              ticks: {
+                stepSize: 50,
+                color: "#37394E",
+              },
+
+              grid: {
+                display: false,
+              },
+            },
+          },
+        },
+      }
+    );
+
+    canvas.__chart = chart;
+
+    function moveMarkerToIndex(i) {
+      if (!movingMarker) return;
+
+      const lat = idx.lats[i];
+      const lon = idx.lons[i];
+
+      if (
+        Number.isFinite(lat) &&
+        Number.isFinite(lon)
+      ) {
+        movingMarker.setLatLng([
+          lat,
+          lon,
+        ]);
+      }
+    }
+
+    // Sett den røde prikken på ruta
+    // med én gang.
+    for (
+      let i = 0;
+      i < idx.lats.length;
+      i++
+    ) {
+      const lat = idx.lats[i];
+      const lon = idx.lons[i];
+
+      if (
+        Number.isFinite(lat) &&
+        Number.isFinite(lon)
+      ) {
+        moveMarkerToIndex(i);
+        break;
+      }
+    }
+
+    canvas.addEventListener(
+      "mousemove",
+      function (evt) {
+        const points =
+          chart.getElementsAtEventForMode(
+            evt,
+            "index",
+            {
+              intersect: false,
+            },
+            true
+          );
+
+        if (points.length) {
+          moveMarkerToIndex(
+            points[0].index
+          );
+        }
+      }
+    );
+
+    canvas.addEventListener(
+      "touchmove",
+      function (e) {
+        if (
+          !e.touches ||
+          !e.touches.length
+        ) {
+          return;
+        }
+
+        const touch = e.touches[0];
+
+        const simulatedEvent =
+          new MouseEvent(
+            "mousemove",
+            {
+              bubbles: true,
+              cancelable: true,
+              view: window,
+              clientX:
+                touch.clientX,
+              clientY:
+                touch.clientY,
+            }
+          );
+
+        canvas.dispatchEvent(
+          simulatedEvent
+        );
+      },
+      {
+        passive: true,
+      }
+    );
+
+    return idx;
+  }
+
+  // ======================
+  // MarkerCluster
+  // ======================
+  function hasMarkerCluster() {
+    return (
+      typeof L !== "undefined" &&
+      typeof L.markerClusterGroup ===
+        "function"
+    );
+  }
+
+  function createClusterLayer(map) {
+    if (
+      !map ||
+      !hasMarkerCluster()
+    ) {
+      return null;
+    }
+
+    try {
+      const layer =
+        L.markerClusterGroup();
+
+      map.addLayer(layer);
+      return layer;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  function enableLazyPoiRendering(
+    map,
+    poisForRoute,
+    popupContainer,
+    resetPopup
+  ) {
+    const added = new Set();
+
+    function shouldShowPoi(poi) {
+      const pos = getPoiPos(poi);
+
+      if (!pos) return false;
+
+      const bounds =
+        map.getBounds();
+
+      if (
+        !bounds ||
+        !bounds.contains(
+          L.latLng(
+            pos[0],
+            pos[1]
+          )
+        )
+      ) {
+        return false;
+      }
+
+      const zoom = map.getZoom();
+
+      if (
+        zoom >= ANCHOR_ZOOM
+      ) {
+        return true;
+      }
+
+      const t = normalizeSymbol(
+        poi.symbolType ||
+        poi.symbol ||
+        ""
+      );
+
+      return ANCHOR_TYPES.has(t);
+    }
+
+    function key(poi) {
+      return poi && poi.id
+        ? String(poi.id)
+        : JSON.stringify(
+            getPoiPos(poi) || []
+          );
+    }
+
+    function render() {
+      for (
+        const poi of poisForRoute
+      ) {
+        if (!shouldShowPoi(poi)) {
+          continue;
+        }
+
+        const k = key(poi);
+
+        if (added.has(k)) {
+          continue;
+        }
+
+        added.add(k);
+
+        addMarkerFromDb(
+          map,
+          poi,
+          popupContainer,
+          resetPopup
+        );
+      }
+    }
+
+    map.on(
+      "moveend zoomend",
+      render
+    );
+
+    render();
+  }
+
+  // ======================
+  // Fullscreen control
+  // ======================
+  function enterFullscreen(el) {
+    if (!el) return;
+
+    const fn =
+      el.requestFullscreen ||
+      el.webkitRequestFullscreen ||
+      el.msRequestFullscreen;
+
+    if (fn) {
+      fn.call(el);
+    }
+  }
+
+  function exitFullscreen() {
+    const fn =
+      document.exitFullscreen ||
+      document.webkitExitFullscreen ||
+      document.msExitFullscreen;
+
+    if (fn) {
+      fn.call(document);
+    }
+  }
+
+  function isFullscreen() {
+    return !!(
+      document.fullscreenElement ||
+      document.webkitFullscreenElement ||
+      document.msFullscreenElement
+    );
+  }
+
+  function addFullscreenControl(
+    map,
+    sectionEl
+  ) {
+    if (!map || !sectionEl) return;
+
+    const ctrl = L.control({
+      position: "topleft",
+    });
+
+    ctrl.onAdd = function () {
+      const wrap =
+        L.DomUtil.create(
+          "div",
+          "leaflet-bar svingom-fs-wrap"
+        );
+
+      const btn =
+        L.DomUtil.create(
+          "button",
+          "svingom-fs-btn",
+          wrap
+        );
+
+      btn.type = "button";
+      btn.title = "Fullskjerm";
+      btn.innerHTML = "⤢";
+
+      L.DomEvent.disableClickPropagation(
+        wrap
+      );
+
+      L.DomEvent.on(
+        btn,
+        "click",
+        (e) => {
+          L.DomEvent.stop(e);
+
+          if (isFullscreen()) {
+            exitFullscreen();
+          } else {
+            enterFullscreen(sectionEl);
+          }
+
+          setTimeout(
+            () =>
+              map.invalidateSize(),
+            250
+          );
+        }
+      );
+
+      return wrap;
+    };
+
+    ctrl.addTo(map);
+  }
+
+  // ======================
+  // Position control
+  // My location + place pin
+  // ======================
+  function addPositionControl(
+    map,
+    popupContainer,
+    getRouteIndex,
+    poisForRoute,
+    revealPoisNear,
+    resetPopup
+  ) {
+    if (!map) return;
+
+    let userMarker = null;
+    let userCircle = null;
+    let chosenMarker = null;
+    let pickMode = false;
+
+    function t() {
+      const lang = getLang();
+
+      return (
+        infoTexts[lang] ||
+        infoTexts.no
+      );
+    }
+
+    function setPickMode(on) {
+      pickMode = !!on;
+
+      map.getContainer().style.cursor =
+        pickMode
+          ? "crosshair"
+          : "";
+    }
+
+    function updatePanels(latlng) {
+      const idx =
+        typeof getRouteIndex === "function"
+          ? getRouteIndex()
+          : null;
+
+      if (!idx) return;
+
+      renderPositionResult(
+        popupContainer,
+        idx,
+        latlng.lat,
+        latlng.lng
+      );
+
+      const nearby = getNearbyPoisSorted(
+        poisForRoute,
+        latlng,
+        NEARBY_RADIUS_M,
+        NEARBY_LIMIT
+      );
+
+      renderNearbyPoisBox(
+        popupContainer,
+        nearby,
+        resetPopup
+      );
+    }
+
+    function showPickHintOnce() {
+      const text = t().pickHint;
+
+      const box = L.control({
+        position: "topleft",
+      });
+
+      box.onAdd = function () {
+        const el = L.DomUtil.create(
+          "div",
+          "svingom-pick-hint"
+        );
+
+        el.style.background = "#EEE9E0";
+        el.style.color = "#422426";
+        el.style.padding = "8px 10px";
+        el.style.borderRadius = "10px";
+        el.style.boxShadow =
+          "0 1px 8px rgba(0,0,0,0.12)";
+        el.style.marginTop = "6px";
+        el.style.maxWidth = "220px";
+        el.style.fontSize = "13px";
+        el.innerHTML = text;
+
+        return el;
+      };
+
+      box.addTo(map);
+
+      setTimeout(() => {
+        try {
+          map.removeControl(box);
+        } catch (_) {}
+      }, 4500);
+    }
+
+    const ctrl = L.control({
+      position: "topleft",
+    });
+
+    ctrl.onAdd = function () {
+      const wrap = L.DomUtil.create(
+        "div",
+        "leaflet-bar svingom-pos-wrap"
+      );
+
+      const btnMe = L.DomUtil.create(
+        "button",
+        "svingom-pos-btn",
+        wrap
+      );
+
+      btnMe.type = "button";
+      btnMe.title = t().btnMeTitle;
+      btnMe.innerHTML = "◎";
+
+      const btnPick = L.DomUtil.create(
+        "button",
+        "svingom-pos-btn",
+        wrap
+      );
+
+      btnPick.type = "button";
+      btnPick.title = t().btnPickTitle;
+      btnPick.innerHTML = "📍";
+
+      L.DomEvent.disableClickPropagation(
+        wrap
+      );
+
+      L.DomEvent.on(
+        btnMe,
+        "click",
+        (e) => {
+          L.DomEvent.stop(e);
+
+          if (!navigator.geolocation) {
+            return alert(
+              "Geolocation støttes ikke i denne nettleseren."
+            );
+          }
+
+          navigator.geolocation.getCurrentPosition(
+            (pos) => {
+              const lat =
+                pos.coords.latitude;
+
+              const lon =
+                pos.coords.longitude;
+
+              const acc =
+                pos.coords.accuracy || 0;
+
+              const ll =
+                L.latLng(lat, lon);
+
+              if (!userMarker) {
+                userMarker =
+                  L.marker(ll).addTo(map);
+              } else {
+                userMarker.setLatLng(ll);
+              }
+
+              if (!userCircle) {
+                userCircle = L.circle(
+                  ll,
+                  {
+                    radius: acc,
+                    weight: 1,
+                  }
+                ).addTo(map);
+              } else {
+                userCircle
+                  .setLatLng(ll)
+                  .setRadius(acc);
+              }
+
+              map.setView(
+                ll,
+                Math.max(
+                  map.getZoom(),
+                  12
+                )
+              );
+
+              if (
+                typeof resetPopup ===
+                "function"
+              ) {
+                resetPopup();
+              }
+
+              updatePanels(ll);
+
+              if (
+                typeof revealPoisNear ===
+                "function"
+              ) {
+                try {
+                  revealPoisNear(
+                    ll,
+                    3000
+                  );
+                } catch (_) {}
+              }
+            },
+
+            (err) =>
+              alert(
+                "Klarte ikke hente posisjon: " +
+                  (
+                    err.message ||
+                    err.code
+                  )
+              ),
+
+            {
+              enableHighAccuracy: true,
+              timeout: 8000,
+              maximumAge: 30000,
+            }
+          );
+        }
+      );
+
+      L.DomEvent.on(
+        btnPick,
+        "click",
+        (e) => {
+          L.DomEvent.stop(e);
+
+          const next = !pickMode;
+
+          setPickMode(next);
+
+          btnPick.classList.toggle(
+            "active",
+            next
+          );
+
+          if (next) {
+            showPickHintOnce();
+          }
+        }
+      );
+
+      return wrap;
+    };
+
+    ctrl.addTo(map);
+
+    map.on(
+      "click",
+      (evt) => {
+        if (!pickMode) return;
+
+        const ll = evt.latlng;
+
+        if (!chosenMarker) {
+          chosenMarker = L.marker(
+            ll,
+            {
+              draggable: true,
+            }
+          ).addTo(map);
+
+          const onMove = () => {
+            const p =
+              chosenMarker.getLatLng();
+
+            updatePanels(p);
+
+            if (
+              typeof revealPoisNear ===
+              "function"
+            ) {
+              try {
+                revealPoisNear(
+                  p,
+                  3000
+                );
+              } catch (_) {}
+            }
+          };
+
+          chosenMarker.on(
+            "drag",
+            onMove
+          );
+
+          chosenMarker.on(
+            "dragend",
+            onMove
+          );
+        } else {
+          chosenMarker.setLatLng(ll);
+        }
+
+        if (
+          typeof resetPopup ===
+          "function"
+        ) {
+          resetPopup();
+        }
+
+        updatePanels(ll);
+
+        if (
+          typeof revealPoisNear ===
+          "function"
+        ) {
+          try {
+            revealPoisNear(
+              ll,
+              3000
+            );
+          } catch (_) {}
+        }
+
+        setPickMode(false);
+
+        const active =
+          map
+            .getContainer()
+            .querySelector(
+              ".svingom-pos-btn.active"
+            );
+
+        if (active) {
+          active.classList.remove(
+            "active"
+          );
+        }
+      }
+    );
+  }
+
+  // ======================
+  // Bicycle parking
+  // ======================
+  function enableBicycleParkingLayer(
+    map,
+    dataUrl,
+    minZoom,
+    iconUrl
+  ) {
+    if (!dataUrl) return;
+
+    let layer = null;
+    let loading = null;
+
+    async function ensureLayer() {
+      if (layer) return layer;
+      if (loading) return loading;
+
+      loading = fetchJsonCached(
+        dataUrl
+      )
+        .then((geojson) => {
+          const features =
+            Array.isArray(
+              geojson &&
+              geojson.features
+            )
+              ? geojson.features.filter(
+                  (feature) => {
+                    const access =
+                      String(
+                        (
+                          feature &&
+                          feature.properties &&
+                          feature
+                            .properties
+                            .access
+                        ) || ""
+                      ).toLowerCase();
+
+                    return (
+                      access !==
+                      "private"
+                    );
+                  }
+                )
+              : [];
+
+          const parkingIcon =
+            L.icon({
+              iconUrl: cacheBustUrl(
+                iconUrl ||
+                  DEFAULT_BICYCLE_PARKING_ICON_URL
+              ),
+
+              iconSize: [22, 22],
+              iconAnchor: [11, 11],
+
+              className:
+                "svingom-bicycle-parking-icon",
+            });
+
+          layer = L.geoJSON(
+            {
+              type:
+                "FeatureCollection",
+              features,
+            },
+            {
+              pointToLayer: (
+                _feature,
+                latlng
+              ) =>
+                L.marker(
+                  latlng,
+                  {
+                    icon:
+                      parkingIcon,
+
+                    interactive:
+                      false,
+
+                    keyboard:
+                      false,
+
+                    title:
+                      "Sykkelparkering",
+                  }
+                ),
+            }
+          );
+
+          return layer;
+        })
+        .catch((error) => {
+          loading = null;
+
+          console.error(
+            "[route_map] Bicycle parking error:",
+            dataUrl,
+            error
+          );
+
+          throw error;
+        });
+
+      return loading;
+    }
+
+    async function updateVisibility() {
+      if (
+        map.getZoom() <
+        minZoom
+      ) {
+        if (
+          layer &&
+          map.hasLayer(layer)
+        ) {
+          map.removeLayer(layer);
+        }
+
+        return;
+      }
+
+      try {
+        const readyLayer =
+          await ensureLayer();
+
+        if (
+          map.getZoom() >=
+            minZoom &&
+          !map.hasLayer(readyLayer)
+        ) {
+          readyLayer.addTo(map);
+        }
+      } catch (_) {
+        // Kartet skal fortsette å
+        // fungere selv om dataene
+        // ikke kan hentes.
+      }
+    }
+
+    map.on(
+      "zoomend",
+      updateVisibility
+    );
+
+    updateVisibility();
+  }
+
+  // ======================
+  // Core init per section
+  // ======================
+  async function initRouteSection(
+    section
+  ) {
+    try {
+      const routeId =
+        (
+          section.dataset.routeId ||
+          ""
+        ).trim();
+
+      const routesUrl =
+        (
+          section.dataset.routesUrl ||
+          ""
+        ).trim();
+
+      const poisUrl =
+        (
+          section.dataset.poisUrl ||
+          ""
+        ).trim();
+
+      const routeMarkersUrl =
+        (
+          section.dataset
+            .routeMarkersUrl ||
+          ""
+        ).trim();
+
+      const bicycleParkingUrl =
+        (
+          section.dataset
+            .bicycleParkingUrl ||
+          ""
+        ).trim();
+
+      const bicycleParkingIconUrl =
+        (
+          section.dataset
+            .bicycleParkingIconUrl ||
+          ""
+        ).trim();
+
+      const bicycleParkingMinZoom =
+        Math.max(
+          0,
+          parseInt(
+            section.dataset
+              .bicycleParkingMinZoom ||
+              "14",
+            10
+          ) || 14
+        );
+
+      const unknownAsTrail =
+        String(
+          section.dataset
+            .unknownAsTrail ||
+            ""
+        ).trim() === "1";
+
+      if (
+        !routeId ||
+        !routesUrl ||
+        !poisUrl ||
+        !routeMarkersUrl
+      ) {
+        console.error(
+          "[route_map] Missing data attributes:",
+          {
+            routeId,
+            routesUrl,
+            poisUrl,
+            routeMarkersUrl,
+          }
+        );
+
+        return;
+      }
+
+      const mapDiv =
+        section.querySelector(
+          ".route-map"
+        );
+
+      const popupContainer =
+        section.querySelector(
+          ".route-popup"
+        );
+
+      const chartCanvas =
+        section.querySelector(
+          ".chart-wrapper canvas"
+        );
+
+      const surfaceSummaryEl =
+        section.querySelector(
+          ".surface-summary"
+        );
+
+      if (
+        !mapDiv ||
+        !popupContainer ||
+        !chartCanvas
+      ) {
+        console.error(
+          "[route_map] Missing DOM elements for",
+          routeId
+        );
+
+        return;
+      }
+
+      if (
+        typeof L ===
+          "undefined" ||
+        typeof L.map !==
+          "function" ||
+        typeof L.GPX !==
+          "function" ||
+        typeof Chart ===
+          "undefined"
+      ) {
+        console.warn(
+          "[route_map] Waiting for Leaflet, Leaflet-GPX and Chart.js"
+        );
+
+        return;
+      }
+
+      if (
+        section
+          .__routeMapInitialized ||
+        section
+          .__routeMapInitializing
+      ) {
+        return;
+      }
+
+      section.__routeMapInitializing =
+        true;
+
+      const routesJson =
+        await fetchJsonCached(
+          routesUrl
+        );
+
+      const route =
+        Array.isArray(routesJson)
+          ? routesJson.find(
+              (x) =>
+                x &&
+                x.id === routeId
+            )
+          : (
+              routesJson &&
+              routesJson[routeId]
+            ) ||
+            null;
+
+      if (!route) {
+        console.error(
+          "[route_map] routeId not found in routes.json:",
+          routeId
+        );
+
+        section.__routeMapInitializing =
+          false;
+
+        return;
+      }
+
+      const gpxUrl =
+        (
+          route.gpxUrl ||
+          ""
+        ).trim();
+
+      const elevUrl =
+        (
+          route.elevationSurfaceUrl ||
+          route.elevationUrl ||
+          ""
+        ).trim();
+
+      if (
+        !gpxUrl ||
+        !elevUrl
+      ) {
+        console.error(
+          "[route_map] Route missing gpxUrl/elevationUrl:",
+          routeId,
+          route
+        );
+
+        section.__routeMapInitializing =
+          false;
+
+        return;
+      }
+
+      const centerLat =
+        parseFloat(
+          section.dataset.centerLat ||
+          route.centerLat ||
+          "59.83467"
+        );
+
+      const centerLng =
+        parseFloat(
+          section.dataset.centerLng ||
+          route.centerLng ||
+          "9.57846"
+        );
+
+      const zoom =
+        parseInt(
+          section.dataset.zoom ||
+          route.zoom ||
+          "11",
+          10
+        );
+
+      const map = L.map(
+        mapDiv,
+        {
+          center: [
+            centerLat,
+            centerLng,
+          ],
+
+          zoom,
+
+          scrollWheelZoom:
+            true,
+        }
+      );
+
+      section.__routeMap = map;
+
+      L.tileLayer(
+        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        {
+          attribution:
+            'Kartdata &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap-bidragsyterne</a>',
+
+          maxZoom: 19,
+        }
+      ).addTo(map);
+
+      enableBicycleParkingLayer(
+        map,
+        bicycleParkingUrl,
+        bicycleParkingMinZoom,
+        bicycleParkingIconUrl
+      );
+
+      const movingMarker =
+        L.circleMarker(
+          [
+            centerLat,
+            centerLng,
+          ],
+          {
+            radius: 6,
+            color: "#CA6B2A",
+            fillColor:
+              "#CA6B2A",
+            fillOpacity: 1,
+            weight: 2,
+          }
+        ).addTo(map);
+
+      renderStats(
+        popupContainer,
+        route
+      );
+
+      function resetPopup() {
+        renderStats(
+          popupContainer,
+          route
+        );
+      }
+
+      let routeIndex = null;
+
+      try {
+        const elevJson =
+          await fetchJsonCached(
+            elevUrl
+          );
+
+        const pts =
+          Array.isArray(
+            elevJson.points
+          )
+            ? elevJson.points
+            : elevJson;
+
+        const cleaned =
+          (pts || []).filter(
+            (p) =>
+              p &&
+              p.elevation != null &&
+              p.lat != null &&
+              p.lon != null &&
+              p.distance != null
+          );
+
+        if (cleaned.length) {
+          routeIndex =
+            buildChart(
+              chartCanvas,
+              cleaned,
+              movingMarker,
+              surfaceSummaryEl,
+              route,
+              unknownAsTrail
+            );
+        } else {
+          console.warn(
+            "[route_map] Elevation: no usable points in",
+            elevUrl
+          );
+        }
+      } catch (e) {
+        console.error(
+          "[route_map] Elevation error:",
+          routeId,
+          elevUrl,
+          e
+        );
+      }
+
+      let poisForRoute = [];
+
+      try {
+        const [
+          poisJson,
+          routeMarkersJson,
+        ] = await Promise.all([
+          fetchJsonCached(
+            poisUrl
+          ),
+
+          fetchJsonCached(
+            routeMarkersUrl
+          ),
+        ]);
+
+        const allPois =
+          Array.isArray(poisJson)
+            ? poisJson
+            : Object.values(
+                poisJson || {}
+              );
+
+        const poisById =
+          new Map();
+
+        allPois.forEach((p) => {
+          if (p && p.id) {
+            poisById.set(
+              p.id,
+              p
+            );
+          }
+        });
+
+        const ids =
+          routeMarkersJson &&
+          routeMarkersJson[
+            routeId
+          ]
+            ? routeMarkersJson[
+                routeId
+              ]
+            : [];
+
+        poisForRoute = ids
+          .map((id) =>
+            poisById.get(id)
+          )
+          .filter(Boolean);
+
+        if (
+          poisForRoute.length <=
+          POI_THRESHOLD
+        ) {
+          poisForRoute.forEach(
+            (p) =>
+              addMarkerFromDb(
+                map,
+                p,
+                popupContainer,
+                resetPopup
+              )
+          );
+        } else {
+          const clusterLayer =
+            createClusterLayer(map);
+
+          if (clusterLayer) {
+            poisForRoute.forEach(
+              (p) =>
+                addMarkerFromDb(
+                  clusterLayer,
+                  p,
+                  popupContainer,
+                  resetPopup
+                )
+            );
+          } else {
+            enableLazyPoiRendering(
+              map,
+              poisForRoute,
+              popupContainer,
+              resetPopup
+            );
+          }
+        }
+      } catch (e) {
+        console.error(
+          "[route_map] POI error:",
+          routeId,
+          e
+        );
+      }
+
+      const boosted =
+        new Set();
+
+      function revealPoisNear(
+        latlng,
+        radiusMeters = 3000
+      ) {
+        if (
+          !latlng ||
+          !Array.isArray(
+            poisForRoute
+          ) ||
+          !poisForRoute.length
+        ) {
+          return;
+        }
+
+        const center = L.latLng(
+          latlng.lat,
+          latlng.lng
+        );
+
+        for (
+          const p of
+          poisForRoute
+        ) {
+          const pos =
+            getPoiPos(p);
+
+          if (!pos) continue;
+
+          const ll = L.latLng(
+            pos[0],
+            pos[1]
+          );
+
+          if (
+            center.distanceTo(ll) <=
+            radiusMeters
+          ) {
+            const k =
+              p && p.id
+                ? String(p.id)
+                : JSON.stringify(
+                    pos
+                  );
+
+            if (
+              boosted.has(k)
+            ) {
+              continue;
+            }
+
+            boosted.add(k);
+
+            addMarkerFromDb(
+              map,
+              p,
+              popupContainer,
+              resetPopup
+            );
+          }
+        }
+      }
+
+      const enableFullscreen =
+        String(
+          section.dataset
+            .enableFullscreen ||
+            "1"
+        ) === "1";
+
+      const enablePosition =
+        String(
+          section.dataset
+            .enablePosition ||
+            "1"
+        ) === "1";
+
+      if (enablePosition) {
+        addPositionControl(
+          map,
+          popupContainer,
+          () => routeIndex,
+          poisForRoute,
+          revealPoisNear,
+          () => resetPopup()
+        );
+      }
+
+      if (enableFullscreen) {
+        addFullscreenControl(
+          map,
+          section
+        );
+      }
+
+      try {
+        new L.GPX(
+          cacheBustUrl(gpxUrl),
+          {
+            async: true,
+
+            polyline_options: {
+              color: "#37394E",
+              weight: 5,
+              opacity: 0.9,
+            },
+
+            marker_options: {
+              startIconUrl: null,
+              endIconUrl: null,
+              shadowUrl: null,
+              wptIconUrls: {},
+            },
+          }
+        )
+          .on(
+            "loaded",
+            function (e) {
+              map.fitBounds(
+                e.target.getBounds(),
+                {
+                  padding: [
+                    50,
+                    50,
+                  ],
+                }
+              );
+
+              setTimeout(
+                () =>
+                  map.invalidateSize(),
+                60
+              );
+            }
+          )
+          .addTo(map);
+      } catch (e) {
+        console.error(
+          "[route_map] GPX error:",
+          routeId,
+          gpxUrl,
+          e
+        );
+      }
+
+      section.__routeMapInitialized =
+        true;
+
+      section.__routeMapInitializing =
+        false;
+    } catch (e) {
+      section.__routeMapInitializing =
+        false;
+
+      if (
+        section.__routeMap &&
+        !section
+          .__routeMapInitialized
+      ) {
+        try {
+          section
+            .__routeMap
+            .remove();
+        } catch (_) {}
+
+        section.__routeMap = null;
+      }
+
+      console.error(
+        "[route_map] initRouteSection fatal:",
+        e
+      );
+    }
+  }
+
+  // ======================
+  // Robust init for Squarespace
+  // ======================
+  function initAllOnce() {
+    initChartDefaultsOnce();
+
+    const sections =
+      document.querySelectorAll(
+        ".map-section.map-master[data-route-id]"
+      );
+
+    console.log(
+      "[route_map] initAll sections:",
+      sections.length
+    );
+
+    sections.forEach(
+      (section) =>
+        initRouteSection(
+          section
+        )
+    );
+  }
+
+  function startRobustInit() {
+    let tries = 0;
+    const maxTries = 120;
+
+    const tick = () => {
+      tries++;
+
+      initAllOnce();
+
+      const sections =
+        Array.from(
+          document.querySelectorAll(
+            ".map-section.map-master[data-route-id]"
+          )
+        );
+
+      const allReady =
+        sections.length > 0 &&
+        sections.every(
+          (section) =>
+            section
+              .__routeMapInitialized
+        );
+
+      if (
+        allReady ||
+        tries >= maxTries
+      ) {
+        return;
+      }
+
+      setTimeout(
+        tick,
+        250
+      );
+    };
+
+    tick();
+
+    if (
+      document.readyState ===
+      "loading"
+    ) {
+      document.addEventListener(
+        "DOMContentLoaded",
+        () =>
+          setTimeout(
+            initAllOnce,
+            0
+          )
+      );
+    } else {
+      setTimeout(
+        initAllOnce,
+        0
+      );
+    }
+
+    try {
+      const obs =
+        new MutationObserver(
+          () => initAllOnce()
+        );
+
+      obs.observe(
+        document.documentElement,
+        {
+          childList: true,
+          subtree: true,
+        }
+      );
+
+      setTimeout(
+        () => {
+          try {
+            obs.disconnect();
+          } catch (_) {}
+        },
+        30000
+      );
+    } catch (_) {}
+  }
+
+  startRobustInit();
+})();    
