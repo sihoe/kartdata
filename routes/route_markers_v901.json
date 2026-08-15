@@ -531,7 +531,26 @@
   "smedbrua-e2987e09cdbd",
   "hoen-skatten-208a6ddcc989"
 ],
-  "bolkesjorunden": [
+  "_print": {
+    "solvveien-kort": [
+  "fossesholm-herregard-2b4ae13a624a",
+  "nostetangen-norsk-glassmuseum-d6a4d5b68d36",
+  "kjaerlighetsstien-12f0fdcfac2d",
+  "museet-i-smeltehytta-22aa114e1e39",
+  "sundhaugen-badeplass-d7fe63daca4e",
+  "solvgruvene-i-saggrenda-047ff0c4af13",
+  "vestfossen-kunstlaboratorium-27750453876f",
+  "fiskum-gamle-kirke-b0f002b143d3",
+  "bomstua-95206f0ba62d",
+  "drammen-havnepromenade-c8b37e9f5539",
+  "gamle-dunserud-kro-d5e28b22f685",
+  "haug-kirke-i-hokksund-b01dc34fe608",
+  "jorandrudmoen-a47e61017285",
+  "kongsberg-kirke-9d17be2c7f47",
+  "temte-gard-cde404a8bee7",
+  "smedbrua-e2987e09cdbd",
+   ],  
+    "bolkesjorunden": [
     "bolkesjo-gaard-b30a6cff02d8",
     "bolkesjo-gaard-stulen-fa66119db1ff",
     "bolkesjo-turisthotell-db83ab0fb5d7",
