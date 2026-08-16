@@ -2136,14 +2136,14 @@
       }
     );
 
-    L.tileLayer(
-      "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-      {
-        attribution:
-          "Kartdata &copy; OpenStreetMap-bidragsyterne",
-        maxZoom: 19,
-      }
-    ).addTo(printMap);
+L.tileLayer(
+  "https://cache.kartverket.no/v1/wmts/1.0.0/toporaster/default/webmercator/{z}/{y}/{x}.png",
+  {
+    attribution: "© Kartverket",
+    maxZoom: 18,
+    crossOrigin: true,
+  }
+).addTo(map);
 
     const routeLatLngs =
       routeIndex.lats
@@ -3366,16 +3366,15 @@
 
       section.__routeMap = map;
 
-      L.tileLayer(
-        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-        {
-          attribution:
-            'Kartdata &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap-bidragsyterne</a>',
-
-          maxZoom: 19,
-        }
-      ).addTo(map);
-
+L.tileLayer(
+  "https://cache.kartverket.no/v1/wmts/1.0.0/topo/default/webmercator/{z}/{y}/{x}.png",
+  {
+    attribution: "© Kartverket",
+    maxZoom: 18,
+    crossOrigin: true,
+  }
+).addTo(map);
+      
       enableBicycleParkingLayer(
         map,
         bicycleParkingUrl,
