@@ -554,29 +554,29 @@
     "arestua-bolkesjo-gaard-fa12d59b9127"
   ],
 
-   "_print": {
-    "solvveien-kort": [
-      "fossesholm-herregard-2b4ae13a624a",
-      "nostetangen-norsk-glassmuseum-d6a4d5b68d36",
-      "kjaerlighetsstien-12f0fdcfac2d",
-      "museet-i-smeltehytta-22aa114e1e39",
-      "sundhaugen-badeplass-d7fe63daca4e",
-      "solvgruvene-i-saggrenda-047ff0c4af13",
-      "vestfossen-kunstlaboratorium-27750453876f",
-      "fiskum-gamle-kirke-b0f002b143d3",
-      "bomstua-95206f0ba62d",
-      "drammen-havnepromenade-c8b37e9f5539",
-      "gamle-dunserud-kro-d5e28b22f685",
-      "haug-kirke-i-hokksund-b01dc34fe608",
-      "jorandrudmoen-a47e61017285",
-      "kongsberg-kirke-9d17be2c7f47",
-      "temte-gard-cde404a8bee7",
-      "smedbrua-e2987e09cdbd"
-    ],
-      "baklivegen-rundt": [
+"_print": {
+  "solvveien-kort": [
+    "fossesholm-herregard-2b4ae13a624a",
+    "nostetangen-norsk-glassmuseum-d6a4d5b68d36",
+    "kjaerlighetsstien-12f0fdcfac2d",
+    "museet-i-smeltehytta-22aa114e1e39",
+    "sundhaugen-badeplass-d7fe63daca4e",
+    "solvgruvene-i-saggrenda-047ff0c4af13",
+    "vestfossen-kunstlaboratorium-27750453876f",
+    "fiskum-gamle-kirke-b0f002b143d3",
+    "bomstua-95206f0ba62d",
+    "drammen-havnepromenade-c8b37e9f5539",
+    "gamle-dunserud-kro-d5e28b22f685",
+    "haug-kirke-i-hokksund-b01dc34fe608",
+    "jorandrudmoen-a47e61017285",
+    "kongsberg-kirke-9d17be2c7f47",
+    "temte-gard-cde404a8bee7",
+    "smedbrua-e2987e09cdbd"
+  ],
+  "baklivegen-rundt": [
     "camp-uvdal-cd1d1120a680",
     "coop-prix-uvdal-aecc9a5f4214",
     "uvdal-stavkirke-7abb2155f0ef"
-   ] 
-  }
+  ]
+}
 }
