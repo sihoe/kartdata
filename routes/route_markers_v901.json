@@ -216,7 +216,8 @@
     "numedal-blomster-8447ae7d24cb",
     "veggli-vertshus-905a770d212e",
     "veggli-stasjon-ef92ddf91bdb",
-    "oktodden-molle-a77695be"
+    "oktodden-molle-a77695be",
+    "kjerre-stasjon-ea6f4ea5e874"
   ],
   "numedalsruta-nasjonal-rute-5": [
     "badedammen-pa-veggli-9468b2127fb9",
@@ -246,7 +247,6 @@
     "nore-i-bcd7b042033d",
     "nore-stavkirke-1664848103f5",
     "numedal-blomster-8447ae7d24cb",
-    "numedal-kro-camping-0e82798e",
     "paradisgrenda-d6c60b2c1414",
     "rafting-b0e294a7b9bb",
     "rema1000-lampeland-f042c85a5bd7",
@@ -318,7 +318,6 @@
   ],
   "blefjell-juvefossen": [
     "blefjell-lodge-bistro-5488655f",
-    "blefjell-lodge-fjellhandel-78a7b899",
     "blefjell-lodge-leiligheter-f0ad104a",
     "blefjell-nord-til-sor-9a080f8e",
     "blefjell-sor-til-nord-7e003a18",
@@ -590,6 +589,143 @@
     "sandviken-camping-2f1186452c38",
     "uvdal-stavkirke-7abb2155f0ef",
     "a-camp-04b0b9573cf1"
+  ],
+    "kunst-og-koboltrunden": [
+    "bingen-kapell-2b6160ef8d5c",
+    "blaafarvevaerket-fe08615fa735",
+    "folkemusikksenteret-9bdf9930",
+    "koboltgruvene-640b94ffbdca",
+    "kunstnerhjemmet-lauvlia-th-kittelsen-90c02d8a",
+    "lampeland-hotell-368c075ba0fa",
+    "lyngdal-landhandel-154a9112ca6f",
+    "sigdal-museum-ff536872",
+    "th-kittelsen-museum-1a6e35a0",
+    "vatnebrynnvatnet-badeplass-55ac42ac7788"
+  ],
+  "flesberg-bading": [
+    "klofterholen-badeplass-dc13753f5aa2",
+    "lampeland-hotell-368c075ba0fa",
+    "vatnebrynnvatnet-badeplass-55ac42ac7788",
+    "ligrenda-i-flesberg-b1c3b13c474e",
+    "flesberg-stavkirke-b487db3d",
+    "haugen-friluftspark-4d6d50bf"
+  ],
+    "langaasen-rundt": [
+    "badedammen-pa-veggli-9468b2127fb9",
+    "dresin-numedalsbanen-4616ba38481e",
+    "veggli-vertshus-905a770d212e",
+    "kjerre-stasjon-ea6f4ea5e874"
+  ],
+  "imingfjell-rundt": [
+  "solheimstulen-605cdb33",
+  "imingfjell-turistheim-34954512",
+  "utfartsparkering-050f03ca",
+  "utsiktvikstul-952b9dd2"
+  ],
+   "trillemarka-rundt": [
+    "badedammen-pa-veggli-9468b2127fb9",
+    "dresin-numedalsbanen-4616ba38481e",
+    "eggedal-borgerstue-1af792fe",
+    "eggedal-molle-e5b536cb",
+    "grense-trillemarka-naturreservat-e820fe60",
+    "sagholen-badeplass-97979a79",
+    "veggli-vertshus-905a770d212e"
+  ],
+    "skagsaasen-og-kravikfjorden-rundt": [
+    "eidsae-badeplass-56ff0729d4c7",
+    "nordfjord-stasjon-de1ce0be93c3",
+    "nordre-frygne-18aa7723",
+    "nore-stavkirke-1664848103f5",
+    "veggli-vertshus-905a770d212e",
+    "kjerre-stasjon-ea6f4ea5e874"  
+  ],
+  "numedalsruta-nasjonal-rute-5": [
+    "badedammen-pa-veggli-9468b2127fb9",
+    "coop-extra-veggli-e2096c021ad1",
+    "dresin-numedalsbanen-4616ba38481e",
+    "eidsae-badeplass-56ff0729d4c7",
+    "fauskodammen-b4485715bcbc",
+    "fin-rasteplass-8228ae6729f7",
+    "flesberg-stavkirke-b487db3d",
+    "friluftsbua-af4c03d607ad",
+    "haugen-friluftspark-4d6d50bf",
+    "kongsberg-stasjon-bdcfd029",
+    "kravikfjord-stasjon-numedalsbanen-2d671855f533",
+    "lampeland-hotell-368c075ba0fa",
+    "nordfjord-stasjon-de1ce0be93c3",
+    "nore-i-bcd7b042033d",
+    "nore-stavkirke-1664848103f5",
+    "paradisgrenda-d6c60b2c1414",
+    "rollag-handel-75b004433bcd",
+    "rollag-bygdetun-b45fc688fa0c",
+    "rollag-stavkirke-f92474ab2669",
+    "rodberg-hotell-62ae4fca3168",
+    "uvdal-stavkirke-7abb2155f0ef",
+    "veggli-vertshus-905a770d212e",
+    "asly-bru-a0b4d40b105d"
+  ],
+   "kirkebygda-rundt": [
+    "camp-uvdal-cd1d1120a680",
+    "coop-prix-uvdal-aecc9a5f4214",
+    "uvdal-stavkirke-7abb2155f0ef"
+  ],
+    "blaafarverunden": [
+    "bingen-kapell-2b6160ef8d5c",
+    "blaafarvevaerket-fe08615fa735",
+    "friluftsbua-af4c03d607ad",
+    "koboltgruvene-640b94ffbdca",
+    "lampeland-hotell-368c075ba0fa",
+    "letmolivatnet-badeplass-9edff5fb",
+    "lyngdal-landhandel-154a9112ca6f",
+    "lyngdal-kirke-ce478962a7b1",
+    "th-kittelsen-museum-1a6e35a0",
+    "vatnebrynnvatnet-badeplass-55ac42ac7788",
+    "vatnas-kirke-015703a3"
+  ],
+   "ostskauen-rundt": [
+    "friluftsbua-af4c03d607ad",
+    "lampeland-hotell-368c075ba0fa",
+    "lyngdal-landhandel-154a9112ca6f",
+    "lyngdal-kirke-ce478962a7b1",
+    "vatnebrynnvatnet-badeplass-55ac42ac7788",
+    "vatnas-kirke-015703a3"
+  ],
+  "blefjell-juvefossen": [
+    "blefjell-lodge-bistro-5488655f",
+    "blaberg-kaf-8fd639e5",
+    "blabaer-camping-d2103932",
+    "fagerfjell-skisenter-acea26e0",
+    "hoimyr-fjellcamping-587fafdc",
+    "juvefossen-5e983099",
+    "sandvatnet-c136b491",
+    "sti-til-juvefossen-kort-vei-2b5ebb93",
+    "sti-til-juvefossen-nordfra-cc3ea87d"
+  ],
+  "bingenrunden": [
+    "bingen-kapell-2b6160ef8d5c",
+    "friluftsbua-af4c03d607ad",
+    "lampeland-hotell-368c075ba0fa",
+    "lampeland-spiseri-30f929f4baaa",
+    "letmolivatnet-badeplass-9edff5fb",
+    "lyngdal-landhandel-154a9112ca6f",
+    "lyngdal-kirke-ce478962a7b1",
+    "vatnebrynnvatnet-badeplass-55ac42ac7788"
+    ],
+   "vatnebrynvatnet-rundt": [
+    "friluftsbua-af4c03d607ad",
+    "lampeland-hotell-368c075ba0fa",
+    "ligrenda-i-flesberg-b1c3b13c474e",
+    "vatnebrynnvatnet-badeplass-55ac42ac7788"
+  ],
+  "ovrebygderunden": [
+    "austbygde-bakeri-8876d7660919",
+    "austbygde-kirke-dfc3f990bcf4",
+    "badekulper-i-lureai-071f77ca0e7b",
+    "bruholen-482e9f370595",
+    "kiwi-austbygde-5645339c2021",
+    "sandviken-camping-2f1186452c38",
+    "stordalen-gardsbruk-9b40075c97f1",
+    "ovrebygde-rundt-kort-0cf553f1"
   ],
   "baklivegen-rundt": [
     "camp-uvdal-cd1d1120a680",
