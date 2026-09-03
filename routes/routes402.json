@@ -1384,5 +1384,86 @@
       "maxMatchDistanceM": 14.5
     },
     "surfaceSource": "trillemarkarundt-lang/trillemarkarundt-lang_elevation_with_surface_legacy.json"
+  },
+    "andersnatten-rundt": {
+    "id": "andersnatten-rundt",
+    "name": {
+      "no": "Andersnatten rundt"
+    },
+    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/andersnatten-rundt.gpx",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/andersnatten-rundt_elevation_with_surface_legacy.json",
+    "elevationSurfaceUrl": null,
+    "stats": {
+      "distanceKm": 19.8,
+      "climbM": 322,
+      "descentM": 322,
+      "maxElevationM": 600,
+      "minElevationM": 140,
+      "biggestClimb": {
+        "gainM": 449,
+        "lengthKm": 10.43,
+        "fromKm": 9.34,
+        "toKm": 19.76,
+        "avgGradePct": 4.3
+      }
+    },
+    "surface": {
+      "totalKm": 19.8,
+      "categoryKm": {
+        "asphalt": 4.2,
+        "gravel": 13.8,
+        "trail": 1.7,
+        "unknown": 0.0
+      },
+      "osmSurfaceKm": {
+        "asphalt": 4.216,
+        "gravel": 0.0,
+        "trail": 1.186,
+        "unknown": 0.0
+      },
+      "maxMatchDistanceM": 29.6
+    },
+    "surfaceSource": "andersnatten-rundt/andersnatten-rundt_elevation_with_surface_legacy.json"
+  },
+  "austbygde-sandven": {
+    "id": "austbygde-sandven",
+    "name": {
+      "no": "Austbygde sandven"
+    },
+    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/austbygde-sandven.gpx",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/austbygde-sandven_elevation_with_surface_legacy.json",
+    "elevationSurfaceUrl": null,
+    "stats": {
+      "distanceKm": 17.0,
+      "climbM": 271,
+      "descentM": 271,
+      "maxElevationM": 260,
+      "minElevationM": 192,
+      "biggestClimb": {
+        "gainM": 68,
+        "lengthKm": 8.66,
+        "fromKm": 2.31,
+        "toKm": 10.97,
+        "avgGradePct": 0.8
+      }
+    },
+    "surface": {
+      "totalKm": 17.0,
+      "categoryKm": {
+        "asphalt": 12.3,
+        "gravel": 3.7,
+        "trail": 1.0,
+        "unknown": 0.0
+      },
+      "osmSurfaceKm": {
+        "asphalt": 11.803,
+        "gravel": 0.897,
+        "trail": 0.981,
+        "unknown": 0.0
+      },
+      "maxMatchDistanceM": 12.2
+    },
+    "surfaceSource": "austbygde-sandven/austbygde-sandven_elevation_with_surface_legacy.json"
   }
+ }
 }
