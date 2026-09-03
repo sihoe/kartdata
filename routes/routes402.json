@@ -1385,7 +1385,7 @@
     },
     "surfaceSource": "trillemarkarundt-lang/trillemarkarundt-lang_elevation_with_surface_legacy.json"
   },
-    "andersnatten-rundt": {
+  "andersnatten-rundt": {
     "id": "andersnatten-rundt",
     "name": {
       "no": "Andersnatten rundt"
@@ -1395,14 +1395,14 @@
     "elevationSurfaceUrl": null,
     "stats": {
       "distanceKm": 19.8,
-      "climbM": 322,
-      "descentM": 322,
+      "climbM": 524,
+      "descentM": 524,
       "maxElevationM": 600,
       "minElevationM": 140,
       "biggestClimb": {
-        "gainM": 449,
-        "lengthKm": 10.43,
-        "fromKm": 9.34,
+        "gainM": 445,
+        "lengthKm": 10.38,
+        "fromKm": 9.38,
         "toKm": 19.76,
         "avgGradePct": 4.3
       }
@@ -1435,16 +1435,16 @@
     "elevationSurfaceUrl": null,
     "stats": {
       "distanceKm": 17.0,
-      "climbM": 271,
-      "descentM": 271,
+      "climbM": 130,
+      "descentM": 130,
       "maxElevationM": 260,
       "minElevationM": 192,
       "biggestClimb": {
-        "gainM": 68,
-        "lengthKm": 8.66,
-        "fromKm": 2.31,
-        "toKm": 10.97,
-        "avgGradePct": 0.8
+        "gainM": 60,
+        "lengthKm": 9.8,
+        "fromKm": 1.23,
+        "toKm": 11.03,
+        "avgGradePct": 0.6
       }
     },
     "surface": {
