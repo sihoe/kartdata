@@ -4765,8 +4765,8 @@
   },
   {
     "latlng": [
-      60.07053996856569,
-      9.117306286809542
+      60.0691168,
+      9.1175408
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-sigdal@main/kjerredammen.jpg",
     "symbolType": "marker",
