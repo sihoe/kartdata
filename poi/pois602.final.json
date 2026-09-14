@@ -22,7 +22,7 @@
     },
     "id": "andersnatten-d97e80719027"
   },
-   {
+  {
     "latlng": [
       59.72848176940147,
       9.866863752044058
@@ -4440,6 +4440,443 @@
       }
     },
     "id": "ovrebygde-rundt-kort-0cf553f1"
+  },
+  {
+    "latlng": [
+      60.0999498,
+      9.4525046
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-sigdal@main/bomstasjon-nedalsveien.jpg",
+    "symbolType": "marker",
+    "texts": {
+      "no": {
+        "title": "Bomstasjon Nedalsveien",
+        "description": "Det er bompenger på vei opp til Grøset seter"
+      },
+      "en": {
+        "title": "Nedalsveien toll station",
+        "description": "A toll is charged on the road up to Grøset summer farm"
+      },
+      "de": {
+        "title": "Mautstation Nedalsveien",
+        "description": "Auf der Straße hinauf zur Grøset-Alm wird eine Maut erhoben"
+      }
+    },
+    "id": "bomstasjon-nedalsveien-631fd9ea07d4"
+  },
+  {
+    "latlng": [
+      60.1029972,
+      9.3781889
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-sigdal@main/groesetseter.jpg",
+    "symbolType": "gaardsdyr",
+    "texts": {
+      "no": {
+        "title": "Grøset seter",
+        "description": "Tradisjonell seterdrift med salg av rømmegrøt og seterprodukter"
+      },
+      "en": {
+        "title": "Grøset summer farm",
+        "description": "A traditional summer farm selling sour cream porridge and local farm products"
+      },
+      "de": {
+        "title": "Grøset-Alm",
+        "description": "Traditionelle Almwirtschaft mit Verkauf von Sauerrahmbrei und regionalen Almprodukten"
+      }
+    },
+    "id": "groset-seter-252e9154f7e2"
+  },
+  {
+    "latlng": [
+      60.1184893,
+      9.3560372
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-sigdal@main/strand-nedalstjennet.jpg",
+    "symbolType": "bathingspot",
+    "texts": {
+      "no": {
+        "title": "Strand Nedalstjenne",
+        "description": "Fin vestvendt og solfylt sandstrand ved Nedalstjennet"
+      },
+      "en": {
+        "title": "Nedalstjennet beach",
+        "description": "A lovely west-facing, sunny sandy beach by Lake Nedalstjennet"
+      },
+      "de": {
+        "title": "Strand am Nedalstjennet",
+        "description": "Schöner, sonniger und nach Westen ausgerichteter Sandstrand am Nedalstjennet"
+      }
+    },
+    "id": "strand-nedalstjenne-bde64548ecbb"
+  },
+  {
+    "latlng": [
+      60.1351606,
+      9.4374494
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-sigdal@main/coop-prix-nedre-eggedal.jpg",
+    "symbolType": "handlevogn",
+    "texts": {
+      "no": {
+        "title": "Coop Prix Nedre Eggedal",
+        "description": "Selvbetjent butikk åpen fra 06–24"
+      },
+      "en": {
+        "title": "Coop Prix Nedre Eggedal",
+        "description": "Self-service grocery store open from 06:00 to 24:00"
+      },
+      "de": {
+        "title": "Coop Prix Nedre Eggedal",
+        "description": "Selbstbedienungsladen, geöffnet von 06:00 bis 24:00 Uhr"
+      }
+    },
+    "id": "coop-prix-nedre-eggedal-a2c6a9b386dd"
+  },
+  {
+    "latlng": [
+      60.0876547,
+      9.4620728
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-sigdal@main/baasheim-gjestegaard.jpg",
+    "symbolType": "hotel",
+    "texts": {
+      "no": {
+        "title": "Båsheim Gjestegård",
+        "description": "Tradisjonsrik gjestgård med 8 soverom, stuer og kjøkken"
+      },
+      "en": {
+        "title": "Båsheim Guesthouse",
+        "description": "A traditional guesthouse with eight bedrooms, living rooms and a kitchen"
+      },
+      "de": {
+        "title": "Gästehaus Båsheim",
+        "description": "Traditionsreiches Gästehaus mit acht Schlafzimmern, Aufenthaltsräumen und Küche"
+      }
+    },
+    "id": "basheim-gjestegard-5862bc269c0a"
+  },
+  {
+    "latlng": [
+      60.041007,
+      9.589818
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-sigdal@main/sandsbratan-strand.jpg",
+    "symbolType": "bathingspot",
+    "texts": {
+      "no": {
+        "title": "Sandsbråtan strand",
+        "description": "Flott sandstrand med kiosk og spisested"
+      },
+      "en": {
+        "title": "Sandsbråtan beach",
+        "description": "A lovely sandy beach with a kiosk and somewhere to eat"
+      },
+      "de": {
+        "title": "Strand Sandsbråtan",
+        "description": "Schöner Sandstrand mit Kiosk und Gastronomie"
+      }
+    },
+    "id": "sandsbratan-strand-951295321659"
+  },
+  {
+    "latlng": [
+      60.24637550000911,
+      9.324661232092629
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-sigdal@main/sauna.jpg",
+    "symbolType": "marker",
+    "texts": {
+      "no": {
+        "title": "Sauna",
+        "description": "Vedfyrt sauna ved badeplassen på Kvennberga"
+      },
+      "en": {
+        "title": "Sauna",
+        "description": "Wood-fired sauna by the swimming area at Kvennberga"
+      },
+      "de": {
+        "title": "Sauna",
+        "description": "Holzbeheizte Sauna am Badeplatz Kvennberga"
+      }
+    },
+    "id": "sauna-kvennberga-9966033e6435"
+  },
+  {
+    "latlng": [
+      60.24617696342694,
+      9.326754588277007
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-sigdal@main/kvennberga-badeplass.jpg",
+    "symbolType": "bathingspot",
+    "texts": {
+      "no": {
+        "title": "Kvennberga badeplass",
+        "description": "En perle i Eggedal. Herlig badeplass med naturlige sklier"
+      },
+      "en": {
+        "title": "Kvennberga swimming area",
+        "description": "A gem in Eggedal, with a wonderful swimming area and natural waterslides"
+      },
+      "de": {
+        "title": "Badeplatz Kvennberga",
+        "description": "Ein Juwel in Eggedal mit einem herrlichen Badeplatz und natürlichen Wasserrutschen"
+      }
+    },
+    "id": "kvennberga-badeplass-85a4fb0576bc"
+  },
+  {
+    "latlng": [
+      60.23885161103629,
+      9.2876131807236
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-sigdal@main/nastadborgen.jpg",
+    "symbolType": "attractions",
+    "texts": {
+      "no": {
+        "title": "Nastadborgen",
+        "description": "En gjenskapning av en landsens borg fra 1200-tallet med murer, skyteskår, våpenhus og skår."
+      },
+      "en": {
+        "title": "Nastadborgen",
+        "description": "A reconstruction of a rural 13th-century castle with walls, arrow slits, an armoury and defensive features."
+      },
+      "de": {
+        "title": "Nastadborgen",
+        "description": "Rekonstruktion einer ländlichen Burg aus dem 13. Jahrhundert mit Mauern, Schießscharten, Waffenhaus und Wehranlagen."
+      }
+    },
+    "id": "nastadborgen-9f629928bf8a"
+  },
+  {
+    "latlng": [
+      60.06973434247788,
+      9.484139451951942
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-sigdal@main/standefjorden-bobilcamp.jpg",
+    "symbolType": "tent",
+    "texts": {
+      "no": {
+        "title": "Standefjorden bobilcamp",
+        "description": "Romslige plasser ved Soneren med utsikt til Andersnatten"
+      },
+      "en": {
+        "title": "Standefjorden motorhome camp",
+        "description": "Spacious pitches by Lake Soneren with views of Andersnatten"
+      },
+      "de": {
+        "title": "Wohnmobilstellplatz Standefjorden",
+        "description": "Großzügige Stellplätze am Soneren mit Blick auf den Andersnatten"
+      }
+    },
+    "id": "standefjorden-bobilcamp-b956900eb0ef"
+  },
+  {
+    "latlng": [
+      60.345999165418,
+      9.18572097610385
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-sigdal@main/haglebu-fjellstue.jpg",
+    "symbolType": "hotel",
+    "texts": {
+      "no": {
+        "title": "Haglebu Fjellstue",
+        "description": "Hjemmelaget mat og komfortabel overnatting i vakre omgivelser"
+      },
+      "en": {
+        "title": "Haglebu Fjellstue",
+        "description": "Home-cooked food and comfortable accommodation in beautiful surroundings"
+      },
+      "de": {
+        "title": "Haglebu Fjellstue",
+        "description": "Hausgemachte Speisen und komfortable Übernachtungsmöglichkeiten in schöner Umgebung"
+      }
+    },
+    "id": "haglebu-fjellstue-625bdd4e9ee8"
+  },
+  {
+    "latlng": [
+      60.16922931719573,
+      9.017313535630803
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-sigdal@main/norefjord-camping.jpg",
+    "symbolType": "tent",
+    "texts": {
+      "no": {
+        "title": "Norefjord Camping",
+        "description": "Ligger idyllisk ved Norefjord med utleie av hytter og camping"
+      },
+      "en": {
+        "title": "Norefjord Camping",
+        "description": "Idyllically situated by Norefjord, offering cabins and camping pitches"
+      },
+      "de": {
+        "title": "Norefjord Camping",
+        "description": "Idyllisch am Norefjord gelegen, mit Hüttenvermietung und Campingplätzen"
+      }
+    },
+    "id": "norefjord-camping-2d1f47e5cb8d"
+  },
+  {
+    "latlng": [
+      60.10050300883948,
+      9.059327657501038
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-sigdal@main/kravikfjord-stasjon.jpg",
+    "symbolType": "attractions",
+    "texts": {
+      "no": {
+        "title": "Kravikfjord stasjon",
+        "description": "Liten stasjon på Numedalsbanen med fine områder for en pause"
+      },
+      "en": {
+        "title": "Kravikfjord station",
+        "description": "A small station on the Numedal Railway with pleasant places to take a break"
+      },
+      "de": {
+        "title": "Bahnhof Kravikfjord",
+        "description": "Kleiner Bahnhof an der Numedalbahn mit schönen Plätzen für eine Pause"
+      }
+    },
+    "id": "kravikfjord-stasjon-f593ee96b231"
+  },
+  {
+    "latlng": [
+      60.085182454207114,
+      9.089239652465078
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-sigdal@main/fossebrekke-holdeplass.jpg",
+    "symbolType": "marker",
+    "texts": {
+      "no": {
+        "title": "Fossebrekke holdeplass",
+        "description": "Liten holdeplass med kort plattform og leskur"
+      },
+      "en": {
+        "title": "Fossebrekke halt",
+        "description": "A small railway halt with a short platform and shelter"
+      },
+      "de": {
+        "title": "Haltepunkt Fossebrekke",
+        "description": "Kleiner Bahnhaltepunkt mit kurzem Bahnsteig und Wartehäuschen"
+      }
+    },
+    "id": "fossebrekke-holdeplass-97a7199b6780"
+  },
+  {
+    "latlng": [
+      60.07053996856569,
+      9.117306286809542
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-sigdal@main/kjerredammen.jpg",
+    "symbolType": "marker",
+    "texts": {
+      "no": {
+        "title": "Kjerredammen",
+        "description": "Inntak for Mykstufoss kraftverk. En buedam med gang- og sykkelvei over Numedalslågen"
+      },
+      "en": {
+        "title": "Kjerredammen",
+        "description": "The intake for Mykstufoss power station. An arch dam carrying a walking and cycling path across the Numedalslågen river"
+      },
+      "de": {
+        "title": "Kjerredammen",
+        "description": "Einlaufbauwerk des Kraftwerks Mykstufoss. Eine Bogenstaumauer mit Fuß- und Radweg über den Fluss Numedalslågen"
+      }
+    },
+    "id": "kjerredammen-2d9e100b8e4e"
+  },
+  {
+    "latlng": [
+      60.04135743978273,
+      9.157899017429669
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-sigdal@main/veggli-lekeplass.jpg",
+    "symbolType": "marker",
+    "texts": {
+      "no": {
+        "title": "Veggli lekeplass",
+        "description": "Stor og fin lekeplass med mange ulike lekeapparater"
+      },
+      "en": {
+        "title": "Veggli playground",
+        "description": "A large, attractive playground with a wide range of play equipment"
+      },
+      "de": {
+        "title": "Spielplatz Veggli",
+        "description": "Großer, schöner Spielplatz mit vielen verschiedenen Spielgeräten"
+      }
+    },
+    "id": "veggli-lekeplass-3c480300a4cf"
+  },
+  {
+    "latlng": [
+      60.341234849567385,
+      9.183775802945878
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-sigdal@main/haglebu-feriesenter.jpg",
+    "symbolType": "tent",
+    "texts": {
+      "no": {
+        "title": "Haglebu Feriesenter",
+        "description": "Flott beliggenhet ved Hagelbuvatnet, med hytter, leiligheter, camping og butikk"
+      },
+      "en": {
+        "title": "Haglebu Holiday Centre",
+        "description": "Beautifully situated by Lake Hagelbuvatnet, with cabins, apartments, camping and a shop"
+      },
+      "de": {
+        "title": "Ferienzentrum Haglebu",
+        "description": "Schöne Lage am Hagelbuvatnet mit Hütten, Ferienwohnungen, Campingplatz und Geschäft"
+      }
+    },
+    "id": "haglebu-feriesenter-99da353cc944"
+  },
+  {
+    "latlng": [
+      60.34063328995389,
+      9.18758722417691
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-sigdal@main/haglebu-turistheim.jpg",
+    "symbolType": "cabin",
+    "texts": {
+      "no": {
+        "title": "Haglebu Turistheim",
+        "description": "Rett ved Hagelbuvatnet med hytteutleie, campingplass og kafé"
+      },
+      "en": {
+        "title": "Haglebu Turistheim",
+        "description": "Located right by Lake Hagelbuvatnet, with cabin rentals, a campsite and a café"
+      },
+      "de": {
+        "title": "Haglebu Turistheim",
+        "description": "Direkt am Hagelbuvatnet gelegen, mit Hüttenvermietung, Campingplatz und Café"
+      }
+    },
+    "id": "haglebu-turistheim-c44775b1b692"
+  },
+  {
+    "latlng": [
+      60.1937713,
+      9.3970186
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-sigdal@main/maalargutua.jpg",
+    "symbolType": "hiking",
+    "texts": {
+      "no": {
+        "title": "Målargutua",
+        "description": "Tilrettelagt turvei mellom Th. Kittelsens hjem på Sole og Skredsvigs hjem Hagan"
+      },
+      "en": {
+        "title": "Målargutua",
+        "description": "An accessible walking trail between Th. Kittelsen’s home at Sole and Skredsvig’s home at Hagan"
+      },
+      "de": {
+        "title": "Målargutua",
+        "description": "Ausgebauter Wanderweg zwischen dem Wohnhaus von Th. Kittelsen in Sole und Skredsvigs Wohnhaus Hagan"
+      }
+    },
+    "id": "malargutua-b220d2ec6ab1"
   }
 ]
 
