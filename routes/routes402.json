@@ -1345,46 +1345,6 @@
     },
     "surfaceSource": "solvveien-kort/solvveien-kort_elevation_with_surface_legacy.json"
   },
-  "trillemarkarundt-lang": {
-    "id": "trillemarkarundt-lang",
-    "name": {
-      "no": "Trillemarkarundt lang"
-    },
-    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/trillemarkarundt-lang.gpx",
-    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/trillemarkarundt-lang_elevation_with_surface_legacy.json",
-    "elevationSurfaceUrl": null,
-    "stats": {
-      "distanceKm": 133.7,
-      "climbM": 2889,
-      "descentM": 2889,
-      "maxElevationM": 970,
-      "minElevationM": 103,
-      "biggestClimb": {
-        "gainM": 722,
-        "lengthKm": 47.68,
-        "fromKm": 83.12,
-        "toKm": 130.8,
-        "avgGradePct": 1.5
-      }
-    },
-    "surface": {
-      "totalKm": 133.7,
-      "categoryKm": {
-        "asphalt": 97.2,
-        "gravel": 36.5,
-        "trail": 0.0,
-        "unknown": 0.0
-      },
-      "osmSurfaceKm": {
-        "asphalt": 0.0,
-        "gravel": 0.0,
-        "trail": 0.0,
-        "unknown": 0.0
-      },
-      "maxMatchDistanceM": 14.5
-    },
-    "surfaceSource": "trillemarkarundt-lang/trillemarkarundt-lang_elevation_with_surface_legacy.json"
-  },
   "andersnatten-rundt": {
     "id": "andersnatten-rundt",
     "name": {
@@ -1464,5 +1424,85 @@
       "maxMatchDistanceM": 12.2
     },
     "surfaceSource": "austbygde-sandven/austbygde-sandven_elevation_with_surface_legacy.json"
+  },
+    "follsjo-rundt-grus": {
+    "id": "follsjo-rundt-grus",
+    "name": {
+      "no": "Follsjo rundt grus"
+    },
+    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/follsjo-rundt-grus.gpx",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/follsjo-rundt-grus_elevation_with_surface_legacy.json",
+    "elevationSurfaceUrl": null,
+    "stats": {
+      "distanceKm": 34.3,
+      "climbM": 600,
+      "descentM": 600,
+      "maxElevationM": 444,
+      "minElevationM": 130,
+      "biggestClimb": {
+        "gainM": 212,
+        "lengthKm": 3.78,
+        "fromKm": 1.14,
+        "toKm": 4.92,
+        "avgGradePct": 5.6
+      }
+    },
+    "surface": {
+      "totalKm": 34.3,
+      "categoryKm": {
+        "asphalt": 16.1,
+        "gravel": 15.3,
+        "trail": 2.9,
+        "unknown": 0.0
+      },
+      "osmSurfaceKm": {
+        "asphalt": 15.708,
+        "gravel": 11.05,
+        "trail": 2.818,
+        "unknown": 0.0
+      },
+      "maxMatchDistanceM": 28.7
+    },
+    "surfaceSource": "follsjo-rundt-grus/follsjo-rundt-grus_elevation_with_surface_legacy.json"
+  },
+  "trillemarka-rundt-lang": {
+    "id": "trillemarka-rundt-lang",
+    "name": {
+      "no": "Trillemarka rundt lang"
+    },
+    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/trillemarka-rundt-lang.gpx",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/trillemarka-rundt-lang_elevation_with_surface_legacy.json",
+    "elevationSurfaceUrl": null,
+    "stats": {
+      "distanceKm": 126.8,
+      "climbM": 2060,
+      "descentM": 2060,
+      "maxElevationM": 970,
+      "minElevationM": 104,
+      "biggestClimb": {
+        "gainM": 786,
+        "lengthKm": 27.17,
+        "fromKm": 0.0,
+        "toKm": 27.17,
+        "avgGradePct": 2.9
+      }
+    },
+    "surface": {
+      "totalKm": 126.8,
+      "categoryKm": {
+        "asphalt": 91.1,
+        "gravel": 34.0,
+        "trail": 1.7,
+        "unknown": 0.0
+      },
+      "osmSurfaceKm": {
+        "asphalt": 77.226,
+        "gravel": 19.082,
+        "trail": 1.663,
+        "unknown": 0.0
+      },
+      "maxMatchDistanceM": 26.7
+    },
+    "surfaceSource": "trillemarka-rundt-lang/trillemarka-rundt-lang_elevation_with_surface_legacy.json"
   }
  }
