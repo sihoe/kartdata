@@ -136,7 +136,7 @@
     "basheim-gjestegard-5862bc269c0a",
     "eggedal-molle-e5b536cb"
   ],
-    "trillemarkarundt-lang": [
+    "trillemarka-rundt-lang": [
     "andersnatten-d97e80719027",
     "badedammen-pa-veggli-9468b2127fb9",
     "coop-extra-veggli-e2096c021ad1",
@@ -530,6 +530,30 @@
     "sostrene-storas-hotell-0627ec90ceb8",
     "arestua-bolkesjo-gaard-fa12d59b9127"
   ],
+    "follsjo-rundt-grus": [
+    "bolkesjo-gaard-b30a6cff02d8",
+    "bolkesjo-gaard-stulen-fa66119db1ff",
+    "bolkesjo-turisthotell-db83ab0fb5d7",
+    "dusanfoss-0aa6998d8611",
+    "farmen-garden-2025-9fa20f4ab129",
+    "follsjo-2cb676a4e911",
+    "follsjo-strand-36fa373a07d1",
+    "glamping-bolkesjo-gaard-4956be82f57c",
+    "holmenrunden-d87ddc42412c",
+    "hovedammen-c818e9ca",
+    "jonrud-bolkesjo-gaard-ccb6220d78d7",
+    "liten-parkeringsplass-46f1f0454674",
+    "matkroken-hovin-1a3f2a6586f6",
+    "midtboen-gard-e9adb296fce9",
+    "padling-i-buvatnet-58b0f6735b7a",
+    "parkering-cfa29d1bdfac",
+    "persbukta-badeplass-e3f054257580",
+    "stikryss-5aba07a5",
+    "stulen-pa-midtboen-gard-3294fb16ccd8",
+    "sostrene-storaas-sommerrestaurant-d1bf8acb9dbd",
+    "sostrene-storas-hotell-0627ec90ceb8",
+    "arestua-bolkesjo-gaard-fa12d59b9127"
+  ],
   "dusanfossrunden": [
     "bolkesjo-gaard-b30a6cff02d8",
     "bolkesjo-gaard-stulen-fa66119db1ff",
@@ -848,6 +872,12 @@
     "groset-seter-252e9154f7e2",
     "strand-nedalstjenne-bde64548ecbb",
     "coop-prix-nedre-eggedal-a2c6a9b386dd"
+   ],
+    "trillemarka-rundt-lang": [
+    "andersnatten-d97e80719027",
+    "groset-seter-252e9154f7e2",
+    "strand-nedalstjenne-bde64548ecbb",
+    "coop-prix-nedre-eggedal-a2c6a9b386dd"
   ],
     "austbygde-sandven": [
     "austbygde-bakeri-8876d7660919",
@@ -855,6 +885,12 @@
     "kiwi-austbygde-5645339c2021",
     "royslansbergo-dda7b77345f0",
     "sandviken-camping-2f1186452c38"
+  ],
+    "follsjo-rundt-grus": [
+    "bolkesjo-gaard-b30a6cff02d8",
+    "bolkesjo-gaard-stulen-fa66119db1ff",
+    "follsjo-strand-36fa373a07d1",
+    "arestua-bolkesjo-gaard-fa12d59b9127"
   ],
   "baklivegen-rundt": [
     "camp-uvdal-cd1d1120a680",
