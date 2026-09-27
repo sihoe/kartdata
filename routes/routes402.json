@@ -1504,5 +1504,45 @@
       "maxMatchDistanceM": 26.7
     },
     "surfaceSource": "trillemarka-rundt-lang/trillemarka-rundt-lang_elevation_with_surface_legacy.json"
+  },
+  "trillemarka-rundt-haglebu": {
+    "id": "trillemarka-rundt-haglebu",
+    "name": {
+      "no": "Trillemarka rundt"
+    },
+    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/trillemarka-rundt-haglebu.gpx",
+    "elevationUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/elevation/trillemarka-rundt-haglebu_elevation_with_surface_legacy.json",
+    "elevationSurfaceUrl": null,
+    "stats": {
+      "distanceKm": 129.6,
+      "climbM": 2044,
+      "descentM": 2044,
+      "maxElevationM": 970,
+      "minElevationM": 103,
+      "biggestClimb": {
+        "gainM": 859,
+        "lengthKm": 49.21,
+        "fromKm": 42.11,
+        "toKm": 91.32,
+        "avgGradePct": 1.7
+      }
+    },
+    "surface": {
+      "totalKm": 129.6,
+      "categoryKm": {
+        "asphalt": 95.9,
+        "gravel": 33.1,
+        "trail": 0.7,
+        "unknown": 0.0
+      },
+      "osmSurfaceKm": {
+        "asphalt": 0.0,
+        "gravel": 0.0,
+        "trail": 0.0,
+        "unknown": 0.0
+      },
+      "maxMatchDistanceM": 26.6
+    },
+    "surfaceSource": "trillemarka-rundt-haglebu/trillemarka-rundt-haglebu_elevation_with_surface_legacy.json"
   }
- }
+}  
