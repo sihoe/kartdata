@@ -235,7 +235,7 @@
       9.67070246639364
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/kjaerlighetsstien-43.jpg",
-    "symbolType": "attractions",
+    "symbolType": "hiking",
     "texts": {
       "no": {
         "title": "Kjærlighetsstien",
@@ -879,7 +879,7 @@
       9.7078843
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/solvveien_smedbrua_norway_by_bike-scaled-320x240.jpg",
-    "symbolType": "attractions",
+    "symbolType": "marker",
     "texts": {
       "no": {
         "title": "Smedbrua",
@@ -948,7 +948,7 @@
       9.57204
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-4@main/frisbeegolf-lampeland.jpg",
-    "symbolType": "attractions",
+    "symbolType": "marker",
     "texts": {
       "no": {
         "title": "Frisbeegolf Lampeland",
@@ -971,7 +971,7 @@
       9.4902391
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-4@main/paradisgrenda-ligrenda-flesberg.jpg",
-    "symbolType": "marker",
+    "symbolType": "kulturlandskap",
     "texts": {
       "no": {
         "title": "Ligrenda i Flesberg",
@@ -1407,7 +1407,7 @@
       9.272849773
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-2@main/bolkesjo_gaard.jpg",
-    "symbolType": "attractions",
+    "symbolType": "cabin",
     "texts": {
       "no": {
         "title": "Bolkesjø Gaard",
@@ -1843,7 +1843,7 @@
       9.019742176
     ],
     "imageUrl": "",
-    "symbolType": "marker",
+    "symbolType": "rasteplass",
     "texts": {
       "no": {
         "title": "Fin rasteplass",
@@ -1889,7 +1889,7 @@
       9.433087658
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-1@main/flesberg_stavkirke.jpg",
-    "symbolType": "attractions",
+    "symbolType": "stavkirke",
     "texts": {
       "no": {
         "title": "Flesberg stavkirke",
@@ -2050,7 +2050,7 @@
       8.346110973
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-4@main/bEt_qCXI.jpg",
-    "symbolType": "marker",
+    "symbolType": "stikryss",
     "texts": {
       "no": {
         "title": "Følg merking mot Imingfjell",
@@ -2073,7 +2073,7 @@
       8.361848504
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-4@main/Kryss_imingfjellrundt.jpg",
-    "symbolType": "marker",
+    "symbolType": "stikryss",
     "texts": {
       "no": {
         "title": "Følg slepa, ikke turstien",
@@ -2119,7 +2119,7 @@
       9.26483
     ],
     "imageUrl": "",
-    "symbolType": "marker",
+    "symbolType": "fare",
     "texts": {
       "no": {
         "title": "Grense Trillemarka",
@@ -2142,7 +2142,7 @@
       9.27805
     ],
     "imageUrl": "",
-    "symbolType": "marker",
+    "symbolType": "fare",
     "texts": {
       "no": {
         "title": "Grense Trillemarka",
@@ -2165,7 +2165,7 @@
       9.21412
     ],
     "imageUrl": "",
-    "symbolType": "marker",
+    "symbolType": "fare",
     "texts": {
       "no": {
         "title": "Grense Trillemarka",
@@ -2188,7 +2188,7 @@
       9.23171
     ],
     "imageUrl": "",
-    "symbolType": "marker",
+    "symbolType": "fare",
     "texts": {
       "no": {
         "title": "Grense Trillemarka",
@@ -2530,7 +2530,7 @@
       60.270421622,
       8.798583318
     ],
-    "symbolType": "marker",
+    "symbolType": "kulturlandskap",
     "texts": {
       "no": {
         "title": "Kirkebygda",
@@ -2598,7 +2598,7 @@
       9.865619659
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-4@main/koboltgruvene.jpg",
-    "symbolType": "attractions",
+    "symbolType": "gruve-nedlagt",
     "texts": {
       "no": {
         "title": "Koboltgruvene",
@@ -2690,7 +2690,7 @@
       9.215824556
     ],
     "imageUrl": "",
-    "symbolType": "marker",
+    "symbolType": "fare",
     "texts": {
       "no": {
         "title": "Krevende terreng",
@@ -2713,7 +2713,7 @@
       8.497465166
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-4@main/-IgU_GTY.jpg",
-    "symbolType": "marker",
+    "symbolType": "stikryss",
     "texts": {
       "no": {
         "title": "Kryss elva til Uvdalsvegen",
@@ -2828,7 +2828,7 @@
       9.286112416
     ],
     "imageUrl": "",
-    "symbolType": "marker",
+    "symbolType": "parkering",
     "texts": {
       "no": {
         "title": "Liten parkeringsplass",
@@ -3010,7 +3010,7 @@
       60.040811219,
       9.590202439
     ],
-    "symbolType": "marker",
+    "symbolType": "fare",
     "texts": {
       "no": {
         "title": "Mye trafikk langs fv 287",
@@ -3100,7 +3100,7 @@
       9.010271502
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingom-fjellruta@main/nore_stavkirke.jpg",
-    "symbolType": "attractions",
+    "symbolType": "stavkirke",
     "texts": {
       "no": {
         "title": "Nore stavkirke",
@@ -3146,7 +3146,7 @@
       8.395850658
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-2@main/utsiktvikstul.jpg",
-    "symbolType": "marker",
+    "symbolType": "utsiktspunkt",
     "texts": {
       "no": {
         "title": "Nyt utsikten mot Vikstul",
@@ -3215,7 +3215,7 @@
       9.267547695
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-1@main/paradisgrend.jpg",
-    "symbolType": "marker",
+    "symbolType": "kulturlandskap",
     "texts": {
       "no": {
         "title": "Paradisgrenda",
@@ -3238,7 +3238,7 @@
       9.268609956
     ],
     "imageUrl": "",
-    "symbolType": "marker",
+    "symbolType": "parkering",
     "texts": {
       "no": {
         "title": "Parkering",
@@ -3398,7 +3398,7 @@
       9.273333035
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-2@main/stavkirkerollag.jpg",
-    "symbolType": "attractions",
+    "symbolType": "stavkirke",
     "texts": {
       "no": {
         "title": "Rollag stavkirke",
@@ -3580,7 +3580,7 @@
       59.9115616,
       9.8885484
     ],
-    "symbolType": "secureparking_green",
+    "symbolType": "sykkellading",
     "texts": {
       "no": {
         "title": "Sikker lading av batteri",
@@ -3602,7 +3602,7 @@
       59.971845,
       9.866121
     ],
-    "symbolType": "secureparking_green",
+    "symbolType": "sykkellading",
     "texts": {
       "no": {
         "title": "Sikker lading av batteri",
@@ -3624,7 +3624,7 @@
       59.911739,
       9.8872863
     ],
-    "symbolType": "bikecharge",
+    "symbolType": "sykkelparkering",
     "texts": {
       "no": {
         "title": "Sikker sykkelparkering",
@@ -3646,7 +3646,7 @@
       59.971872,
       9.866202
     ],
-    "symbolType": "bikecharge",
+    "symbolType": "sykkelparkering",
     "texts": {
       "no": {
         "title": "Sikker sykkelparkering",
@@ -3691,7 +3691,7 @@
       60.397036734,
       8.680580103
     ],
-    "symbolType": "marker",
+    "symbolType": "kulturlandskap",
     "texts": {
       "no": {
         "title": "Smådøldalen",
@@ -3737,7 +3737,7 @@
       9.263008833
     ],
     "imageUrl": "",
-    "symbolType": "marker",
+    "symbolType": "stikryss",
     "texts": {
       "no": {
         "title": "Sti",
@@ -3760,7 +3760,7 @@
       9.285003924
     ],
     "imageUrl": "",
-    "symbolType": "marker",
+    "symbolType": "stikryss",
     "texts": {
       "no": {
         "title": "Sti",
@@ -3806,7 +3806,7 @@
       9.310559034
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-4@main/sti_til_juvefossen_over-under.jpg",
-    "symbolType": "hiking",
+    "symbolType": "stikryss",
     "texts": {
       "no": {
         "title": "Sti til Juvefossen (nordfra)",
@@ -3828,7 +3828,7 @@
       60.165921821,
       9.231516366
     ],
-    "symbolType": "marker",
+    "symbolType": "stikryss",
     "texts": {
       "no": {
         "title": "Sti-endepunkt",
@@ -3851,7 +3851,7 @@
       9.244425732
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-4@main/stikryss-flom.jpg",
-    "symbolType": "marker",
+    "symbolType": "stikryss",
     "texts": {
       "no": {
         "title": "Stikryss",
@@ -4058,7 +4058,7 @@
       9.517153502
     ],
     "imageUrl": "",
-    "symbolType": "marker",
+    "symbolType": "fare",
     "texts": {
       "no": {
         "title": "Trafikk 287",
@@ -4081,7 +4081,7 @@
       9.243278503
     ],
     "imageUrl": "",
-    "symbolType": "marker",
+    "symbolType": "verneomrade",
     "texts": {
       "no": {
         "title": "Trillemarka naturreservat",
@@ -4127,7 +4127,7 @@
       8.342754566
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-1@main/utfartsparkering_solheimstulen.jpg",
-    "symbolType": "marker",
+    "symbolType": "parkering",
     "texts": {
       "no": {
         "title": "Utfartsparkering",
@@ -4150,7 +4150,7 @@
       8.834852182
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingom-fjellruta@main/uvdal_stavkirke.jpg",
-    "symbolType": "attractions",
+    "symbolType": "stavkirke",
     "texts": {
       "no": {
         "title": "Uvdal stavkirke",
@@ -4424,7 +4424,7 @@
       60.0396891,
       8.8314043
     ],
-    "symbolType": "marker",
+    "symbolType": "biking",
     "texts": {
       "no": {
         "title": "Øvrebygde rundt – kort",
