@@ -764,7 +764,7 @@
       9.90484
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/solvveien_haug_kirke_hokksund_norway_by_bike-scaled-320x240.jpg",
-    "symbolType": "attractions",
+    "symbolType": "kirke",
     "texts": {
       "no": {
         "title": "Haug kirke i Hokksund",
@@ -810,7 +810,7 @@
       9.64631
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-6@main/solvveien_kongsberg_kirke_interior_norway_by_bike-scaled-320x240.jpg",
-    "symbolType": "attractions",
+    "symbolType": "kirke",
     "texts": {
       "no": {
         "title": "Kongsberg kirke",
@@ -948,7 +948,7 @@
       9.57204
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-4@main/frisbeegolf-lampeland.jpg",
-    "symbolType": "marker",
+    "symbolType": "frisbeegolf",
     "texts": {
       "no": {
         "title": "Frisbeegolf Lampeland",
@@ -1201,7 +1201,7 @@
       9.768934104
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/gyger@main/Bingen-kapell.jpg",
-    "symbolType": "attractions",
+    "symbolType": "kirke",
     "texts": {
       "no": {
         "title": "Bingen kapell",
@@ -3874,7 +3874,7 @@
       8.831909513
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-2@main/stordalengaardost.jpg",
-    "symbolType": "marker",
+    "symbolType": "gaardsdyr",
     "texts": {
       "no": {
         "title": "Stordalen Gardsbruk",
@@ -4028,29 +4028,6 @@
       }
     },
     "id": "th-kittelsen-museum-4993a7fa"
-  },
-  {
-    "latlng": [
-      59.971845,
-      9.866121
-    ],
-    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-3@main/kittelsen_museum.jpg",
-    "symbolType": "attractions",
-    "texts": {
-      "no": {
-        "title": "Th. Kittelsen museum",
-        "description": "Museet har en av Norges største samlinger av originaler fra eventyrkunstneren. Kunsten gir deg et innblikk i norsk folketro og overnaturlige vesener"
-      },
-      "en": {
-        "title": "Th. Kittelsen Museum",
-        "description": "Home to one of Norway’s largest collections of works by the fairy tale artist. The art offers insight into Norwegian folklore and mythical creatures"
-      },
-      "de": {
-        "title": "Th. Kittelsen Museum",
-        "description": "Eines der größten Museen Norwegens mit Werken des Märchenkünstlers. Die Kunst gibt Einblick in norwegischen Volksglauben und mystische Wesen"
-      }
-    },
-    "id": "th-kittelsen-museum-1a6e35a0"
   },
   {
     "latlng": [
@@ -4242,7 +4219,7 @@
       9.614856988
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-3@main/vatnaaskirke.jpg",
-    "symbolType": "attractions",
+    "symbolType": "kirke",
     "texts": {
       "no": {
         "title": "Vatnås Kirke",
@@ -4265,7 +4242,7 @@
       9.146402658
     ],
     "imageUrl": "",
-    "symbolType": "attractions",
+    "symbolType": "kirke",
     "texts": {
       "no": {
         "title": "Veggli Kirke",
@@ -4585,7 +4562,7 @@
       9.324661232092629
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-sigdal@main/sauna.jpg",
-    "symbolType": "marker",
+    "symbolType": "badstue",
     "texts": {
       "no": {
         "title": "Sauna",
@@ -4792,7 +4769,7 @@
       9.157899017429669
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-sigdal@main/veggli-lekeplass.jpg",
-    "symbolType": "marker",
+    "symbolType": "lekeplass",
     "texts": {
       "no": {
         "title": "Veggli lekeplass",
