@@ -2348,7 +2348,7 @@
       8.864987101
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingom-fjellruta@main/haavardsrud_seterliv.jpg",
-    "symbolType": "gaardsdyr",
+    "symbolType": "seter",
     "texts": {
       "no": {
         "title": "Håvardsrud Seterliv",
@@ -4447,7 +4447,7 @@
       9.3781889
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-sigdal@main/groesetseter.jpg",
-    "symbolType": "gaardsdyr",
+    "symbolType": "seter",
     "texts": {
       "no": {
         "title": "Grøset seter",
