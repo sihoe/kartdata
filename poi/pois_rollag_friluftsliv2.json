@@ -23,7 +23,7 @@
       }
     },
     "id": "gapahuk-gladheimsvegen-rollag-67807bf6",
-    "symbol": "marker",
+    "symbol": "gapahuk",
     "routes": []
   },
   {
@@ -50,7 +50,7 @@
       }
     },
     "id": "gapahuk-fetjantjonn-rollag-de009a9a",
-    "symbol": "marker",
+    "symbol": "gapahuk",
     "routes": []
   },
   {
@@ -77,7 +77,7 @@
       }
     },
     "id": "grillplass-mykstufoss-rollag-6e174d73",
-    "symbol": "marker",
+    "symbol": "grillplass",
     "routes": []
   },
   {
@@ -104,7 +104,7 @@
       }
     },
     "id": "grillplass-vegglivertshus-rollag-5949fcfb",
-    "symbol": "marker",
+    "symbol": "grillplass",
     "routes": []
   },
   {
@@ -131,7 +131,7 @@
       }
     },
     "id": "hcparkering-vegglifjellvegen-rollag-fce19b8e",
-    "symbol": "marker",
+    "symbol": "parkering",
     "routes": []
   },
   {
@@ -158,7 +158,7 @@
       }
     },
     "id": "pois_selected-rollag-3a41ea6a",
-    "symbol": "marker",
+    "symbol": "toalett",
     "routes": []
   },
   {
@@ -185,7 +185,7 @@
       }
     },
     "id": "pois_selected-rollag-c6eed4c9",
-    "symbol": "marker",
+    "symbol": "parkering",
     "routes": []
   },
   {
@@ -239,7 +239,7 @@
       }
     },
     "id": "benker-numedalslaagen-rollag-fbada42e",
-    "symbol": "marker",
+    "symbol": "rasteplass",
     "routes": []
   },
   {
@@ -293,7 +293,7 @@
       }
     },
     "id": "rollag-bygdetun-sittegruppe-rollag-bf66c036",
-    "symbol": "marker",
+    "symbol": "rasteplass",
     "routes": []
   },
     {
@@ -455,7 +455,7 @@
       }
     },
     "id": "sittegruppe-tak-rollag-8271194a",
-    "symbol": "marker",
+    "symbol": "rasteplass",
     "routes": []
   },
   {
@@ -536,7 +536,7 @@
       }
     },
     "id": "sittegruppebenk-rollag-e871db72",
-    "symbol": "marker",
+    "symbol": "rasteplass",
     "routes": []
   },
   {
