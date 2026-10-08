@@ -1,4 +1,464 @@
 [
+    {
+    "latlng": [
+      60.046342939,
+      9.153187378
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingom-fjellruta@main/badedammen_veggli.jpg",
+    "symbolType": "bathingspot",
+    "texts": {
+      "no": {
+        "title": "Badedammen på Veggli",
+        "description": "Flott badeplass i Numedalslågen"
+      },
+      "en": {
+        "title": "Swimming spot Veggli",
+        "description": "Great place to swim in the river"
+      },
+      "de": {
+        "title": "Badestelle Veggli",
+        "description": "Toller Badeplatz im Fluss"
+      }
+    },
+    "id": "badedammen-pa-veggli-9468b2127fb9"
+  },
+  {
+    "latlng": [
+      60.030705231,
+      9.235828724
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-1@main/bruhaugbru.jpg",
+    "symbolType": "attractions",
+    "texts": {
+      "no": {
+        "title": "Bruhaug bru",
+        "description": "Kombinert jernbane og bilbru over Numedalslågen"
+      },
+      "en": {
+        "title": "Bruhaug Bridge",
+        "description": "Combined railway and car bridge over the Numedalslågen river"
+      },
+      "de": {
+        "title": "Bruhaug-Brücke",
+        "description": "Kombinierte Eisenbahn- und Autobrücke über die Numedalslågen"
+      }
+    },
+    "id": "bruhaug-bru-996b8a7b0441"
+  },
+  {
+    "latlng": [
+      60.040609959,
+      9.156265537
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-4@main/heilfeitbrunost.jpg",
+    "symbolType": "handlevogn",
+    "texts": {
+      "no": {
+        "title": "COOP Extra Veggli",
+        "description": "Fyll opp sekken med alt du trenger, og få med lokale godbiter"
+      },
+      "en": {
+        "title": "COOP Extra Veggli",
+        "description": "Stock up with everything you need, and grab some local treats"
+      },
+      "de": {
+        "title": "COOP Extra Veggli",
+        "description": "Deck dich ein mit allem, was du brauchst – und lokalen Leckereien"
+      }
+    },
+    "id": "coop-extra-veggli-e2096c021ad1"
+  },
+  {
+    "latlng": [
+      60.042882603,
+      9.154741056
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-1@main/dresin.jpg",
+    "symbolType": "attractions",
+    "texts": {
+      "no": {
+        "title": "Dresin Numedalsbanen",
+        "description": "Lei dresin på Veggli Vertshus og ta turen langs Numedalsbanen"
+      },
+      "en": {
+        "title": "Rail Bike Numedalsbanen",
+        "description": "Rent a rail bike and ride along the Numedalsbanen"
+      },
+      "de": {
+        "title": "Draisine Numedalsbanen",
+        "description": "Miete eine Draisine und fahre entlang der Bahnstrecke"
+      }
+    },
+    "id": "dresin-numedalsbanen-4616ba38481e"
+  },
+  {
+    "latlng": [
+      60.04043464,
+      9.156548349
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-4@main/fjellkompaniet.jpg",
+    "symbolType": "handlevogn",
+    "texts": {
+      "no": {
+        "title": "Fjellkompaniet",
+        "description": "Alt du trenger til fjell- og sykkelturen"
+      },
+      "en": {
+        "title": "Fjellkompaniet",
+        "description": "Everything you need for your mountain and bike trip"
+      },
+      "de": {
+        "title": "Fjellkompaniet",
+        "description": "Alles, was du für deine Berg- und Radtour brauchst"
+      }
+    },
+    "id": "fjellkompaniet-a5906ffbe725"
+  },
+  {
+    "latlng": [
+      60.017963565,
+      9.276108104
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-3@main/rollaghengebru.jpg",
+    "symbolType": "marker",
+    "texts": {
+      "no": {
+        "title": "Hengebro over Numedalslågen",
+        "description": "Hengebru som svaier litt når du sykler over, flott utsikt oppover og nedover Numedalslågen"
+      },
+      "en": {
+        "title": "Suspension bridge over Numedalslågen",
+        "description": "A slightly swaying bridge with scenic views of the Numedalslågen river"
+      },
+      "de": {
+        "title": "Hängebrücke über Numedalslågen",
+        "description": "Eine leicht schwankende Brücke mit Aussicht über den Fluss Numedalslågen"
+      }
+    },
+    "id": "hengebro-over-numedalslagen-8ed897942a5f"
+  },
+  {
+    "latlng": [
+      60.081210007,
+      9.109707881
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-1@main/lokomotiv_street_art.jpg",
+    "symbolType": "attractions",
+    "texts": {
+      "no": {
+        "title": "Lokomotiv Street Art",
+        "description": "Se over Numedalslågen – kunst på låveveggen!"
+      },
+      "en": {
+        "title": "Street Art",
+        "description": "Look across the river – train art on a barn!"
+      },
+      "de": {
+        "title": "Street Art",
+        "description": "Schau über den Fluss – Lokomotiv-Kunst am Bauernhof"
+      }
+    },
+    "id": "lokomotiv-225-street-art-f657506c5e70"
+  },
+  {
+    "latlng": [
+      60.040498153,
+      9.15699726
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-4@main/numedal_blomster.jpg",
+    "symbolType": "handlevogn",
+    "texts": {
+      "no": {
+        "title": "Numedal Blomster",
+        "description": "Dyktige blomsterdekoratører med både blomster, gaver og interiør"
+      },
+      "en": {
+        "title": "Numedal Blomster",
+        "description": "Skilled florists with flowers, gifts and decor"
+      },
+      "de": {
+        "title": "Numedal Blomster",
+        "description": "Geschickte Floristen mit Blumen, Geschenken und Deko"
+      }
+    },
+    "id": "numedal-blomster-8447ae7d24cb"
+  },
+  {
+    "latlng": [
+      60.027942201,
+      9.267547695
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-1@main/paradisgrend.jpg",
+    "symbolType": "kulturlandskap",
+    "texts": {
+      "no": {
+        "title": "Paradisgrenda",
+        "description": "Vakre gårder med gamle låver og stabbur, som ligger solfylt og vakkert til i lia over Rollag stavkirke"
+      },
+      "en": {
+        "title": "Paradisgrenda",
+        "description": "Beautiful farms with old barns and storehouses, located on a sunny hillside above Rollag stave church"
+      },
+      "de": {
+        "title": "Paradisgrenda",
+        "description": "Wunderschöne Höfe mit alten Scheunen und Speicherhäusern, sonnig und malerisch oberhalb der Stabkirche Rollag gelegen"
+      }
+    },
+    "id": "paradisgrenda-d6c60b2c1414"
+  },
+  {
+    "latlng": [
+      60.020381795,
+      9.279486604
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-4@main/rollagbygdetun.jpg",
+    "symbolType": "attractions",
+    "texts": {
+      "no": {
+        "title": "Rollag bygdetun",
+        "description": "Rollag bygdetun er klassisk bygdemuseum, som er bygd opp som en klassisk Numedalsgård"
+      },
+      "en": {
+        "title": "Rollag Folk Museum",
+        "description": "Rollag Folk Museum is a traditional rural museum built up like a classic Numedal farmstead"
+      },
+      "de": {
+        "title": "Heimatmuseum Rollag",
+        "description": "Das Heimatmuseum Rollag ist ein klassisches Freilichtmuseum, aufgebaut wie ein typischer Hof in Numedal"
+      }
+    },
+    "id": "rollag-bygdetun-b45fc688fa0c"
+  },
+  {
+    "latlng": [
+      59.9836734,
+      9.2938332
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-3@main/rollag-handel.jpg",
+    "symbolType": "handlevogn",
+    "texts": {
+      "no": {
+        "title": "Rollag Handel",
+        "description": "Nærbutikk i Rollag med hyggelig betjening og godt utvalg. Her kan du handle 24 timer i døgnet alle dager i uka."
+      },
+      "en": {
+        "title": "Rollag Handel",
+        "description": "Local grocery store in Rollag with friendly staff and a good selection. Open 24 hours a day, every day of the week."
+      },
+      "de": {
+        "title": "Rollag Handel",
+        "description": "Nahversorger in Rollag mit freundlichem Personal und guter Auswahl. Rund um die Uhr geöffnet – jeden Tag der Woche."
+      }
+    },
+    "id": "rollag-handel-75b004433bcd"
+  },
+  {
+    "latlng": [
+      59.984986964,
+      9.294401407
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-1@main/rollagstasjon.jpg",
+    "symbolType": "attractions",
+    "texts": {
+      "no": {
+        "title": "Rollag stasjon",
+        "description": "Numedalsbanen – Norges lengste kulturminne"
+      },
+      "en": {
+        "title": "Rollag Station",
+        "description": "Numedalsbanen – Norway’s longest cultural heritage site"
+      },
+      "de": {
+        "title": "Bahnhof Rollag",
+        "description": "Numedalsbanen – Norwegens längstes Kulturdenkmal"
+      }
+    },
+    "id": "rollag-stasjon-aede34a8"
+  },
+  {
+    "latlng": [
+      60.021116893,
+      9.273333035
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-2@main/stavkirkerollag.jpg",
+    "symbolType": "stavkirke",
+    "texts": {
+      "no": {
+        "title": "Rollag stavkirke",
+        "description": "Stavkirken ligger fint til på en flate på østsiden av Numedalslågen. Påbygd i alle retninger, vindskjev og vakker"
+      },
+      "en": {
+        "title": "Rollag Stave Church",
+        "description": "The church sits beautifully on a flat area east of the Numedalslågen. Extended in all directions – crooked and charming"
+      },
+      "de": {
+        "title": "Stabkirche Rollag",
+        "description": "Die Stabkirche liegt schön auf einer Fläche östlich der Numedalslågen. Angebaut in alle Richtungen – schief und schön"
+      }
+    },
+    "id": "rollag-stavkirke-f92474ab2669"
+  },
+  {
+    "latlng": [
+      60.103237681,
+      9.243278503
+    ],
+    "imageUrl": "",
+    "symbolType": "verneomrade",
+    "texts": {
+      "no": {
+        "title": "Trillemarka naturreservat",
+        "description": "Verneverdig natur og rikt dyreliv"
+      },
+      "en": {
+        "title": "Trillemarka Nature Reserve",
+        "description": "Protected nature and wildlife"
+      },
+      "de": {
+        "title": "Naturreservat Trillemarka",
+        "description": "Geschützte Natur und Tierwelt"
+      }
+    },
+    "id": "trillemarka-rollagsfjell-naturreservat-4e3ea190"
+  },
+  {
+    "latlng": [
+      60.013984444,
+      9.283981344
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-3@main/traaenstasjon.jpg",
+    "symbolType": "attractions",
+    "texts": {
+      "no": {
+        "title": "Tråen stasjon",
+        "description": "Stasjon på den fredede Numedalsbanen, ett av Norges lengste kulturminner"
+      },
+      "en": {
+        "title": "Tråen Station",
+        "description": "Station on the protected Numedalsbanen, one of Norway’s longest heritage lines"
+      },
+      "de": {
+        "title": "Bahnhof Tråen",
+        "description": "Station an der geschützten Numedalsbanen – eine der längsten Kulturstrecken Norwegens"
+      }
+    },
+    "id": "traen-stasjon-ca0c977b"
+  },
+  {
+    "latlng": [
+      60.042935374,
+      9.146402658
+    ],
+    "imageUrl": "",
+    "symbolType": "kirke",
+    "texts": {
+      "no": {
+        "title": "Veggli Kirke",
+        "description": "Klassisk hvit trekirke fra 1859"
+      },
+      "en": {
+        "title": "Veggli Church",
+        "description": "Classic white wooden church from 1859"
+      },
+      "de": {
+        "title": "Kirche von Veggli",
+        "description": "Klassische weiße Holzkirche von 1859"
+      }
+    },
+    "id": "veggli-kirke-28582242"
+  },
+  {
+    "latlng": [
+      60.043545522,
+      9.152955965
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-4@main/veggli_stasjon.jpg",
+    "symbolType": "attractions",
+    "texts": {
+      "no": {
+        "title": "Veggli stasjon",
+        "description": "Staselig stasjon på Numedalsbanen. Startpunkt for dresinturer"
+      },
+      "en": {
+        "title": "Veggli Station",
+        "description": "Elegant station and start point for rail biking"
+      },
+      "de": {
+        "title": "Bahnhof Veggli",
+        "description": "Stattlicher Bahnhof, Startpunkt für Draisinenfahrten"
+      }
+    },
+    "id": "veggli-stasjon-ef92ddf91bdb"
+  },
+  {
+    "latlng": [
+      60.041959488,
+      9.155479281
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-2@main/veggli_vertshus.jpg",
+    "symbolType": "hotel",
+    "texts": {
+      "no": {
+        "title": "Veggli Vertshus",
+        "description": "Hjemmelagd mat og avkjølende is. Dresinutleie og gode senger"
+      },
+      "en": {
+        "title": "Veggli Inn",
+        "description": "Homemade food, refreshing ice cream, rail bike rental and comfy beds"
+      },
+      "de": {
+        "title": "Veggli Gasthaus",
+        "description": "Hausgemachtes Essen, Eis, Draisinenverleih und gemütliche Betten"
+      }
+    },
+    "id": "veggli-vertshus-905a770d212e"
+  },
+  {
+    "latlng": [
+      60.0691168,
+      9.1175408
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-sigdal@main/kjerredammen.jpg",
+    "symbolType": "marker",
+    "texts": {
+      "no": {
+        "title": "Kjerredammen",
+        "description": "Inntak for Mykstufoss kraftverk. En buedam med gang- og sykkelvei over Numedalslågen"
+      },
+      "en": {
+        "title": "Kjerredammen",
+        "description": "The intake for Mykstufoss power station. An arch dam carrying a walking and cycling path across the Numedalslågen river"
+      },
+      "de": {
+        "title": "Kjerredammen",
+        "description": "Einlaufbauwerk des Kraftwerks Mykstufoss. Eine Bogenstaumauer mit Fuß- und Radweg über den Fluss Numedalslågen"
+      }
+    },
+    "id": "kjerredammen-2d9e100b8e4e"
+  },
+  {
+    "latlng": [
+      60.04135743978273,
+      9.157899017429669
+    ],
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-sigdal@main/veggli-lekeplass.jpg",
+    "symbolType": "lekeplass",
+    "texts": {
+      "no": {
+        "title": "Veggli lekeplass",
+        "description": "Stor og fin lekeplass med mange ulike lekeapparater"
+      },
+      "en": {
+        "title": "Veggli playground",
+        "description": "A large, attractive playground with a wide range of play equipment"
+      },
+      "de": {
+        "title": "Spielplatz Veggli",
+        "description": "Großer, schöner Spielplatz mit vielen verschiedenen Spielgeräten"
+      }
+    },
+    "id": "veggli-lekeplass-3c480300a4cf"
+  },
   {
     "name": "gapahuk-gladheimsvegen-rollag-67807bf6",
     "title": "Gapahuk i Gladheimsvegen",
