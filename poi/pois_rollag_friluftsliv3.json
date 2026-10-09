@@ -656,7 +656,7 @@
       9.1505921
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/rollag-friluftsliv-bilder@main/mykstufoss-friluftsomrade-rollag-c434da03.jpg",
-    "symbolType": "marker",
+    "symbolType": "rasteplass",
     "texts": {
       "no": {
         "title": "Mykstufoss friluftsområde",
@@ -672,7 +672,7 @@
       }
     },
     "id": "mykstufoss-friluftsomrade-rollag-c434da03",
-    "symbol": "marker",
+    "symbol": "rasteplass",
     "routes": []
   },
   {
