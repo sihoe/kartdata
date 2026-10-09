@@ -74,7 +74,7 @@
       9.154741056
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-1@main/dresin.jpg",
-    "symbolType": "attractions",
+    "symbolType": "dresin",
     "texts": {
       "no": {
         "title": "Dresin Numedalsbanen",
@@ -467,7 +467,7 @@
       9.1480976
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/rollag-friluftsliv-bilder@main/gapahuk_gladheimeimsvegen_67807bf6_1.jpg",
-    "symbolType": "marker",
+    "symbolType": "gapahuk",
     "texts": {
       "no": {
         "title": "Gapahuk i Gladheimsvegen",
@@ -494,7 +494,7 @@
       9.2698485
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/rollag-friluftsliv-bilder@main/gapahuk_fetjantjonn_rollag-de009a9a_1.jpg",
-    "symbolType": "marker",
+    "symbolType": "gapahuk",
     "texts": {
       "no": {
         "title": "Gapahuk ved Fetjantjønn",
@@ -521,7 +521,7 @@
       9.1498522
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/rollag-friluftsliv-bilder@main/grillplass-mykstufoss-rollag-6e174d73.jpg",
-    "symbolType": "marker",
+    "symbolType": "grillplass",
     "texts": {
       "no": {
         "title": "Grillplass ved Mykstufoss",
@@ -548,7 +548,7 @@
       9.1570294
     ],
     "imageUrl": "",
-    "symbolType": "marker",
+    "symbolType": "grillplass",
     "texts": {
       "no": {
         "title": "Grillplass ved Veggli Vertshus",
@@ -575,7 +575,7 @@
       9.138447
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/rollag-friluftsliv-bilder@main/hcparkering-vegglifjellvegen-rollag-fce19b8e.jpg",
-    "symbolType": "marker",
+    "symbolType": "parkering",
     "texts": {
       "no": {
         "title": "Parkering Vegglifjellvegen",
@@ -602,7 +602,7 @@
       9.1492993
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/rollag-friluftsliv-bilder@main/wc-mykstufoss-rollag-3a41ea6a.jpg",
-    "symbolType": "marker",
+    "symbolType": "toalett",
     "texts": {
       "no": {
         "title": "WC Mykstufoss",
@@ -629,7 +629,7 @@
       9.1506699
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/rollag-friluftsliv-bilder@main/mykstufoss-friluftsomrade-rollag-c434da03_3.jpg",
-    "symbolType": "marker",
+    "symbolType": "parkering",
     "texts": {
       "no": {
         "title": "Parkering Mykstufoss",
@@ -683,7 +683,7 @@
       9.25688
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/rollag-friluftsliv-bilder@main/benker-numedalslaagen-rollag-fbada42e.jpg",
-    "symbolType": "marker",
+    "symbolType": "rasteplass",
     "texts": {
       "no": {
         "title": "Rasteplass ved Numedalslågen",
@@ -737,7 +737,7 @@
       9.2793676
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/rollag-friluftsliv-bilder@main/rollag-bygdetun-sittegruppe-rollag-bf66c036.jpg",
-    "symbolType": "marker",
+    "symbolType": "rasteplass",
     "texts": {
       "no": {
         "title": "Benker på Rollag Bygdetun",
@@ -899,7 +899,7 @@
       9.2967349
     ],
     "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/rollag-friluftsliv-bilder@main/sittegruppe-tak-rollag-8271194a.jpg",
-    "symbolType": "marker",
+    "symbolType": "rasteplass",
     "texts": {
       "no": {
         "title": "Sittegruppe med tak",
@@ -980,7 +980,7 @@
       9.2941868
     ],
     "imageUrl": "",
-    "symbolType": "marker",
+    "symbolType": "rasteplass",
     "texts": {
       "no": {
         "title": "Sittegruppe Rollag sentrum",
