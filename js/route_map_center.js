@@ -13,9 +13,9 @@
     rollag: { name:'Rollag sentrum', position:[59.9844,9.2942], zoom:14, radiusKm:5.2 }
   };
   const WALK_DEFS = [
-    {id:'gladheimvegen-rundt', title:'Gladheimvegen rundt', center:'veggli', path:'routes/gpx/gladheimvegen-rundt.gpx'},
-    {id:'veggli-kirke-rundt', title:'Veggli kirke rundt', center:'veggli', path:'routes/gpx/veggli-kirke-rundt.gpx'},
-    {id:'badedammen-veggli-rundt', title:'Badedammen Veggli rundt', center:'veggli', path:'routes/gpx/badedammen-veggli-rundt.gpx'}
+    {id:'gladheimvegen-rundt', title:'Gladheimvegen rundt', center:'veggli', path:'gpx/gladheimvegen-rundt.gpx'},
+    {id:'veggli-kirke-rundt', title:'Veggli kirke rundt', center:'veggli', path:'gpx/veggli-kirke-rundt.gpx'},
+    {id:'badedammen-veggli-rundt', title:'Badedammen Veggli rundt', center:'veggli', path:'gpx/badedammen-veggli-rundt.gpx'}
   ];
   const escapeHTML = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const kmDistance = (a,b) => {
@@ -33,12 +33,57 @@
     const config={...CENTERS};
     let centerId='veggli', showWalks=false, selectedWalk=null, selectedPoi=null;
     let allPois=[], visiblePois=[], walks=[];
-    const map=L.map(mapEl,{scrollWheelZoom:false}).setView(config.veggli.position,config.veggli.zoom);
+    const map=L.map(mapEl,{scrollWheelZoom:true}).setView(config.veggli.position,config.veggli.zoom);
+    // Fullskjerm gjelder hele sentrumskartet, inkludert stedsvalg og høyrepanel.
+    const fullscreenButton=root.querySelector('.scm-fullscreen');
+    let fullscreenFallback=false;
+    function updateFullscreenButton(){
+      if(!fullscreenButton)return;
+      const active=document.fullscreenElement===root || fullscreenFallback;
+      fullscreenButton.textContent=active?'Avslutt fullskjerm':'Fullskjerm';
+      fullscreenButton.setAttribute('aria-pressed',String(active));
+      fullscreenButton.setAttribute('aria-label',active?'Avslutt fullskjerm':'Vis kartet i fullskjerm');
+      setTimeout(()=>map.invalidateSize(),90);
+    }
+    async function toggleFullscreen(){
+      if(document.fullscreenElement===root){
+        try{await document.exitFullscreen();}catch(e){console.warn(e);}
+      }else if(fullscreenFallback){
+        fullscreenFallback=false;
+        root.classList.remove('scm-fullscreen-fallback');
+        document.body.classList.remove('scm-body-fullscreen');
+      }else if(root.requestFullscreen){
+        try{await root.requestFullscreen();}
+        catch(e){
+          // Fallback ved blokkert Fullscreen API, f.eks. enkelte Squarespace-oppsett.
+          fullscreenFallback=true;
+          root.classList.add('scm-fullscreen-fallback');
+          document.body.classList.add('scm-body-fullscreen');
+        }
+      }else{
+        fullscreenFallback=true;
+        root.classList.add('scm-fullscreen-fallback');
+        document.body.classList.add('scm-body-fullscreen');
+      }
+      updateFullscreenButton();
+    }
+    fullscreenButton?.addEventListener('click',toggleFullscreen);
+    document.addEventListener('fullscreenchange',updateFullscreenButton);
+    document.addEventListener('keydown',e=>{
+      if(e.key==='Escape' && fullscreenFallback){
+        fullscreenFallback=false;
+        root.classList.remove('scm-fullscreen-fallback');
+        document.body.classList.remove('scm-body-fullscreen');
+        updateFullscreenButton();
+      }
+    });
+
+    // Kartverkets offisielle Norgeskart WMTS (Web Mercator / Leaflet).
     const backgrounds={
-      'Esri topografisk':L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:'Tiles © Esri'}),
-      'OpenStreetMap':L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap contributors'})
+      'Norgeskart – turkart':L.tileLayer('https://cache.kartverket.no/v1/wmts/1.0.0/toporaster/default/webmercator/{z}/{y}/{x}.png',{maxZoom:19,maxNativeZoom:17,attribution:'© Kartverket'}),
+      'Norgeskart – fargekart':L.tileLayer('https://cache.kartverket.no/v1/wmts/1.0.0/topo/default/webmercator/{z}/{y}/{x}.png',{maxZoom:19,maxNativeZoom:18,attribution:'© Kartverket'})
     };
-    backgrounds['Esri topografisk'].addTo(map);
+    backgrounds['Norgeskart – turkart'].addTo(map);
     L.control.layers(backgrounds,null,{position:'bottomleft'}).addTo(map);
     const poiLayer=L.layerGroup().addTo(map), walkLayer=L.layerGroup().addTo(map), walkPins=L.layerGroup().addTo(map);
     function status(message,isError=false){notice.textContent=message||'';notice.classList.toggle('is-error',isError);}
@@ -103,7 +148,7 @@
     function updateWalkStyle(){
       for(const w of walks){if(!w.lines)continue;
         const active=selectedWalk===w.id;
-        w.lines.forEach(l=>l.setStyle({color:active?COLORS.brown:COLORS.route,weight:active?6:4,opacity:selectedWalk&&!active?.35:.88}));
+        w.lines.forEach(l=>l.setStyle({color:active?COLORS.brown:COLORS.route,weight:active?6:4,opacity:(selectedWalk && !active) ? 0.35 : 0.88}));
       }
     }
     function setWalk(w,zoom=true){
@@ -155,17 +200,19 @@
     Promise.all([getJSON(poiURL),getJSON(markersURL)]).then(([poiData,groups])=>{
       const list=Array.isArray(poiData)?poiData:poiData.pois||[];
       const key=root.dataset.markerGroup||'rollag-sentrumskart';
-      const ids=groups[key]||groups.rollag||[];
+      const group=groups[key] ?? groups.rollag ?? [];
+      const ids=Array.isArray(group)?group:(Array.isArray(group.markers)?group.markers:[]);
+      if(!Array.isArray(group) && !Array.isArray(group.markers))console.warn('Ugyldig markørgruppe:',key);
       const byId=new Map(list.map(p=>[p.id,p]));allPois=[...new Set(ids)].map(id=>byId.get(id)).filter(Boolean);
       const missing=ids.filter(id=>!byId.has(id));if(missing.length)console.warn('Sentrumskart: ukjente POI-ID-er:',missing);
-      renderPois();status(`${allPois.length} POI lest inn${missing.length?` (${missing.length} ID-er mangler i POI-filen)`:''}.`);
+      renderPois();status(`${allPois.length} av ${new Set(ids).size} markører lest inn${missing.length?` (${missing.length} ID-er mangler i POI-filen)`:''}.`);
     }).catch(e=>{console.error(e);status(`Kunne ikke lese POI: ${e.message}`,true);});
     const defs=Array.isArray(window.SVINGOM_CENTER_WALKS)?window.SVINGOM_CENTER_WALKS:WALK_DEFS;
     Promise.all(defs.map(async w=>{
       const url=w.url||`${DATA_BASE}${w.path}`;
       try{const gps=parseGPX(await getText(url));return {...w,...gps};}
       catch(e){console.warn('GPX ikke tilgjengelig:',url,e);return {...w,error:e.message};}
-    })).then(items=>{walks=items;drawWalks();if(showWalks)renderDefault();const failures=walks.filter(w=>w.error);if(failures.length)status(`${failures.length} GPX-filer mangler. Last dem opp til routes/gpx/ på GitHub.`,true);});
+    })).then(items=>{walks=items;drawWalks();if(showWalks)renderDefault();const failures=walks.filter(w=>w.error);if(failures.length)status(`${failures.length} GPX-filer mangler. Kontroller at de ligger i gpx/ på GitHub.`,true);});
     setTimeout(()=>map.invalidateSize(),200);
   }
   function start(){document.querySelectorAll(ROOT_SELECTOR).forEach(init);}
