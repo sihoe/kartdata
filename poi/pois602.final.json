@@ -4241,7 +4241,7 @@
       60.042935374,
       9.146402658
     ],
-    "imageUrl": "",
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-4@main/veggli-kirke.jpg",
     "symbolType": "kirke",
     "texts": {
       "no": {
@@ -4745,7 +4745,7 @@
       60.0691168,
       9.1175408
     ],
-    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-sigdal@main/kjerredammen.jpg",
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-4@main/kjerredammen.jpg",
     "symbolType": "marker",
     "texts": {
       "no": {
@@ -4768,11 +4768,11 @@
       60.04135743978273,
       9.157899017429669
     ],
-    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-sigdal@main/veggli-lekeplass.jpg",
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-4@main/veggli-fritidspark.jpg",
     "symbolType": "lekeplass",
     "texts": {
       "no": {
-        "title": "Veggli lekeplass",
+        "title": "Veggli fritidspark",
         "description": "Stor og fin lekeplass med mange ulike lekeapparater"
       },
       "en": {
