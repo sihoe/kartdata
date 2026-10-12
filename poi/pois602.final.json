@@ -4854,6 +4854,512 @@
       }
     },
     "id": "malargutua-b220d2ec6ab1"
-  }
+  },
+  {
+  "latlng": [
+    60.0376797,
+    9.1480976
+  ],
+  "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/rollag-friluftsliv-bilder@main/gapahuk_gladheimeimsvegen_67807bf6_1.jpg",
+  "symbolType": "gapahuk",
+  "texts": {
+    "no": {
+      "title": "Gapahuk i Gladheimsvegen",
+      "description": ""
+    },
+    "en": {
+      "title": "Gapahuk i Gladheimsvegen",
+      "description": ""
+    },
+    "de": {
+      "title": "Gapahuk i Gladheimsvegen",
+      "description": ""
+    }
+  },
+  "id": "gapahuk-gladheimsvegen-rollag-67807bf6"
+},
+{
+  "latlng": [
+    60.0076702,
+    9.2698485
+  ],
+  "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/rollag-friluftsliv-bilder@main/gapahuk_fetjantjonn_rollag-de009a9a_1.jpg",
+  "symbolType": "gapahuk",
+  "texts": {
+    "no": {
+      "title": "Gapahuk ved Fetjantjønn",
+      "description": ""
+    },
+    "en": {
+      "title": "Gapahuk ved Fetjantjønn",
+      "description": ""
+    },
+    "de": {
+      "title": "Gapahuk ved Fetjantjønn",
+      "description": ""
+    }
+  },
+  "id": "gapahuk-fetjantjonn-rollag-de009a9a"
+},
+{
+  "latlng": [
+    60.0461824,
+    9.1498522
+  ],
+  "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/rollag-friluftsliv-bilder@main/grillplass-mykstufoss-rollag-6e174d73.jpg",
+  "symbolType": "grillplass",
+  "texts": {
+    "no": {
+      "title": "Grillplass ved Mykstufoss",
+      "description": ""
+    },
+    "en": {
+      "title": "Grillplass ved Mykstufoss",
+      "description": ""
+    },
+    "de": {
+      "title": "Grillplass ved Mykstufoss",
+      "description": ""
+    }
+  },
+  "id": "grillplass-mykstufoss-rollag-6e174d73"
+},
+{
+  "latlng": [
+    60.0422165,
+    9.1570294
+  ],
+  "imageUrl": "",
+  "symbolType": "grillplass",
+  "texts": {
+    "no": {
+      "title": "Grillplass ved Veggli Vertshus",
+      "description": ""
+    },
+    "en": {
+      "title": "Grillplass ved Veggli Vertshus",
+      "description": ""
+    },
+    "de": {
+      "title": "Grillplass ved Veggli Vertshus",
+      "description": ""
+    }
+  },
+  "id": "grillplass-vegglivertshus-rollag-5949fcfb"
+},
+{
+  "latlng": [
+    60.0369375,
+    9.138447
+  ],
+  "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/rollag-friluftsliv-bilder@main/hcparkering-vegglifjellvegen-rollag-fce19b8e.jpg",
+  "symbolType": "parkering",
+  "texts": {
+    "no": {
+      "title": "Parkering Vegglifjellvegen",
+      "description": "Parkeringsplass med HC-parkering i Vegglifjellvegen"
+    },
+    "en": {
+      "title": "Parkering Vegglifjellvegen",
+      "description": ""
+    },
+    "de": {
+      "title": "Parkering Vegglifjellvegen",
+      "description": ""
+    }
+  },
+  "id": "hcparkering-vegglifjellvegen-rollag-fce19b8e"
+},
+{
+  "latlng": [
+    60.0460335,
+    9.1492993
+  ],
+  "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/rollag-friluftsliv-bilder@main/wc-mykstufoss-rollag-3a41ea6a.jpg",
+  "symbolType": "toalett",
+  "texts": {
+    "no": {
+      "title": "WC Mykstufoss",
+      "description": ""
+    },
+    "en": {
+      "title": "WC Mykstufoss",
+      "description": ""
+    },
+    "de": {
+      "title": "WC Mykstufoss",
+      "description": ""
+    }
+  },
+  "id": "pois_selected-rollag-3a41ea6a"
+},
+{
+  "latlng": [
+    60.0461018,
+    9.1506699
+  ],
+  "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/rollag-friluftsliv-bilder@main/mykstufoss-friluftsomrade-rollag-c434da03_3.jpg",
+  "symbolType": "parkering",
+  "texts": {
+    "no": {
+      "title": "Parkering Mykstufoss",
+      "description": "Parkering ved det flotte friluftsområdet på Mykstufoss nær Veggli sentrum"
+    },
+    "en": {
+      "title": "Parkering Mykstufoss",
+      "description": ""
+    },
+    "de": {
+      "title": "Parkering Mykstufoss",
+      "description": ""
+    }
+  },
+  "id": "pois_selected-rollag-c6eed4c9"
+},
+{
+  "latlng": [
+    60.0462532,
+    9.1505921
+  ],
+  "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/rollag-friluftsliv-bilder@main/mykstufoss-friluftsomrade-rollag-c434da03.jpg",
+  "symbolType": "rasteplass",
+  "texts": {
+    "no": {
+      "title": "Mykstufoss friluftsområde",
+      "description": ""
+    },
+    "en": {
+      "title": "Mykstufoss friluftsområde",
+      "description": ""
+    },
+    "de": {
+      "title": "Mykstufoss friluftsområde",
+      "description": ""
+    }
+  },
+  "id": "mykstufoss-friluftsomrade-rollag-c434da03"
+},
+{
+  "latlng": [
+    60.0160237,
+    9.25688
+  ],
+  "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/rollag-friluftsliv-bilder@main/benker-numedalslaagen-rollag-fbada42e.jpg",
+  "symbolType": "rasteplass",
+  "texts": {
+    "no": {
+      "title": "Rasteplass ved Numedalslågen",
+      "description": ""
+    },
+    "en": {
+      "title": "Rasteplass ved Numedalslågen",
+      "description": ""
+    },
+    "de": {
+      "title": "Rasteplass ved Numedalslågen",
+      "description": ""
+    }
+  },
+  "id": "benker-numedalslaagen-rollag-fbada42e"
+},
+{
+  "latlng": [
+    60.0205273,
+    9.2793676
+  ],
+  "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/rollag-friluftsliv-bilder@main/rollag-bygdetun-sittegruppe-rollag-bf66c036.jpg",
+  "symbolType": "rasteplass",
+  "texts": {
+    "no": {
+      "title": "Benker på Rollag Bygdetun",
+      "description": ""
+    },
+    "en": {
+      "title": "Benker på Rollag Bygdetun",
+      "description": ""
+    },
+    "de": {
+      "title": "Benker på Rollag Bygdetun",
+      "description": ""
+    }
+  },
+  "id": "rollag-bygdetun-sittegruppe-rollag-bf66c036"
+},
+{
+  "latlng": [
+    59.9875348,
+    9.296295
+  ],
+  "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/rollag-friluftsliv-bilder@main/hvilebenk-driftevegen-rollag-518fc856.jpg",
+  "symbolType": "benk",
+  "texts": {
+    "no": {
+      "title": "Hvilebenk ved Driftevegen",
+      "description": ""
+    },
+    "en": {
+      "title": "Hvilebenk ved Driftevegen",
+      "description": ""
+    },
+    "de": {
+      "title": "Hvilebenk ved Driftevegen",
+      "description": ""
+    }
+  },
+  "id": "hvilebenk-driftevegen-rollag-518fc856"
+},
+{
+  "latlng": [
+    59.9869653,
+    9.2803949
+  ],
+  "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/rollag-friluftsliv-bilder@main/hvilebenk-numedalslaagen-rollag-d1696baf.jpg",
+  "symbolType": "benk",
+  "texts": {
+    "no": {
+      "title": "pois_selected-rollag-d1696baf",
+      "description": ""
+    },
+    "en": {
+      "title": "pois_selected-rollag-d1696baf",
+      "description": ""
+    },
+    "de": {
+      "title": "pois_selected-rollag-d1696baf",
+      "description": ""
+    }
+  },
+  "id": "hvilebenk-numedalslaagen-rollag-d1696baf"
+},
+{
+  "latlng": [
+    59.984303,
+    9.2823402
+  ],
+  "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/rollag-friluftsliv-bilder@main/hvilebenk-numedalslaagen-sor-rollag-8236fc6d.jpg",
+  "symbolType": "benk",
+  "texts": {
+    "no": {
+      "title": "Hvilebenk med utsikt til Rollag og Numedalslågen",
+      "description": ""
+    },
+    "en": {
+      "title": "Hvilebenk med utsikt til Rollag og Numedalslågen",
+      "description": ""
+    },
+    "de": {
+      "title": "Hvilebenk med utsikt til Rollag og Numedalslågen",
+      "description": ""
+    }
+  },
+  "id": "hvilebenk-numedalslaagen-sor-rollag-8236fc6d"
+},
+{
+  "latlng": [
+    60.0419235,
+    9.1524022
+  ],
+  "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/rollag-friluftsliv-bilder@main/hvilebenk-vegglifjellvegen-veggli-rollag-a48ec8f4.jpg",
+  "symbolType": "benk",
+  "texts": {
+    "no": {
+      "title": "Hvilebenk ved Vegglifjellvegen",
+      "description": ""
+    },
+    "en": {
+      "title": "Hvilebenk ved Vegglifjellvegen",
+      "description": ""
+    },
+    "de": {
+      "title": "Hvilebenk ved Vegglifjellvegen",
+      "description": ""
+    }
+  },
+  "id": "hvilebenk-vegglifjellvegen-veggli-rollag-a48ec8f4"
+},
+{
+  "latlng": [
+    59.9882418,
+    9.2993796
+  ],
+  "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/rollag-friluftsliv-bilder@main/hvilebenk-driftevegen-rollag-8104a706.jpg",
+  "symbolType": "benk",
+  "texts": {
+    "no": {
+      "title": "Hvilebenk Driftevegen i Rollag",
+      "description": ""
+    },
+    "en": {
+      "title": "Hvilebenk Driftevegen i Rollag",
+      "description": ""
+    },
+    "de": {
+      "title": "Hvilebenk Driftevegen i Rollag",
+      "description": ""
+    }
+  },
+  "id": "hvilebenk-driftevegen-rollag-8104a706"
+},
+{
+  "latlng": [
+    59.983986,
+    9.2967349
+  ],
+  "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/rollag-friluftsliv-bilder@main/sittegruppe-tak-rollag-8271194a.jpg",
+  "symbolType": "rasteplass",
+  "texts": {
+    "no": {
+      "title": "Sittegruppe med tak",
+      "description": ""
+    },
+    "en": {
+      "title": "Sittegruppe med tak",
+      "description": ""
+    },
+    "de": {
+      "title": "Sittegruppe med tak",
+      "description": ""
+    }
+  },
+  "id": "sittegruppe-tak-rollag-8271194a"
+},
+{
+  "latlng": [
+    60.042467,
+    9.154814
+  ],
+  "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/rollag-friluftsliv-bilder@main/hvilebenk-veggli-sentrum-9b3c17ca_2.jpg",
+  "symbolType": "benk",
+  "texts": {
+    "no": {
+      "title": "Hvilebenk Veggli sentrum",
+      "description": ""
+    },
+    "en": {
+      "title": "Hvilebenk Veggli sentrum",
+      "description": ""
+    },
+    "de": {
+      "title": "Hvilebenk Veggli sentrum",
+      "description": ""
+    }
+  },
+  "id": "hvilebenk-veggli-sentrum-9b3c17ca"
+},
+{
+  "latlng": [
+    59.9843818,
+    9.2974484
+  ],
+  "imageUrl": "",
+  "symbolType": "benk",
+  "texts": {
+    "no": {
+      "title": "Hvilebenk Rollag sentrum",
+      "description": ""
+    },
+    "en": {
+      "title": "Hvilebenk Rollag sentrum",
+      "description": ""
+    },
+    "de": {
+      "title": "Hvilebenk Rollag sentrum",
+      "description": ""
+    }
+  },
+  "id": "hvilebenk-rollag-sentrum-0f4c6ca4"
+},
+{
+  "latlng": [
+    59.9844556,
+    9.2941868
+  ],
+  "imageUrl": "",
+  "symbolType": "rasteplass",
+  "texts": {
+    "no": {
+      "title": "Sittegruppe Rollag sentrum",
+      "description": ""
+    },
+    "en": {
+      "title": "Sittegruppe Rollag sentrum",
+      "description": ""
+    },
+    "de": {
+      "title": "Sittegruppe Rollag sentrum",
+      "description": ""
+    }
+  },
+  "id": "sittegruppebenk-rollag-e871db72"
+},
+{
+  "latlng": [
+    60.0170578,
+    9.2646571
+  ],
+  "imageUrl": "",
+  "symbolType": "benk",
+  "texts": {
+    "no": {
+      "title": "Hvilebenk ved Numedalslågen",
+      "description": ""
+    },
+    "en": {
+      "title": "Hvilebenk ved Numedalslågen",
+      "description": ""
+    },
+    "de": {
+      "title": "Hvilebenk ved Numedalslågen",
+      "description": ""
+    }
+  },
+  "id": "hvilebenk-numedalslaagen-rollag-7831ae30"
+},
+{
+  "latlng": [
+    60.01856,
+    9.2697693
+  ],
+  "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/rollag-friluftsliv-bilder@main/hvilebenk-numedalslaagen-rollag-2f8fe592.jpg",
+  "symbolType": "benk",
+  "texts": {
+    "no": {
+      "title": "Hvilebenk ved Numedalslågen",
+      "description": ""
+    },
+    "en": {
+      "title": "Hvilebenk ved Numedalslågen",
+      "description": ""
+    },
+    "de": {
+      "title": "Hvilebenk ved Numedalslågen",
+      "description": ""
+    }
+  },
+  "id": "hvilebenk-numedalslaagen-rollag-2f8fe592"
+},
+{
+  "latlng": [
+    60.0349883,
+    9.317404
+  ],
+  "imageUrl": "",
+  "symbolType": "benk",
+  "texts": {
+    "no": {
+      "title": "Hvilebenk ved Trillemarka",
+      "description": ""
+    },
+    "en": {
+      "title": "Hvilebenk ved Trillemarka",
+      "description": ""
+    },
+    "de": {
+      "title": "Hvilebenk ved Trillemarka",
+      "description": ""
+    }
+  },
+  "id": "hvilebenk-trillemarka-rollag-684eb7ea"
+}
 ]
 
