@@ -1,0 +1,68 @@
+{
+  "gladheimvegen-rundt": {
+    "id": "gladheimvegen-rundt",
+    "name": {
+      "no": "Gladheimvegen rundt",
+      "en": "Gladheimvegen loop",
+      "de": "Rundweg Gladheimvegen"
+    },
+    "center": "veggli",
+    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/gladheimvegen-rundt.gpx",
+    "imageUrl": "",
+    "description": {
+      "no": "Kort tur på nord- og sørsiden av Nørsteåe.",
+      "en": "A short walk along the north and south sides of the Nørsteåe stream.",
+      "de": "Ein kurzer Spaziergang auf der Nord- und Südseite der Nørsteåe."
+    },
+    "durationMinutes": 20,
+    "stats": {
+      "distanceKm": 1.3,
+      "climbM": 13
+    },
+    "sortOrder": 1
+  },
+  "veggli-kirke-rundt": {
+    "id": "veggli-kirke-rundt",
+    "name": {
+      "no": "Veggli kirke rundt",
+      "en": "Veggli Church loop",
+      "de": "Rundweg um die Kirche von Veggli"
+    },
+    "center": "veggli",
+    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/veggli-kirke-rundt.gpx",
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe@main/svingombilder-fotturer/veggli-kirke-rundt.jpg",
+    "description": {
+      "no": "En rundtur til Veggli kirke, over Nørdsteåe tilbake til Veggli sentrum.",
+      "en": "A circular walk to Veggli Church and back to the centre of Veggli, crossing the Nørdsteåe stream.",
+      "de": "Ein Rundweg zur Kirche von Veggli und über die Nørdsteåe zurück ins Ortszentrum."
+    },
+    "durationMinutes": 45,
+    "stats": {
+      "distanceKm": 2.9,
+      "climbM": 91
+    },
+    "sortOrder": 2
+  },
+  "badedammen-veggli-rundt": {
+    "id": "badedammen-veggli-rundt",
+    "name": {
+      "no": "Badedammen Veggli rundt",
+      "en": "Badedammen Veggli loop",
+      "de": "Rundweg Badedammen in Veggli"
+    },
+    "center": "veggli",
+    "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/badedammen-veggli-rundt.gpx",
+    "imageUrl": "",
+    "description": {
+      "no": "En kort rundtur til badedammen, langs Numedalslågen og Nørdsteåe.",
+      "en": "A short circular walk to the swimming spot, along the Numedalslågen river and the Nørdsteåe stream.",
+      "de": "Ein kurzer Rundweg zur Badestelle, entlang der Numedalslågen und der Nørdsteåe."
+    },
+    "durationMinutes": 20,
+    "stats": {
+      "distanceKm": 1.5,
+      "climbM": 19
+    },
+    "sortOrder": 3
+  }
+}
