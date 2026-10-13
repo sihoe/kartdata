@@ -64,5 +64,27 @@
       "climbM": 19
     },
     "sortOrder": 3
-  }
+  },
+"fottur-rollag-sentrum": {
+  "id": "fottur-rollag-sentrum",
+  "name": {
+    "no": "Fottur fra Rollag sentrum",
+    "en": "Walk from Rollag village centre",
+    "de": "Spaziergang ab Rollag Ortszentrum"
+  },
+  "center": "rollag",
+  "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/fottur-rollag-sentrum.gpx",
+  "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-1@main/rollagstasjon.jpg",
+  "description": {
+    "no": "En kort spasertur gjennom boligområdet i Rollag sentrum, med utsikt over Numedalslågen.",
+    "en": "A short walk through the residential area of Rollag village centre, with views of the Numedalslågen river.",
+    "de": "Ein kurzer Spaziergang durch das Wohngebiet im Ortszentrum von Rollag mit Blick auf den Fluss Numedalslågen."
+  },
+  "durationMinutes": 20,
+  "stats": {
+    "distanceKm": 1.2,
+    "climbM": 24
+  },
+  "sortOrder": 1
+}
 }
