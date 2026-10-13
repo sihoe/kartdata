@@ -79,7 +79,7 @@
 
     // Kartverkets offisielle Norgeskart WMTS (Web Mercator / Leaflet).
     const backgrounds={
-      'Norgeskart – turkart':L.tileLayer('https://cache.kartverket.no/v1/wmts/1.0.0/toporaster/default/webmercator/{z}/{y}/{x}.png',{maxZoom:19,maxNativeZoom:17,attribution:'© Kartverket'}),
+      'Norgeskart – turkart':L.tileLayer('https://cache.kartverket.no/v1/wmts/1.0.0/topo/default/webmercator/{z}/{y}/{x}.png',{maxZoom:19,maxNativeZoom:17,attribution:'© Kartverket'}),
       'Norgeskart – fargekart':L.tileLayer('https://cache.kartverket.no/v1/wmts/1.0.0/topo/default/webmercator/{z}/{y}/{x}.png',{maxZoom:19,maxNativeZoom:18,attribution:'© Kartverket'})
     };
     backgrounds['Norgeskart – turkart'].addTo(map);
