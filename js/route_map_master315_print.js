@@ -3915,7 +3915,7 @@
       section.__routeMap = map;
 
       L.tileLayer(
-        "https://cache.kartverket.no/v1/wmts/1.0.0/toporaster/default/webmercator/{z}/{y}/{x}.png",
+        "https://cache.kartverket.no/v1/wmts/1.0.0/topo/default/webmercator/{z}/{y}/{x}.png",
         {
           attribution: "© Kartverket",
           maxZoom: 18,
