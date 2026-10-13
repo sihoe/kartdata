@@ -8,7 +8,7 @@
     },
     "center": "veggli",
     "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/gladheimvegen-rundt.gpx",
-    "imageUrl": "",
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-fotturer@main/veggli-kirke-rundt.jpg",
     "description": {
       "no": "Kort tur på nord- og sørsiden av Nørsteåe.",
       "en": "A short walk along the north and south sides of the Nørsteåe stream.",
@@ -30,7 +30,7 @@
     },
     "center": "veggli",
     "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/veggli-kirke-rundt.gpx",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe@main/svingombilder-fotturer/veggli-kirke-rundt.jpg",
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-fotturer@main/veggli-kirke-rundt.jpg",
     "description": {
       "no": "En rundtur til Veggli kirke, over Nørdsteåe tilbake til Veggli sentrum.",
       "en": "A circular walk to Veggli Church and back to the centre of Veggli, crossing the Nørdsteåe stream.",
@@ -52,7 +52,7 @@
     },
     "center": "veggli",
     "gpxUrl": "https://cdn.jsdelivr.net/gh/sihoe/kartdata@main/gpx/badedammen-veggli-rundt.gpx",
-    "imageUrl": "",
+    "imageUrl": "https://cdn.jsdelivr.net/gh/sihoe/svingombilder-fotturer@main/veggli-kirke-rundt.jpg",
     "description": {
       "no": "En kort rundtur til badedammen, langs Numedalslågen og Nørdsteåe.",
       "en": "A short circular walk to the swimming spot, along the Numedalslågen river and the Nørdsteåe stream.",
